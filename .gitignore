@@ -1,0 +1,12 @@
+.gradle
+/local.properties
+.DS_Store
+/build
+
+# Java class files
+*.class
+
+# Intellij IDEA
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/libraries
