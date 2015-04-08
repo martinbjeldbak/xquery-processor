@@ -16,5 +16,43 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.11" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.jvnet.jaxb2.maven2:maven-jaxb2-plugin:0.12.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.jvnet.jaxb2.maven2:maven-jaxb2-plugin-core:0.12.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.jvnet.jaxb2.maven2:maven-jaxb22-plugin:0.12.3" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.glassfish.jaxb:jaxb-runtime:2.2.11" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.glassfish.jaxb:jaxb-xjc:2.2.11" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven.plugin-tools:maven-plugin-annotations:3.2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.slf4j:slf4j-api:1.7.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.commons:commons-lang3:3.2.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.sun.org.apache.xml.internal:resolver:20050927" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven:maven-plugin-api:2.0.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.sonatype.plexus:plexus-build-api:0.0.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven:maven-project:2.0.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.glassfish.jaxb:jaxb-core:2.2.11" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.jvnet.staxex:stax-ex:1.7.7" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.sun.xml.fastinfoset:FastInfoset:1.2.13" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.sun.xsom:xsom:20140925" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.glassfish.jaxb:codemodel:2.2.11" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.sun.xml.bind.external:rngom:2.2.11" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.sun.xml.dtd-parser:dtd-parser:1.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.sun.istack:istack-commons-tools:2.21" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven:maven-artifact:3.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven:maven-settings:2.0.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven:maven-profile:2.0.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven:maven-model:2.0.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven:maven-artifact-manager:2.0.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven:maven-plugin-registry:2.0.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.codehaus.plexus:plexus-container-default:1.0-alpha-9-stable-1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: javax.xml.bind:jaxb-api:2.2.12-b140109.1041" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.glassfish.jaxb:txw2:2.2.11" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.sun.istack:istack-commons-runtime:2.21" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: relaxngDatatype:relaxngDatatype:20020414" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.ant:ant:1.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven:maven-repository-metadata:2.0.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.maven.wagon:wagon-provider-api:1.0-beta-2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: junit:junit:3.8.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: classworlds:classworlds:1.1-alpha-2" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.apache.ant:ant-launcher:1.7.0" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: org.codehaus.plexus:plexus-utils:2.0.4" level="project" />
   </component>
 </module>
