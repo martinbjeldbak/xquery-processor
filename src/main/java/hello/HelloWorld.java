@@ -22,7 +22,7 @@ public class HelloWorld {
         File caesarF = new File("samples/j_caesar.xml");
 
         try {
-            Document document = (Document) builder.build(caesarF);
+            Document document = builder.build(caesarF);
             Element rootNode = document.getRootElement();
 
 
