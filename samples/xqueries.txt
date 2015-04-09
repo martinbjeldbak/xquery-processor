@@ -1,0 +1,41 @@
+// cut and paste these queries into your own test file.
+
+// finds act, scene and speaker of famous 
+// line "Et tu, Brute! Then fall, Caesar."
+// should return 
+//
+//  <result>
+//    <who>CAESAR</who>
+//    <when><act>ACT III</act>
+//          <scene>SCENE I.  Rome. Before the Capitol; the Senate sitting above.
+//          </scene>
+//    </when>
+// </result>
+//
+//
+
+<result>
+for $a in document("j_caesar.xml")//ACT,
+    $sc in $a//SCENE,
+    $sp in $sc/SPEECH
+where $sp/LINE/text() = "Et tu, Brute! Then fall, Caesar."
+return <who>{$sp/SPEAKER/text()}</who>
+       <when>{<act>{$a/title/text()}</act>
+             <scene>{$sc/title/text()}</scene>}
+       <when>
+</result>
+
+// group all acts by speaker, that is, return a list of elements
+// of type 
+// element  speaks { element who {String}, (element when {String})+ }
+//
+// where the String contents of the <who> element is a speaker name,
+// and the contents of the <when> elements are act names.
+
+
+for $s in document("j_caesar.xml")//SPEAKER
+return <speaks>{<who>{$s/text()}</who>,
+                for $a in document("j_caesar.xml")//ACT
+                where some $s1 in $a//SPEAKER satisfies $s1 eq $s
+                return <when>{$a/title/text()}</when>}
+       </speaks>
