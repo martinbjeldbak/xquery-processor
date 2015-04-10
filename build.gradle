@@ -5,7 +5,7 @@ apply plugin: 'java'
 apply plugin: 'application' // let our project be runnable
 apply plugin: 'idea'
 
-mainClassName = 'hello.HelloWorld'
+mainClassName = 'dk.martinbmadsen.xquery.main.Main'
 sourceCompatibility = 1.8
 version = '1.0'
 
