@@ -25,23 +25,21 @@ dependencies {
     antlr   'org.antlr:antlr4:4.5'
 }
 
-defaultTasks 'clean', 'run'
-
 clean {
     // Remove any antlr-generated files
-    delete antlrGenPath
+    delete genSrcPath
 }
 
-// Have antlr task generate Java classes to another directory
+// Antlr grammar generation
 generateGrammarSource {
     outputDirectory = file(grammarGenPath)
 }
 
+// Intellij IDEA config
 idea {
     module {
-        // Add antlr as source for generated files
-        sourceDirs += file(antlrGenPath)
-        generatedSourceDirs += file(antlrGenPath)
+        sourceDirs += file(genSrcPath) // Add folder with generated source files to src
+        generatedSourceDirs += file(genSrcPath) // Set same folder as a 'generated source' code folder
     }
 }
 
