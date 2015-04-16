@@ -34,3 +34,15 @@ task fatJar(type: Jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
 }
+
+// Have antlr task generate Java classes to another directory
+generateGrammarSource {
+    outputDirectory = file('target/generated-sources/antlr')
+}
+
+idea {
+    module {
+        sourceDirs += file('target/generated-sources')
+        generatedSourceDirs += file('target/generated-sources')
+    }
+}
