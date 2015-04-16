@@ -10,6 +10,8 @@ mainClassName = 'dk.martinbmadsen.xquery.main.Main'
 sourceCompatibility = 1.8
 version = '1.0'
 
+def grammarGenPath = 'src/main/java/dk/martinbmadsen/xquery/parser' // path where antlr4 code is generated
+
 repositories {
     mavenCentral()
 }
@@ -35,14 +37,11 @@ task fatJar(type: Jar) {
     with jar
 }
 
-// Have antlr task generate Java classes to another directory
+// Have antlr task generate Java classes so they can be imported
 generateGrammarSource {
-    outputDirectory = file('target/generated-sources/antlr')
+    outputDirectory = file(grammarGenPath)
 }
 
-idea {
-    module {
-        sourceDirs += file('target/generated-sources')
-        generatedSourceDirs += file('target/generated-sources')
-    }
+clean {
+    delete grammarGenPath
 }
