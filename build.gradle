@@ -38,8 +38,8 @@ generateGrammarSource {
 // Intellij IDEA config
 idea {
     module {
-        sourceDirs += file(genSrcPath) // Add folder with generated source files to src
-        generatedSourceDirs += file(genSrcPath) // Set same folder as a 'generated source' code folder
+        sourceDirs += file(antlrGenPath) // Add folder with generated source files to src
+        generatedSourceDirs += file(antlrGenPath) // Set same folder as a 'generated source' code folder
     }
 }
 
