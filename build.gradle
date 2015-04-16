@@ -10,7 +10,9 @@ mainClassName = 'dk.martinbmadsen.xquery.main.Main'
 sourceCompatibility = 1.8
 version = '1.0'
 
-def grammarGenPath = 'src/main/java/dk/martinbmadsen/xquery/parser' // path where antlr4 code is generated
+def genSrcPath = 'target/generated-sources'
+def antlrGenPath = genSrcPath + '/antlr'
+def grammarGenPath = antlrGenPath + '/dk/martinbmadsen/xquery/parser' // path where antlr4 code is generated
 
 repositories {
     mavenCentral()
@@ -25,6 +27,24 @@ dependencies {
 
 defaultTasks 'clean', 'run'
 
+clean {
+    // Remove any antlr-generated files
+    delete antlrGenPath
+}
+
+// Have antlr task generate Java classes to another directory
+generateGrammarSource {
+    outputDirectory = file(grammarGenPath)
+}
+
+idea {
+    module {
+        // Add antlr as source for generated files
+        sourceDirs += file(antlrGenPath)
+        generatedSourceDirs += file(antlrGenPath)
+    }
+}
+
 task fatJar(type: Jar) {
     // Src: http://www.mkyong.com/gradle/gradle-create-a-jar-file-with-dependencies/
     manifest {
@@ -35,13 +55,4 @@ task fatJar(type: Jar) {
     baseName = project.name + '-all'
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
-}
-
-// Have antlr task generate Java classes so they can be imported
-generateGrammarSource {
-    outputDirectory = file(grammarGenPath)
-}
-
-clean {
-    delete grammarGenPath
 }

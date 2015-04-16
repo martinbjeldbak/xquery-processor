@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/antlr" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/generated-sources" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/target/generated-sources/antlr" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/antlr" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" isTestSource="true" />
