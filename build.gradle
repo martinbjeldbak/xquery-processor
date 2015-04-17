@@ -22,18 +22,8 @@ task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir genSrcPath // add generated-source folder to known Gradle src directories
-        }
-    }
-    test {
-        java {
-            srcDir genSrcPath // add generated-source folder to known Gradle src directories
-        }
-    }
-}
+sourceSets.main.java.srcDir genSrcPath
+sourceSets.test.java.srcDir genSrcPath
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
@@ -42,24 +32,15 @@ dependencies {
     antlr   'org.antlr:antlr4:4.5'
 }
 
-clean {
-    delete genSrcPath // Remove any auto-generated source files (Java classes/interfaces/etc)
-}
-
-
+clean.delete genSrcPath // Remove any auto-generated source files (Java classes/interfaces/etc)
 
 // Antlr grammar generation
-generateGrammarSource {
-    outputDirectory = file(grammarGenPath)
-}
+generateGrammarSource.outputDirectory = file(grammarGenPath)
 
 // Intellij IDEA config
-idea {
-    module {
-        sourceDirs += file(antlrGenPath) // Add folder with generated source files to src
-        generatedSourceDirs += file(antlrGenPath) // Set same folder as a 'generated source' code folder
-    }
-}
+
+idea.module.sourceDirs += file(antlrGenPath) // Add folder with generated source files to src
+idea.module.generatedSourceDirs += file(antlrGenPath) // Set same folder as a 'generated source' code folder
 
 task fatJar(type: Jar) {
     // Src: http://www.mkyong.com/gradle/gradle-create-a-jar-file-with-dependencies/
