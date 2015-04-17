@@ -1,10 +1,24 @@
+buildscript {
+    repositories {
+        maven {
+            name 'JFrog OSS snapshot repo'
+            url  'https://oss.jfrog.org/oss-snapshot-local/'
+        }
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1'
+    }
+}
+
 plugins {
 }
 
 apply plugin: 'java'
 apply plugin: 'application' // let this project be runnable
 apply plugin: 'idea'
-apply plugin: 'antlr'
+apply plugin: 'me.champeau.gradle.antlr4'
 
 mainClassName = 'dk.martinbmadsen.xquery.main.Main'
 sourceCompatibility = 1.8
@@ -16,11 +30,16 @@ def grammarGenPath = antlrGenPath + '/dk/martinbmadsen/xquery/parser' // path wh
 
 repositories {
     mavenCentral()
+    jcenter()
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
 }
+
+compileJava.dependsOn antlr4
+antlr4.output = file(grammarGenPath)
+antlr4.listener = false
 
 sourceSets.main.java.srcDir genSrcPath
 sourceSets.test.java.srcDir genSrcPath
@@ -29,16 +48,12 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
     compile 'org.jdom:jdom2:2.0.6'
-    antlr   'org.antlr:antlr4:4.5'
+    compile 'org.antlr:antlr4-runtime:4.5'
 }
 
 clean.delete genSrcPath // Remove any auto-generated source files (Java classes/interfaces/etc)
 
-// Antlr grammar generation
-generateGrammarSource.outputDirectory = file(grammarGenPath)
-
 // Intellij IDEA config
-
 idea.module.sourceDirs += file(antlrGenPath) // Add folder with generated source files to src
 idea.module.generatedSourceDirs += file(antlrGenPath) // Set same folder as a 'generated source' code folder
 
