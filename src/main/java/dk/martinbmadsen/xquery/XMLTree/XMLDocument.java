@@ -21,7 +21,7 @@ public class XMLDocument {
         }
     }
 
-    public Element root() {
-        return doc.getRootElement();
+    public IXMLElement root() {
+        return new XMLElement(doc.getRootElement());
     }
 }
