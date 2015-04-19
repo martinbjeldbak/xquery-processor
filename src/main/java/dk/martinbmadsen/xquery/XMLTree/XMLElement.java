@@ -14,10 +14,8 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public List<IXMLElement> parent() {
-        List<IXMLElement> parent = new ArrayList<>(1);
-        parent.add(new XMLElement(elem.getParentElement()));
-        return parent;
+    public IXMLElement parent() {
+        return new XMLElement(elem.getParentElement());
     }
 
     @Override

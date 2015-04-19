@@ -8,13 +8,19 @@ public interface IXMLElement {
      * If there is no parent, then an empty list is returned.
      * @return the parent element. Empty list otherwise.
      */
-    List<IXMLElement> parent();
+    IXMLElement parent();
 
     /**
      * Gets a list of all of this element's children
      * @return the element's children
      */
     List<IXMLElement> children();
+
+    /**
+     * Gets the number of children this element has
+     * @return the number of children this element has
+     */
+    Integer childrenCount();
 
     /**
      * Gets the tag of this element
@@ -27,4 +33,6 @@ public interface IXMLElement {
      * @return the text node associated to this element
      */
     String txt();
+
+
 }
