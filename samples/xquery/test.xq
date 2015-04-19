@@ -1,1 +1,1 @@
-doc('samples/j_caesar.xml')//winRar
+doc("samples/j_caesar.xml")/adf
