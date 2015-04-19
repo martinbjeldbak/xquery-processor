@@ -25,11 +25,9 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
 
         switch(ctx.slash.getType()) {
             case XQueryLexer.SLASH:
-                //Debug.debug("Matched /, evaluating rp");
                 results.addAll(visit(ctx.rp()));
                 break;
             case XQueryLexer.SSLASH:
-                //Debug.debug("Matched //");
                 break;
             default:
                 Debug.debug("Oops, shouldn't be here");
@@ -40,19 +38,24 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
 
     @Override
     public List<IXMLElement> visitRp(@NotNull XQueryParser.RpContext ctx) {
-        List<IXMLElement> results = new ArrayList<>();
+        List<IXMLElement> result = new ArrayList<>();
         IXMLElement ctxEl = this.ctxElems.pop();
 
         if(ctx.tagName != null) {
             String tagName = ctx.tagName.getText();
 
-            results.addAll(ctxEl.children().stream().filter(
+            result.addAll(ctxEl.children().stream().filter(
                     c -> c.tag().equals(tagName)
             ).collect(Collectors.toList()));
         }
+        else if (ctx.mult != null) {
+            result.addAll(ctxEl.children());
+        }
         else if (ctx.dot != null) {
+            result.add(ctxEl);
         }
         else if (ctx.dotdot != null) {
+            result.add(ctxEl.parent());
         }
         else if (ctx.text != null) {
             // TODO: Need to add this to the result somehow... (maybe cast to XMLElement?)
@@ -62,6 +65,6 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
             Debug.debug("Error: Could not match syntax: " + ctx.getText());
         }
 
-        return results;
+        return result;
     }
 }
