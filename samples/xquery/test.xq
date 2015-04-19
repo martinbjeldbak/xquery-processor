@@ -1,1 +1,1 @@
-doc("samples/j_caesar.xml")/adf
+doc("samples/j_caesar.xml")/TITLE

@@ -11,7 +11,7 @@ ap
 
 // Relative path
 rp
-  : '*' | '.' | '..' | tagName=Identifier
+  : mult='*' | dot='.' | dotdot='..' | text='text()' | tagName=Identifier
   | '(' rp ')' | left=rp '/' right=rp | left=rp '//' right=rp | rp '[' f ']' | left=rp ',' right=rp
   ;
 
@@ -46,7 +46,7 @@ OR     : ' or ';
 NOT    : 'not ';
 
 StringLiteral
-  :   '\'' StringCharacters? '\''
+  :   '\"' StringCharacters? '\"'
   ;
 
 fragment
@@ -54,7 +54,7 @@ StringCharacters :	StringCharacter+ ;
 
 fragment
 StringCharacter
-  : ~[\'\\] // technically, could match \, but might implement escape sequences (see antlr/grammars-v4/java/java.g4 @ GH)
+  : ~[\"\\] // technically, could match \, but might implement escape sequences (see antlr/grammars-v4/java/java.g4 @ GH)
 	 ;
 
 //WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
