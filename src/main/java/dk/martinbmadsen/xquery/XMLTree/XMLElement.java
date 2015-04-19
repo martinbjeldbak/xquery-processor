@@ -27,6 +27,11 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
+    public Integer childrenCount() {
+        return elem.getChildren().size();
+    }
+
+    @Override
     public String tag() {
         return elem.getName();
     }
@@ -35,4 +40,10 @@ public class XMLElement implements IXMLElement {
     public String txt() {
         return elem.getText();
     }
+
+    @Override
+    public String toString() {
+        return elem.toString();
+    }
 }
+
