@@ -2,6 +2,7 @@ package dk.martinbmadsen.xquery.XMLTree;
 
 import org.jdom2.Element;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -13,8 +14,10 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public IXMLElement parent() {
-        return new XMLElement(elem.getParentElement());
+    public List<IXMLElement> parent() {
+        List<IXMLElement> parent = new ArrayList<>(1);
+        parent.add(new XMLElement(elem.getParentElement()));
+        return parent;
     }
 
     @Override
@@ -25,6 +28,11 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public String tag() {
+        return elem.getName();
+    }
+
+    @Override
+    public String txt() {
         return elem.getText();
     }
 }

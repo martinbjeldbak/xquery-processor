@@ -2,15 +2,13 @@ package dk.martinbmadsen.xquery.XMLTree;
 
 import java.util.List;
 
-/**
- * Created by martin on 18/04/15.
- */
 public interface IXMLElement {
     /**
-     * Gets the parent of this element
-     * @return the parent element
+     * Gets the parent of this element in a singleton list.
+     * If there is no parent, then an empty list is returned.
+     * @return the parent element. Empty list otherwise.
      */
-    IXMLElement parent();
+    List<IXMLElement> parent();
 
     /**
      * Gets a list of all of this element's children
@@ -23,4 +21,10 @@ public interface IXMLElement {
      * @return the XML tag of this element
      */
     String tag();
+
+    /**
+     * Gets text node associated to this element
+     * @return the text node associated to this element
+     */
+    String txt();
 }
