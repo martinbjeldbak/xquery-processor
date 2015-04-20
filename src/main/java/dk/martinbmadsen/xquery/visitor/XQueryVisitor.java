@@ -37,26 +37,6 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     }
 
     @Override
-    public List<IXMLElement> visitF(@NotNull XQueryParser.FContext ctx) {
-        return super.visitF(ctx);
-    }
-
-    @Override
-    public List<IXMLElement> visitRpDotDot(@NotNull XQueryParser.RpDotDotContext ctx) {
-        return buildResult(getContextElement().parent());
-    }
-
-    @Override
-    public List<IXMLElement> visitRpDot(@NotNull XQueryParser.RpDotContext ctx) {
-        return buildResult(getContextElement());
-    }
-
-    @Override
-    public List<IXMLElement> visitRpConcat(@NotNull XQueryParser.RpConcatContext ctx) {
-        return super.visitRpConcat(ctx);
-    }
-
-    @Override
     public List<IXMLElement> visitRpTagName(@NotNull XQueryParser.RpTagNameContext ctx) {
         IXMLElement ctxEl = getContextElement();
         String tagName = ctx.getText();
@@ -72,9 +52,33 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     }
 
     @Override
+    public List<IXMLElement> visitRpDot(@NotNull XQueryParser.RpDotContext ctx) {
+        return buildResult(getContextElement());
+    }
+
+    @Override
+    public List<IXMLElement> visitRpDotDot(@NotNull XQueryParser.RpDotDotContext ctx) {
+        return buildResult(getContextElement().parent());
+    }
+
+    @Override
     public List<IXMLElement> visitRpText(@NotNull XQueryParser.RpTextContext ctx) {
-        Debugger.result(getContextElement().toString());
-        return null;
+        return buildResult(getContextElement().txt());
+    }
+
+    @Override
+    public List<IXMLElement> visitRpParenExpr(@NotNull XQueryParser.RpParenExprContext ctx) {
+        return visit(ctx.rp());
+    }
+
+    @Override
+    public List<IXMLElement> visitF(@NotNull XQueryParser.FContext ctx) {
+        return super.visitF(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitRpConcat(@NotNull XQueryParser.RpConcatContext ctx) {
+        return super.visitRpConcat(ctx);
     }
 
     @Override
@@ -85,11 +89,6 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     @Override
     public List<IXMLElement> visitRpFilter(@NotNull XQueryParser.RpFilterContext ctx) {
         return super.visitRpFilter(ctx);
-    }
-
-    @Override
-    public List<IXMLElement> visitRpParenExpr(@NotNull XQueryParser.RpParenExprContext ctx) {
-        return super.visitRpParenExpr(ctx);
     }
 
     @Override
