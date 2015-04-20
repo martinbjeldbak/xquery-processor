@@ -9,6 +9,7 @@ import dk.martinbmadsen.xquery.parser.XQueryParser;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Stack;
 import java.util.stream.Collectors;
@@ -72,6 +73,19 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     }
 
     @Override
+    public List<IXMLElement> visitRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
+        List<IXMLElement> y = buildResult();
+        List<IXMLElement> x = visit(ctx.left);
+
+        for(IXMLElement res : x) {
+            addContextElement(res);
+            y.addAll(visit(ctx.right));
+        }
+
+        return unique(y);
+    }
+
+    @Override
     public List<IXMLElement> visitF(@NotNull XQueryParser.FContext ctx) {
         return super.visitF(ctx);
     }
@@ -79,11 +93,6 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     @Override
     public List<IXMLElement> visitRpConcat(@NotNull XQueryParser.RpConcatContext ctx) {
         return super.visitRpConcat(ctx);
-    }
-
-    @Override
-    public List<IXMLElement> visitRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
-        return super.visitRpSlash(ctx);
     }
 
     @Override
@@ -105,6 +114,18 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     }
 
     /**
+     * Pushes an element/tree onto the context stack.
+     * @param elem the tree/element to be added as context
+     */
+    private void addContextElement(IXMLElement elem) {
+        this.ctxElems.push(elem);
+    }
+
+    private List<IXMLElement> buildResult() {
+        return new ArrayList<>();
+    }
+
+    /**
      * Returns a new instance of whatever list I'm in the mood for, currently {@link ArrayList} for
      * use in building results.
      * @return a newly instanciated {@link ArrayList}
@@ -123,5 +144,25 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
         List<IXMLElement> res = buildResult(elems.size());
         res.addAll(elems);
         return res;
+    }
+
+    /**
+     * Removes duplicate elements
+     * @param elems element list to be checked
+     * @return a santized list with duplicate elements removed
+     */
+    private List<IXMLElement> unique(List<IXMLElement> elems) {
+        // Because I couldn't figure out how to copy Lists...
+        List<IXMLElement> result = buildResult(elems.size());
+        result.addAll(elems);
+
+        for(IXMLElement i : elems) {
+            for(IXMLElement j : elems) {
+                if(i.equals(j))
+                    continue;
+                result.add(j);
+            }
+        }
+        return result;
     }
 }
