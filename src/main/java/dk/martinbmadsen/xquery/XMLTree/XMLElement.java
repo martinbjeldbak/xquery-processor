@@ -1,8 +1,9 @@
 package dk.martinbmadsen.xquery.XMLTree;
 
 import org.jdom2.Element;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,7 +26,7 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public Integer childrenCount() {
+    public int childrenCount() {
         return elem.getChildren().size();
     }
 
@@ -41,7 +42,8 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public String toString() {
-        return elem.toString();
+        XMLOutputter xout = new XMLOutputter(Format.getPrettyFormat());
+        return xout.outputString(elem);
     }
 }
 
