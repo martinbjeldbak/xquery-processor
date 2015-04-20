@@ -3,6 +3,7 @@ package dk.martinbmadsen.xquery.visitor;
 import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.xquery.XMLTree.XMLDocument;
 import dk.martinbmadsen.utils.debug.Debugger;
+import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryLexer;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
@@ -15,13 +16,12 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
-    private XMLDocument document;
-    private Stack<IXMLElement> ctxElems = new Stack<>(); // context elements
+    private QueryContext context = new QueryContext();
 
     @Override
     public List<IXMLElement> visitAp(@NotNull XQueryParser.ApContext ctx) {
-        this.document = new XMLDocument(ctx.fileName.getText());
-        this.ctxElems.push(this.document.root());
+        XMLDocument document = new XMLDocument(ctx.fileName.getText());
+        context.addContextElement(document.root());
         List<IXMLElement> results = new ArrayList<>();
 
         switch(ctx.slash.getType()) {
@@ -39,7 +39,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
 
     @Override
     public List<IXMLElement> visitRpTagName(@NotNull XQueryParser.RpTagNameContext ctx) {
-        IXMLElement ctxEl = getContextElement();
+        IXMLElement ctxEl = context.getContextElement();
         String tagName = ctx.getText();
 
         return buildResult(ctxEl.children().stream().filter(
@@ -49,22 +49,22 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
 
     @Override
     public List<IXMLElement> visitRpWildcard(@NotNull XQueryParser.RpWildcardContext ctx) {
-        return buildResult(getContextElement().children());
+        return buildResult(context.getContextElement().children());
     }
 
     @Override
     public List<IXMLElement> visitRpDot(@NotNull XQueryParser.RpDotContext ctx) {
-        return buildResult(getContextElement());
+        return buildResult(context.getContextElement());
     }
 
     @Override
     public List<IXMLElement> visitRpDotDot(@NotNull XQueryParser.RpDotDotContext ctx) {
-        return buildResult(getContextElement().parent());
+        return buildResult(context.getContextElement().parent());
     }
 
     @Override
     public List<IXMLElement> visitRpText(@NotNull XQueryParser.RpTextContext ctx) {
-        return buildResult(getContextElement().txt());
+        return buildResult(context.getContextElement().txt());
     }
 
     @Override
@@ -78,11 +78,16 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
         List<IXMLElement> x = visit(ctx.left);
 
         for(IXMLElement res : x) {
-            addContextElement(res);
+            context.addContextElement(res);
             y.addAll(visit(ctx.right));
         }
 
         return unique(y);
+    }
+
+    @Override
+    public List<IXMLElement> visitRpSlashSlash(@NotNull XQueryParser.RpSlashSlashContext ctx) {
+        return super.visitRpSlashSlash(ctx);
     }
 
     @Override
@@ -98,27 +103,6 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     @Override
     public List<IXMLElement> visitRpFilter(@NotNull XQueryParser.RpFilterContext ctx) {
         return super.visitRpFilter(ctx);
-    }
-
-    @Override
-    public List<IXMLElement> visitRpSlashSlash(@NotNull XQueryParser.RpSlashSlashContext ctx) {
-        return super.visitRpSlashSlash(ctx);
-    }
-
-    /**
-     * Gets the current context element (WARNING: this pops it from the stack)
-     * @return the {@link IXMLElement} we are currently exploring
-     */
-    private IXMLElement getContextElement() {
-        return this.ctxElems.pop();
-    }
-
-    /**
-     * Pushes an element/tree onto the context stack.
-     * @param elem the tree/element to be added as context
-     */
-    private void addContextElement(IXMLElement elem) {
-        this.ctxElems.push(elem);
     }
 
     private List<IXMLElement> buildResult() {
