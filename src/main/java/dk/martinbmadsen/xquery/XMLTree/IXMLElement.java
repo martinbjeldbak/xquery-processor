@@ -28,6 +28,12 @@ public interface IXMLElement {
     List<IXMLElement> children();
 
     /**
+     * Gets text element associated to this element
+     * @return the text element associated to this element
+     */
+    IXMLElement txt();
+
+    /**
      * Gets the number of children this element has
      * @return the number of children this element has
      */
@@ -38,10 +44,4 @@ public interface IXMLElement {
      * @return the XML tag of this element
      */
     String tag();
-
-    /**
-     * Gets text node associated to this element
-     * @return the text node associated to this element
-     */
-    String txt();
 }

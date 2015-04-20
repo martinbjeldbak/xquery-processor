@@ -1,9 +1,9 @@
 package dk.martinbmadsen.xquery.XMLTree;
 
 import org.jdom2.Element;
+import org.jdom2.Text;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,8 +36,10 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public String txt() {
-        return elem.getText();
+    public IXMLElement txt() {
+        Element textEl = new Element("text");
+        textEl.addContent(new Text(elem.getText()));
+        return new XMLElement(textEl);
     }
 
     @Override
