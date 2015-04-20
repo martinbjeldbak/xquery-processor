@@ -20,9 +20,11 @@ public class Main {
 
             List<IXMLElement> resultElems = visitor.visitAp(context);
 
-            System.out.println("Results below:");
+            System.out.println(resultElems.size() + " results below:");
+            Integer i = 0;
             for(IXMLElement c : resultElems) {
-                Debug.result(c.txt());
+                Debug.result("#" + i++);
+                System.out.println(c.toString());
             }
 
         } catch (Exception e) {
