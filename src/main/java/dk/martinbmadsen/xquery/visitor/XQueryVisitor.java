@@ -37,34 +37,92 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     }
 
     @Override
-    public List<IXMLElement> visitRp(@NotNull XQueryParser.RpContext ctx) {
-        List<IXMLElement> result = new ArrayList<>();
-        IXMLElement ctxEl = this.ctxElems.pop();
+    public List<IXMLElement> visitF(@NotNull XQueryParser.FContext ctx) {
+        return super.visitF(ctx);
+    }
 
-        if(ctx.tagName != null) {
-            String tagName = ctx.tagName.getText();
+    @Override
+    public List<IXMLElement> visitRpDotDot(@NotNull XQueryParser.RpDotDotContext ctx) {
+        return buildResult(getContextElement().parent());
+    }
 
-            result.addAll(ctxEl.children().stream().filter(
-                    c -> c.tag().equals(tagName)
-            ).collect(Collectors.toList()));
-        }
-        else if (ctx.mult != null) {
-            result.addAll(ctxEl.children());
-        }
-        else if (ctx.dot != null) {
-            result.add(ctxEl);
-        }
-        else if (ctx.dotdot != null) {
-            result.add(ctxEl.parent());
-        }
-        else if (ctx.text != null) {
-            // TODO: Need to add this to the result somehow... (maybe cast to XMLElement?)
-            Debug.result("text(): " + ctxEl.txt());
-        }
-        else {
-            Debug.debug("Error: Could not match syntax: " + ctx.getText());
-        }
+    @Override
+    public List<IXMLElement> visitRpDot(@NotNull XQueryParser.RpDotContext ctx) {
+        return buildResult(getContextElement());
+    }
 
-        return result;
+    @Override
+    public List<IXMLElement> visitRpConcat(@NotNull XQueryParser.RpConcatContext ctx) {
+        return super.visitRpConcat(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitRpTagName(@NotNull XQueryParser.RpTagNameContext ctx) {
+        IXMLElement ctxEl = getContextElement();
+        String tagName = ctx.getText();
+
+        return buildResult(ctxEl.children().stream().filter(
+                c -> c.tag().equals(tagName)
+        ).collect(Collectors.toList()));
+    }
+
+    @Override
+    public List<IXMLElement> visitRpWildcard(@NotNull XQueryParser.RpWildcardContext ctx) {
+        return buildResult(getContextElement().children());
+    }
+
+    @Override
+    public List<IXMLElement> visitRpText(@NotNull XQueryParser.RpTextContext ctx) {
+        Debug.result(getContextElement().toString());
+        return null;
+    }
+
+    @Override
+    public List<IXMLElement> visitRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
+        return super.visitRpSlash(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitRpFilter(@NotNull XQueryParser.RpFilterContext ctx) {
+        return super.visitRpFilter(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitRpParenExpr(@NotNull XQueryParser.RpParenExprContext ctx) {
+        return super.visitRpParenExpr(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitRpSlashSlash(@NotNull XQueryParser.RpSlashSlashContext ctx) {
+        return super.visitRpSlashSlash(ctx);
+    }
+
+    /**
+     * Gets the current context element (WARNING: this pops it from the stack)
+     * @return the {@link IXMLElement} we are currently exploring
+     */
+    private IXMLElement getContextElement() {
+        return this.ctxElems.pop();
+    }
+
+    /**
+     * Returns a new instance of whatever list I'm in the mood for, currently {@link ArrayList} for
+     * use in building results.
+     * @return a newly instanciated {@link ArrayList}
+     */
+    private List<IXMLElement> buildResult(int size) {
+        return new ArrayList<>(size);
+    }
+
+    private List<IXMLElement> buildResult(IXMLElement elem) {
+        List<IXMLElement> res = buildResult(1);
+        res.add(elem);
+        return res;
+    }
+
+    private List<IXMLElement> buildResult(List<IXMLElement> elems) {
+        List<IXMLElement> res = buildResult(elems.size());
+        res.addAll(elems);
+        return res;
     }
 }

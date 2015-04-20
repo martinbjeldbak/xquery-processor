@@ -11,8 +11,16 @@ ap
 
 // Relative path
 rp
-  : mult='*' | dot='.' | dotdot='..' | text='text()' | tagName=Identifier
-  | '(' rp ')' | left=rp '/' right=rp | left=rp '//' right=rp | rp '[' f ']' | left=rp ',' right=rp
+  : '*' #rpWildcard
+  | '.' #rpDot
+  | '..' #rpDotDot
+  | 'text()' #rpText
+  | Identifier #rpTagName
+  | '(' rp ')' #rpParenExpr
+  | left=rp '/' right=rp #rpSlash
+  | left=rp '//' right=rp #rpSlashSlash
+  | rp '[' f ']' #rpFilter
+  | left=rp ',' right=rp #rpConcat
   ;
 
 // Path filter
