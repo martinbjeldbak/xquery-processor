@@ -2,7 +2,7 @@ package dk.martinbmadsen.xquery.visitor;
 
 import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.xquery.XMLTree.XMLDocument;
-import dk.martinbmadsen.xquery.debug.Debug;
+import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryLexer;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
@@ -30,7 +30,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
             case XQueryLexer.SSLASH:
                 break;
             default:
-                Debug.debug("Oops, shouldn't be here");
+                Debugger.error("Oops, shouldn't be here");
                 break;
         }
         return results;
@@ -73,7 +73,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
 
     @Override
     public List<IXMLElement> visitRpText(@NotNull XQueryParser.RpTextContext ctx) {
-        Debug.result(getContextElement().toString());
+        Debugger.result(getContextElement().toString());
         return null;
     }
 

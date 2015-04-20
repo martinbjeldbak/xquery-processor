@@ -1,7 +1,7 @@
 package dk.martinbmadsen.xquery.main;
 
 import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
-import dk.martinbmadsen.xquery.debug.Debug;
+import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.parser.XQueryLexer;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
 import org.antlr.v4.runtime.*;
@@ -23,7 +23,7 @@ public class Main {
             System.out.println(resultElems.size() + " results below:");
             Integer i = 0;
             for(IXMLElement c : resultElems) {
-                Debug.result("#" + i++);
+                Debugger.result("#" + i++);
                 System.out.println(c.toString());
             }
 
