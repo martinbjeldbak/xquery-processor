@@ -10,84 +10,56 @@ import dk.martinbmadsen.xquery.parser.XQueryParser;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
-    private QueryContext context = new QueryContext();
+    private QueryContext qc = new QueryContext();
+    private Evaluator e = new Evaluator(qc, this);
 
     @Override
     public List<IXMLElement> visitAp(@NotNull XQueryParser.ApContext ctx) {
-        XMLDocument document = new XMLDocument(ctx.fileName.getText());
-        context.addContextElement(document.root());
-        List<IXMLElement> results = new ArrayList<>();
-
-        switch(ctx.slash.getType()) {
-            case XQueryLexer.SLASH:
-                results.addAll(visit(ctx.rp()));
-                break;
-            case XQueryLexer.SSLASH:
-                break;
-            default:
-                Debugger.error("Oops, shouldn't be here");
-                break;
-        }
-        return results;
+        return e.evalAp(ctx);
     }
 
     @Override
     public List<IXMLElement> visitRpTagName(@NotNull XQueryParser.RpTagNameContext ctx) {
-        IXMLElement ctxEl = context.getContextElement();
-        String tagName = ctx.getText();
-
-        return buildResult(ctxEl.children().stream().filter(
-                c -> c.tag().equals(tagName)
-        ).collect(Collectors.toList()));
+        return e.evalTagName(ctx);
     }
 
     @Override
     public List<IXMLElement> visitRpWildcard(@NotNull XQueryParser.RpWildcardContext ctx) {
-        return buildResult(context.getContextElement().children());
+        return e.evalWildCard();
     }
 
     @Override
     public List<IXMLElement> visitRpDot(@NotNull XQueryParser.RpDotContext ctx) {
-        return buildResult(context.getContextElement());
+        return e.evalDot();
     }
 
     @Override
     public List<IXMLElement> visitRpDotDot(@NotNull XQueryParser.RpDotDotContext ctx) {
-        return buildResult(context.getContextElement().parent());
+        return e.evalDotDot();
     }
 
     @Override
     public List<IXMLElement> visitRpText(@NotNull XQueryParser.RpTextContext ctx) {
-        return buildResult(context.getContextElement().txt());
+        return buildResult(qc.getContextElement().txt());
     }
 
     @Override
     public List<IXMLElement> visitRpParenExpr(@NotNull XQueryParser.RpParenExprContext ctx) {
-        return visit(ctx.rp());
+        return e.evalRpParen(ctx);
     }
 
     @Override
     public List<IXMLElement> visitRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
-        List<IXMLElement> y = buildResult();
-        List<IXMLElement> x = visit(ctx.left);
-
-        for(IXMLElement res : x) {
-            context.addContextElement(res);
-            y.addAll(visit(ctx.right));
-        }
-
-        return unique(y);
+        return e.evalSlash(ctx);
     }
 
     @Override
     public List<IXMLElement> visitRpSlashSlash(@NotNull XQueryParser.RpSlashSlashContext ctx) {
-        return super.visitRpSlashSlash(ctx);
+        return e.evalRpSlashSlash(ctx);
     }
 
     @Override
