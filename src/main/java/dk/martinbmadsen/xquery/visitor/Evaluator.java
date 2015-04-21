@@ -9,7 +9,10 @@ import dk.martinbmadsen.xquery.parser.XQueryLexer;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import org.antlr.v4.runtime.RuleContext;
+import org.antlr.v4.runtime.Token;
+import org.antlr.v4.runtime.TokenFactory;
 import org.antlr.v4.runtime.misc.NotNull;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,30 +49,14 @@ public class Evaluator {
         return results;
     }
 
-    public List<IXMLElement> evalSlash(@NotNull RuleContext ctx) {
-        if(!(ctx instanceof RpSlashContext))
-            Debugger.error("Context given not of type RpSlashContext");
-        RpSlashContext node = (RpSlashContext) ctx;
-
-        List<IXMLElement> y = buildResult();
-        List<IXMLElement> x = visitor.visit(node.left);
-
-        for(IXMLElement res : x) {
-            qc.addContextElement(res);
-            y.addAll(visitor.visit(node.right));
-        }
-        return y;
-    }
-
     public List<IXMLElement> evalTagName(@NotNull RuleContext ctx) {
         if(!(ctx instanceof RpTagNameContext))
             Debugger.error("Context given not of type RpTagNameContext");
 
-        IXMLElement ctxEl = qc.getContextElement();
         String tagName = ctx.getText();
 
         // TODO: instead of .children() call, call evalWildcard
-        return buildResult(ctxEl.children().stream().filter(
+        return buildResult(evalWildCard().stream().filter(
                 c -> c.tag().equals(tagName)
         ).collect(Collectors.toList()));
     }
@@ -94,8 +81,71 @@ public class Evaluator {
         return visitor.visit(node.rp());
     }
 
+
+    public List<IXMLElement> evalRpSlash(@NotNull RuleContext ctx) {
+        if(!(ctx instanceof RpSlashContext))
+            Debugger.error("Context given not of type RpSlashContext");
+        RpSlashContext node = (RpSlashContext) ctx;
+
+        List<IXMLElement> y = buildResult();
+        List<IXMLElement> x = visitor.visit(node.left);
+
+        for(IXMLElement res : x) {
+            qc.addContextElement(res);
+            y.addAll(visitor.visit(node.right));
+        }
+        return y;
+    }
+
     public List<IXMLElement> evalRpSlashSlash(@NotNull RuleContext ctx) {
-        return null;
+        if(!(ctx instanceof RpSlashContext))
+            Debugger.error("Context given not of type RpSlashContext");
+
+
+        RpSlashContext node = (RpSlashContext)ctx;
+
+        // Eval left hand side of // semantics (rp1 / rp2)
+        List<IXMLElement> l = evalRpSlash(ctx);
+
+        // Eval right hand side of // semantics (rp1 / * // rp2). This requires
+        // building a new parse tree
+        /**
+         * Now, to compute the parse tree for right expr: rp1 / * // rp2
+         *             rp
+         *          /  |  \
+         *        rp  // rp2
+         *      / | \
+         *    rp1 / rp
+         *          |
+         *          *
+         */
+
+
+        // Build above tree bottom up
+        RpContext wcRoot = new RpContext();
+        wcRoot.addChild(new RpWildcardContext(wcRoot));
+
+        RpContext slashRoot = new RpContext();
+        RpSlashContext slashCtx = new RpSlashContext(slashRoot);
+        slashRoot.addChild(slashCtx);
+        slashCtx.addChild(node.left); // not sure if you need to addChild
+        slashCtx.addChild(node.right);
+        slashCtx.left = node.left;
+        slashCtx.right = wcRoot;
+        System.out.println(slashCtx.left);
+
+        RpContext root = new RpContext();
+        RpSlashContext ssCtx = new RpSlashContext(root);
+        ssCtx.addChild(slashCtx); // not sure if you need to addChild
+        ssCtx.addChild(node.right);
+        ssCtx.left = slashCtx;
+        ssCtx.right = node.right;
+
+        List<IXMLElement> r = evalRpSlashSlash(wcRoot);
+
+        l.addAll(r);
+
+        return unique(l);
     }
 
     private List<IXMLElement> buildResult() {
@@ -123,4 +173,23 @@ public class Evaluator {
         return res;
     }
 
+    /**
+     * Removes duplicate elements
+     * @param elems element list to be checked
+     * @return a santized list with duplicate elements removed
+     */
+    private List<IXMLElement> unique(List<IXMLElement> elems) {
+        // Because I couldn't figure out how to copy Lists...
+        List<IXMLElement> result = buildResult(elems.size());
+        result.addAll(elems);
+
+        for(IXMLElement i : elems) {
+            for(IXMLElement j : elems) {
+                if(i.equals(j))
+                    continue;
+                result.add(j);
+            }
+        }
+        return result;
+    }
 }

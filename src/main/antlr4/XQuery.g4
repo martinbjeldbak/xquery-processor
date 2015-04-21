@@ -17,8 +17,7 @@ rp
   | 'text()' #rpText
   | Identifier #rpTagName
   | '(' rp ')' #rpParenExpr
-  | left=rp '/' right=rp #rpSlash
-  | left=rp '/' right=rp #rpSlashSlash
+  | left=rp slash=('/'|'//') right=rp #rpSlash
   | rp '[' f ']' #rpFilter
   | left=rp ',' right=rp #rpConcat
   ;

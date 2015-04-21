@@ -1,17 +1,14 @@
 package dk.martinbmadsen.xquery.visitor;
 
-import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
-import dk.martinbmadsen.xquery.XMLTree.XMLDocument;
 import dk.martinbmadsen.utils.debug.Debugger;
+import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
-import dk.martinbmadsen.xquery.parser.XQueryLexer;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     private QueryContext qc = new QueryContext();
@@ -54,12 +51,19 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
 
     @Override
     public List<IXMLElement> visitRpSlash(@NotNull XQueryParser.RpSlashContext ctx) {
-        return e.evalSlash(ctx);
-    }
-
-    @Override
-    public List<IXMLElement> visitRpSlashSlash(@NotNull XQueryParser.RpSlashSlashContext ctx) {
-        return e.evalRpSlashSlash(ctx);
+        List<IXMLElement> results = buildResult();
+        switch(ctx.slash.getType()) {
+            case XQueryParser.SLASH:
+                results = e.evalRpSlash(ctx);
+                break;
+            case XQueryParser.SSLASH:
+                results = e.evalRpSlashSlash(ctx);
+                break;
+            default:
+                Debugger.error("Oops, shouldn't be here");
+                break;
+        }
+        return results;
     }
 
     @Override
@@ -100,25 +104,5 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
         List<IXMLElement> res = buildResult(elems.size());
         res.addAll(elems);
         return res;
-    }
-
-    /**
-     * Removes duplicate elements
-     * @param elems element list to be checked
-     * @return a santized list with duplicate elements removed
-     */
-    private List<IXMLElement> unique(List<IXMLElement> elems) {
-        // Because I couldn't figure out how to copy Lists...
-        List<IXMLElement> result = buildResult(elems.size());
-        result.addAll(elems);
-
-        for(IXMLElement i : elems) {
-            for(IXMLElement j : elems) {
-                if(i.equals(j))
-                    continue;
-                result.add(j);
-            }
-        }
-        return result;
     }
 }
