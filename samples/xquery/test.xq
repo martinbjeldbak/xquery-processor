@@ -1,1 +1,1 @@
-doc("samples/j_caesar.xml")/PERSONAE
+doc("samples/xml/j_caesar.xml")/PERSONAE/PGROUP/PERSONA
