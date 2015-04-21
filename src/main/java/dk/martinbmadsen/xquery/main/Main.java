@@ -2,16 +2,12 @@ package dk.martinbmadsen.xquery.main;
 
 import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.utils.debug.Debugger;
-import dk.martinbmadsen.xquery.parser.XQueryLexer;
-import dk.martinbmadsen.xquery.parser.XQueryParser;
-import org.antlr.v4.runtime.*;
-import dk.martinbmadsen.xquery.visitor.*;
+import dk.martinbmadsen.xquery.executor.XQueryExecutor;
 
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
         try {
             List<IXMLElement> result = XQueryExecutor.executeFromFile("samples/xquery/test.xq");
 

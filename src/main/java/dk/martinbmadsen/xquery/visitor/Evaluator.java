@@ -5,14 +5,11 @@ import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.xquery.XMLTree.XMLDocument;
 import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
-import dk.martinbmadsen.xquery.parser.XQueryLexer;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import org.antlr.v4.runtime.RuleContext;
-import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.TokenFactory;
 import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.TerminalNode;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +34,10 @@ public class Evaluator {
         List<IXMLElement> results = buildResult();
 
         switch(node.slash.getType()) {
-            case XQueryLexer.SLASH:
+            case XQueryParser.SLASH:
                 results.addAll(visitor.visit(node.rp()));
                 break;
-            case XQueryLexer.SSLASH:
+            case XQueryParser.SSLASH:
                 break;
             default:
                 Debugger.error("Oops, shouldn't be here");
@@ -55,7 +52,6 @@ public class Evaluator {
 
         String tagName = ctx.getText();
 
-        // TODO: instead of .children() call, call evalWildcard
         return buildResult(evalWildCard().stream().filter(
                 c -> c.tag().equals(tagName)
         ).collect(Collectors.toList()));
@@ -132,8 +128,15 @@ public class Evaluator {
         slashCtx.addChild(node.right);
         slashCtx.left = node.left;
         slashCtx.right = wcRoot;
-        System.out.println(slashCtx.left);
 
+        System.out.println(qc.ctxElems.size());
+
+        List<IXMLElement> wc = evalWildCard();
+
+        //List<IXMLElement> intermediatRes1 = evalRpSlash(slashCtx);
+
+
+        /*
         RpContext root = new RpContext();
         RpSlashContext ssCtx = new RpSlashContext(root);
         ssCtx.addChild(slashCtx); // not sure if you need to addChild
@@ -141,11 +144,12 @@ public class Evaluator {
         ssCtx.left = slashCtx;
         ssCtx.right = node.right;
 
-        List<IXMLElement> r = evalRpSlashSlash(wcRoot);
+        //List<IXMLElement> r = evalRpSlashSlash(wcRoot);
 
-        l.addAll(r);
+        //l.addAll(r);
+         */
 
-        return unique(l);
+        return l;
     }
 
     private List<IXMLElement> buildResult() {
