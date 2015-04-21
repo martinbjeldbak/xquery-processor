@@ -12,7 +12,8 @@ public class XMLDocument implements IXMLDocument {
     private Document doc;
 
     public XMLDocument(String fileName) {
-        SAXBuilder sax = new SAXBuilder(XMLReaders.DTDVALIDATING);
+        //SAXBuilder sax = new SAXBuilder(XMLReaders.DTDVALIDATING);
+        SAXBuilder sax = new SAXBuilder();
 
         try {
             this.doc = sax.build(sanitizeFileName(fileName));
