@@ -13,16 +13,11 @@ public class Main {
     public static void main(String[] args) {
 
         try {
-            XQueryLexer lexer = new XQueryLexer(new ANTLRFileStream("samples/xquery/test.xq"));
-            XQueryParser parser = new XQueryParser(new CommonTokenStream(lexer));
-            XQueryParser.ApContext context = parser.ap(); // set entry point
-            XQueryVisitor visitor = new XQueryVisitor();
+            List<IXMLElement> result = XQueryExecutor.executeFromFile("samples/xquery/test.xq");
 
-            List<IXMLElement> resultElems = visitor.visitAp(context);
-
-            System.out.println(resultElems.size() + " results below:");
+            System.out.println(result.size() + " results below:");
             Integer i = 0;
-            for(IXMLElement c : resultElems) {
+            for(IXMLElement c : result) {
                 Debugger.result("#" + i++);
                 System.out.println(c.toString());
             }

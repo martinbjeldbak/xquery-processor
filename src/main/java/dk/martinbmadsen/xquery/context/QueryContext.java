@@ -8,7 +8,7 @@ import java.util.Stack;
  * Created by martin on 19/04/15.
  */
 public class QueryContext {
-    private Stack<IXMLElement> ctxElems = new Stack<>();
+    public Stack<IXMLElement> ctxElems = new Stack<>();
 
     public QueryContext() {
 
