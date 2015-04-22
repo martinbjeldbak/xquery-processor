@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * A static class to make executing a query using XQuery from a query in a string or file much easier.
+ * A static class to makes executing a query using XQuery from a query in a string or file much easier.
  */
 public class XQueryExecutor {
 

@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        try {
+            /* Old: below stuff has now moved to tests
             List<IXMLElement> result = XQueryExecutor.executeFromFile("samples/xquery/test.xq");
 
             System.out.println(result.size() + " results below:");
@@ -17,12 +17,7 @@ public class Main {
                 Debugger.result("#" + i++);
                 System.out.println(c.toString());
             }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
+            */
     }
 
     public int giveTwo() {

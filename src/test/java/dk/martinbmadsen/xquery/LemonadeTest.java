@@ -27,7 +27,7 @@ public class LemonadeTest extends XQueryTest {
     }
 
     @Test
-    public void descendentDrinkPriceQuery() {
+    public void descendantDrinkPriceQuery() {
         ex(r + "drink//price");
     }
 }
