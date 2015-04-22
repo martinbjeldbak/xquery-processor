@@ -1,1 +1,1 @@
-doc("samples/xml/j_caesar.xml")/TITLE
+doc("samples/xml/j_caesar.xml")/PERSONAE/PERSONA

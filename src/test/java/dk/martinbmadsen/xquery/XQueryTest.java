@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class XQueryTest {
+    protected String r;
+
     protected List<IXMLElement> ex(String q) {
         return XQueryExecutor.executeFromString(q);
     }
