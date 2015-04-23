@@ -1,14 +1,12 @@
 package dk.martinbmadsen.xquery.visitor;
 
 import dk.martinbmadsen.utils.debug.Debugger;
-import dk.martinbmadsen.xquery.parser.XPathBaseVisitor;
-import dk.martinbmadsen.xquery.parser.XPathParser;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLDocument;
+import dk.martinbmadsen.xquery.parser.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
@@ -57,7 +55,7 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
         switch (ctx.slash.getText()){
             case "/":
                 elems = visit(ctx.left);
-                System.out.println(elems.get(0).tag() + " : " + ctx.right.getText());
+//                System.out.println(elems.get(0).getElement().getValue());
                 results = visit(ctx.right);
                 break;
             case "//":
@@ -132,52 +130,21 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
         return visit(ctx.rp());
     }
 
-
-/*
-
-    @Override public List<IXMLElement> visitRp(@NotNull XPathParser.RpContext ctx) {
-        System.out.println("Current token: " + parser.getCurrentToken().getText());
-        TokenStream tokens = parser.getInputStream();
-        Token token = tokens.getTokenSource().nextToken();
-        System.out.println("ATN: " + ctx.invokingState);
-        System.out.println("Current token2: "  + parser.getCurrentToken().getText());
-        System.out.println("Next token: "  + token.getText());
-        System.out.println("Identifier: "  + XPathParser.Identifier);
-        List<IXMLElement> results = new ArrayList<>();
-        switch (ctx.start.getType()) {
-            case XPathParser.Identifier:
-                String tag = ctx.getStart().getText();
-                results = document.root().children().stream().filter(c -> c.tag().equals(tag)).collect(Collectors.toList());
-                break;
-            default:
-                System.out.println(ctx.getText());
-                System.out.println(ctx.getStart().getType());
-                System.out.println(ctx.getStart().getTokenSource().nextToken().getType());
-                System.out.println(ctx.getStop().getType() + "\n\n");
-
-
-                for(int i = 0; i < 25; i++)
-                    System.out.println(ctx.getTokens(i));
-                System.out.println("lol fail");
-                results.add(new XMLElement(new Element(ctx.getText())));
-                break;
-        }
-
-        return results;
-    }
-
-    @Override public List<IXMLElement> visitF(@NotNull XPathParser.FContext ctx) {
-        return visitChildren(ctx);
-    }
-*/
     private List<IXMLElement> unique(List<IXMLElement> list){
         List<IXMLElement> res2 = new ArrayList<>();
         res2.addAll(list);
         list.clear();
-        for (IXMLElement x : res2)
-            if(!list.contains(x))
-                list.add(x);
 
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < res2.size(); i++) {
+            String value = res2.get(i).getElement().getValue();
+            if (map.containsKey(value))
+                continue;
+            else {
+                map.put(value, 0);
+                list.add(res2.get(i));
+            }
+        }
         return list;
     }
 

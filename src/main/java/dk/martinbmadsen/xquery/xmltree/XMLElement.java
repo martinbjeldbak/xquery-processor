@@ -65,5 +65,9 @@ public class XMLElement implements IXMLElement, EqualityComparator<XMLElement> {
     public boolean equals(XMLElement a, XMLElement b) {
         return a.equals(b);
     }
+
+    public Element getElement(){
+        return this.elem;
+    }
 }
 
