@@ -25,9 +25,9 @@ rp
 // Path filter
 f
   : rp #fRp
-  | left=rp equal=('='|'==') right=rp #fEqall
-  | left=rp ' eq '  right=rp #fValEqal
-  | left=rp ' is '  right=rp #fIdEqall
+  | left=rp equal=('='|'==') right=rp #fEqual
+  | left=rp ' eq '  right=rp #fValEqual
+  | left=rp ' is '  right=rp #fIdEqual
   | left=f  ' and ' right=f #fAnd
   | left=f  ' or '  right=f #fOr
   | '(' f ')' #fParen

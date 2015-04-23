@@ -60,10 +60,6 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
         return e.evalConcat(ctx);
     }
 
-    @Override
-    public List<IXMLElement> visitFEqall(@NotNull FEqallContext ctx) {
-        return super.visitFEqall(ctx);
-    }
 
     @Override
     public List<IXMLElement> visitFNot(@NotNull FNotContext ctx) {
@@ -86,13 +82,18 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     }
 
     @Override
-    public List<IXMLElement> visitFIdEqall(@NotNull FIdEqallContext ctx) {
-        return super.visitFIdEqall(ctx);
+    public List<IXMLElement> visitFEqual(@NotNull FEqualContext ctx) {
+        return super.visitFEqual(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitFValEqal(@NotNull FValEqalContext ctx) {
-        return super.visitFValEqal(ctx);
+    public List<IXMLElement> visitFValEqual(@NotNull FValEqualContext ctx) {
+        return super.visitFValEqual(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitFIdEqual(@NotNull FIdEqualContext ctx) {
+        return super.visitFIdEqual(ctx);
     }
 
     @Override
