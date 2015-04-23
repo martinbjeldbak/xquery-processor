@@ -16,6 +16,7 @@ rp
   | '..' #rpDotDot
   | 'text()' #rpText
   | Identifier #rpTagName
+  | '@' Identifier #rpAttr
   | '(' rp ')' #rpParenExpr
   | left=rp slash=('/'|'//') right=rp #rpSlash
   | rp '[' f ']' #rpFilter
@@ -67,7 +68,7 @@ StringCharacters :	StringCharacter+ ;
 
 fragment
 StringCharacter
-  : ~[\"\\] // technically, could match \, but might implement escape sequences (see antlr/grammars-v4/java/java.g4 @ GH)
+  : ~[\"\\@] // technically, could match \, but might implement escape sequences (see antlr/grammars-v4/java/java.g4 @ GH)
 	 ;
 
 //WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
