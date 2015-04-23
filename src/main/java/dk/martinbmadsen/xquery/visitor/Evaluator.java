@@ -250,22 +250,24 @@ public class Evaluator {
     }
 
     /**
+     * TODO: Implement this method
      * Removes duplicate elements
      * @param elems element list to be checked
-     * @return a santized list with duplicate elements removed
+     * @return a sanitized list with duplicate elements removed
      */
     private List<IXMLElement> unique(List<IXMLElement> elems) {
-        // Because I couldn't figure out how to copy Lists...
+
+        /*
         List<IXMLElement> result = buildResult(elems.size());
-        result.addAll(elems);
 
         for(IXMLElement i : elems) {
             for(IXMLElement j : elems) {
                 if(i.equals(j))
-                    continue;
-                result.add(j);
+                    break;
+                result.add(i);
             }
         }
-        return result;
+        */
+        return elems;
     }
 }

@@ -1,5 +1,6 @@
 package dk.martinbmadsen.xquery.XMLTree;
 
+import org.antlr.v4.runtime.misc.EqualityComparator;
 import org.jdom2.Element;
 import org.jdom2.Text;
 import org.jdom2.output.Format;
@@ -7,7 +8,7 @@ import org.jdom2.output.XMLOutputter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class XMLElement implements IXMLElement {
+public class XMLElement implements IXMLElement, EqualityComparator<XMLElement> {
     private Element elem;
     
     public XMLElement(Element element) {
@@ -46,6 +47,16 @@ public class XMLElement implements IXMLElement {
     public String toString() {
         XMLOutputter xout = new XMLOutputter(Format.getPrettyFormat());
         return xout.outputString(elem);
+    }
+
+    @Override
+    public int hashCode(XMLElement obj) {
+        return obj.hashCode();
+    }
+
+    @Override
+    public boolean equals(XMLElement a, XMLElement b) {
+        return a.equals(b);
     }
 }
 
