@@ -2,6 +2,7 @@ package dk.martinbmadsen.xquery.context;
 
 import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -14,11 +15,16 @@ public class QueryContext {
 
     }
 
+
+    public IXMLElement peekContextElement() {
+        return this.ctxElems.peek();
+    }
+
     /**
      * Gets the current context element (WARNING: this pops it from the stack)
      * @return the {@link IXMLElement} we are currently exploring
      */
-    public IXMLElement getContextElement() {
+    public IXMLElement popContextElement() {
         return this.ctxElems.pop();
     }
 
@@ -26,7 +32,15 @@ public class QueryContext {
      * Pushes an element/tree onto the context stack.
      * @param elem the tree/element to be added as context
      */
-    public void addContextElement(IXMLElement elem) {
+    public void pushContextElement(IXMLElement elem) {
         this.ctxElems.push(elem);
+    }
+
+    /**
+     * Pushes each element in the list as a context element
+     * @param elems list of element nodes to be added as context
+     */
+    public void pushContextElements(List<IXMLElement> elems) {
+        elems.forEach(this::pushContextElement);
     }
 }

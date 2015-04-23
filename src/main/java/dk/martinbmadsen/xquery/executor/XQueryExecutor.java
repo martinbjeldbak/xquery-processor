@@ -1,5 +1,6 @@
 package dk.martinbmadsen.xquery.executor;
 
+import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.xquery.parser.XQueryLexer;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
@@ -33,6 +34,15 @@ public class XQueryExecutor {
      */
     public static List<IXMLElement> executeFromString(String query) {
         return parse(new XQueryLexer(new ANTLRInputStream(query)));
+    }
+
+    public static void printResults(List<IXMLElement> result) {
+        System.out.println(result.size() + " results below:");
+        Integer i = 0;
+        for(IXMLElement c : result) {
+            Debugger.result("#" + i++);
+            System.out.println(c.toString());
+        }
     }
 
     private static List<IXMLElement> parse(XQueryLexer lexer) {

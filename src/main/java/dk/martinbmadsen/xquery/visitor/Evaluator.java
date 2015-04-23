@@ -30,7 +30,7 @@ public class Evaluator {
         ApContext node = (ApContext) ctx;
 
         XMLDocument document = new XMLDocument(node.fileName.getText());
-        qc.addContextElement(document.root());
+        qc.pushContextElement(document.root());
         List<IXMLElement> results = buildResult();
 
         switch(node.slash.getType()) {
@@ -58,16 +58,17 @@ public class Evaluator {
     }
 
     public List<IXMLElement> evalWildCard() {
-        return buildResult(qc.getContextElement().children());
+        return buildResult(qc.peekContextElement().children());
     }
 
     public List<IXMLElement> evalDot() {
-        return buildResult(qc.getContextElement());
+        return buildResult(qc.peekContextElement());
     }
 
     public List<IXMLElement> evalDotDot() {
-        // TODO: refactor this to call evalDot first, then get the first child's parent?
-        return buildResult(qc.getContextElement().parent());
+        IXMLElement parent = evalDot().get(0).parent();
+        qc.popContextElement();
+        return buildResult(parent);
     }
 
     public List<IXMLElement> evalRpParen(@NotNull RuleContext ctx) {
@@ -84,11 +85,14 @@ public class Evaluator {
         RpSlashContext node = (RpSlashContext) ctx;
 
         List<IXMLElement> y = buildResult();
+
         List<IXMLElement> x = visitor.visit(node.left);
 
         for(IXMLElement res : x) {
-            qc.addContextElement(res);
-            y.addAll(visitor.visit(node.right));
+            qc.pushContextElement(res);
+            List<IXMLElement> context = visitor.visit(node.right);
+
+            y.addAll(context);
         }
         return y;
     }
@@ -98,10 +102,15 @@ public class Evaluator {
             Debugger.error("Context given not of type RpSlashContext");
 
 
+        IXMLElement context = qc.peekContextElement();
+
+
         RpSlashContext node = (RpSlashContext)ctx;
 
         // Eval left hand side of // semantics (rp1 / rp2)
         List<IXMLElement> l = evalRpSlash(ctx);
+
+        qc.pushContextElement(context);
 
         // Eval right hand side of // semantics (rp1 / * // rp2). This requires
         // building a new parse tree
@@ -129,13 +138,18 @@ public class Evaluator {
         slashCtx.left = node.left;
         slashCtx.right = wcRoot;
 
-        System.out.println(qc.ctxElems.size());
+        List<IXMLElement> intermediatRes1 = evalRpSlash(slashCtx);
 
-        List<IXMLElement> wc = evalWildCard();
+        RpContext ssRoot = new RpContext();
+        RpSlashContext ssCtx = new RpSlashContext(ssRoot);
+        ssCtx.addChild(slashCtx);
 
-        //List<IXMLElement> intermediatRes1 = evalRpSlash(slashCtx);
+        ssCtx.addChild(node.right);
+        ssCtx.left = slashCtx;
+        ssCtx.right = node.right;
+        ssCtx.slash = node.slash;
 
-
+        System.out.println(intermediatRes1.size());
         /*
         RpContext root = new RpContext();
         RpSlashContext ssCtx = new RpSlashContext(root);

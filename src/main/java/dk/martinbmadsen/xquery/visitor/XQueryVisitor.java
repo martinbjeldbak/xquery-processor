@@ -41,7 +41,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
 
     @Override
     public List<IXMLElement> visitRpText(@NotNull XQueryParser.RpTextContext ctx) {
-        return buildResult(qc.getContextElement().txt());
+        return buildResult(qc.peekContextElement().txt());
     }
 
     @Override
@@ -66,19 +66,46 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
         return results;
     }
 
+
     @Override
-    public List<IXMLElement> visitF(@NotNull XQueryParser.FContext ctx) {
-        return super.visitF(ctx);
+    public List<IXMLElement> visitRpFilter(@NotNull XQueryParser.RpFilterContext ctx) {
+        // Evaluate rp to get x
+        List<IXMLElement> x = visit(ctx.rp());
+
+        // Use this list of nodes as context when evaluating f
+        qc.pushContextElements(x);
+
+        List<IXMLElement> y = visit(ctx.f());
+
+        /**
+         * Concatenate the result of evaluating the relative path and the result
+         * of evaluating the filter
+         */
+        x.addAll(y);
+
+        return x;
     }
 
     @Override
     public List<IXMLElement> visitRpConcat(@NotNull XQueryParser.RpConcatContext ctx) {
-        return super.visitRpConcat(ctx);
+        // Save context XML element n
+        IXMLElement n = qc.peekContextElement();
+
+        List<IXMLElement> l = visit(ctx.left);
+
+        // Push element n back onto our context stack (since r also has to be evalauted from n)
+        qc.pushContextElement(n);
+
+        List<IXMLElement> r = visit(ctx.right);
+
+        l.addAll(r);
+
+        return l;
     }
 
     @Override
-    public List<IXMLElement> visitRpFilter(@NotNull XQueryParser.RpFilterContext ctx) {
-        return super.visitRpFilter(ctx);
+    public List<IXMLElement> visitF(@NotNull XQueryParser.FContext ctx) {
+        return super.visitF(ctx);
     }
 
     private List<IXMLElement> buildResult() {
