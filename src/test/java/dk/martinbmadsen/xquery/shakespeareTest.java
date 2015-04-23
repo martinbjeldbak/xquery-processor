@@ -1,6 +1,7 @@
 package dk.martinbmadsen.xquery;
 
 import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
+import dk.martinbmadsen.xquery.executor.XQueryExecutor;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -11,10 +12,8 @@ public class ShakespeareTest extends XQueryTest {
     private String r = "doc(\"samples/xml/j_caesar.xml\")/"; // root query
 
     @Test
-    public void canExecuteFromFile() throws IOException {
-        List<IXMLElement> result = exR("TITLE");
-
-        assertEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", result.get(0).toString());
+    public void canExecuteFromFile() {
+        assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", exR("TITLE"), 0);
     }
 
     @Test
@@ -22,6 +21,49 @@ public class ShakespeareTest extends XQueryTest {
         List<IXMLElement> res = exR("PERSONAE/PERSONA");
 
         assertEquals(9, res.size());
+    }
+
+    @Test
+    public void slashSlash() throws IOException {
+        // TODO: Implement // semantics
+        //XQueryExecutor.printResults(exF());
+    }
+
+    @Test
+    public void concatenation1() {
+        // Concat from root
+        List<IXMLElement> res = exR("TITLE,SCNDESCR");
+
+        assertEquals(2, res.size());
+        assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res, 0);
+        assertXMLEquals("<SCNDESCR>SCENE  Rome: the neighbourhood of Sardis: the neighbourhood of Philippi.</SCNDESCR>", res, 1);
+    }
+
+    @Test
+    public void concatenation2() {
+        // Concat with rps
+        List<IXMLElement> res = exR("FM/P,TITLE");
+
+        assertEquals(5, res.size());
+        assertXMLEquals("<P>Text placed in the public domain by Moby Lexical Tools, 1992.</P>", res, 0);
+        assertXMLEquals("<P>SGML markup by Jon Bosak, 1992-1994.</P>", res, 1);
+        assertXMLEquals("<P>XML version by Jon Bosak, 1996-1998.</P>", res, 2);
+        assertXMLEquals("<P>This work may be freely copied and distributed worldwide.</P>", res, 3);
+        assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res, 4);
+    }
+
+    @Test
+    public void concatenation3() {
+        // Chained concat
+        List<IXMLElement> res = exR("FM/P,TITLE,PERSONAE/TITLE");
+
+        assertEquals(6, res.size());
+        assertXMLEquals("<P>Text placed in the public domain by Moby Lexical Tools, 1992.</P>", res, 0);
+        assertXMLEquals("<P>SGML markup by Jon Bosak, 1992-1994.</P>", res, 1);
+        assertXMLEquals("<P>XML version by Jon Bosak, 1996-1998.</P>", res, 2);
+        assertXMLEquals("<P>This work may be freely copied and distributed worldwide.</P>", res, 3);
+        assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res, 4);
+        assertXMLEquals("<TITLE>Dramatis Personae</TITLE>", res, 5);
     }
 
     private List<IXMLElement> exF() throws IOException {
