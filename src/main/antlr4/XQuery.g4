@@ -24,8 +24,14 @@ rp
 
 // Path filter
 f
-  : rp | leftrp=rp '=' rightrp=rp | leftrp=rp ' eq ' rightrp=rp | leftrp=rp '==' rightrp=rp | leftrp=rp ' is ' rightrp=rp
-  | '(' f ')' | leftf=f ' and ' rightf=f  | leftf=f ' or ' rightf=f | 'not ' f
+  : rp #fRp
+  | left=rp equal=('='|'==') right=rp #fEqall
+  | left=rp ' eq '  right=rp #fValEqal
+  | left=rp ' is '  right=rp #fIdEqall
+  | left=f  ' and ' right=f #fAnd
+  | left=f  ' or '  right=f #fOr
+  | '(' f ')' #fParen
+  | 'not ' f #fNot
   ;
 
 DOT :       '.';
@@ -67,15 +73,15 @@ StringCharacter
 //WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 
 Identifier
-  : XPathLetter XPathLetterOrDigit*
+  : Letter LetterOrDigit*
   ;
 
 fragment
-XPathLetter
+Letter
   : [a-zA-Z$_]
   ;
 
 fragment
-XPathLetterOrDigit
+LetterOrDigit
   : [a-zA-Z0-9$_]
   ;

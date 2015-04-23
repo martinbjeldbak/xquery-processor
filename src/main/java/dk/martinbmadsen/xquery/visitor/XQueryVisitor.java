@@ -2,11 +2,10 @@ package dk.martinbmadsen.xquery.visitor;
 
 import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
+import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.List;
-
-import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 
 public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     private Evaluator e = new Evaluator(this);
@@ -62,7 +61,42 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
     }
 
     @Override
-    public List<IXMLElement> visitF(@NotNull FContext ctx) {
-        return super.visitF(ctx);
+    public List<IXMLElement> visitFEqall(@NotNull FEqallContext ctx) {
+        return super.visitFEqall(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitFNot(@NotNull FNotContext ctx) {
+        return super.visitFNot(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitFRp(@NotNull FRpContext ctx) {
+        return super.visitFRp(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitFParen(@NotNull FParenContext ctx) {
+        return super.visitFParen(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitFOr(@NotNull FOrContext ctx) {
+        return super.visitFOr(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitFIdEqall(@NotNull FIdEqallContext ctx) {
+        return super.visitFIdEqall(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitFValEqal(@NotNull FValEqalContext ctx) {
+        return super.visitFValEqal(ctx);
+    }
+
+    @Override
+    public List<IXMLElement> visitFAnd(@NotNull FAndContext ctx) {
+        return super.visitFAnd(ctx);
     }
 }
