@@ -1,105 +1,105 @@
 package dk.martinbmadsen.xquery.visitor;
 
+import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
-import dk.martinbmadsen.xquery.xmltree.IXMLElement;
+import dk.martinbmadsen.xquery.value.IXQueryValue;
+import dk.martinbmadsen.xquery.value.XQueryFilterValue;
+import dk.martinbmadsen.xquery.value.XQueryListValue;
 import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.List;
-
-public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
-    private ApRpEvaluator e = new ApRpEvaluator(this);
+public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
+    private QueryContext qc = new QueryContext();
+    private ApRpEvaluator rpEval = new ApRpEvaluator(this, qc);
+    private FEvaluator fEval = new FEvaluator(this, qc);
 
     @Override
-    public List<IXMLElement> visitAp(@NotNull ApContext ctx) {
-        return e.evalAp(ctx);
+    public XQueryListValue visitAp(@NotNull ApContext ctx) {
+        return rpEval.evalAp(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitRpTagName(@NotNull RpTagNameContext ctx) {
-        return e.evalTagName(ctx);
+    public XQueryListValue visitRpTagName(@NotNull RpTagNameContext ctx) {
+        return rpEval.evalTagName(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitRpWildcard(@NotNull RpWildcardContext ctx) {
-        return e.evalWildCard();
+    public XQueryListValue visitRpWildcard(@NotNull RpWildcardContext ctx) {
+        return rpEval.evalWildCard();
     }
 
     @Override
-    public List<IXMLElement> visitRpDot(@NotNull RpDotContext ctx) {
-        return e.evalDot();
+    public XQueryListValue visitRpDot(@NotNull RpDotContext ctx) {
+        return rpEval.evalDot();
     }
 
     @Override
-    public List<IXMLElement> visitRpDotDot(@NotNull RpDotDotContext ctx) {
-        return e.evalDotDot();
+    public XQueryListValue visitRpDotDot(@NotNull RpDotDotContext ctx) {
+        return rpEval.evalDotDot();
     }
 
     @Override
-    public List<IXMLElement> visitRpText(@NotNull RpTextContext ctx) {
-        return e.evalText();
+    public XQueryListValue visitRpText(@NotNull RpTextContext ctx) {
+        return rpEval.evalText();
     }
 
     @Override
-    public List<IXMLElement> visitRpParenExpr(@NotNull RpParenExprContext ctx) {
-        return e.evalRpParen(ctx);
+    public XQueryListValue visitRpParenExpr(@NotNull RpParenExprContext ctx) {
+        return rpEval.evalRpParen(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitRpSlash(@NotNull RpSlashContext ctx) {
-        return e.evalRpSlashes(ctx);
+    public XQueryListValue visitRpSlash(@NotNull RpSlashContext ctx) {
+        return rpEval.evalRpSlashes(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitRpFilter(@NotNull RpFilterContext ctx) {
-        return e.evalRpFilter(ctx);
+    public XQueryListValue visitRpFilter(@NotNull RpFilterContext ctx) {
+        return rpEval.evalRpFilter(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitRpConcat(@NotNull RpConcatContext ctx) {
-        return e.evalConcat(ctx);
+    public XQueryListValue visitRpConcat(@NotNull RpConcatContext ctx) {
+        return rpEval.evalConcat(ctx);
     }
 
-
     @Override
-    public List<IXMLElement> visitFNot(@NotNull FNotContext ctx) {
+    public IXQueryValue visitFNot(@NotNull FNotContext ctx) {
         return super.visitFNot(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitFRp(@NotNull FRpContext ctx) {
-        List<IXMLElement> resultR = visit(ctx.rp());
-        //return resultR.size() > 0;
-        return super.visitFRp(ctx);
+    public XQueryFilterValue visitFRp(@NotNull FRpContext ctx) {
+        return fEval.evalFRp(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitFParen(@NotNull FParenContext ctx) {
+    public IXQueryValue visitFParen(@NotNull FParenContext ctx) {
         return super.visitFParen(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitFOr(@NotNull FOrContext ctx) {
+    public IXQueryValue visitFOr(@NotNull FOrContext ctx) {
         return super.visitFOr(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitFEqual(@NotNull FEqualContext ctx) {
+    public IXQueryValue visitFEqual(@NotNull FEqualContext ctx) {
         return super.visitFEqual(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitFValEqual(@NotNull FValEqualContext ctx) {
+    public IXQueryValue visitFValEqual(@NotNull FValEqualContext ctx) {
         return super.visitFValEqual(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitFIdEqual(@NotNull FIdEqualContext ctx) {
+    public IXQueryValue visitFIdEqual(@NotNull FIdEqualContext ctx) {
         return super.visitFIdEqual(ctx);
     }
 
     @Override
-    public List<IXMLElement> visitFAnd(@NotNull FAndContext ctx) {
+    public IXQueryValue visitFAnd(@NotNull FAndContext ctx) {
         return super.visitFAnd(ctx);
     }
 }
