@@ -1,17 +1,14 @@
 package dk.martinbmadsen.xquery.visitor;
 
 import dk.martinbmadsen.utils.debug.Debugger;
-import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
-import dk.martinbmadsen.xquery.XMLTree.XMLDocument;
-import dk.martinbmadsen.xquery.XMLTree.XMLElement;
-import dk.martinbmadsen.xquery.parser.*;
-import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.Token;
-import org.antlr.v4.runtime.TokenStream;
+import dk.martinbmadsen.xquery.parser.XPathBaseVisitor;
+import dk.martinbmadsen.xquery.parser.XPathParser;
+import dk.martinbmadsen.xquery.xmltree.IXMLElement;
+import dk.martinbmadsen.xquery.xmltree.XMLDocument;
 import org.antlr.v4.runtime.misc.NotNull;
-import org.jdom2.Element;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
