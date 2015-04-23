@@ -16,11 +16,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Evaluator {
-    private QueryContext qc;
+    private QueryContext qc = new QueryContext();
     private XQueryBaseVisitor<List<IXMLElement>> visitor;
 
-    public Evaluator(QueryContext qc, XQueryBaseVisitor<List<IXMLElement>> visitor) {
-        this.qc = qc;
+    public Evaluator(XQueryBaseVisitor<List<IXMLElement>> visitor) {
         this.visitor = visitor;
     }
 

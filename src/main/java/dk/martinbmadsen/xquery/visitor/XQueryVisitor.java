@@ -13,8 +13,7 @@ import java.util.List;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 
 public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
-    private QueryContext qc = new QueryContext();
-    private Evaluator e = new Evaluator(qc, this);
+    private Evaluator e = new Evaluator(this);
 
     @Override
     public List<IXMLElement> visitAp(@NotNull ApContext ctx) {
