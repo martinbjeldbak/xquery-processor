@@ -1,13 +1,9 @@
 package dk.martinbmadsen.xquery.visitor;
 
-import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
-import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
-import dk.martinbmadsen.xquery.parser.XQueryParser;
 import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
@@ -52,7 +48,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
 
     @Override
     public List<IXMLElement> visitRpSlash(@NotNull RpSlashContext ctx) {
-        return e.evalSlash(ctx);
+        return e.evalRpSlashes(ctx);
     }
 
     @Override

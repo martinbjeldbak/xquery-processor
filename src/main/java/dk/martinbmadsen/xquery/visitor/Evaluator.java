@@ -81,7 +81,7 @@ public class Evaluator {
         return visitor.visit(node.rp());
     }
 
-    public List<IXMLElement> evalSlash(@NotNull RuleContext ctx) {
+    public List<IXMLElement> evalRpSlashes(@NotNull RuleContext ctx) {
         if(!(ctx instanceof RpSlashContext))
             Debugger.error("Context given not of type RpSlashContext");
         RpSlashContext node = (RpSlashContext) ctx;
@@ -116,7 +116,7 @@ public class Evaluator {
 
             y.addAll(context);
         }
-        return y;
+        return unique(y);
     }
 
     public List<IXMLElement> evalRpSlashSlash(@NotNull RuleContext ctx) {
@@ -185,7 +185,7 @@ public class Evaluator {
         //l.addAll(r);
          */
 
-        return l;
+        return unique(l);
     }
 
     public List<IXMLElement> evalRpFilter(@NotNull RpContext ctx) {
