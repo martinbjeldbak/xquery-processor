@@ -166,6 +166,26 @@ public class Evaluator {
         return l;
     }
 
+    public List<IXMLElement> evalConcat(@NotNull RpContext ctx) {
+        if(!(ctx instanceof  RpConcatContext))
+            Debugger.error("Context node needs to be an instance of RpConcatContext");
+        RpConcatContext node = ((RpConcatContext) ctx);
+
+
+        // Save context XML element n
+        IXMLElement n = qc.peekContextElement();
+
+        List<IXMLElement> l = visitor.visit(node.left);
+
+        // Push element n back onto our context stack (since r also has to be evalauted from n)
+        qc.pushContextElement(n);
+
+        List<IXMLElement> r = visitor.visit(node.right);
+
+        l.addAll(r);
+        return l;
+    }
+
     private List<IXMLElement> buildResult() {
         return new ArrayList<>();
     }

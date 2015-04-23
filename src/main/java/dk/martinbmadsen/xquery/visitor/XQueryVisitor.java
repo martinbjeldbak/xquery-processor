@@ -88,19 +88,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
 
     @Override
     public List<IXMLElement> visitRpConcat(@NotNull XQueryParser.RpConcatContext ctx) {
-        // Save context XML element n
-        IXMLElement n = qc.peekContextElement();
-
-        List<IXMLElement> l = visit(ctx.left);
-
-        // Push element n back onto our context stack (since r also has to be evalauted from n)
-        qc.pushContextElement(n);
-
-        List<IXMLElement> r = visit(ctx.right);
-
-        l.addAll(r);
-
-        return l;
+        return e.evalConcat(ctx);
     }
 
     @Override
