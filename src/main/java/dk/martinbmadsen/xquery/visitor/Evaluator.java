@@ -71,6 +71,10 @@ public class Evaluator {
         return buildResult(parent);
     }
 
+    public List<IXMLElement> evalText() {
+        return buildResult(qc.peekContextElement().txt());
+    }
+
     public List<IXMLElement> evalRpParen(@NotNull RuleContext ctx) {
         if(!(ctx instanceof RpParenExprContext))
             Debugger.error("Context given not of type RpTagNameContext");
@@ -78,6 +82,25 @@ public class Evaluator {
         return visitor.visit(node.rp());
     }
 
+    public List<IXMLElement> evalSlash(@NotNull RuleContext ctx) {
+        if(!(ctx instanceof RpSlashContext))
+            Debugger.error("Context given not of type RpSlashContext");
+        RpSlashContext node = (RpSlashContext) ctx;
+
+        List<IXMLElement> results = buildResult();
+        switch(node.slash.getType()) {
+            case XQueryParser.SLASH:
+                results = evalRpSlash(ctx);
+                break;
+            case XQueryParser.SSLASH:
+                results = evalRpSlashSlash(ctx);
+                break;
+            default:
+                Debugger.error("Oops, shouldn't be here");
+                break;
+        }
+        return results;
+    }
 
     public List<IXMLElement> evalRpSlash(@NotNull RuleContext ctx) {
         if(!(ctx instanceof RpSlashContext))
@@ -166,6 +189,28 @@ public class Evaluator {
         return l;
     }
 
+    public List<IXMLElement> evalRpFilter(@NotNull RpContext ctx) {
+        if(!(ctx instanceof RpFilterContext))
+            Debugger.error("Context node needs to be an instance of RpFilterContext");
+        RpFilterContext node = ((RpFilterContext) ctx);
+
+        // Evaluate rp to get x
+        List<IXMLElement> x = visitor.visit(node.rp());
+
+        // Use this list of nodes as context when evaluating f
+        qc.pushContextElements(x);
+
+        List<IXMLElement> y = visitor.visit(node.f());
+
+        /**
+         * Concatenate the result of evaluating the relative path and the result
+         * of evaluating the filter
+         */
+        x.addAll(y);
+
+        return x;
+    }
+
     public List<IXMLElement> evalConcat(@NotNull RpContext ctx) {
         if(!(ctx instanceof  RpConcatContext))
             Debugger.error("Context node needs to be an instance of RpConcatContext");
@@ -187,7 +232,7 @@ public class Evaluator {
     }
 
     private List<IXMLElement> buildResult() {
-        return new ArrayList<>();
+        return buildResult(10);
     }
 
     /**
