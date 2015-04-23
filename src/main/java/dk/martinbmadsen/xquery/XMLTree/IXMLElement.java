@@ -1,4 +1,4 @@
-package dk.martinbmadsen.xquery.XMLTree;
+package dk.martinbmadsen.xquery.xmltree;
 
 import java.util.List;
 

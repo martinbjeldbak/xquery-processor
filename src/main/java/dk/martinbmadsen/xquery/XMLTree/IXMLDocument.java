@@ -1,4 +1,4 @@
-package dk.martinbmadsen.xquery.XMLTree;
+package dk.martinbmadsen.xquery.xmltree;
 
 public interface IXMLDocument {
     /**

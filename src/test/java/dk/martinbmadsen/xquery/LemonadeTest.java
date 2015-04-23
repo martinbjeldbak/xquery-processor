@@ -1,7 +1,7 @@
 package dk.martinbmadsen.xquery;
 
-import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.xquery.executor.XQueryExecutor;
+import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.junit.Test;
 
 import java.util.List;

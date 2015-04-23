@@ -1,10 +1,11 @@
-package dk.martinbmadsen.xquery.XMLTree;
+package dk.martinbmadsen.xquery.xmltree;
 
 import org.antlr.v4.runtime.misc.EqualityComparator;
 import org.jdom2.Element;
 import org.jdom2.Text;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
+
 import java.util.List;
 import java.util.stream.Collectors;
 

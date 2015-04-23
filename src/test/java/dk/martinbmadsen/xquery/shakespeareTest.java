@@ -1,18 +1,25 @@
 package dk.martinbmadsen.xquery;
 
-import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.xquery.executor.XQueryExecutor;
+import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class ShakespeareTest extends XQueryTest {
     private String r = "doc(\"samples/xml/j_caesar.xml\")/"; // root query
 
     @Test
-    public void canExecuteFromFile() {
+    public void playground() {
+        List<IXMLElement> res = exR("ACT/TITLE");
+        XQueryExecutor.printResults(res);
+    }
+
+    @Test
+    public void getsARootElement() {
         assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", exR("TITLE"), 0);
     }
 

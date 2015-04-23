@@ -1,6 +1,6 @@
 package dk.martinbmadsen.xquery.context;
 
-import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
+import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
 import java.util.List;
 import java.util.Stack;

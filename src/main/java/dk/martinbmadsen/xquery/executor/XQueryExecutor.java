@@ -1,10 +1,10 @@
 package dk.martinbmadsen.xquery.executor;
 
 import dk.martinbmadsen.utils.debug.Debugger;
-import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.xquery.parser.XQueryLexer;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
-import dk.martinbmadsen.xquery.visitor.XQueryVisitor;
+import dk.martinbmadsen.xquery.visitor.XQueryVisitor2;
+import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -48,7 +48,7 @@ public class XQueryExecutor {
     private static List<IXMLElement> parse(XQueryLexer lexer) {
         XQueryParser parser = new XQueryParser(new CommonTokenStream(lexer));
         XQueryParser.ApContext context = parser.ap(); // set entry point
-        XQueryVisitor visitor = new XQueryVisitor();
+        XQueryVisitor2 visitor = new XQueryVisitor2();
 
         return visitor.visitAp(context);
     }

@@ -1,14 +1,14 @@
 package dk.martinbmadsen.xquery.visitor;
 
-import dk.martinbmadsen.xquery.XMLTree.IXMLElement;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
+import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.List;
 
 public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
-    private Evaluator e = new Evaluator(this);
+    private ApRpEvaluator e = new ApRpEvaluator(this);
 
     @Override
     public List<IXMLElement> visitAp(@NotNull ApContext ctx) {
@@ -68,6 +68,8 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
 
     @Override
     public List<IXMLElement> visitFRp(@NotNull FRpContext ctx) {
+        List<IXMLElement> resultR = visit(ctx.rp());
+        //return resultR.size() > 0;
         return super.visitFRp(ctx);
     }
 
