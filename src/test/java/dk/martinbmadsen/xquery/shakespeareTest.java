@@ -14,7 +14,7 @@ public class ShakespeareTest extends XQueryTest {
 
     @Test
     public void playground() {
-        List<IXMLElement> res = exR("ACT/TITLE");
+        List<IXMLElement> res = exR("ACT/TITLE/../TITLE");
         XQueryExecutor.printResults(res);
     }
 
@@ -71,6 +71,23 @@ public class ShakespeareTest extends XQueryTest {
         assertXMLEquals("<P>This work may be freely copied and distributed worldwide.</P>", res, 3);
         assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res, 4);
         assertXMLEquals("<TITLE>Dramatis Personae</TITLE>", res, 5);
+    }
+
+    @Test
+    public void dotdot1() {
+        List<IXMLElement> res = exR("ACT/TITLE/../TITLE");
+
+        assertEquals(5, res.size());
+        assertXMLEquals("<TITLE>ACT I</TITLE>", res, 0);
+        // ... the other 3 titles here
+        assertXMLEquals("<TITLE>ACT V</TITLE>", res, 4);
+    }
+
+    @Test
+    public void filter1() {
+        List<IXMLElement> res = exR("PERSONAE/PGROUP/PERSONA[text()]");
+
+        assertEquals(27, res.size()); // 27 personas
     }
 
     private List<IXMLElement> exF() throws IOException {
