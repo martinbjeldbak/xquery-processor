@@ -1,6 +1,5 @@
 package dk.martinbmadsen.xquery;
 
-import dk.martinbmadsen.xquery.executor.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.junit.Test;
 
@@ -31,7 +30,15 @@ public class LemonadeTest extends XQueryTest {
     public void descendantDrinkPriceQuery() {
         List<IXMLElement> res = ex(r + "drink//price");
 
-        XQueryExecutor.printResults(res);
+        //XQueryExecutor.printResults(res);
+    }
+
+    @Test
+    public void attr1() {
+        List<IXMLElement> res = exR("drink/lemonade/@supplier");
+
+        assertEquals(1, res.size());
+        assertXMLEquals("<supplier>mother</supplier>", res, 0);
     }
 
     private List<IXMLElement> exR(String q) {

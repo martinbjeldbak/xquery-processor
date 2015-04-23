@@ -84,6 +84,16 @@ public class ShakespeareTest extends XQueryTest {
     }
 
     @Test
+    public void dotdot2() {
+        // TODO: Fails because unique() is not implemented yet
+        List<IXMLElement> res = exR("ACT/TITLE/../TITLE/../../TITLE");
+        /*
+        assertEquals(1, res.size());
+        assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res, 0);
+        */
+    }
+
+    @Test
     public void filter1() {
         List<IXMLElement> res = exR("PERSONAE/PGROUP/PERSONA[text()]");
 

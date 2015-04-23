@@ -1,6 +1,7 @@
 package dk.martinbmadsen.xquery.xmltree;
 
 import org.antlr.v4.runtime.misc.EqualityComparator;
+import org.jdom2.Attribute;
 import org.jdom2.Element;
 import org.jdom2.Text;
 import org.jdom2.output.Format;
@@ -28,11 +29,6 @@ public class XMLElement implements IXMLElement, EqualityComparator<XMLElement> {
     }
 
     @Override
-    public int childrenCount() {
-        return elem.getChildren().size();
-    }
-
-    @Override
     public String tag() {
         return elem.getName();
     }
@@ -42,6 +38,16 @@ public class XMLElement implements IXMLElement, EqualityComparator<XMLElement> {
         Element textEl = new Element("text");
         textEl.addContent(new Text(elem.getText()));
         return new XMLElement(textEl);
+    }
+
+    @Override
+    public IXMLElement attrib(String attName) {
+        Attribute att = elem.getAttribute(attName);
+
+        Element attEl = new Element(attName);
+        attEl.addContent(new Text(att.getValue()));
+
+        return new XMLElement(attEl);
     }
 
     @Override

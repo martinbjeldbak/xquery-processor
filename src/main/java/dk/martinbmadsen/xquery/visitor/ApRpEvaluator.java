@@ -73,6 +73,14 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return new XQueryListValue(qc.peekContextElement().txt());
     }
 
+    public XQueryListValue evalAttr(RpContext ctx) {
+        if(!(ctx instanceof RpAttrContext))
+            Debugger.error("ctx not an instance of RpAttrContext");
+        RpAttrContext node = (RpAttrContext) ctx;
+
+        return new XQueryListValue(qc.peekContextElement().attrib(node.Identifier().getSymbol().getText()));
+    }
+
     public XQueryListValue evalRpParen(@NotNull RuleContext ctx) {
         if(!(ctx instanceof RpParenExprContext))
             Debugger.error("Context given not of type RpTagNameContext");

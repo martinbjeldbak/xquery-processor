@@ -54,8 +54,8 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     }
 
     @Override
-    public IXQueryValue visitRpAttr(@NotNull RpAttrContext ctx) {
-        return super.visitRpAttr(ctx);
+    public XQueryListValue visitRpAttr(@NotNull RpAttrContext ctx) {
+        return rpEval.evalAttr(ctx);
     }
 
     @Override

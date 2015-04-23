@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <inventory>
-
     <drink>
          <lemonade supplier="mother" id="1">
          <price>$2.50</price>

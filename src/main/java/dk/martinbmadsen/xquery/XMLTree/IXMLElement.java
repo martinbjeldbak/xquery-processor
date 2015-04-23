@@ -22,7 +22,8 @@ public interface IXMLElement {
     IXMLElement parent();
 
     /**
-     * Gets a list of all of this element's children
+     * Gets a list of all of this element's children. Returns
+     * an empty list if the element has no children.
      * @return the element's children, a list of {@link IXMLElement}s
      */
     List<IXMLElement> children();
@@ -34,10 +35,12 @@ public interface IXMLElement {
     IXMLElement txt();
 
     /**
-     * Gets the number of children this element has
-     * @return the number of children this element has
+     * Returns the attribute value associated with the attribute key given
+     * as input for this element
+     * @param attName the attribute key
+     * @return {@link IXMLElement} with the structure <attName>attKey</attName>
      */
-    int childrenCount();
+    IXMLElement attrib(String attName);
 
     /**
      * Gets the tag of this element
