@@ -126,10 +126,4 @@ public class XQueryVisitor extends XQueryBaseVisitor<List<IXMLElement>> {
         res.add(elem);
         return res;
     }
-
-    private List<IXMLElement> buildResult(List<IXMLElement> elems) {
-        List<IXMLElement> res = buildResult(elems.size());
-        res.addAll(elems);
-        return res;
-    }
 }

@@ -52,13 +52,13 @@ public class Evaluator {
 
         String tagName = ctx.getText();
 
-        return buildResult(evalWildCard().stream().filter(
+        return evalWildCard().stream().filter(
                 c -> c.tag().equals(tagName)
-        ).collect(Collectors.toList()));
+        ).collect(Collectors.toList());
     }
 
     public List<IXMLElement> evalWildCard() {
-        return buildResult(qc.peekContextElement().children());
+        return qc.peekContextElement().children();
     }
 
     public List<IXMLElement> evalDot() {
@@ -182,12 +182,6 @@ public class Evaluator {
     private List<IXMLElement> buildResult(IXMLElement elem) {
         List<IXMLElement> res = buildResult(1);
         res.add(elem);
-        return res;
-    }
-
-    private List<IXMLElement> buildResult(List<IXMLElement> elems) {
-        List<IXMLElement> res = buildResult(elems.size());
-        res.addAll(elems);
         return res;
     }
 
