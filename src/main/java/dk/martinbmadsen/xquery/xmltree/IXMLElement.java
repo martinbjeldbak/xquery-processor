@@ -1,5 +1,7 @@
 package dk.martinbmadsen.xquery.xmltree;
 
+import org.jdom2.Element;
+
 import java.util.List;
 
 /**
@@ -47,4 +49,6 @@ public interface IXMLElement {
      * @return the XML tag of this element
      */
     String tag();
+
+    Element getElement();
 }
