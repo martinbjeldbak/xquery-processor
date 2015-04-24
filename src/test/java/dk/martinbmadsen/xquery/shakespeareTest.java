@@ -100,6 +100,14 @@ public class ShakespeareTest extends XQueryTest {
         assertEquals(27, res.size()); // 27 personas
     }
 
+    @Test
+    public void filter2() {
+        List<IXMLElement> res = exR("PERSONAE/PGROUP[PERSONA]");
+
+        XQueryExecutor.printResults(res);
+    }
+
+
     private List<IXMLElement> exF() throws IOException {
         return super.exF("samples/xquery/test.xq");
     }

@@ -45,12 +45,12 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
 
     @Override
     public XQueryListValue visitRpParenExpr(@NotNull RpParenExprContext ctx) {
-        return rpEval.evalRpParen(ctx);
+        return rpEval.evalParen(ctx);
     }
 
     @Override
     public XQueryListValue visitRpSlash(@NotNull RpSlashContext ctx) {
-        return rpEval.evalRpSlashes(ctx);
+        return rpEval.evalSlashes(ctx);
     }
 
     @Override
@@ -60,7 +60,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
 
     @Override
     public XQueryListValue visitRpFilter(@NotNull RpFilterContext ctx) {
-        return rpEval.evalRpFilter(ctx);
+        return rpEval.evalFilter(ctx);
     }
 
     @Override
@@ -68,10 +68,11 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
         return rpEval.evalConcat(ctx);
     }
 
-    @Override
-    public IXQueryValue visitFNot(@NotNull FNotContext ctx) {
-        return super.visitFNot(ctx);
-    }
+
+
+
+
+
 
     @Override
     public XQueryFilterValue visitFRp(@NotNull FRpContext ctx) {
@@ -79,18 +80,8 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     }
 
     @Override
-    public IXQueryValue visitFParen(@NotNull FParenContext ctx) {
-        return super.visitFParen(ctx);
-    }
-
-    @Override
-    public IXQueryValue visitFOr(@NotNull FOrContext ctx) {
-        return super.visitFOr(ctx);
-    }
-
-    @Override
     public IXQueryValue visitFEqual(@NotNull FEqualContext ctx) {
-        return super.visitFEqual(ctx);
+        return fEval.evalEquals(ctx);
     }
 
     @Override
@@ -104,7 +95,22 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     }
 
     @Override
-    public IXQueryValue visitFAnd(@NotNull FAndContext ctx) {
-        return super.visitFAnd(ctx);
+    public XQueryFilterValue visitFParen(@NotNull FParenContext ctx) {
+        return fEval.evalParen(ctx);
+    }
+
+    @Override
+    public XQueryFilterValue visitFAnd(@NotNull FAndContext ctx) {
+        return fEval.evalAnd(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitFOr(@NotNull FOrContext ctx) {
+        return fEval.evalOr(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitFNot(@NotNull FNotContext ctx) {
+        return fEval.evalNot(ctx);
     }
 }

@@ -23,4 +23,16 @@ public class XQueryFilterValue implements IXQueryValue {
             return falseVal;
         return trueVal;
     }
+
+    public XQueryFilterValue and(XQueryFilterValue other) {
+        if(this == trueVal && other == trueVal)
+            return trueVal;
+        return falseVal;
+    }
+
+    public XQueryFilterValue or(XQueryFilterValue other) {
+        if(this == trueVal || other == trueVal)
+            return trueVal;
+        return falseVal;
+    }
 }
