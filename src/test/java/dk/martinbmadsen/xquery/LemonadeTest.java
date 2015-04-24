@@ -1,5 +1,6 @@
 package dk.martinbmadsen.xquery;
 
+import dk.martinbmadsen.xquery.executor.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.junit.Test;
 
@@ -9,6 +10,12 @@ import static org.junit.Assert.assertEquals;
 
 public class LemonadeTest extends XQueryTest {
     private String r = "doc(\"samples/xml/lemonade2.xml\")/"; // root query
+
+    @Test
+    public void playground() {
+        List<IXMLElement> res = exR("Fasdf");
+        XQueryExecutor.printResults(res);
+    }
 
     @Test
     public void lemonadePriceQuery() {

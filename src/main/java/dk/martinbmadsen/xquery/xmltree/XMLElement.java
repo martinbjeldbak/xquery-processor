@@ -1,6 +1,5 @@
 package dk.martinbmadsen.xquery.xmltree;
 
-import org.antlr.v4.runtime.misc.EqualityComparator;
 import org.jdom2.Attribute;
 import org.jdom2.Element;
 import org.jdom2.Text;
@@ -10,7 +9,7 @@ import org.jdom2.output.XMLOutputter;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class XMLElement implements IXMLElement, EqualityComparator<XMLElement> {
+public class XMLElement implements IXMLElement {
     private Element elem;
     
     public XMLElement(Element element) {
@@ -56,18 +55,22 @@ public class XMLElement implements IXMLElement, EqualityComparator<XMLElement> {
         return xout.outputString(elem);
     }
 
-    @Override
-    public int hashCode(XMLElement obj) {
-        return obj.hashCode();
-    }
-
-    @Override
-    public boolean equals(XMLElement a, XMLElement b) {
-        return a.equals(b);
-    }
-
     public Element getElement(){
         return this.elem;
+    }
+
+    public boolean equalsRef(IXMLElement e) {
+        if(e instanceof XMLElement) {
+            XMLElement b = (XMLElement)e;
+            return this.elem.equals(b.getElement());
+        }
+        return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        // TODO: Implement.
+        return  false;
     }
 }
 

@@ -39,8 +39,7 @@ public interface IXMLElement {
     /**
      * Returns the attribute value associated with the attribute key given
      * as input for this element
-     * @param attName the attribute key
-     * @return {@link IXMLElement} with the structure <attName>attKey</attName>
+     * @param attName the attribute key with the structure <attName>attKey</attName>
      */
     IXMLElement attrib(String attName);
 
@@ -51,4 +50,19 @@ public interface IXMLElement {
     String tag();
 
     Element getElement();
+
+    /**
+     * Compares by reference.
+     * @param e
+     * @return true if they point to the same tree
+     */
+    boolean equalsRef(IXMLElement e);
+
+    /**
+     * Compares objects by value.
+     * TODO: Implement.
+     * @param o
+     * @return
+     */
+    boolean equals(Object o);
 }

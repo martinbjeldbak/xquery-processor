@@ -80,7 +80,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     }
 
     @Override
-    public IXQueryValue visitFEqual(@NotNull FEqualContext ctx) {
+    public XQueryFilterValue visitFEqual(@NotNull FEqualContext ctx) {
         return fEval.evalEquals(ctx);
     }
 
@@ -105,12 +105,12 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     }
 
     @Override
-    public IXQueryValue visitFOr(@NotNull FOrContext ctx) {
+    public XQueryFilterValue visitFOr(@NotNull FOrContext ctx) {
         return fEval.evalOr(ctx);
     }
 
     @Override
-    public IXQueryValue visitFNot(@NotNull FNotContext ctx) {
+    public XQueryFilterValue visitFNot(@NotNull FNotContext ctx) {
         return fEval.evalNot(ctx);
     }
 }
