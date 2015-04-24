@@ -56,7 +56,7 @@ public interface IXMLElement {
      * @param e
      * @return true if they point to the same tree
      */
-    boolean equalsRef(IXMLElement e);
+    boolean equalsRef(IXMLElement o);
 
     /**
      * Compares objects by value.
