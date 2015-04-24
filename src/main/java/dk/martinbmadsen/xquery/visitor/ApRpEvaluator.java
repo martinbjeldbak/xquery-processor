@@ -10,7 +10,6 @@ import dk.martinbmadsen.xquery.value.XQueryFilterValue;
 import dk.martinbmadsen.xquery.value.XQueryListValue;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLDocument;
-import org.antlr.v4.runtime.RuleContext;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.util.List;
@@ -22,18 +21,14 @@ public class ApRpEvaluator extends XQueryEvaluator {
         super(visitor, qc);
     }
 
-    public XQueryListValue evalAp(@NotNull RuleContext ctx) {
-        if(!(ctx instanceof ApContext))
-            Debugger.error("Context given not of type ApContext");
-        ApContext node = (ApContext) ctx;
-
-        XMLDocument document = new XMLDocument(node.fileName.getText());
+    public XQueryListValue evalAp(@NotNull ApContext ctx) {
+        XMLDocument document = new XMLDocument(ctx.fileName.getText());
         qc.pushContextElement(document.root());
         XQueryListValue results = new XQueryListValue();
 
-        switch(node.slash.getType()) {
+        switch(ctx.slash.getType()) {
             case XQueryParser.SLASH:
-                results.append((XQueryListValue)visitor.visit(node.rp()));
+                results.append((XQueryListValue)visitor.visit(ctx.rp()));
                 break;
             case XQueryParser.SSLASH:
                 break;
@@ -44,10 +39,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return results;
     }
 
-    public XQueryListValue evalTagName(@NotNull RuleContext ctx) {
-        if(!(ctx instanceof RpTagNameContext))
-            Debugger.error("Context given not of type RpTagNameContext");
-
+    public XQueryListValue evalTagName(@NotNull RpTagNameContext ctx) {
         String tagName = ctx.getText();
 
         return evalWildCard().stream().filter(
@@ -73,28 +65,17 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return new XQueryListValue(qc.peekContextElement().txt());
     }
 
-    public XQueryListValue evalAttr(RpContext ctx) {
-        if(!(ctx instanceof RpAttrContext))
-            Debugger.error("ctx not an instance of RpAttrContext");
-        RpAttrContext node = (RpAttrContext) ctx;
-
-        return new XQueryListValue(qc.peekContextElement().attrib(node.Identifier().getSymbol().getText()));
+    public XQueryListValue evalAttr(RpAttrContext ctx) {
+        return new XQueryListValue(qc.peekContextElement().attrib(ctx.Identifier().getSymbol().getText()));
     }
 
-    public XQueryListValue evalRpParen(@NotNull RuleContext ctx) {
-        if(!(ctx instanceof RpParenExprContext))
-            Debugger.error("Context given not of type RpTagNameContext");
-        RpParenExprContext node = (RpParenExprContext) ctx;
-        return new XQueryListValue((XQueryListValue)visitor.visit(node.rp()));
+    public XQueryListValue evalParen(@NotNull RpParenExprContext ctx) {
+        return new XQueryListValue((XQueryListValue)visitor.visit(ctx.rp()));
     }
 
-    public XQueryListValue evalRpSlashes(@NotNull RuleContext ctx) {
-        if(!(ctx instanceof RpSlashContext))
-            Debugger.error("Context given not of type RpSlashContext");
-        RpSlashContext node = (RpSlashContext) ctx;
-
+    public XQueryListValue evalSlashes(@NotNull RpSlashContext ctx) {
         XQueryListValue results = new XQueryListValue();
-        switch(node.slash.getType()) {
+        switch(ctx.slash.getType()) {
             case XQueryParser.SLASH:
                 results = evalRpSlash(ctx);
                 break;
@@ -108,31 +89,21 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return results;
     }
 
-    public XQueryListValue evalRpSlash(@NotNull RuleContext ctx) {
-        if(!(ctx instanceof RpSlashContext))
-            Debugger.error("Context given not of type RpSlashContext");
-        RpSlashContext node = (RpSlashContext) ctx;
-
+    public XQueryListValue evalRpSlash(@NotNull RpSlashContext ctx) {
         XQueryListValue y = new XQueryListValue();
-        XQueryListValue xs = (XQueryListValue)visitor.visit(node.left);
+        XQueryListValue xs = (XQueryListValue)visitor.visit(ctx.left);
 
         for(IXMLElement x : xs) {
             qc.pushContextElement(x);
-            XQueryListValue context = (XQueryListValue)visitor.visit(node.right);
+            XQueryListValue context = (XQueryListValue)visitor.visit(ctx.right);
 
             y.addAll(context);
         }
         return unique(y);
     }
 
-    public XQueryListValue evalRpSlashSlash(@NotNull RuleContext ctx) {
-        if(!(ctx instanceof RpSlashContext))
-            Debugger.error("Context given not of type RpSlashContext");
-
+    public XQueryListValue evalRpSlashSlash(@NotNull RpSlashContext ctx) {
         IXMLElement context = qc.peekContextElement();
-
-
-        RpSlashContext node = (RpSlashContext)ctx;
 
         // Eval left hand side of // semantics (rp1 / rp2)
         XQueryListValue l = evalRpSlash(ctx);
@@ -160,9 +131,9 @@ public class ApRpEvaluator extends XQueryEvaluator {
         RpContext slashRoot = new RpContext();
         RpSlashContext slashCtx = new RpSlashContext(slashRoot);
         slashRoot.addChild(slashCtx);
-        slashCtx.addChild(node.left); // not sure if you need to addChild
-        slashCtx.addChild(node.right);
-        slashCtx.left = node.left;
+        slashCtx.addChild(ctx.left); // not sure if you need to addChild
+        slashCtx.addChild(ctx.right);
+        slashCtx.left = ctx.left;
         slashCtx.right = wcRoot;
 
         List<IXMLElement> intermediatRes1 = evalRpSlash(slashCtx);
@@ -171,10 +142,10 @@ public class ApRpEvaluator extends XQueryEvaluator {
         RpSlashContext ssCtx = new RpSlashContext(ssRoot);
         ssCtx.addChild(slashCtx);
 
-        ssCtx.addChild(node.right);
+        ssCtx.addChild(ctx.right);
         ssCtx.left = slashCtx;
-        ssCtx.right = node.right;
-        ssCtx.slash = node.slash;
+        ssCtx.right = ctx.right;
+        ssCtx.slash = ctx.slash;
 
         System.out.println(intermediatRes1.size());
         /*
@@ -193,21 +164,17 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return unique(l);
     }
 
-    public XQueryListValue evalRpFilter(@NotNull RpContext ctx) {
-        if(!(ctx instanceof RpFilterContext))
-            Debugger.error("Context node needs to be an instance of RpFilterContext");
-        RpFilterContext node = ((RpFilterContext) ctx);
-
+    public XQueryListValue evalFilter(@NotNull RpFilterContext ctx) {
         XQueryListValue res = new XQueryListValue();
 
         // Evaluate rp to get x
-        XQueryListValue xs = (XQueryListValue)visitor.visit(node.rp());
+        XQueryListValue xs = (XQueryListValue)visitor.visit(ctx.rp());
 
         for(IXMLElement x : xs) {
             qc.pushContextElement(x); // Get context node
 
             // Evaluate f from this context
-            XQueryFilterValue y = (XQueryFilterValue)visitor.visit(node.f());
+            XQueryFilterValue y = (XQueryFilterValue)visitor.visit(ctx.f());
 
             if(y == XQueryFilterValue.trueValue())
                 res.add(x);
@@ -215,21 +182,16 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return res;
     }
 
-    public XQueryListValue evalConcat(@NotNull RpContext ctx) {
-        if(!(ctx instanceof  RpConcatContext))
-            Debugger.error("Context node needs to be an instance of RpConcatContext");
-        RpConcatContext node = ((RpConcatContext) ctx);
-
-
+    public XQueryListValue evalConcat(@NotNull RpConcatContext ctx) {
         // Save context XML element n
         IXMLElement n = qc.peekContextElement();
 
-        XQueryListValue l = (XQueryListValue)visitor.visit(node.left);
+        XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
 
         // Push element n back onto our context stack (since r also has to be evalauted from n)
         qc.pushContextElement(n);
 
-        XQueryListValue r = (XQueryListValue)visitor.visit(node.right);
+        XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
 
         l.addAll(r);
         return l;
