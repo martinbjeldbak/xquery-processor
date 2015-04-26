@@ -75,39 +75,7 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof XMLElement) {
-            return this.getValue().equals(((XMLElement) o).getValue());
-            // XMLElement e = (XMLElement) o;
-
-            // // Compare attributes
-            // for (Attribute a : elem.getAttributes()) {
-            //     for (Attribute b : e.getElement().getAttributes()) {
-            //         if (!a.getName().equals(b.getName()) ||
-            //                 !a.getValue().equals(b.getValue())) {
-            //             return false;
-            //         }
-            //     }
-            // }
-
-            // // Compare text
-            // if (!elem.getTextNormalize().equals(e.getElement().getTextNormalize()))
-            //     return false;
-
-            // // Compare children
-            // for (Element a : elem.getChildren()) {
-            //     for(Element b : elem.getChildren()) {
-            //         XMLElement c1 = new XMLElement(a);
-            //         XMLElement c2 = new XMLElement(b);
-
-            //         if(!c1.equals(c2))
-            //             return false;
-            //     }
-            // }
-
-            // // If still here, return true
-            // return true;
-        }
-        return false;
+        return o instanceof XMLElement && getValue().equals(((XMLElement) o).getValue());
     }
 
 }

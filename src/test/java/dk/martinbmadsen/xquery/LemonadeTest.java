@@ -21,16 +21,20 @@ public class LemonadeTest extends XQueryTest {
     public void lemonadePriceQuery() {
         List<IXMLElement> res = exR("drink/lemonade/price");
 
-        assertEquals(1, res.size());
+        XQueryExecutor.printResults(res);
+
+        assertEquals(2, res.size());
         assertEquals("<price>$2.50</price>", res.get(0).toString());
+        assertEquals("<price>$3.50</price>", res.get(1).toString());
     }
 
     @Test
     public void lemonadeAmountQuery() {
         List<IXMLElement> res = exR("drink/lemonade/amount");
 
-        assertEquals(1, res.size());
+        assertEquals(2, res.size());
         assertEquals("<amount>20</amount>", res.get(0).toString());
+        assertEquals("<amount>10</amount>", res.get(1).toString());
     }
 
     @Test
@@ -44,8 +48,9 @@ public class LemonadeTest extends XQueryTest {
     public void attr1() {
         List<IXMLElement> res = exR("drink/lemonade/@supplier");
 
-        assertEquals(1, res.size());
+        assertEquals(2, res.size());
         assertXMLEquals("<supplier>mother</supplier>", res, 0);
+        assertXMLEquals("<supplier>mother</supplier>", res, 1);
     }
 
     private List<IXMLElement> exR(String q) {

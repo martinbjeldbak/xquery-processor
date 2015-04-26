@@ -39,4 +39,26 @@ public class XMLElementTest {
 
         assertEquals(true, a.equals(aCloned));
     }
+
+    @Test
+    public void equalsTest3() {
+        Element e = new Element("test");
+        Element e2 = new Element("childOfTest");
+        e.addContent(new Text("Content of test node"));
+        e2.addContent(new Text("yoloswaggins"));
+        e.addContent(e2);
+        XMLElement a = new XMLElement(e);
+
+        // Copy e, now with diff content
+        Element eCopy = new Element("test");
+        Element e2Copy = new Element("childOfTest");
+        eCopy.addContent(new Text("Content of test node"));
+        e2Copy.addContent(new Text("thisidfifferent"));
+        eCopy.addContent(e2Copy);
+        XMLElement aCopy = new XMLElement(eCopy);
+
+        assertEquals(true, a.equalsRef(a));
+        assertEquals(false, a.equalsRef(aCopy));
+        assertEquals(false, a.equals(aCopy));
+    }
 }
