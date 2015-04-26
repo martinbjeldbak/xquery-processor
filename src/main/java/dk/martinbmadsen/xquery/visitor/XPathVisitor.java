@@ -74,6 +74,7 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
                     temp.removeAll(state); //Remove previous level of children
                     state.clear();
                     state.addAll(temp); // Search next level of children
+                    System.out.println(state.size());
 
                 }
 

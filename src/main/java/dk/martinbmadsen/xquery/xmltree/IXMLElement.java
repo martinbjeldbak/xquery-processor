@@ -51,6 +51,8 @@ public interface IXMLElement {
 
     Element getElement();
 
+    String getValue();
+
     /**
      * Compares by reference.
      * @param e

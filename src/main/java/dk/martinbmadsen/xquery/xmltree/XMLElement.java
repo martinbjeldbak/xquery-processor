@@ -59,6 +59,10 @@ public class XMLElement implements IXMLElement {
         return this.elem;
     }
 
+    public String getValue(){
+        return this.elem.getValue();
+    }
+
     public boolean equalsRef(IXMLElement o) {
         if(o instanceof XMLElement) {
             XMLElement e = (XMLElement)o;
