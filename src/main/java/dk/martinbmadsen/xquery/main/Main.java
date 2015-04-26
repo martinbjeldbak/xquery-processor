@@ -2,6 +2,7 @@ package dk.martinbmadsen.xquery.main;
 
 import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.executor.XQueryExecutor;
+import dk.martinbmadsen.xquery.executor.XPathExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class Main {
 
         List<IXMLElement> result = null;
         try {
-            result = XQueryExecutor.executeFromFile("samples/xquery/test.xq");
+            result = XPathExecutor.executeFromFile("samples/xquery/test.xq");
         } catch (IOException e) {
             e.printStackTrace();
         }

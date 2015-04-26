@@ -42,6 +42,8 @@ public class XMLElement implements IXMLElement {
     @Override
     public IXMLElement attrib(String attName) {
         Attribute att = elem.getAttribute(attName);
+        if (att == null)
+            return null;
 
         Element attEl = new Element(attName);
         attEl.addContent(new Text(att.getValue()));
@@ -74,35 +76,36 @@ public class XMLElement implements IXMLElement {
     @Override
     public boolean equals(Object o) {
         if (o instanceof XMLElement) {
-            XMLElement e = (XMLElement) o;
+            return this.getValue().equals(((XMLElement) o).getValue());
+            // XMLElement e = (XMLElement) o;
 
-            // Compare attributes
-            for (Attribute a : elem.getAttributes()) {
-                for (Attribute b : e.getElement().getAttributes()) {
-                    if (!a.getName().equals(b.getName()) ||
-                            !a.getValue().equals(b.getValue())) {
-                        return false;
-                    }
-                }
-            }
+            // // Compare attributes
+            // for (Attribute a : elem.getAttributes()) {
+            //     for (Attribute b : e.getElement().getAttributes()) {
+            //         if (!a.getName().equals(b.getName()) ||
+            //                 !a.getValue().equals(b.getValue())) {
+            //             return false;
+            //         }
+            //     }
+            // }
 
-            // Compare text
-            if (!elem.getTextNormalize().equals(e.getElement().getTextNormalize()))
-                return false;
+            // // Compare text
+            // if (!elem.getTextNormalize().equals(e.getElement().getTextNormalize()))
+            //     return false;
 
-            // Compare children
-            for (Element a : elem.getChildren()) {
-                for(Element b : elem.getChildren()) {
-                    XMLElement c1 = new XMLElement(a);
-                    XMLElement c2 = new XMLElement(b);
+            // // Compare children
+            // for (Element a : elem.getChildren()) {
+            //     for(Element b : elem.getChildren()) {
+            //         XMLElement c1 = new XMLElement(a);
+            //         XMLElement c2 = new XMLElement(b);
 
-                    if(!c1.equals(c2))
-                        return false;
-                }
-            }
+            //         if(!c1.equals(c2))
+            //             return false;
+            //     }
+            // }
 
-            // If still here, return true
-            return true;
+            // // If still here, return true
+            // return true;
         }
         return false;
     }

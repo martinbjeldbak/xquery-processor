@@ -20,7 +20,7 @@ rp
   | left=rp slash=('/'|'//') right=rp #rpSlash
   | rp '[' f ']'                      #rpFilter
   | left=rp ',' right=rp              #rpConcat
-  | '@' Identifier                    #rpAttr
+  | '@' attr=Identifier               #rpAttr
   ;
 
 // Path filter

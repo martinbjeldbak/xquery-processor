@@ -46,9 +46,9 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
     @Override
     public List<IXMLElement> visitRpText(@NotNull XPathParser.RpTextContext ctx) {
         List<IXMLElement> results = new ArrayList<>();
-        //TODO: Implement Text
-        System.out.println("was");
-        return state;
+        for (IXMLElement e : state)
+            results.add(e.txt());
+        return results;
     }
 
     @Override
@@ -74,8 +74,6 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
                     temp.removeAll(state); //Remove previous level of children
                     state.clear();
                     state.addAll(temp); // Search next level of children
-                    System.out.println(state.size());
-
                 }
 
                 // Find all children with tag equal to RP2
@@ -130,8 +128,14 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
 
     @Override
     public List<IXMLElement> visitRpAttr(@NotNull XPathParser.RpAttrContext ctx) {
-        // TODO: Implement attr
         List<IXMLElement> results = new ArrayList<>();
+        String attName = ctx.attr.getText();
+        System.out.println(attName);
+        for (IXMLElement e : state){
+            IXMLElement attrib = e.attrib(attName);
+            if (attrib != null)
+                results.add(attrib);
+        }
         return results;
     }
 
@@ -149,7 +153,7 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
             List<IXMLElement> rp2 = visit(ctx.right); 
             for (IXMLElement e1 : rp1)
                 for (IXMLElement e2 : rp2)
-                    if (e1.equals(e2))
+                    if (e1 == e2)
                         results.add(x);
 
         }
