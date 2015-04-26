@@ -34,6 +34,7 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public IXMLElement txt() {
+        // TODO: This should not return an {@link IXMLElement}, but probably an {@link IXQueryValue} of type Text, or something
         Element textEl = new Element("text");
         textEl.addContent(new Text(elem.getText()));
         return new XMLElement(textEl);
@@ -41,6 +42,7 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public IXMLElement attrib(String attName) {
+        // TODO: This should not return an {@link IXMLElement}, but probably an {@link IXQueryValue} of type Text, or something
         Attribute att = elem.getAttribute(attName);
         if (att == null)
             return null;
@@ -57,18 +59,16 @@ public class XMLElement implements IXMLElement {
         return xout.outputString(elem);
     }
 
-    public Element getElement(){
-        return this.elem;
-    }
-
+    @Override
     public String getValue(){
         return this.elem.getValue();
     }
 
+    @Override
     public boolean equalsRef(IXMLElement o) {
         if(o instanceof XMLElement) {
             XMLElement e = (XMLElement)o;
-            return elem.equals(e.getElement());
+            return elem.equals(e.elem);
         }
         return false;
     }
@@ -81,12 +81,11 @@ public class XMLElement implements IXMLElement {
 
             XMLOutputter xout = new XMLOutputter();
             String elemString  = xout.outputString(elem);
-            String otherString = xout.outputString(e.getElement());
+            String otherString = xout.outputString(e.elem);
 
             return elemString.equals(otherString);
         }
         return false;
     }
-
 }
 

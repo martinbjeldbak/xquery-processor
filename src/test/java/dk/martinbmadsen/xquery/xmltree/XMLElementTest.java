@@ -11,38 +11,26 @@ public class XMLElementTest {
     @Test
     public void equalsTest1() {
         Element e = new Element("test");
-        e.addContent(new Text("Content of test node"));
-
-        XMLElement a = new XMLElement(e);
-
-        XMLElement aCloned = new XMLElement(a.getElement().clone());
-
-        assertEquals(true, a.equalsRef(a));
-        assertEquals(false, a.equalsRef(aCloned));
-
-        assertEquals(true, a.equals(aCloned));
-    }
-
-    @Test
-    public void equalsTest2() {
-        Element e = new Element("test");
         Element e2 = new Element("childOfTest");
         e.addContent(new Text("Content of test node"));
         e2.addContent(new Text("yoloswaggins"));
-        e.addContent(e2);
 
         XMLElement a = new XMLElement(e);
-
-        XMLElement aCloned = new XMLElement(a.getElement().clone());
+        XMLElement b = new XMLElement(e);
 
         assertEquals(true, a.equalsRef(a));
-        assertEquals(false, a.equalsRef(aCloned));
-        assertEquals(true, a.equals(aCloned));
+        assertEquals(true, b.equalsRef(b));
+        assertEquals(true, a.equalsRef(b));
+
+        assertEquals(true, a.equals(b));
     }
 
+    /**
+     * Copy, except there is a different text of a subelement
+     */
     @Test
     public void equalsTest3() {
-        // Copy, different content
+        //
         Element e = new Element("test");
         Element e2 = new Element("childOfTest");
         e.addContent(new Text("Content of test node"));
@@ -63,9 +51,11 @@ public class XMLElementTest {
         assertEquals(false, a.equals(almostCopy));
     }
 
+    /**
+     * Exact copy
+     */
     @Test
     public void equalsTest4() {
-        // Exact opy
         Element e = new Element("test");
         Element e2 = new Element("childOfTest");
         e.addContent(new Text("Content of test node"));
@@ -82,13 +72,16 @@ public class XMLElementTest {
 
         assertEquals(true, a.equalsRef(a));
         assertEquals(true, aCopy.equalsRef(aCopy));
+        assertEquals(true, a.equals(aCopy));
         assertEquals(false, a.equalsRef(aCopy));
-        assertEquals(false, a.equals(aCopy));
+
     }
 
+    /**
+     * Copy has an attribute, so they shouldn't be equal
+     */
     @Test
     public void equalsTest5() {
-        // Copy has an attribute, so they shouldn't be equal
         Element e = new Element("test");
         Element e2 = new Element("childOfTest");
         e.addContent(new Text("Content of test node"));

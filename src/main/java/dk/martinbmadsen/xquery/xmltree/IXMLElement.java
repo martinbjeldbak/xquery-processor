@@ -49,7 +49,13 @@ public interface IXMLElement {
      */
     String tag();
 
-    Element getElement();
+    /**
+     * @deprecated Becauese this method on {@link Element} only returns text() parts of
+     * this {@link IXMLElement} and all its descendents, ignoring attributes.
+     * @return A string of this element's text along with all its descendents text nodes
+     */
+    @Deprecated
+    String getValue();
 
     /**
      * Compares by reference.
