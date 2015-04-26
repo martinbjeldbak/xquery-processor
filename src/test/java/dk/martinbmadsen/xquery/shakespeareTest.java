@@ -14,7 +14,7 @@ public class ShakespeareTest extends XQueryTest {
 
     @Test
     public void playground() {
-        List<IXMLElement> res = exR("ACT/TITLE/../TITLE");
+        List<IXMLElement> res = exR("FM[P=P]");
         XQueryExecutor.printResults(res);
     }
 
