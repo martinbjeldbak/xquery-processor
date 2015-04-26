@@ -10,26 +10,28 @@ ap
   ;
 
 // Relative path
-//rp
-//  : mult='*' | dot='.' | dotdot='..' | text='text()' | tagName=Identifier
-//  | '(' rp ')' | left=rp '/' right=rp | left=rp '//' right=rp | rp '[' f ']' | left=rp ',' right=rp
-//  ;
 rp
   : '*' #rpWildcard
   | '.' #rpDot
   | '..' #rpDotDot
-  | 'text()' #rpText
+  | text=StringLiteral #rpText
   | Identifier #rpTagName
   | '(' rp ')' #rpParenExpr
   | left=rp slash=('/'|'//') right=rp #rpSlash
   | rp '[' f ']' #rpFilter
   | left=rp ',' right=rp #rpConcat
+  | '@' Identifier #rpAttr
   ;
 
 // Path filter
 f
-  : rp | leftrp=rp '=' rightrp=rp | leftrp=rp ' eq ' rightrp=rp | leftrp=rp '==' rightrp=rp | leftrp=rp ' is ' rightrp=rp
-  | '(' f ')' | leftf=f ' and ' rightf=f  | leftf=f ' or ' rightf=f | 'not ' f
+  : rp #fRp
+  | left=rp (' eq ' | ' = ')  right=rp #fValEqual
+  | left=rp (' is ' | ' == ')  right=rp #fIdEqual
+  | left=f  ' and ' right=f #fAnd
+  | left=f  ' or '  right=f #fOr
+  | '(' f ')' #fParen
+  | 'not ' f #fNot
   ;
 
 DOT :       '.';
