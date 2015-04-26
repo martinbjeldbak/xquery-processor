@@ -21,7 +21,8 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
             case "/":
                 return visit(ctx.rp());
             case "//":
-                break;
+                state = getDecendants();
+                return unique(visit(ctx.rp()));
             default:
                 Debugger.error("Oops, shouldn't be here");
                 break;
@@ -61,26 +62,8 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
                 break;
             case "//":
                 state = visit(ctx.left);
-                String tag = ctx.right.getText();
-
-                List<IXMLElement> temp = new ArrayList<>(); // Intermediate array to hold elements
-                List<IXMLElement> decendants = new ArrayList<>(); // Array for all children
-                decendants.addAll(state);
-
-                while (!state.isEmpty()){
-                    for (IXMLElement x : state)
-                        temp.addAll(x.children()); // All all children at current level
-                    decendants.addAll(temp);
-                    temp.removeAll(state); //Remove previous level of children
-                    state.clear();
-                    state.addAll(temp); // Search next level of children
-                }
-
-                // Find all children with tag equal to RP2
-                for (IXMLElement x : decendants){
-                    if (x.tag().equals(tag))
-                        results.add(x);
-                }
+                state = getDecendants();
+                results = visit(ctx.right);
         }
 
         return unique(results);
@@ -276,6 +259,22 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
             }
         }
         return list;
+    }
+
+    private List<IXMLElement> getDecendants() {
+        List<IXMLElement> temp = new ArrayList<>(); // Intermediate array to hold elements
+        List<IXMLElement> decendants = new ArrayList<>();
+        decendants.addAll(state);
+
+        while (!state.isEmpty()){
+            for (IXMLElement x : state)
+                temp.addAll(x.children()); // All all children at current level
+            decendants.addAll(temp);
+            temp.removeAll(state); //Remove previous level of children
+            state.clear();
+            state.addAll(temp); // Search next level of children
+        }
+        return decendants;
     }
 
 }
