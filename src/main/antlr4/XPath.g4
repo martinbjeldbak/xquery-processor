@@ -11,27 +11,27 @@ ap
 
 // Relative path
 rp
-  : '*' #rpWildcard
-  | '.' #rpDot
-  | '..' #rpDotDot
-  | text=StringLiteral #rpText
-  | Identifier #rpTagName
-  | '(' rp ')' #rpParenExpr
+  : '*'                               #rpWildcard
+  | '..'                              #rpDotDot
+  | '.'                               #rpDot
+  | 'text()'                          #rpText
+  | Identifier                        #rpTagName
+  | '(' rp ')'                        #rpParenExpr
   | left=rp slash=('/'|'//') right=rp #rpSlash
-  | rp '[' f ']' #rpFilter
-  | left=rp ',' right=rp #rpConcat
-  | '@' Identifier #rpAttr
+  | rp '[' f ']'                      #rpFilter
+  | left=rp ',' right=rp              #rpConcat
+  | '@' Identifier                    #rpAttr
   ;
 
 // Path filter
 f
-  : rp #fRp
-  | left=rp (' eq ' | ' = ')  right=rp #fValEqual
+  : rp                                  #fRp
+  | left=rp (' eq ' | ' = ')  right=rp  #fValEqual
   | left=rp (' is ' | ' == ')  right=rp #fIdEqual
-  | left=f  ' and ' right=f #fAnd
-  | left=f  ' or '  right=f #fOr
-  | '(' f ')' #fParen
-  | 'not ' f #fNot
+  | left=f  ' and ' right=f             #fAnd
+  | left=f  ' or '  right=f             #fOr
+  | '(' f ')'                           #fParen
+  | 'not ' f                            #fNot
   ;
 
 DOT :       '.';
@@ -48,8 +48,8 @@ LBRACK : '[';
 RBRACK : ']';
 
 // Operators
-EQLS   : '=';
-EQUAL  : '==';
+EQLS   : ' = ';
+EQUAL  : ' == ';
 SLASH  : '/';
 SSLASH : '//';
 IS     : ' is ';
