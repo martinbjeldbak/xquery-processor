@@ -75,7 +75,17 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public boolean equals(Object o) {
-        return o instanceof XMLElement && getValue().equals(((XMLElement) o).getValue());
+        if(o instanceof XMLElement) {
+            // TODO: This is hacky... converting each to string form, then comparing them
+            XMLElement e = (XMLElement)o;
+
+            XMLOutputter xout = new XMLOutputter();
+            String elemString  = xout.outputString(elem);
+            String otherString = xout.outputString(e.getElement());
+
+            return elemString.equals(otherString);
+        }
+        return false;
     }
 
 }

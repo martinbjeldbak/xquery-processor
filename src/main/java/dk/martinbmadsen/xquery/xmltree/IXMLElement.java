@@ -51,20 +51,17 @@ public interface IXMLElement {
 
     Element getElement();
 
-    String getValue();
-
     /**
      * Compares by reference.
-     * @param e
-     * @return true if they point to the same tree
+     * @param o the other object to compare, an instantiated {@link IXMLElement}
+     * @return  true if they point to the same tree
      */
     boolean equalsRef(IXMLElement o);
 
     /**
      * Compares objects by value.
-     * TODO: Implement.
-     * @param o
-     * @return
+     * @param o the other object to compare
+     * @return true if they have the same content
      */
     boolean equals(Object o);
 }
