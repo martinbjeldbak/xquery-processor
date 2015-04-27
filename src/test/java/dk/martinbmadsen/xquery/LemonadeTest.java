@@ -81,7 +81,7 @@ public class LemonadeTest extends XQueryTest {
         amount2.addContent(new Text("10"));
         lemonade2.addContent(price2);
         lemonade2.addContent(amount2);
-        XMLElement lem2 = new XMLElement(lemonade2);
+        IXMLElement lem2 = new XMLElement(lemonade2);
 
         assertEquals(2, res.size());
         assertEquals(lem, res.get(0));
@@ -92,9 +92,20 @@ public class LemonadeTest extends XQueryTest {
     public void filterTest2() {
         List<IXMLElement> res = exR("drink/pop[@id]");
 
-        XQueryExecutor.printResults(res);
+        Element pop = new Element("pop");
+        pop.setAttribute(new Attribute("supplier", "store"));
+        pop.setAttribute(new Attribute("id", "3"));
+        Element price = new Element("price");
+        price.addContent(new Text("$1.50"));
+        Element amount = new Element("amount");
+        amount.addContent(new Text("10"));
+        pop.addContent(price);
+        pop.addContent(amount);
+
+        IXMLElement iPop = new XMLElement(pop);
 
         assertEquals(1, res.size());
+        assertEquals(iPop, res.get(0));
 
     }
 
