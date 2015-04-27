@@ -79,7 +79,7 @@ public class XMLElement implements IXMLElement {
             // TODO: This is hacky... converting each to string form, then comparing them
             XMLElement e = (XMLElement)o;
 
-            XMLOutputter xout = new XMLOutputter();
+            XMLOutputter xout = new XMLOutputter(Format.getCompactFormat());
             String elemString  = xout.outputString(elem);
             String otherString = xout.outputString(e.elem);
 
