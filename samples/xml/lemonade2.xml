@@ -13,6 +13,10 @@
              <price>$1.50</price>
              <amount>10</amount>
          </pop>
+        <pop supplier="mother">
+            <price>$1337</price>
+            <amount>10</amount>
+        </pop>
      </drink>
     
      <snack>

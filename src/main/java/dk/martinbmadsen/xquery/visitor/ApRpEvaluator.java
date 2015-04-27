@@ -66,7 +66,12 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryListValue evalAttr(RpAttrContext ctx) {
-        return new XQueryListValue(qc.peekContextElement().attrib(ctx.Identifier().getSymbol().getText()));
+        // TODO: Don't return a list value here, return an attribute value... or something!
+        IXMLElement attrib = qc.peekContextElement().attrib(ctx.Identifier().getSymbol().getText());
+
+        if(attrib == null)
+            return new XQueryListValue(0);
+        return new XQueryListValue(attrib);
     }
 
     public XQueryListValue evalParen(@NotNull RpParenExprContext ctx) {
