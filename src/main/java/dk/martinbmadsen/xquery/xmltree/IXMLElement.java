@@ -20,6 +20,7 @@ public interface IXMLElement {
      * Gets the parent of this element in a singleton list.
      * If there is no parent, then an empty list is returned.
      * @return the parent element, (also an {@link IXMLElement}). Empty list otherwise.
+     * TODO: Should return singleton {@link List<IXMLElement>} with parent, empty otherwise, as pr documentation
      */
     IXMLElement parent();
 

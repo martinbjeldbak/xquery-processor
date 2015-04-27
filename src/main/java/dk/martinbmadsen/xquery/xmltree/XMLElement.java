@@ -18,6 +18,19 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public IXMLElement parent() {
+        /* TODO: Should probably return something like below:
+        Element parentEl = elem.getParentElement();
+        List<IXMLElement> parent = new ArrayList<>(1);
+
+
+        if(parentEl == null)
+            return parent;
+        else {
+            parent.add(new XMLElement(parentEl));
+            return parent;
+        }
+         */
+
         return new XMLElement(elem.getParentElement());
     }
 
