@@ -17,7 +17,7 @@ xq
   ;
 
 forClause
-  : 'for' Var 'in' xq (',' Var 'in' xq)*
+  : 'for ' Var ' in ' xq (',' Var ' in ' xq)*
   ;
 
 letClause
@@ -87,8 +87,11 @@ LBRACE : '{';
 RBRACE : '}';
 LBRACK : '[';
 RBRACK : ']';
+LANGLE : '<' | '</';
+RANGLE : '>';
 
 // Operators
+ASSIGN : ':=';
 EQLS   : '=';
 EQUAL  : '==';
 SLASH  : '/';
