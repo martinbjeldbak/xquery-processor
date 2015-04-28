@@ -1,22 +1,21 @@
 package dk.martinbmadsen.xquery.context;
 
+import dk.martinbmadsen.xquery.value.XQueryListValue;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
-import java.util.List;
 import java.util.Stack;
 
 /**
- * Created by martin on 19/04/15.
+ * This class keeps a context of node elements while visiting the XML tree and
+ * evaluating different operators and queries.
  */
 public class QueryContext {
-    public Stack<IXMLElement> ctxElems = new Stack<>();
+    public Stack<XQueryListValue> ctxElems = new Stack<>();
 
     public QueryContext() {
-
     }
 
-
-    public IXMLElement peekContextElement() {
+    public XQueryListValue peekContextElement() {
         return this.ctxElems.peek();
     }
 
@@ -24,7 +23,7 @@ public class QueryContext {
      * Gets the current context element (WARNING: this pops it from the stack)
      * @return the {@link IXMLElement} we are currently exploring
      */
-    public IXMLElement popContextElement() {
+    public XQueryListValue popContextElement() {
         return this.ctxElems.pop();
     }
 
@@ -33,14 +32,10 @@ public class QueryContext {
      * @param elem the tree/element to be added as context
      */
     public void pushContextElement(IXMLElement elem) {
-        this.ctxElems.push(elem);
+        this.ctxElems.push(new XQueryListValue(elem));
     }
 
-    /**
-     * Pushes each element in the list as a context element
-     * @param elems list of element nodes to be added as context
-     */
-    public void pushContextElements(List<IXMLElement> elems) {
-        elems.forEach(this::pushContextElement);
+    public void pushContextElement(XQueryListValue elem) {
+        ctxElems.push(elem);
     }
 }

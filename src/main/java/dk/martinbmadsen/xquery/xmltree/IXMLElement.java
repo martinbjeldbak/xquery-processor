@@ -1,5 +1,6 @@
 package dk.martinbmadsen.xquery.xmltree;
 
+import dk.martinbmadsen.xquery.value.XQueryListValue;
 import org.jdom2.Element;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public interface IXMLElement {
      * Gets the parent of this element in a singleton list.
      * If there is no parent, then an empty list is returned.
      * @return the parent element, (also an {@link IXMLElement}). Empty list otherwise.
-     * TODO: Should return singleton {@link List<IXMLElement>} with parent, empty otherwise, as pr documentation
+     * TODO: Should return singleton {@link XQueryListValue} with parent, empty otherwise, as pr documentation
      */
     IXMLElement parent();
 
@@ -28,6 +29,7 @@ public interface IXMLElement {
      * Gets a list of all of this element's children. Returns
      * an empty list if the element has no children.
      * @return the element's children, a list of {@link IXMLElement}s
+     * TODO: Make this return {@link XQueryListValue}
      */
     List<IXMLElement> children();
 
@@ -43,6 +45,8 @@ public interface IXMLElement {
      * @param attName the attribute key with the structure <attName>attKey</attName>
      */
     IXMLElement attrib(String attName);
+
+    XQueryListValue descendants();
 
     /**
      * Gets the tag of this element

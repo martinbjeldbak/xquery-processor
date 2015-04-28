@@ -13,17 +13,17 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class LemonadeTest extends XQueryTest {
-    private String r = "doc(\"samples/xml/lemonade2.xml\")/"; // root query
+    private String r = "doc(\"samples/xml/lemonade2.xml\")"; // root query
 
     @Test
     public void playground() {
-        List<IXMLElement> res = exR("Fasdf");
+        List<IXMLElement> res = exR("//*/amount");
         XQueryExecutor.printResults(res);
     }
 
     @Test
     public void lemonadePriceQuery() {
-        List<IXMLElement> res = exR("drink/lemonade/price");
+        List<IXMLElement> res = exR("/drink/lemonade/price");
 
         XQueryExecutor.printResults(res);
 
@@ -34,7 +34,7 @@ public class LemonadeTest extends XQueryTest {
 
     @Test
     public void lemonadeAmountQuery() {
-        List<IXMLElement> res = exR("drink/lemonade/amount");
+        List<IXMLElement> res = exR("/drink/lemonade/amount");
 
         assertEquals(2, res.size());
         assertEquals("<amount>20</amount>", res.get(0).toString());
@@ -43,14 +43,14 @@ public class LemonadeTest extends XQueryTest {
 
     @Test
     public void descendantDrinkPriceQuery() {
-        List<IXMLElement> res = ex(r + "drink//price");
+        List<IXMLElement> res = ex(r + "/drink//price");
 
         //XQueryExecutor.printResults(res);
     }
 
     @Test
     public void attr1() {
-        List<IXMLElement> res = exR("drink/lemonade/@supplier");
+        List<IXMLElement> res = exR("/drink/lemonade/@supplier");
 
         assertEquals(2, res.size());
         assertXMLEquals("<supplier>mother</supplier>", res, 0);
@@ -59,7 +59,7 @@ public class LemonadeTest extends XQueryTest {
 
     @Test
     public void filterTest1() {
-        List<IXMLElement> res = exR("drink/lemonade[price=price]");
+        List<IXMLElement> res = exR("/drink/lemonade[price=price]");
 
         Element lemonade = new Element("lemonade");
         lemonade.setAttribute(new Attribute("supplier", "mother"));
@@ -90,7 +90,7 @@ public class LemonadeTest extends XQueryTest {
 
     @Test
     public void filterTest2() {
-        List<IXMLElement> res = exR("drink/pop[@id]");
+        List<IXMLElement> res = exR("/drink/pop[@id]");
 
         Element pop = new Element("pop");
         pop.setAttribute(new Attribute("supplier", "store"));

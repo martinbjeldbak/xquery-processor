@@ -12,6 +12,7 @@ import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLDocument;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -31,6 +32,8 @@ public class ApRpEvaluator extends XQueryEvaluator {
                 results.append((XQueryListValue)visitor.visit(ctx.rp()));
                 break;
             case XQueryParser.SSLASH:
+                qc.pushContextElement(document.root().descendants());
+                results.append(unique((XQueryListValue)visitor.visit(ctx.rp())));
                 break;
             default:
                 Debugger.error("Oops, shouldn't be here");
@@ -48,7 +51,13 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryListValue evalWildCard() {
-        return new XQueryListValue(qc.peekContextElement().children());
+        XQueryListValue res = new XQueryListValue();
+
+        for(IXMLElement context : qc.peekContextElement()) {
+            res.addAll(context.children());
+        }
+        return res;
+        //return new XQueryListValue(qc.peekContextElement().children());
     }
 
     public XQueryListValue evalDot() {
@@ -62,16 +71,29 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryListValue evalText() {
-        return new XQueryListValue(qc.peekContextElement().txt());
+        XQueryListValue res = new XQueryListValue(qc.peekContextElement().size());
+
+        for(IXMLElement x : qc.peekContextElement()) {
+            res.add(x.txt());
+        }
+
+        return res;
     }
 
     public XQueryListValue evalAttr(RpAttrContext ctx) {
         // TODO: Don't return a list value here, return an attribute value... or something!
-        IXMLElement attrib = qc.peekContextElement().attrib(ctx.Identifier().getSymbol().getText());
+        String attrib = ctx.Identifier().getSymbol().getText();
+        XQueryListValue res = new XQueryListValue(qc.peekContextElement().size());
 
         if(attrib == null)
-            return new XQueryListValue(0);
-        return new XQueryListValue(attrib);
+            return null;
+
+        for(IXMLElement x : qc.peekContextElement()) {
+            if(x.attrib(attrib) == null)
+                return null;
+            res.add(x.attrib(attrib));
+        }
+        return res;
     }
 
     public XQueryListValue evalParen(@NotNull RpParenExprContext ctx) {
@@ -101,72 +123,16 @@ public class ApRpEvaluator extends XQueryEvaluator {
         for(IXMLElement x : xs) {
             qc.pushContextElement(x);
             XQueryListValue context = (XQueryListValue)visitor.visit(ctx.right);
+            qc.popContextElement();
 
             y.addAll(context);
         }
-        return unique(y);
+        return y;
+        //return unique(y);
     }
 
     public XQueryListValue evalRpSlashSlash(@NotNull RpSlashContext ctx) {
-        IXMLElement context = qc.peekContextElement();
-
-        // Eval left hand side of // semantics (rp1 / rp2)
-        XQueryListValue l = evalRpSlash(ctx);
-
-        qc.pushContextElement(context);
-
-        // Eval right hand side of // semantics (rp1 / * // rp2). This requires
-        // building a new parse tree
-        /**
-         * Now, to compute the parse tree for right expr: rp1 / * // rp2
-         *             rp
-         *          /  |  \
-         *        rp  // rp2
-         *      / | \
-         *    rp1 / rp
-         *          |
-         *          *
-         */
-
-
-        // Build above tree bottom up
-        RpContext wcRoot = new RpContext();
-        wcRoot.addChild(new RpWildcardContext(wcRoot));
-
-        RpContext slashRoot = new RpContext();
-        RpSlashContext slashCtx = new RpSlashContext(slashRoot);
-        slashRoot.addChild(slashCtx);
-        slashCtx.addChild(ctx.left); // not sure if you need to addChild
-        slashCtx.addChild(ctx.right);
-        slashCtx.left = ctx.left;
-        slashCtx.right = wcRoot;
-
-        List<IXMLElement> intermediatRes1 = evalRpSlash(slashCtx);
-
-        RpContext ssRoot = new RpContext();
-        RpSlashContext ssCtx = new RpSlashContext(ssRoot);
-        ssCtx.addChild(slashCtx);
-
-        ssCtx.addChild(ctx.right);
-        ssCtx.left = slashCtx;
-        ssCtx.right = ctx.right;
-        ssCtx.slash = ctx.slash;
-
-        System.out.println(intermediatRes1.size());
-        /*
-        RpContext root = new RpContext();
-        RpSlashContext ssCtx = new RpSlashContext(root);
-        ssCtx.addChild(slashCtx); // not sure if you need to addChild
-        ssCtx.addChild(node.right);
-        ssCtx.left = slashCtx;
-        ssCtx.right = node.right;
-
-        //List<IXMLElement> r = evalRpSlashSlash(wcRoot);
-
-        //l.addAll(r);
-         */
-
-        return unique(l);
+        return new XQueryListValue();
     }
 
     public XQueryListValue evalFilter(@NotNull RpFilterContext ctx) {
@@ -176,10 +142,12 @@ public class ApRpEvaluator extends XQueryEvaluator {
         XQueryListValue xs = (XQueryListValue)visitor.visit(ctx.rp());
 
         for(IXMLElement x : xs) {
-            qc.pushContextElement(x); // Get context node
-
             // Evaluate f from this context
+            qc.pushContextElement(x);
+
             XQueryFilterValue y = (XQueryFilterValue)visitor.visit(ctx.f());
+            qc.popContextElement();
+
 
             if(y == XQueryFilterValue.trueValue())
                 res.add(x);
@@ -188,15 +156,14 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryListValue evalConcat(@NotNull RpConcatContext ctx) {
-        // Save context XML element n
-        IXMLElement n = qc.peekContextElement();
-
         XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
 
         // Push element n back onto our context stack (since r also has to be evalauted from n)
-        qc.pushContextElement(n);
+        qc.pushContextElement(l);
 
         XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
+
+        qc.popContextElement();
 
         l.addAll(r);
         return l;
@@ -205,22 +172,26 @@ public class ApRpEvaluator extends XQueryEvaluator {
     /**
      * TODO: Implement this method
      * Removes duplicate elements
-     * @param elems element list to be checked
+     * @param
      * @return a sanitized list with duplicate elements removed
      */
-    private XQueryListValue unique(XQueryListValue elems) {
+    private List<IXMLElement> unique(List<IXMLElement> list){
+        if (list == null)
+            return list;
+        List<IXMLElement> res2 = new ArrayList<>();
+        List<String> addedRes = new ArrayList<>();
+        res2.addAll(list);
+        list.clear();
 
-        /*
-        List<IXMLElement> result = buildResult(elems.size());
-
-        for(IXMLElement i : elems) {
-            for(IXMLElement j : elems) {
-                if(i.equals(j))
-                    break;
-                result.add(i);
+        for (int i = 0; i < res2.size(); i++) {
+            String value = res2.get(i).getValue();
+            if (addedRes.contains(value))
+                continue;
+            else {
+                addedRes.add(value);
+                list.add(res2.get(i));
             }
         }
-        */
-        return elems;
+        return list;
     }
 }

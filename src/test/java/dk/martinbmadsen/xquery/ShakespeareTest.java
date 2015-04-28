@@ -10,11 +10,12 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class ShakespeareTest extends XQueryTest {
-    private String r = "doc(\"samples/xml/j_caesar.xml\")/"; // root query
+    private String r = "doc(\"samples/xml/j_caesar.xml\")"; // root query
 
     @Test
     public void playground() {
-        List<IXMLElement> res = exR("FM[P=P]");
+        //List<IXMLElement> res = exR("FM[P=P]");
+        List<IXMLElement> res = exR("/FM/*");
         XQueryExecutor.printResults(res);
     }
 

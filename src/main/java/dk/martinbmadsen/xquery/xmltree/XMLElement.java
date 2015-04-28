@@ -1,6 +1,8 @@
 package dk.martinbmadsen.xquery.xmltree;
 
+import dk.martinbmadsen.xquery.value.XQueryListValue;
 import org.jdom2.Attribute;
+import org.jdom2.Content;
 import org.jdom2.Element;
 import org.jdom2.Text;
 import org.jdom2.output.Format;
@@ -29,8 +31,8 @@ public class XMLElement implements IXMLElement {
             parent.add(new XMLElement(parentEl));
             return parent;
         }
-         */
 
+         */
         return new XMLElement(elem.getParentElement());
     }
 
@@ -56,6 +58,7 @@ public class XMLElement implements IXMLElement {
     @Override
     public IXMLElement attrib(String attName) {
         // TODO: This should not return an {@link IXMLElement}, but probably an {@link IXQueryValue} of type Text, or something
+        // TODO: This is the root of all evil (returning null!)
         Attribute att = elem.getAttribute(attName);
         if (att == null)
             return null;
@@ -84,6 +87,21 @@ public class XMLElement implements IXMLElement {
             return elem.equals(e.elem);
         }
         return false;
+    }
+
+    @Override
+    public XQueryListValue descendants() {
+        Iterable<Content> descendants = elem.getDescendants();
+        XQueryListValue res = new XQueryListValue();
+
+        for(Content c : descendants) {
+            if(c instanceof Element) {
+                Element e = (Element)c;
+
+                res.add(new XMLElement(e));
+            }
+        }
+        return res;
     }
 
     @Override
