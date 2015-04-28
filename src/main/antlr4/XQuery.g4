@@ -3,6 +3,46 @@ grammar XQuery;
 @header {
 package dk.martinbmadsen.xquery.parser;
 }
+// XQuery
+xq
+  : Var                                               #xqVar
+  | StringLiteral                                     #xqStringConstant
+  | ap                                                #xqAp
+  | '(' xq ')'                                        #xqParenExpr
+  | xq ',' xq                                         #xqConcat
+  | xq '/' rp                                         #xpSlash
+  | '<' Identifier '>' '{' xq '}' '</' Identifier '>' #xqTagName
+  | forClause letClause? whereClause? returnClause    #xqFLWR
+  | letClause xq                                      #xqLet
+  ;
+
+forClause
+  : 'for' Var 'in' xq (',' Var 'in' xq)*
+  ;
+
+letClause
+  : 'let ' Var ' := ' xq (',' Var ' := ' xq)*
+  ;
+
+whereClause
+  : 'where ' cond
+  ;
+
+returnClause
+  : 'return ' xq
+  ;
+
+cond
+  : xq (' = '|' eq ') xq                                          #condValEqual
+  | xq (' == '|' is ') xq                                         #condIdEqual
+  | 'empty(' xq ')'                                               #condEmpty
+  | 'some ' Var ' in ' xq (',' Var ' in ' xq)* ' satisfies ' cond #condSomeSatis
+  | '(' cond ')'                                                  #condParenExpr
+  | cond ' and ' cond                                             #condAnd
+  | cond ' or ' cond                                              #condOr
+  | 'not ' cond                                                   #condNot
+  ;
+
 
 // Absolute path
 ap
@@ -11,34 +51,34 @@ ap
 
 // Relative path
 rp
-  : '*' #rpWildcard
-  | '.' #rpDot
-  | '..' #rpDotDot
-  | 'text()' #rpText
-  | Identifier #rpTagName
-  | '@' Identifier #rpAttr
-  | '(' rp ')' #rpParenExpr
+  : '*'                               #rpWildcard
+  | '.'                               #rpDot
+  | '..'                              #rpDotDot
+  | 'text()'                          #rpText
+  | Identifier                        #rpTagName
+  | '@' Identifier                    #rpAttr
+  | '(' rp ')'                        #rpParenExpr
   | left=rp slash=('/'|'//') right=rp #rpSlash
-  | rp '[' f ']' #rpFilter
-  | left=rp ',' right=rp #rpConcat
+  | rp '[' f ']'                      #rpFilter
+  | left=rp ',' right=rp              #rpConcat
   ;
 
 // Path filter
 f
-  : rp #fRp
+  : rp                                #fRp
   | left=rp equal=('='|'==') right=rp #fEqual
-  | left=rp ' eq '  right=rp #fValEqual
-  | left=rp ' is '  right=rp #fIdEqual
-  | left=f  ' and ' right=f #fAnd
-  | left=f  ' or '  right=f #fOr
-  | '(' f ')' #fParen
-  | 'not ' f #fNot
+  | left=rp ' eq '  right=rp          #fValEqual
+  | left=rp ' is '  right=rp          #fIdEqual
+  | left=f  ' and ' right=f           #fAnd
+  | left=f  ' or '  right=f           #fOr
+  | '(' f ')'                         #fParen
+  | 'not ' f                          #fNot
   ;
 
-DOT :       '.';
-UP : '..';
-WILDCARD : '*';
-THEN : ',';
+DOT      : '.' ;
+UP       : '..';
+WILDCARD : '*' ;
+THEN     : ',' ;
 
 // Separators
 LPAREN : '(';
@@ -72,6 +112,9 @@ StringCharacter
 	 ;
 
 //WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+Var
+  : '$' Identifier
+  ;
 
 Identifier
   : Letter LetterOrDigit*
@@ -79,10 +122,10 @@ Identifier
 
 fragment
 Letter
-  : [a-zA-Z$_]
+  : [a-zA-Z_]
   ;
 
 fragment
 LetterOrDigit
-  : [a-zA-Z0-9$_-]
+  : [a-zA-Z0-9_-]
   ;
