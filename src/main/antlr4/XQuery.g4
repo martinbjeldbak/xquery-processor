@@ -16,31 +16,36 @@ xq
   | letClause xq                                      #xqLet
   ;
 
+// For Clause: for $var1 in $someList, $var2 in $var1)
 forClause
   : 'for' Var 'in' xq (',' Var 'in' xq)*
   ;
 
+// Let Clause: let $var1 := "superman")
 letClause
   : 'let' Var ':=' xq (',' Var ':=' xq)*
   ;
 
+// Where Clause: where $var1 == $var2
 whereClause
   : 'where' cond
   ;
 
+// Return Clause: return $var1
 returnClause
   : 'return' xq
   ;
 
+// Condition
 cond
-  : xq ('='|'eq') xq                                          #condValEqual
-  | xq ('=='|'is') xq                                         #condIdEqual
-  | 'empty(' xq ')'                                               #condEmpty
+  : xq ('='|'eq') xq                                       #condValEqual
+  | xq ('=='|'is') xq                                      #condIdEqual
+  | 'empty(' xq ')'                                        #condEmpty
   | 'some' Var 'in' xq (',' Var 'in' xq)* 'satisfies' cond #condSomeSatis
-  | '(' cond ')'                                                  #condParenExpr
-  | cond 'and' cond                                             #condAnd
-  | cond 'or' cond                                              #condOr
-  | 'not' cond                                                   #condNot
+  | '(' cond ')'                                           #condParenExpr
+  | cond 'and' cond                                        #condAnd
+  | cond 'or' cond                                         #condOr
+  | 'not' cond                                             #condNot
   ;
 
 
@@ -67,10 +72,10 @@ rp
 f
   : rp                                #fRp
   | left=rp equal=('='|'==') right=rp #fEqual
-  | left=rp 'eq'  right=rp          #fValEqual
-  | left=rp 'is'  right=rp          #fIdEqual
-  | left=f  'and' right=f           #fAnd
-  | left=f  'or'  right=f           #fOr
+  | left=rp 'eq'  right=rp            #fValEqual
+  | left=rp 'is'  right=rp            #fIdEqual
+  | left=f  'and' right=f             #fAnd
+  | left=f  'or'  right=f             #fOr
   | '(' f ')'                         #fParen
   | 'not ' f                          #fNot
   ;
