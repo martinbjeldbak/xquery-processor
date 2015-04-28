@@ -244,21 +244,19 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
     private List<IXMLElement> unique(List<IXMLElement> list){
         if (list == null)
             return list;
-        List<IXMLElement> res2 = new ArrayList<>();
-        List<String> addedRes = new ArrayList<>();
-        res2.addAll(list);
-        list.clear();
+        List<IXMLElement> results = new ArrayList<>();
 
-        for (int i = 0; i < res2.size(); i++) {
-            String value = res2.get(i).getValue();
-            if (addedRes.contains(value))
-                continue;
-            else {
-                addedRes.add(value);
-                list.add(res2.get(i));
-            }
-        }
-        return list;
+        for (IXMLElement e1 : list)
+            if (!containsRef(results, e1))
+                results.add(e1);
+        return results;
+    }
+
+    private boolean containsRef(List<IXMLElement> list, IXMLElement elem) {
+        for (IXMLElement x : list)
+            if (x.equalsRef(elem))
+                return true;
+        return false;
     }
 
     private List<IXMLElement> getDecendants() {
