@@ -27,18 +27,35 @@ public class XQueryListValue implements IXQueryValue, Iterable<IXMLElement>, Col
         this.values = values;
     }
 
-    public boolean append(List<IXMLElement> values) {
-        return this.values.addAll(values);
+    /**
+     * Gets the unique elements (by ID (from discussion with prof 2015-04-28 after class) from this instance
+     * in a new list
+     * @return a new list with the unique elements from the current list's instance.
+     */
+    public XQueryListValue unique(){
+        if (values == null)
+            return null;
+        XQueryListValue results = new XQueryListValue();
+
+        values.stream().filter(e -> !containsRef(results, e)).forEach(results::add);
+        return results;
     }
 
-    public boolean append(IXMLElement value) {
-        return this.values.add(value);
+    private boolean containsRef(List<IXMLElement> list, IXMLElement elem) {
+        for (IXMLElement x : list)
+            if (x.equalsRef(elem))
+                return true;
+        return false;
     }
 
-    public void append(XQueryListValue values) {
-        for(IXMLElement val : values) {
-            append(val);
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof XQueryListValue) {
+            XQueryListValue l = ((XQueryListValue) obj);
+            return values.equals(l.values);
         }
+
+        return super.equals(obj);
     }
 
     @Override

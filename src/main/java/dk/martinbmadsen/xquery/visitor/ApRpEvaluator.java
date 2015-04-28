@@ -12,8 +12,6 @@ import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLDocument;
 import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class ApRpEvaluator extends XQueryEvaluator {
@@ -29,11 +27,11 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
         switch(ctx.slash.getType()) {
             case XQueryParser.SLASH:
-                results.append((XQueryListValue)visitor.visit(ctx.rp()));
+                results.addAll((XQueryListValue)visitor.visit(ctx.rp()));
                 break;
             case XQueryParser.SSLASH:
                 qc.pushContextElement(document.root().descendants());
-                results.append(unique((XQueryListValue)visitor.visit(ctx.rp())));
+                results.addAll(((XQueryListValue)visitor.visit(ctx.rp())).unique());
                 break;
             default:
                 Debugger.error("Oops, shouldn't be here");
@@ -57,7 +55,6 @@ public class ApRpEvaluator extends XQueryEvaluator {
             res.addAll(context.children());
         }
         return res;
-        //return new XQueryListValue(qc.peekContextElement().children());
     }
 
     public XQueryListValue evalDot() {
@@ -127,12 +124,24 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
             y.addAll(context);
         }
-        return y;
-        //return unique(y);
+        return y.unique();
     }
 
     public XQueryListValue evalRpSlashSlash(@NotNull RpSlashContext ctx) {
-        return new XQueryListValue();
+        XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
+        XQueryListValue descendants = new XQueryListValue();
+
+        for(IXMLElement x : l) {
+            descendants.addAll(x.descendants());
+        }
+
+        qc.pushContextElement(descendants);
+
+        XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
+
+        qc.popContextElement();
+
+        return r;
     }
 
     public XQueryListValue evalFilter(@NotNull RpFilterContext ctx) {
@@ -167,31 +176,5 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
         l.addAll(r);
         return l;
-    }
-
-    /**
-     * TODO: Implement this method
-     * Removes duplicate elements
-     * @param
-     * @return a sanitized list with duplicate elements removed
-     */
-    private List<IXMLElement> unique(List<IXMLElement> list){
-        if (list == null)
-            return list;
-        List<IXMLElement> res2 = new ArrayList<>();
-        List<String> addedRes = new ArrayList<>();
-        res2.addAll(list);
-        list.clear();
-
-        for (int i = 0; i < res2.size(); i++) {
-            String value = res2.get(i).getValue();
-            if (addedRes.contains(value))
-                continue;
-            else {
-                addedRes.add(value);
-                list.add(res2.get(i));
-            }
-        }
-        return list;
     }
 }

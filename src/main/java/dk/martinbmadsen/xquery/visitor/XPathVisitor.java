@@ -1,12 +1,14 @@
 package dk.martinbmadsen.xquery.visitor;
 
 import dk.martinbmadsen.utils.debug.Debugger;
+import dk.martinbmadsen.xquery.parser.XPathBaseVisitor;
+import dk.martinbmadsen.xquery.parser.XPathParser;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLDocument;
-import dk.martinbmadsen.xquery.parser.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
@@ -243,7 +245,7 @@ public class XPathVisitor extends XPathBaseVisitor<List<IXMLElement>> {
 
     private List<IXMLElement> unique(List<IXMLElement> list){
         if (list == null)
-            return list;
+            return null;
         List<IXMLElement> results = new ArrayList<>();
 
         for (IXMLElement e1 : list)

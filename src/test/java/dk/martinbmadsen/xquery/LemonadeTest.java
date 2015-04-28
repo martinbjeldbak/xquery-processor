@@ -109,6 +109,23 @@ public class LemonadeTest extends XQueryTest {
 
     }
 
+    @Test
+    public void slashslash1() {
+        List<IXMLElement> res1 = exR("//*/amount");
+        List<IXMLElement> res2 = exR("//amount");
+
+        Element amount = new Element("amount");
+        amount.addContent(new Text("60"));
+        IXMLElement e = new XMLElement(amount);
+
+        assertEquals(6, res1.size());
+        assertEquals(6, res2.size());
+        assertEquals(res1.size(), res2.size());
+        assertEquals(res1, res2);
+        assertEquals(e, res1.get(4));
+        assertEquals(e, res2.get(4));
+    }
+
     private List<IXMLElement> exR(String q) {
         return super.ex(r + q);
     }
