@@ -31,20 +31,17 @@ public class FEvaluator extends XQueryEvaluator {
     public XQueryFilterValue evalAnd(FAndContext ctx) {
         XQueryFilterValue l = (XQueryFilterValue)visitor.visit(ctx.left);
         XQueryFilterValue r = (XQueryFilterValue)visitor.visit(ctx.right);
-
         return l.and(r);
     }
 
     public XQueryFilterValue evalOr(FOrContext ctx) {
         XQueryFilterValue l = (XQueryFilterValue)visitor.visit(ctx.left);
         XQueryFilterValue r = (XQueryFilterValue)visitor.visit(ctx.right);
-
         return l.or(r);
     }
 
     public XQueryFilterValue evalNot(FNotContext ctx) {
         XQueryFilterValue v = (XQueryFilterValue)visitor.visit(ctx.f());
-
         return v.not();
     }
 
@@ -69,38 +66,25 @@ public class FEvaluator extends XQueryEvaluator {
         XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
         XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
 
-        XQueryListValue res = new XQueryListValue(1);
-
         for(IXMLElement x : l) {
             for(IXMLElement y : r) {
-                if(x.equals(y)) {
-                    res.add(y);
-                    break;
-                }
+                if(x.equals(y))
+                    return XQueryFilterValue.trueValue();
             }
         }
-
-        if(res.size() > 0)
-            return XQueryFilterValue.trueValue();
         return XQueryFilterValue.falseValue();
     }
 
     private XQueryFilterValue evalIdEqual(FEqualContext ctx) {
         XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
         XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
-        XQueryListValue res = new XQueryListValue(1);
 
         for(IXMLElement x : l) {
             for(IXMLElement y : r) {
-                if(x.equalsRef(y)) {
-                    res.add(y);
-                    break;
-                }
+                if(x.equalsRef(y))
+                    return XQueryFilterValue.trueValue();
             }
         }
-
-        if(res.size() > 0)
-            return XQueryFilterValue.trueValue();
         return XQueryFilterValue.falseValue();
     }
 }

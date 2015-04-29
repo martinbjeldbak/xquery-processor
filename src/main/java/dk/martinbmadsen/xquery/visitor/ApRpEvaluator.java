@@ -139,6 +139,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
 
         qc.popContextElement();
+
         return r;
     }
 
@@ -149,12 +150,11 @@ public class ApRpEvaluator extends XQueryEvaluator {
         XQueryListValue xs = (XQueryListValue)visitor.visit(ctx.rp());
 
         for(IXMLElement x : xs) {
-            // Evaluate f from this context
             qc.pushContextElement(x);
 
             XQueryFilterValue y = (XQueryFilterValue)visitor.visit(ctx.f());
-            qc.popContextElement();
 
+            qc.popContextElement();
 
             if(y == XQueryFilterValue.trueValue())
                 res.add(x);
