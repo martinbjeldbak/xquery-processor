@@ -13,10 +13,14 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     private ApRpEvaluator rpEval = new ApRpEvaluator(this, qc);
     private FEvaluator fEval = new FEvaluator(this, qc);
 
+    /** APS **/
+
     @Override
     public XQueryListValue visitAp(@NotNull ApContext ctx) {
         return rpEval.evalAp(ctx);
     }
+
+    /** RPS **/
 
     @Override
     public XQueryListValue visitRpTagName(@NotNull RpTagNameContext ctx) {
@@ -68,11 +72,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
         return rpEval.evalConcat(ctx);
     }
 
-
-
-
-
-
+    /** FILTERS **/
 
     @Override
     public XQueryFilterValue visitFRp(@NotNull FRpContext ctx) {
@@ -107,5 +107,116 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     @Override
     public XQueryFilterValue visitFNot(@NotNull FNotContext ctx) {
         return fEval.evalNot(ctx);
+    }
+
+    /** FLOWR CLAUSES **/
+
+    @Override
+    public IXQueryValue visitForClause(@NotNull ForClauseContext ctx) {
+        return super.visitForClause(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitLetClause(@NotNull LetClauseContext ctx) {
+        return super.visitLetClause(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitWhereClause(@NotNull WhereClauseContext ctx) {
+        return super.visitWhereClause(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitReturnClause(@NotNull ReturnClauseContext ctx) {
+        return super.visitReturnClause(ctx);
+    }
+
+    /** CONDITION CLAUSES **/
+
+    @Override
+    public IXQueryValue visitCondValEqual(@NotNull CondValEqualContext ctx) {
+        return super.visitCondValEqual(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitCondEmpty(@NotNull CondEmptyContext ctx) {
+        return super.visitCondEmpty(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitCondSomeSatis(@NotNull CondSomeSatisContext ctx) {
+        return super.visitCondSomeSatis(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitCondIdEqual(@NotNull CondIdEqualContext ctx) {
+        return super.visitCondIdEqual(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitCondParenExpr(@NotNull CondParenExprContext ctx) {
+        return super.visitCondParenExpr(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitCondAnd(@NotNull CondAndContext ctx) {
+        return super.visitCondAnd(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitCondNot(@NotNull CondNotContext ctx) {
+        return super.visitCondNot(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitCondOr(@NotNull CondOrContext ctx) {
+        return super.visitCondOr(ctx);
+    }
+
+    /** XQ **/
+
+    @Override
+    public IXQueryValue visitXqParenExpr(@NotNull XqParenExprContext ctx) {
+        return super.visitXqParenExpr(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqFLWR(@NotNull XqFLWRContext ctx) {
+        return super.visitXqFLWR(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqTagName(@NotNull XqTagNameContext ctx) {
+        return super.visitXqTagName(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqVar(@NotNull XqVarContext ctx) {
+        return super.visitXqVar(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXpSlash(@NotNull XpSlashContext ctx) {
+        return super.visitXpSlash(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqLet(@NotNull XqLetContext ctx) {
+        return super.visitXqLet(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqStringConstant(@NotNull XqStringConstantContext ctx) {
+        return super.visitXqStringConstant(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqAp(@NotNull XqApContext ctx) {
+        return super.visitXqAp(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqConcat(@NotNull XqConcatContext ctx) {
+        return super.visitXqConcat(ctx);
     }
 }
