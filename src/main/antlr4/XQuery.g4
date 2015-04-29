@@ -71,11 +71,10 @@ rp
 // Path filter
 f
   : rp                                #fRp
-  | left=rp equal=('='|'==') right=rp #fEqual
-  | left=rp 'eq'  right=rp            #fValEqual
-  | left=rp 'is'  right=rp            #fIdEqual
-  | left=f  'and' right=f             #fAnd
-  | left=f  'or'  right=f             #fOr
+  | left=rp ('eq'|'=')  right=rp      #fValEqual
+  | left=rp ('is'|'==') right=rp      #fIdEqual
+  | left=f  'and'       right=f       #fAnd
+  | left=f  'or'        right=f       #fOr
   | '(' f ')'                         #fParen
   | 'not ' f                          #fNot
   ;

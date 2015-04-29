@@ -80,18 +80,13 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     }
 
     @Override
-    public XQueryFilterValue visitFEqual(@NotNull FEqualContext ctx) {
-        return fEval.evalEquals(ctx);
-    }
-
-    @Override
     public IXQueryValue visitFValEqual(@NotNull FValEqualContext ctx) {
-        return super.visitFValEqual(ctx);
+        return fEval.evalValEqual(ctx);
     }
 
     @Override
     public IXQueryValue visitFIdEqual(@NotNull FIdEqualContext ctx) {
-        return super.visitFIdEqual(ctx);
+        return fEval.evalIdEqual(ctx);
     }
 
     @Override

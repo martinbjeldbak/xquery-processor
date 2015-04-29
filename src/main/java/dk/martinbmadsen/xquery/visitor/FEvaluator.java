@@ -1,9 +1,7 @@
 package dk.martinbmadsen.xquery.visitor;
 
-import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
-import dk.martinbmadsen.xquery.parser.XQueryParser;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
 import dk.martinbmadsen.xquery.value.XQueryFilterValue;
 import dk.martinbmadsen.xquery.value.XQueryListValue;
@@ -45,24 +43,7 @@ public class FEvaluator extends XQueryEvaluator {
         return v.not();
     }
 
-    public XQueryFilterValue evalEquals(FEqualContext ctx) {
-        XQueryFilterValue val;
-
-        switch(ctx.equal.getType()) {
-            case XQueryParser.EQLS: // =, value equality
-                val = evalValEqual(ctx);
-                break;
-            case XQueryParser.EQUAL: // ==, Identity equal
-                val = evalIdEqual(ctx);
-                break;
-            default:
-                val = XQueryFilterValue.falseValue();
-                Debugger.error("Oops, shouldn't be here (FEqualsContext)");
-        }
-        return val;
-    }
-
-    private XQueryFilterValue evalValEqual(FEqualContext ctx) {
+    public XQueryFilterValue evalValEqual(FValEqualContext ctx) {
         XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
         XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
 
@@ -75,7 +56,7 @@ public class FEvaluator extends XQueryEvaluator {
         return XQueryFilterValue.falseValue();
     }
 
-    private XQueryFilterValue evalIdEqual(FEqualContext ctx) {
+    public XQueryFilterValue evalIdEqual(FIdEqualContext ctx) {
         XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
         XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
 
