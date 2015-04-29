@@ -14,17 +14,16 @@ public class ShakespeareTest extends XQueryTest {
 
     @Test
     public void playground() throws JDOMException, IOException {
-
-        List<IXMLElement> correct = runCorrectImplementation("samples/xml/j_caesar.xml", "/*/*/*/..");
-        List<IXMLElement> res = exR("/*/*/*/..");
-
-        System.out.println(correct.size());
-        System.out.println(res.size());
     }
 
     @Test
     public void getsARootElement() {
-        assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", exR("/TITLE"), 0);
+        List<IXMLElement> res1 = exR("/TITLE");
+        List<IXMLElement> res2 = runCorrectImplementation("/TITLE");
+
+        assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res1, 0);
+        assertEquals(res1, res2);
+        assertXPathEquals("/TITLE");
     }
 
     @Test
@@ -32,12 +31,7 @@ public class ShakespeareTest extends XQueryTest {
         List<IXMLElement> res = exR("/PERSONAE/PERSONA");
 
         assertEquals(9, res.size());
-    }
-
-    @Test
-    public void slashSlash() throws IOException {
-        // TODO: Implement // semantics
-        //XQueryExecutor.printResults(exF());
+        assertXPathEquals("/PERSONAE/PERSONA");
     }
 
     @Test
@@ -54,8 +48,6 @@ public class ShakespeareTest extends XQueryTest {
     public void concatenation2() {
         // Concat with rps
         List<IXMLElement> res = exR("/FM/P,TITLE");
-
-        print(res);
 
         assertEquals(5, res.size());
         assertXMLEquals("<P>Text placed in the public domain by Moby Lexical Tools, 1992.</P>", res, 0);
@@ -87,15 +79,16 @@ public class ShakespeareTest extends XQueryTest {
         assertXMLEquals("<TITLE>ACT I</TITLE>", res, 0);
         // ... the other 3 titles here
         assertXMLEquals("<TITLE>ACT V</TITLE>", res, 4);
+        assertXPathEquals("/ACT/TITLE/../TITLE");
     }
 
     @Test
     public void dotdot2() {
-        // TODO: Fails because unique() is not implemented yet
         List<IXMLElement> res = exR("/ACT/TITLE/../TITLE/../../TITLE");
 
         assertEquals(1, res.size());
         assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res, 0);
+        assertXPathEquals("/ACT/TITLE/../TITLE/../../TITLE");
     }
 
     @Test
@@ -103,13 +96,12 @@ public class ShakespeareTest extends XQueryTest {
         List<IXMLElement> res = exR("/PERSONAE/PGROUP/PERSONA[text()]");
 
         assertEquals(27, res.size()); // 27 personas
+        assertXPathEquals("/PERSONAE/PGROUP/PERSONA[text()]");
     }
 
     @Test
     public void filter2() {
-        List<IXMLElement> res = exR("/PERSONAE/PGROUP[PERSONA]");
-
-        //XQueryExecutor.printResults(res);
+        assertXPathEquals("/PERSONAE/PGROUP[PERSONA]");
     }
 
 
@@ -119,5 +111,13 @@ public class ShakespeareTest extends XQueryTest {
 
     private List<IXMLElement> exR(String q) {
         return super.ex(r + q);
+    }
+
+    protected List<IXMLElement> runCorrectImplementation(String query) {
+        return super.runCorrectImplementation("samples/xml/j_caesar.xml", "PLAY" + query);
+    }
+
+    private void assertXPathEquals(String query) {
+        assertEquals(runCorrectImplementation(query), exR(query));
     }
 }

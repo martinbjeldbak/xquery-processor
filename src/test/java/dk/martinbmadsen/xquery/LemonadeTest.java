@@ -1,6 +1,5 @@
 package dk.martinbmadsen.xquery;
 
-import dk.martinbmadsen.xquery.executor.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLElement;
 import org.jdom2.Attribute;
@@ -17,19 +16,16 @@ public class LemonadeTest extends XQueryTest {
 
     @Test
     public void playground() {
-        List<IXMLElement> res = exR("//*/amount");
-        XQueryExecutor.printResults(res);
     }
 
     @Test
     public void lemonadePriceQuery() {
         List<IXMLElement> res = exR("/drink/lemonade/price");
 
-        XQueryExecutor.printResults(res);
-
         assertEquals(2, res.size());
         assertEquals("<price>$2.50</price>", res.get(0).toString());
         assertEquals("<price>$3.50</price>", res.get(1).toString());
+        assertXPathEquals("/drink/lemonade/price");
     }
 
     @Test
@@ -39,13 +35,12 @@ public class LemonadeTest extends XQueryTest {
         assertEquals(2, res.size());
         assertEquals("<amount>20</amount>", res.get(0).toString());
         assertEquals("<amount>10</amount>", res.get(1).toString());
+        assertXPathEquals("/drink/lemonade/amount");
     }
 
     @Test
     public void descendantDrinkPriceQuery() {
-        List<IXMLElement> res = ex(r + "/drink//price");
-
-        //XQueryExecutor.printResults(res);
+        assertXPathEquals("/drink//price");
     }
 
     @Test
@@ -60,6 +55,7 @@ public class LemonadeTest extends XQueryTest {
     @Test
     public void filterTest1() {
         List<IXMLElement> res = exR("/drink/lemonade[price=price]");
+        assertXPathEquals("/drink/lemonade[price=price]");
 
         Element lemonade = new Element("lemonade");
         lemonade.setAttribute(new Attribute("supplier", "mother"));
@@ -106,7 +102,7 @@ public class LemonadeTest extends XQueryTest {
 
         assertEquals(1, res.size());
         assertEquals(iPop, res.get(0));
-
+        assertXPathEquals("/drink/pop[@id]");
     }
 
     @Test
@@ -124,9 +120,19 @@ public class LemonadeTest extends XQueryTest {
         assertEquals(res1, res2);
         assertEquals(e, res1.get(4));
         assertEquals(e, res2.get(4));
+        assertXPathEquals("//*/amount");
+        assertXPathEquals("//amount");
     }
 
     private List<IXMLElement> exR(String q) {
         return super.ex(r + q);
+    }
+
+    protected List<IXMLElement> runCorrectImplementation(String query) {
+        return super.runCorrectImplementation("samples/xml/lemonade2.xml", "inventory" + query);
+    }
+
+    private void assertXPathEquals(String query) {
+        assertEquals(runCorrectImplementation(query), exR(query));
     }
 }

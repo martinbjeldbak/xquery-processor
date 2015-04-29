@@ -59,6 +59,11 @@ public class XQueryListValue implements IXQueryValue, Iterable<IXMLElement>, Col
     }
 
     @Override
+    public String toString() {
+        return values.toString();
+    }
+
+    @Override
     public int size() {
         return values.size();
     }
