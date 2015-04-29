@@ -58,13 +58,14 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryListValue evalDot() {
-        return new XQueryListValue(qc.peekContextElement());
+        return qc.peekContextElement();
     }
 
     public XQueryListValue evalDotDot() {
-        IXMLElement parent = evalDot().get(0).parent();
-        qc.popContextElement();
-        return new XQueryListValue(parent);
+        XQueryListValue res = qc.peekContextElement().stream().map(
+                IXMLElement::parent
+        ).collect(Collectors.toCollection(XQueryListValue::new));
+        return res.unique();
     }
 
     public XQueryListValue evalText() {
@@ -94,7 +95,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryListValue evalParen(@NotNull RpParenExprContext ctx) {
-        return new XQueryListValue((XQueryListValue)visitor.visit(ctx.rp()));
+        return (XQueryListValue)visitor.visit(ctx.rp());
     }
 
     public XQueryListValue evalSlashes(@NotNull RpSlashContext ctx) {
@@ -115,15 +116,14 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
     public XQueryListValue evalRpSlash(@NotNull RpSlashContext ctx) {
         XQueryListValue y = new XQueryListValue();
-        XQueryListValue xs = (XQueryListValue)visitor.visit(ctx.left);
+        XQueryListValue x = (XQueryListValue)visitor.visit(ctx.left);
 
-        for(IXMLElement x : xs) {
-            qc.pushContextElement(x);
-            XQueryListValue context = (XQueryListValue)visitor.visit(ctx.right);
-            qc.popContextElement();
+        qc.pushContextElement(x);
 
-            y.addAll(context);
-        }
+        XQueryListValue context = (XQueryListValue)visitor.visit(ctx.right);
+        y.addAll(context);
+
+        qc.popContextElement();
         return y.unique();
     }
 
@@ -131,16 +131,14 @@ public class ApRpEvaluator extends XQueryEvaluator {
         XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
         XQueryListValue descendants = new XQueryListValue();
 
-        for(IXMLElement x : l) {
+        for(IXMLElement x : l)
             descendants.addAll(x.descendants());
-        }
 
         qc.pushContextElement(descendants);
 
         XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
 
         qc.popContextElement();
-
         return r;
     }
 
@@ -166,13 +164,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
     public XQueryListValue evalConcat(@NotNull RpConcatContext ctx) {
         XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
-
-        // Push element n back onto our context stack (since r also has to be evalauted from n)
-        qc.pushContextElement(l);
-
         XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
-
-        qc.popContextElement();
 
         l.addAll(r);
         return l;

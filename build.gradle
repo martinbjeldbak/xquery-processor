@@ -49,6 +49,7 @@ dependencies {
 
     compile 'org.jdom:jdom2:2.0.6'
     compile 'org.antlr:antlr4-runtime:4.5'
+    compile 'jaxen:jaxen:1.1.6'
 }
 
 clean.delete genSrcPath // Remove any auto-generated source files (Java classes/interfaces/etc)

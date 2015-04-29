@@ -1,7 +1,7 @@
 package dk.martinbmadsen.xquery;
 
-import dk.martinbmadsen.xquery.executor.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
+import org.jdom2.JDOMException;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -13,20 +13,23 @@ public class ShakespeareTest extends XQueryTest {
     private String r = "doc(\"samples/xml/j_caesar.xml\")"; // root query
 
     @Test
-    public void playground() {
-        //List<IXMLElement> res = exR("FM[P=P]");
-        List<IXMLElement> res = exR("/FM/*");
-        XQueryExecutor.printResults(res);
+    public void playground() throws JDOMException, IOException {
+
+        List<IXMLElement> correct = runCorrectImplementation("samples/xml/j_caesar.xml", "/*/*/*/..");
+        List<IXMLElement> res = exR("/*/*/*/..");
+
+        System.out.println(correct.size());
+        System.out.println(res.size());
     }
 
     @Test
     public void getsARootElement() {
-        assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", exR("TITLE"), 0);
+        assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", exR("/TITLE"), 0);
     }
 
     @Test
     public void loads9Personae() {
-        List<IXMLElement> res = exR("PERSONAE/PERSONA");
+        List<IXMLElement> res = exR("/PERSONAE/PERSONA");
 
         assertEquals(9, res.size());
     }
@@ -40,7 +43,7 @@ public class ShakespeareTest extends XQueryTest {
     @Test
     public void concatenation1() {
         // Concat from root
-        List<IXMLElement> res = exR("TITLE,SCNDESCR");
+        List<IXMLElement> res = exR("/TITLE,SCNDESCR");
 
         assertEquals(2, res.size());
         assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res, 0);
@@ -50,7 +53,9 @@ public class ShakespeareTest extends XQueryTest {
     @Test
     public void concatenation2() {
         // Concat with rps
-        List<IXMLElement> res = exR("FM/P,TITLE");
+        List<IXMLElement> res = exR("/FM/P,TITLE");
+
+        print(res);
 
         assertEquals(5, res.size());
         assertXMLEquals("<P>Text placed in the public domain by Moby Lexical Tools, 1992.</P>", res, 0);
@@ -63,7 +68,7 @@ public class ShakespeareTest extends XQueryTest {
     @Test
     public void concatenation3() {
         // Chained concat
-        List<IXMLElement> res = exR("FM/P,TITLE,PERSONAE/TITLE");
+        List<IXMLElement> res = exR("/FM/P,TITLE,PERSONAE/TITLE");
 
         assertEquals(6, res.size());
         assertXMLEquals("<P>Text placed in the public domain by Moby Lexical Tools, 1992.</P>", res, 0);
@@ -76,7 +81,7 @@ public class ShakespeareTest extends XQueryTest {
 
     @Test
     public void dotdot1() {
-        List<IXMLElement> res = exR("ACT/TITLE/../TITLE");
+        List<IXMLElement> res = exR("/ACT/TITLE/../TITLE");
 
         assertEquals(5, res.size());
         assertXMLEquals("<TITLE>ACT I</TITLE>", res, 0);
@@ -87,25 +92,24 @@ public class ShakespeareTest extends XQueryTest {
     @Test
     public void dotdot2() {
         // TODO: Fails because unique() is not implemented yet
-        List<IXMLElement> res = exR("ACT/TITLE/../TITLE/../../TITLE");
-        /*
+        List<IXMLElement> res = exR("/ACT/TITLE/../TITLE/../../TITLE");
+
         assertEquals(1, res.size());
         assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res, 0);
-        */
     }
 
     @Test
     public void filter1() {
-        List<IXMLElement> res = exR("PERSONAE/PGROUP/PERSONA[text()]");
+        List<IXMLElement> res = exR("/PERSONAE/PGROUP/PERSONA[text()]");
 
         assertEquals(27, res.size()); // 27 personas
     }
 
     @Test
     public void filter2() {
-        List<IXMLElement> res = exR("PERSONAE/PGROUP[PERSONA]");
+        List<IXMLElement> res = exR("/PERSONAE/PGROUP[PERSONA]");
 
-        XQueryExecutor.printResults(res);
+        //XQueryExecutor.printResults(res);
     }
 
 
