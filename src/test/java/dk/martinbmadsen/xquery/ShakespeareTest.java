@@ -1,5 +1,7 @@
 package dk.martinbmadsen.xquery;
 
+import com.pholser.junit.quickcheck.From;
+import dk.martinbmadsen.utils.debug.QueryGenerator;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.jdom2.JDOMException;
 import org.junit.Test;
@@ -8,7 +10,12 @@ import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import com.pholser.junit.quickcheck.ForAll;
+import org.junit.contrib.theories.Theories;
+import org.junit.contrib.theories.Theory;
+import org.junit.runner.RunWith;
 
+@RunWith(Theories.class)
 public class ShakespeareTest extends XQueryTest {
     private String r = "doc(\"samples/xml/j_caesar.xml\")"; // root query
 
@@ -16,6 +23,13 @@ public class ShakespeareTest extends XQueryTest {
     public void playground() throws JDOMException, IOException {
     }
 
+    @Theory
+    public void queryTester(@ForAll @From(QueryGenerator.class) String query) {
+        System.out.println(query);
+        List<IXMLElement> res1 = exR(query);
+        List<IXMLElement> res2 = runCorrectImplementation(query);
+        assertEquals(res1, res2);
+    }
     @Test
     public void getsARootElement() {
         List<IXMLElement> res1 = exR("/TITLE");
