@@ -94,6 +94,8 @@ public class XMLElement implements IXMLElement {
         Iterable<Content> descendants = elem.getDescendants();
         XQueryListValue res = new XQueryListValue();
 
+        res.add(new XMLElement(elem));
+
         for(Content c : descendants) {
             if(c instanceof Element) {
                 Element e = (Element)c;

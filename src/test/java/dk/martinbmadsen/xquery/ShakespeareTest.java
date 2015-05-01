@@ -2,6 +2,7 @@ package dk.martinbmadsen.xquery;
 
 import com.pholser.junit.quickcheck.From;
 import dk.martinbmadsen.utils.debug.QueryGenerator;
+import dk.martinbmadsen.xquery.executor.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.jdom2.JDOMException;
 import org.junit.Test;
