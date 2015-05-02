@@ -49,7 +49,7 @@ public class FEvaluator extends XQueryEvaluator {
 
         for(IXMLElement x : l) {
             for(IXMLElement y : r) {
-                if(x.equals(y))
+                if(x != null && x.equals(y))
                     return XQueryFilterValue.trueValue();
             }
         }
@@ -60,12 +60,10 @@ public class FEvaluator extends XQueryEvaluator {
         XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
         XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
 
-        for(IXMLElement x : l) {
-            for(IXMLElement y : r) {
-                if(x.equalsRef(y))
+        for(IXMLElement x : l)
+            for(IXMLElement y : r)
+                if(x != null && x.equalsRef(y))
                     return XQueryFilterValue.trueValue();
-            }
-        }
         return XQueryFilterValue.falseValue();
     }
 }

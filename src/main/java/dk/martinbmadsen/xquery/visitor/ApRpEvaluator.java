@@ -51,9 +51,9 @@ public class ApRpEvaluator extends XQueryEvaluator {
     public XQueryListValue evalWildCard() {
         XQueryListValue res = new XQueryListValue();
 
-        for(IXMLElement context : qc.peekContextElement()) {
-            res.addAll(context.children());
-        }
+        for(IXMLElement context : qc.peekContextElement())
+            if (context != null)
+                res.addAll(context.children());
         return res;
     }
 
@@ -132,7 +132,8 @@ public class ApRpEvaluator extends XQueryEvaluator {
         XQueryListValue descendants = new XQueryListValue();
 
         for(IXMLElement x : l)
-            descendants.addAll(x.descendants());
+            if (x != null)
+                descendants.addAll(x.descendants());
 
         qc.pushContextElement(descendants);
 

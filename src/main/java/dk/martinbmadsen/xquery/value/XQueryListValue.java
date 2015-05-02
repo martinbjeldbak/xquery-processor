@@ -43,7 +43,7 @@ public class XQueryListValue implements IXQueryValue, Iterable<IXMLElement>, Col
 
     private boolean containsRef(List<IXMLElement> list, IXMLElement elem) {
         for (IXMLElement x : list)
-            if (x.equalsRef(elem))
+            if (!(x == null) && x.equalsRef(elem))
                 return true;
         return false;
     }

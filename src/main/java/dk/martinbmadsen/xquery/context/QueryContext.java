@@ -16,7 +16,11 @@ public class QueryContext {
     }
 
     public XQueryListValue peekContextElement() {
-        return this.ctxElems.peek();
+        XQueryListValue res = new XQueryListValue(this.ctxElems.peek().size());
+        for (IXMLElement x : this.ctxElems.peek())
+            if (x != null)
+                res.add(x);
+        return res;
     }
 
     /**
