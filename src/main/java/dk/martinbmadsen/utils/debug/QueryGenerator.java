@@ -19,7 +19,9 @@ import java.util.*;
 public class QueryGenerator extends Generator<String> {
     List<String> rps = new ArrayList<>();
     List<String> seperators = new ArrayList<>();
-    List<String> filters = new ArrayList<>();
+    List<String> attributes = new ArrayList<>();
+    int maxsize = 20;
+    int currentSize = 0;
     public QueryGenerator() {
         super(String.class);
         XMLDocument document = new XMLDocument("samples/xml/j_caesar.xml");
@@ -27,57 +29,74 @@ public class QueryGenerator extends Generator<String> {
         // RPs
         for (IXMLElement x : document.root().descendants())
             rps.add(x.tag());
-        rps.addAll(Arrays.asList("*", ".", "..", "text()"));
-        rps = new ArrayList<String>(new HashSet<String>(rps));
+        rps = new ArrayList<String>(new HashSet<String>(rps)); // Remove duplicates
 
         // Seperators
-        seperators.addAll(Arrays.asList("/", "//", ","));
+        seperators.addAll(Arrays.asList("/", "//"));
 
-        //Filters
-        for (int i = 0; i < rps.size(); i++){
-            filters.add('[' + generateFilter() + ']');
-        }
-
-        int filterLen = filters.size();
-        for (int i = 0; i < filterLen * 2; i++)
-            filters.add(""); // Make filters optional
+        // Attributes
+        for (IXMLElement x : document.root().descendants())
+            attributes.addAll(x.getAttribNames());
+        attributes = new ArrayList<String>(new HashSet<String>(attributes)); //Remove duplicates
     }
 
     @Override
     public String generate(SourceOfRandomness random, GenerationStatus status) {
-        String query = "";
-        int querySize = random.nextInt(10);
-        for (int i = 0; i <= querySize; i++) {
-            String seperator = seperators.get(random.nextInt(seperators.size()));
-            if(i == 0 && seperator.equals(",")) // Don't allow comma as first seperator
-                seperator = "/";
-            String rp = rps.get(random.nextInt(rps.size()));
-            String filter = filters.get(random.nextInt(filters.size()));
-            query += seperator + rp + filter;
-        }
-        return query;
+        currentSize = 0;
+        // Don't allow comma as first seperator
+        String seperator = seperators.get(random.nextInt(seperators.size()));
+        return seperator + generateRP(random);
     }
 
-    private String generateFilter(){
-        Random r = new Random();
-        switch (r.nextInt(8)){
-            case 0:
-                return rps.get(r.nextInt(rps.size()));
-            case 1:
-                return rps.get(r.nextInt(rps.size())) + " = " + rps.get(r.nextInt(rps.size()));
-            case 2:
-                return rps.get(r.nextInt(rps.size())) + " == " + rps.get(r.nextInt(rps.size()));
-            case 3:
-                return rps.get(r.nextInt(rps.size())) + " is " + rps.get(r.nextInt(rps.size()));
-            case 4:
-                return rps.get(r.nextInt(rps.size())) + " eq " + rps.get(r.nextInt(rps.size()));
-            case 5:
-                return generateFilter() + " and " + generateFilter();
-            case 6:
-                return generateFilter() + " or " + generateFilter();
-            case 7:
-                return "not " + generateFilter();
-            default: return "";
-        }
+    private String generateRP(SourceOfRandomness random) {
+        if (currentSize++ >= maxsize)
+            return rps.get(random.nextInt(rps.size()));
+        int ranNum = random.nextInt(100);
+        //chance is equal to chance of specific event happening
+        int chance = 0;
+        if (ranNum < (chance += 5))
+            return "*";
+        else if (ranNum < (chance += 5))
+            return ".";
+        else if (ranNum < (chance += 5))
+            return "..";
+        else if (ranNum < (chance += 5))
+            return "text()";
+        else if (ranNum < (chance += 5))
+            return '(' + generateRP(random) + ')';
+        else if (ranNum < (chance += 30))
+            return generateRP(random) + "/" + generateRP(random);
+        else if (ranNum < (chance += 5))
+            return generateRP(random) + "//" + generateRP(random);
+        else if (ranNum < (chance += 5))
+            return generateRP(random) + '[' + generateFilter(random) + ']';
+        else if (ranNum < (chance += 5))
+            return generateRP(random) + "," + generateRP(random);
+        else if (ranNum < (chance += 5) && attributes.size() > 0)
+            return "@" + attributes.get(random.nextInt(attributes.size()));
+        else return rps.get(random.nextInt(rps.size()));
+    }
+
+    private String generateFilter(SourceOfRandomness random){
+        if (currentSize++ >= maxsize)
+            return rps.get(random.nextInt(rps.size()));
+        int ranNum = random.nextInt(100);
+        //chance is equal to chance of specific event happening
+        int chance = 0;
+        if (ranNum < (chance += 15))
+            return generateRP(random);
+        else if (ranNum < (chance += 15))
+            return generateRP(random) + " = " + generateRP(random);
+        else if (ranNum < (chance += 15))
+            return generateRP(random) + " == " + generateRP(random);
+        else if (ranNum < (chance += 15))
+            return generateRP(random) + " is " + generateRP(random);
+        else if (ranNum < (chance += 15))
+            return generateRP(random) + " eq " + generateRP(random);
+        else if (ranNum < (chance += 5))
+            return generateFilter(random) + " and " + generateFilter(random);
+        else if (ranNum < (chance += 5))
+            return generateFilter(random) + " or " + generateFilter(random);
+        else return "not " + generateFilter(random);
     }
 }
