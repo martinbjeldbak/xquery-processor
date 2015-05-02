@@ -8,14 +8,6 @@ import dk.martinbmadsen.xquery.xmltree.XMLDocument;
 
 import java.util.*;
 
-/**
- * <p>Produces values for theory parameters of type {@link String}.</p>
- *
- * <p>This implementation produces strings whose characters are in the interval [0x0000, 0xD7FF].</p>
- *
- * <p>The generated values will have {@linkplain String#length()} decided by
- * {@link com.pholser.junit.quickcheck.generator.GenerationStatus#size()}.</p>
- */
 public class QueryGenerator extends Generator<String> {
     List<String> rps = new ArrayList<>();
     List<String> seperators = new ArrayList<>();
@@ -43,7 +35,6 @@ public class QueryGenerator extends Generator<String> {
     @Override
     public String generate(SourceOfRandomness random, GenerationStatus status) {
         currentSize = 0;
-        // Don't allow comma as first seperator
         String seperator = seperators.get(random.nextInt(seperators.size()));
         return seperator + generateRP(random);
     }
