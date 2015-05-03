@@ -1,5 +1,6 @@
 package dk.martinbmadsen.xquery.context;
 
+import dk.martinbmadsen.xquery.value.VarEnvironment;
 import dk.martinbmadsen.xquery.value.XQueryListValue;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
