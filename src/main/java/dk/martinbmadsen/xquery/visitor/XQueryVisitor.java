@@ -12,6 +12,8 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     private QueryContext qc = new QueryContext();
     private ApRpEvaluator rpEval = new ApRpEvaluator(this, qc);
     private FEvaluator fEval = new FEvaluator(this, qc);
+    private XqEvaluator xqEval = new XqEvaluator(this, qc);
+    private FLWREvaluator FLWREval = new FLWREvaluator(this, qc);
 
     /** APS **/
 
@@ -177,7 +179,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
 
     @Override
     public IXQueryValue visitXqParenExpr(@NotNull XqParenExprContext ctx) {
-        return super.visitXqParenExpr(ctx);
+        return xqEval.evalParen(ctx);
     }
 
     @Override
@@ -187,17 +189,17 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
 
     @Override
     public IXQueryValue visitXqTagName(@NotNull XqTagNameContext ctx) {
-        return super.visitXqTagName(ctx);
+        return xqEval.evalTagname(ctx);
     }
 
     @Override
     public IXQueryValue visitXqVar(@NotNull XqVarContext ctx) {
-        return super.visitXqVar(ctx);
+        return xqEval.evalVar(ctx);
     }
 
     @Override
     public IXQueryValue visitXqSlash(@NotNull XqSlashContext ctx) {
-        return super.visitXqSlash(ctx);
+        return xqEval.evalSlash(ctx);
     }
 
     @Override
@@ -207,16 +209,16 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
 
     @Override
     public IXQueryValue visitXqStringConstant(@NotNull XqStringConstantContext ctx) {
-        return super.visitXqStringConstant(ctx);
+        return xqEval.evalStringConstant(ctx);
     }
 
     @Override
     public IXQueryValue visitXqAp(@NotNull XqApContext ctx) {
-        return super.visitXqAp(ctx);
+        return xqEval.evalAp(ctx);
     }
 
     @Override
     public IXQueryValue visitXqConcat(@NotNull XqConcatContext ctx) {
-        return super.visitXqConcat(ctx);
+        return xqEval.evalConcat(ctx);
     }
 }

@@ -5,15 +5,15 @@ package dk.martinbmadsen.xquery.parser;
 }
 // XQuery
 xq
-  : Var                                               #xqVar
-  | StringLiteral                                     #xqStringConstant
-  | ap                                                #xqAp
-  | '(' xq ')'                                        #xqParenExpr
-  | left=xq ',' right=xq                                         #xqConcat
-  | xq '/' rp                                         #xqSlash
+  : Var                                                       #xqVar
+  | StringLiteral                                             #xqStringConstant
+  | ap                                                        #xqAp
+  | '(' xq ')'                                                #xqParenExpr
+  | left=xq ',' right=xq                                      #xqConcat
+  | xq '/' rp                                                 #xqSlash
   | '<' tagName=Identifier '>' '{' xq '}' '</' Identifier '>' #xqTagName
-  | forClause letClause? whereClause? returnClause    #xqFLWR
-  | letClause xq                                      #xqLet
+  | forClause letClause? whereClause? returnClause            #xqFLWR
+  | letClause xq                                              #xqLet
   ;
 
 // For Clause: for $var1 in $someList, $var2 in $var1)

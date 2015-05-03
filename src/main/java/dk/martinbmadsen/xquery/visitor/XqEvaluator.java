@@ -49,4 +49,12 @@ public class XqEvaluator extends XQueryEvaluator {
         XQueryListValue xq = (XQueryListValue)visitor.visit(ctx.xq());
         return new XQueryListValue(new XMLElement(ctx.tagName.getText(), xq));
     }
+
+    public XQueryListValue evalFLWR(@NotNull XqFLWRContext ctx) {
+        return null;
+    }
+
+    public XQueryListValue evalLet(@NotNull XqLetContext ctx) {
+        return null;
+    }
 }
