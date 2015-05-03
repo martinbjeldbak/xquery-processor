@@ -196,8 +196,8 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     }
 
     @Override
-    public IXQueryValue visitXpSlash(@NotNull XpSlashContext ctx) {
-        return super.visitXpSlash(ctx);
+    public IXQueryValue visitXqSlash(@NotNull XqSlashContext ctx) {
+        return super.visitXqSlash(ctx);
     }
 
     @Override

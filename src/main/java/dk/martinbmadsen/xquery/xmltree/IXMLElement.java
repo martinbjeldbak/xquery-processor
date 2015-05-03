@@ -63,6 +63,8 @@ public interface IXMLElement {
     @Deprecated
     String getValue();
 
+    List<String> getAttribNames();
+
     /**
      * Compares by reference.
      * @param o the other object to compare, an instantiated {@link IXMLElement}

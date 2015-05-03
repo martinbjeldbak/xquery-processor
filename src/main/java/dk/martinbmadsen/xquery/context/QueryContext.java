@@ -10,7 +10,8 @@ import java.util.Stack;
  * evaluating different operators and queries.
  */
 public class QueryContext {
-    public Stack<XQueryListValue> ctxElems = new Stack<>();
+    private Stack<XQueryListValue> ctxElems = new Stack<>();
+    private Stack<VarEnvironment> varEnv = new Stack<>();
 
     public QueryContext() {
     }
@@ -41,5 +42,21 @@ public class QueryContext {
 
     public void pushContextElement(XQueryListValue elem) {
         ctxElems.push(elem);
+    }
+
+    public XQueryListValue getVar(String varName) {
+        return varEnv.peek().getVar(varName);
+    }
+
+    public XQueryListValue putVar(String varName, XQueryListValue varValue) {
+        return varEnv.peek().putVar(varName, varValue);
+    }
+
+    public void popVarEnv(){
+        varEnv.pop();
+    }
+
+    public void pushVarEnv(VarEnvironment ve){
+        varEnv.push(ve);
     }
 }

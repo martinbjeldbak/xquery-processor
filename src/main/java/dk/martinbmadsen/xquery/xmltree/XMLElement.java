@@ -8,6 +8,7 @@ import org.jdom2.Text;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,22 +19,21 @@ public class XMLElement implements IXMLElement {
         elem = element;
     }
 
+    public XMLElement(String tagName, XQueryListValue content) {
+        // TODO: Create XML element from tagName and Content
+        Element elem = new Element(tagName);
+        for (IXMLElement x : content)
+            elem.addContent(x.toString());
+    }
+
     @Override
     public IXMLElement parent() {
-        /* TODO: Should probably return something like below:
+        // TODO: Should probably return something like below:
         Element parentEl = elem.getParentElement();
-        List<IXMLElement> parent = new ArrayList<>(1);
-
-
         if(parentEl == null)
-            return parent;
-        else {
-            parent.add(new XMLElement(parentEl));
-            return parent;
-        }
-
-         */
-        return new XMLElement(elem.getParentElement());
+            return null;
+        else
+            return new XMLElement(parentEl);
     }
 
     @Override
@@ -87,6 +87,14 @@ public class XMLElement implements IXMLElement {
             return elem.equals(e.elem);
         }
         return false;
+    }
+
+    @Override
+    public List<String> getAttribNames(){
+        List<String> attribNames = new ArrayList<>();
+        for (Attribute x : this.elem.getAttributes())
+            attribNames.add(x.getName());
+        return attribNames;
     }
 
     @Override

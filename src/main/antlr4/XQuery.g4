@@ -9,9 +9,9 @@ xq
   | StringLiteral                                     #xqStringConstant
   | ap                                                #xqAp
   | '(' xq ')'                                        #xqParenExpr
-  | xq ',' xq                                         #xqConcat
-  | xq '/' rp                                         #xpSlash
-  | '<' Identifier '>' '{' xq '}' '</' Identifier '>' #xqTagName
+  | left=xq ',' right=xq                                         #xqConcat
+  | xq '/' rp                                         #xqSlash
+  | '<' tagName=Identifier '>' '{' xq '}' '</' Identifier '>' #xqTagName
   | forClause letClause? whereClause? returnClause    #xqFLWR
   | letClause xq                                      #xqLet
   ;
