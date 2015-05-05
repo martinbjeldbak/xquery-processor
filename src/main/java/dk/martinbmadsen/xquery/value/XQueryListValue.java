@@ -94,8 +94,8 @@ public class XQueryListValue implements IXQueryValue, Iterable<IXMLElement>, Col
     }
 
     @Override
-    public boolean add(IXMLElement ixmlElement) {
-        return ixmlElement != null && values.add(ixmlElement);
+    public boolean add(IXMLElement e) {
+        return e != null && values.add(e);
     }
 
     @Override

@@ -46,12 +46,10 @@ public class FEvaluator extends XQueryEvaluator {
         XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
         XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
 
-        for(IXMLElement x : l) {
-            for(IXMLElement y : r) {
+        for(IXMLElement x : l)
+            for(IXMLElement y : r)
                 if(x.equals(y))
                     return XQueryFilterValue.trueValue();
-            }
-        }
         return XQueryFilterValue.falseValue();
     }
 

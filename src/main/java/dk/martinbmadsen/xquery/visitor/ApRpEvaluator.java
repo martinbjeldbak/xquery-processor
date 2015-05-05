@@ -69,7 +69,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryListValue evalText() {
-        XQueryListValue res = new XQueryListValue(qc.peekContextElement().size());
+        XQueryListValue res = new XQueryListValue();
 
         for(IXMLElement x : qc.peekContextElement()) {
             res.add(x.txt());
