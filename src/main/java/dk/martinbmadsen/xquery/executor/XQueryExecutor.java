@@ -38,6 +38,10 @@ public class XQueryExecutor {
     }
 
     public static void printResults(List<IXMLElement> result) {
+        if (result == null){
+            System.out.println("Result is null");
+            return;
+        }
         System.out.println(result.size() + " results below:");
         Integer i = 0;
         for(IXMLElement c : result) {

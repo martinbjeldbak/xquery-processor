@@ -16,8 +16,7 @@ public class FEvaluator extends XQueryEvaluator {
 
     public XQueryFilterValue evalFRp(FRpContext ctx) {
         XQueryListValue resultR = (XQueryListValue)visitor.visit(ctx.rp());
-        // TODO: Remove null check
-        if(resultR != null)
+        if(resultR.size() > 0)
             return XQueryFilterValue.trueValue();
         return XQueryFilterValue.falseValue();
     }
@@ -49,7 +48,7 @@ public class FEvaluator extends XQueryEvaluator {
 
         for(IXMLElement x : l) {
             for(IXMLElement y : r) {
-                if(x != null && x.equals(y))
+                if(x.equals(y))
                     return XQueryFilterValue.trueValue();
             }
         }
@@ -62,7 +61,7 @@ public class FEvaluator extends XQueryEvaluator {
 
         for(IXMLElement x : l)
             for(IXMLElement y : r)
-                if(x != null && x.equalsRef(y))
+                if(x.equalsRef(y))
                     return XQueryFilterValue.trueValue();
         return XQueryFilterValue.falseValue();
     }

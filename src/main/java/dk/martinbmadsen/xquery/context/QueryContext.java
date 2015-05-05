@@ -46,6 +46,8 @@ public class QueryContext {
     }
 
     public XQueryListValue getVar(String varName) {
+        if (varEnv.size() == 0)
+            return null;
         return varEnv.peek().getVar(varName);
     }
 

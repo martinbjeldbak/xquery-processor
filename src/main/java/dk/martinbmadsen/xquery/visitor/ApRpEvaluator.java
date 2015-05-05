@@ -42,18 +42,18 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
     public XQueryListValue evalTagName(@NotNull RpTagNameContext ctx) {
         String tagName = ctx.getText();
-
-        return evalWildCard().stream().filter(
+        XQueryListValue res = evalWildCard().stream().filter(
                 e -> e.tag().equals(tagName)
         ).collect(Collectors.toCollection(XQueryListValue::new));
+
+        return res;
     }
 
     public XQueryListValue evalWildCard() {
         XQueryListValue res = new XQueryListValue();
 
         for(IXMLElement context : qc.peekContextElement())
-            if (context != null)
-                res.addAll(context.children());
+            res.addAll(context.children());
         return res;
     }
 
@@ -83,13 +83,13 @@ public class ApRpEvaluator extends XQueryEvaluator {
         String attrib = ctx.Identifier().getSymbol().getText();
         XQueryListValue res = new XQueryListValue(qc.peekContextElement().size());
 
+        // If @ followed by nothing
         if(attrib == null)
-            return null;
+            return res;
 
         for(IXMLElement x : qc.peekContextElement()) {
-            if(x.attrib(attrib) == null)
-                return null;
-            res.add(x.attrib(attrib));
+            if(x.attrib(attrib) != null)
+                res.add(x.attrib(attrib));
         }
         return res;
     }
@@ -132,8 +132,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         XQueryListValue descendants = new XQueryListValue();
 
         for(IXMLElement x : l)
-            if (x != null)
-                descendants.addAll(x.descendants());
+            descendants.addAll(x.descendants());
 
         qc.pushContextElement(descendants);
 
