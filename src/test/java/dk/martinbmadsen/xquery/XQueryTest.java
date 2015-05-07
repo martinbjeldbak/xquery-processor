@@ -17,7 +17,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
-public class XQueryTest {
+public abstract class XQueryTest {
     protected String r;
     private XPathFactory xpfac =  XPathFactory.instance();
 

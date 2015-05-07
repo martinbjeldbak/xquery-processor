@@ -20,7 +20,7 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalAp(@NotNull XqApContext ctx) {
-        return (XQueryList)visitor.visitAp(ctx.ap());
+        return (XQueryList)visitor.visit(ctx.ap());
     }
 
     public XQueryList evalParen(@NotNull XqParenExprContext ctx){
