@@ -4,7 +4,7 @@ import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
-import dk.martinbmadsen.xquery.value.XQueryFilterValue;
+import dk.martinbmadsen.xquery.value.XQueryFilter;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -77,7 +77,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     /** FILTERS **/
 
     @Override
-    public XQueryFilterValue visitFRp(@NotNull FRpContext ctx) {
+    public XQueryFilter visitFRp(@NotNull FRpContext ctx) {
         return fEval.evalFRp(ctx);
     }
 
@@ -92,22 +92,22 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     }
 
     @Override
-    public XQueryFilterValue visitFParen(@NotNull FParenContext ctx) {
+    public XQueryFilter visitFParen(@NotNull FParenContext ctx) {
         return fEval.evalParen(ctx);
     }
 
     @Override
-    public XQueryFilterValue visitFAnd(@NotNull FAndContext ctx) {
+    public XQueryFilter visitFAnd(@NotNull FAndContext ctx) {
         return fEval.evalAnd(ctx);
     }
 
     @Override
-    public XQueryFilterValue visitFOr(@NotNull FOrContext ctx) {
+    public XQueryFilter visitFOr(@NotNull FOrContext ctx) {
         return fEval.evalOr(ctx);
     }
 
     @Override
-    public XQueryFilterValue visitFNot(@NotNull FNotContext ctx) {
+    public XQueryFilter visitFNot(@NotNull FNotContext ctx) {
         return fEval.evalNot(ctx);
     }
 

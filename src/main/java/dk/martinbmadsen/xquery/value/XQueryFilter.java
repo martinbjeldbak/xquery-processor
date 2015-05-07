@@ -5,34 +5,34 @@ package dk.martinbmadsen.xquery.value;
  * our XPath/XQuery implementation. It supports simple binary operations and
  * comparisons.
  */
-public class XQueryFilterValue implements IXQueryValue {
-    private static XQueryFilterValue trueVal = new XQueryFilterValue();
-    private static XQueryFilterValue falseVal = new XQueryFilterValue();
+public class XQueryFilter implements IXQueryValue {
+    private static XQueryFilter trueVal = new XQueryFilter();
+    private static XQueryFilter falseVal = new XQueryFilter();
 
-    private XQueryFilterValue() {
+    private XQueryFilter() {
     }
 
-    public static XQueryFilterValue trueValue() {
+    public static XQueryFilter trueValue() {
         return trueVal;
     }
 
-    public static XQueryFilterValue falseValue() {
+    public static XQueryFilter falseValue() {
         return falseVal;
     }
 
-    public XQueryFilterValue not() {
+    public XQueryFilter not() {
         if(this == trueVal)
             return falseVal;
         return trueVal;
     }
 
-    public XQueryFilterValue and(XQueryFilterValue other) {
+    public XQueryFilter and(XQueryFilter other) {
         if(this == trueVal && other == trueVal)
             return trueVal;
         return falseVal;
     }
 
-    public XQueryFilterValue or(XQueryFilterValue other) {
+    public XQueryFilter or(XQueryFilter other) {
         if(this == trueVal || other == trueVal)
             return trueVal;
         return falseVal;

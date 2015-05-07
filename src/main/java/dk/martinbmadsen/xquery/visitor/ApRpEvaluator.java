@@ -6,7 +6,7 @@ import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
-import dk.martinbmadsen.xquery.value.XQueryFilterValue;
+import dk.martinbmadsen.xquery.value.XQueryFilter;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLDocument;
@@ -152,11 +152,11 @@ public class ApRpEvaluator extends XQueryEvaluator {
         for(IXMLElement x : xs) {
             qc.pushContextElement(x);
 
-            XQueryFilterValue y = (XQueryFilterValue)visitor.visit(ctx.f());
+            XQueryFilter y = (XQueryFilter)visitor.visit(ctx.f());
 
             qc.popContextElement();
 
-            if(y == XQueryFilterValue.trueValue())
+            if(y == XQueryFilter.trueValue())
                 res.add(x);
         }
         return res;

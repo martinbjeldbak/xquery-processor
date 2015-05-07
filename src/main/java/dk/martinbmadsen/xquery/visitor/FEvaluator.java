@@ -3,7 +3,7 @@ package dk.martinbmadsen.xquery.visitor;
 import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
-import dk.martinbmadsen.xquery.value.XQueryFilterValue;
+import dk.martinbmadsen.xquery.value.XQueryFilter;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
@@ -14,53 +14,53 @@ public class FEvaluator extends XQueryEvaluator {
         super(visitor, qc);
     }
 
-    public XQueryFilterValue evalFRp(FRpContext ctx) {
+    public XQueryFilter evalFRp(FRpContext ctx) {
         XQueryList resultR = (XQueryList)visitor.visit(ctx.rp());
         if(resultR.size() > 0)
-            return XQueryFilterValue.trueValue();
-        return XQueryFilterValue.falseValue();
+            return XQueryFilter.trueValue();
+        return XQueryFilter.falseValue();
     }
 
-    public XQueryFilterValue evalParen(FParenContext ctx) {
-        return (XQueryFilterValue)visitor.visit(ctx.f());
+    public XQueryFilter evalParen(FParenContext ctx) {
+        return (XQueryFilter)visitor.visit(ctx.f());
     }
 
-    public XQueryFilterValue evalAnd(FAndContext ctx) {
-        XQueryFilterValue l = (XQueryFilterValue)visitor.visit(ctx.left);
-        XQueryFilterValue r = (XQueryFilterValue)visitor.visit(ctx.right);
+    public XQueryFilter evalAnd(FAndContext ctx) {
+        XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
+        XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
         return l.and(r);
     }
 
-    public XQueryFilterValue evalOr(FOrContext ctx) {
-        XQueryFilterValue l = (XQueryFilterValue)visitor.visit(ctx.left);
-        XQueryFilterValue r = (XQueryFilterValue)visitor.visit(ctx.right);
+    public XQueryFilter evalOr(FOrContext ctx) {
+        XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
+        XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
         return l.or(r);
     }
 
-    public XQueryFilterValue evalNot(FNotContext ctx) {
-        XQueryFilterValue v = (XQueryFilterValue)visitor.visit(ctx.f());
+    public XQueryFilter evalNot(FNotContext ctx) {
+        XQueryFilter v = (XQueryFilter)visitor.visit(ctx.f());
         return v.not();
     }
 
-    public XQueryFilterValue evalValEqual(FValEqualContext ctx) {
+    public XQueryFilter evalValEqual(FValEqualContext ctx) {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
 
         for(IXMLElement x : l)
             for(IXMLElement y : r)
                 if(x.equals(y))
-                    return XQueryFilterValue.trueValue();
-        return XQueryFilterValue.falseValue();
+                    return XQueryFilter.trueValue();
+        return XQueryFilter.falseValue();
     }
 
-    public XQueryFilterValue evalIdEqual(FIdEqualContext ctx) {
+    public XQueryFilter evalIdEqual(FIdEqualContext ctx) {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
 
         for(IXMLElement x : l)
             for(IXMLElement y : r)
                 if(x.equalsRef(y))
-                    return XQueryFilterValue.trueValue();
-        return XQueryFilterValue.falseValue();
+                    return XQueryFilter.trueValue();
+        return XQueryFilter.falseValue();
     }
 }
