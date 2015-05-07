@@ -21,7 +21,7 @@ public class XMLElement implements IXMLElement {
 
     public XMLElement(String tagName, XQueryListValue content) {
         // TODO: Create XML element from tagName and Content
-        Element elem = new Element(tagName);
+        elem = new Element(tagName);
         for (IXMLElement x : content)
             elem.addContent(x.toString());
     }
@@ -37,9 +37,12 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public List<IXMLElement> children() {
-        return elem.getChildren().stream().map(
-                XMLElement::new).collect(Collectors.toList());
+    public XQueryListValue children() {
+        XQueryListValue children = new XQueryListValue();
+        for (Element elem : this.elem.getChildren())
+            children.add(new XMLElement(elem));
+
+        return children;
     }
 
     @Override
@@ -50,9 +53,9 @@ public class XMLElement implements IXMLElement {
     @Override
     public IXMLElement txt() {
         // TODO: This should not return an {@link IXMLElement}, but probably an {@link IXQueryValue} of type Text, or something
-        Element textEl = new Element("text");
-        textEl.addContent(new Text(elem.getText()));
-        return new XMLElement(textEl);
+//        Element textEl = new Element("text");
+//        textEl.addContent(new Text(elem.getText()));
+        return new XMLText(elem);
     }
 
     @Override

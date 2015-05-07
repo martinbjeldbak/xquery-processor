@@ -15,8 +15,9 @@ public class XqEvaluator extends XQueryEvaluator {
         super(visitor, qc);
     }
 
-    public XQueryTextValue evalStringConstant (@NotNull XqStringConstantContext ctx){
-        return new XQueryTextValue(ctx.getText());
+    public XQueryListValue evalStringConstant (@NotNull XqStringConstantContext ctx){
+        //TODO: return new XML Text element
+        return null; //new XQueryTextValue(ctx.getText());
     }
 
     public XQueryListValue evalAp (@NotNull XqApContext ctx) {

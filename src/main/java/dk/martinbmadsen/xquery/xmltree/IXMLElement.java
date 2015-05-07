@@ -31,7 +31,7 @@ public interface IXMLElement {
      * @return the element's children, a list of {@link IXMLElement}s
      * TODO: Make this return {@link XQueryListValue}
      */
-    List<IXMLElement> children();
+    XQueryListValue children();
 
     /**
      * Gets text element associated to this element
