@@ -2,18 +2,18 @@ package dk.martinbmadsen.xquery.main;
 
 import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.executor.XQueryExecutor;
-import dk.martinbmadsen.xquery.executor.XPathExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        List<IXMLElement> result = null;
+        List<IXMLElement> result = new ArrayList<>();
         try {
-            result = XPathExecutor.executeFromFile("samples/xquery/test.xq");
+            result = XQueryExecutor.executeFromFile("samples/xquery/test.xq");
         } catch (IOException e) {
             e.printStackTrace();
         }
