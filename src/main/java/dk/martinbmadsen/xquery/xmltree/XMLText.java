@@ -1,7 +1,7 @@
 package dk.martinbmadsen.xquery.xmltree;
 
 import dk.martinbmadsen.utils.debug.Debugger;
-import dk.martinbmadsen.xquery.value.XQueryListValue;
+import dk.martinbmadsen.xquery.value.XQueryList;
 import org.jdom2.Element;
 
 import java.util.ArrayList;
@@ -29,8 +29,8 @@ public class XMLText implements IXMLElement {
     }
 
     @Override
-    public XQueryListValue children() {
-        return new XQueryListValue();
+    public XQueryList children() {
+        return new XQueryList();
     }
 
     @Override
@@ -46,8 +46,8 @@ public class XMLText implements IXMLElement {
     }
 
     @Override
-    public XQueryListValue descendants() {
-        return new XQueryListValue();
+    public XQueryList descendants() {
+        return new XQueryList();
     }
 
     @Override

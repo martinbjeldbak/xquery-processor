@@ -4,7 +4,7 @@ import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
 import dk.martinbmadsen.xquery.value.XQueryFilterValue;
-import dk.martinbmadsen.xquery.value.XQueryListValue;
+import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
 import static dk.martinbmadsen.xquery.parser.XQueryParser.*;
@@ -15,7 +15,7 @@ public class FEvaluator extends XQueryEvaluator {
     }
 
     public XQueryFilterValue evalFRp(FRpContext ctx) {
-        XQueryListValue resultR = (XQueryListValue)visitor.visit(ctx.rp());
+        XQueryList resultR = (XQueryList)visitor.visit(ctx.rp());
         if(resultR.size() > 0)
             return XQueryFilterValue.trueValue();
         return XQueryFilterValue.falseValue();
@@ -43,8 +43,8 @@ public class FEvaluator extends XQueryEvaluator {
     }
 
     public XQueryFilterValue evalValEqual(FValEqualContext ctx) {
-        XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
-        XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
+        XQueryList l = (XQueryList)visitor.visit(ctx.left);
+        XQueryList r = (XQueryList)visitor.visit(ctx.right);
 
         for(IXMLElement x : l)
             for(IXMLElement y : r)
@@ -54,8 +54,8 @@ public class FEvaluator extends XQueryEvaluator {
     }
 
     public XQueryFilterValue evalIdEqual(FIdEqualContext ctx) {
-        XQueryListValue l = (XQueryListValue)visitor.visit(ctx.left);
-        XQueryListValue r = (XQueryListValue)visitor.visit(ctx.right);
+        XQueryList l = (XQueryList)visitor.visit(ctx.left);
+        XQueryList r = (XQueryList)visitor.visit(ctx.right);
 
         for(IXMLElement x : l)
             for(IXMLElement y : r)

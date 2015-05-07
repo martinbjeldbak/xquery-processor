@@ -7,23 +7,23 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-public class XQueryListValue implements IXQueryValue, Iterable<IXMLElement>, Collection<IXMLElement>, List<IXMLElement> {
+public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collection<IXMLElement>, List<IXMLElement> {
     private List<IXMLElement> values;
 
-    public XQueryListValue() {
+    public XQueryList() {
         this(10);
     }
 
-    public XQueryListValue(int size) {
+    public XQueryList(int size) {
         this.values = new ArrayList<>(size);
     }
 
-    public XQueryListValue(IXMLElement e) {
+    public XQueryList(IXMLElement e) {
         this(1);
         values.add(e);
     }
 
-    public XQueryListValue(List<IXMLElement> values) {
+    public XQueryList(List<IXMLElement> values) {
         this.values = values;
     }
 
@@ -32,10 +32,10 @@ public class XQueryListValue implements IXQueryValue, Iterable<IXMLElement>, Col
      * in a new list
      * @return a new list with the unique elements from the current list's instance.
      */
-    public XQueryListValue unique(){
+    public XQueryList unique(){
         if (values == null)
             return null;
-        XQueryListValue results = new XQueryListValue();
+        XQueryList results = new XQueryList();
 
         values.stream().filter(e -> !containsRef(results, e)).forEach(results::add);
         return results;
@@ -50,8 +50,8 @@ public class XQueryListValue implements IXQueryValue, Iterable<IXMLElement>, Col
 
     @Override
     public boolean equals(Object obj) {
-        if(obj instanceof XQueryListValue) {
-            XQueryListValue l = ((XQueryListValue) obj);
+        if(obj instanceof XQueryList) {
+            XQueryList l = ((XQueryList) obj);
             return values.equals(l.values);
         }
 

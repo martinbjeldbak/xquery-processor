@@ -1,7 +1,7 @@
 package dk.martinbmadsen.xquery;
 
 import dk.martinbmadsen.xquery.executor.XQueryExecutor;
-import dk.martinbmadsen.xquery.value.XQueryListValue;
+import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLElement;
 import org.jdom2.Document;
@@ -31,7 +31,7 @@ public class XQueryTest {
             e.printStackTrace();
         }
 
-        XQueryListValue res = new XQueryListValue();
+        XQueryList res = new XQueryList();
 
         for(Element e : xp.evaluate(root)) {
             res.add(new XMLElement(e));

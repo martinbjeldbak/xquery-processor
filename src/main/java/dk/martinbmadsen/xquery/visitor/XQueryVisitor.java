@@ -5,7 +5,7 @@ import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
 import dk.martinbmadsen.xquery.value.XQueryFilterValue;
-import dk.martinbmadsen.xquery.value.XQueryListValue;
+import dk.martinbmadsen.xquery.value.XQueryList;
 import org.antlr.v4.runtime.misc.NotNull;
 
 public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
@@ -18,59 +18,59 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     /** APS **/
 
     @Override
-    public XQueryListValue visitAp(@NotNull ApContext ctx) {
+    public XQueryList visitAp(@NotNull ApContext ctx) {
         return rpEval.evalAp(ctx);
     }
 
     /** RPS **/
 
     @Override
-    public XQueryListValue visitRpTagName(@NotNull RpTagNameContext ctx) {
+    public XQueryList visitRpTagName(@NotNull RpTagNameContext ctx) {
         return rpEval.evalTagName(ctx);
     }
 
     @Override
-    public XQueryListValue visitRpWildcard(@NotNull RpWildcardContext ctx) {
+    public XQueryList visitRpWildcard(@NotNull RpWildcardContext ctx) {
         return rpEval.evalWildCard();
     }
 
     @Override
-    public XQueryListValue visitRpDot(@NotNull RpDotContext ctx) {
+    public XQueryList visitRpDot(@NotNull RpDotContext ctx) {
         return rpEval.evalDot();
     }
 
     @Override
-    public XQueryListValue visitRpDotDot(@NotNull RpDotDotContext ctx) {
+    public XQueryList visitRpDotDot(@NotNull RpDotDotContext ctx) {
         return rpEval.evalDotDot();
     }
 
     @Override
-    public XQueryListValue visitRpText(@NotNull RpTextContext ctx) {
+    public XQueryList visitRpText(@NotNull RpTextContext ctx) {
         return rpEval.evalText();
     }
 
     @Override
-    public XQueryListValue visitRpParenExpr(@NotNull RpParenExprContext ctx) {
+    public XQueryList visitRpParenExpr(@NotNull RpParenExprContext ctx) {
         return rpEval.evalParen(ctx);
     }
 
     @Override
-    public XQueryListValue visitRpSlash(@NotNull RpSlashContext ctx) {
+    public XQueryList visitRpSlash(@NotNull RpSlashContext ctx) {
         return rpEval.evalSlashes(ctx);
     }
 
     @Override
-    public XQueryListValue visitRpAttr(@NotNull RpAttrContext ctx) {
+    public XQueryList visitRpAttr(@NotNull RpAttrContext ctx) {
         return rpEval.evalAttr(ctx);
     }
 
     @Override
-    public XQueryListValue visitRpFilter(@NotNull RpFilterContext ctx) {
+    public XQueryList visitRpFilter(@NotNull RpFilterContext ctx) {
         return rpEval.evalFilter(ctx);
     }
 
     @Override
-    public XQueryListValue visitRpConcat(@NotNull RpConcatContext ctx) {
+    public XQueryList visitRpConcat(@NotNull RpConcatContext ctx) {
         return rpEval.evalConcat(ctx);
     }
 

@@ -1,6 +1,6 @@
 package dk.martinbmadsen.xquery.xmltree;
 
-import dk.martinbmadsen.xquery.value.XQueryListValue;
+import dk.martinbmadsen.xquery.value.XQueryList;
 import org.jdom2.Attribute;
 import org.jdom2.Content;
 import org.jdom2.Element;
@@ -18,7 +18,7 @@ public class XMLElement implements IXMLElement {
         elem = element;
     }
 
-    public XMLElement(String tagName, XQueryListValue content) {
+    public XMLElement(String tagName, XQueryList content) {
         elem = new Element(tagName);
         for (IXMLElement x : content)
             elem.addContent(x.toString());
@@ -34,8 +34,8 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public XQueryListValue children() {
-        XQueryListValue children = new XQueryListValue();
+    public XQueryList children() {
+        XQueryList children = new XQueryList();
         for (Element elem : this.elem.getChildren())
             children.add(new XMLElement(elem));
 
@@ -95,9 +95,9 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public XQueryListValue descendants() {
+    public XQueryList descendants() {
         Iterable<Content> descendants = elem.getDescendants();
-        XQueryListValue res = new XQueryListValue();
+        XQueryList res = new XQueryList();
 
         res.add(new XMLElement(elem));
 

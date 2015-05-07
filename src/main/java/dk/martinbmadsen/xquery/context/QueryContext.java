@@ -1,7 +1,7 @@
 package dk.martinbmadsen.xquery.context;
 
 import dk.martinbmadsen.xquery.value.VarEnvironment;
-import dk.martinbmadsen.xquery.value.XQueryListValue;
+import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
 import java.util.Stack;
@@ -11,14 +11,14 @@ import java.util.Stack;
  * evaluating different operators and queries.
  */
 public class QueryContext {
-    private Stack<XQueryListValue> ctxElems = new Stack<>();
+    private Stack<XQueryList> ctxElems = new Stack<>();
     private Stack<VarEnvironment> varEnv = new Stack<>();
 
     public QueryContext() {
     }
 
-    public XQueryListValue peekContextElement() {
-        XQueryListValue res = new XQueryListValue(this.ctxElems.peek().size());
+    public XQueryList peekContextElement() {
+        XQueryList res = new XQueryList(this.ctxElems.peek().size());
         for (IXMLElement x : this.ctxElems.peek())
             if (x != null)
                 res.add(x);
@@ -29,7 +29,7 @@ public class QueryContext {
      * Gets the current context element (WARNING: this pops it from the stack)
      * @return the {@link IXMLElement} we are currently exploring
      */
-    public XQueryListValue popContextElement() {
+    public XQueryList popContextElement() {
         return this.ctxElems.pop();
     }
 
@@ -38,20 +38,20 @@ public class QueryContext {
      * @param elem the tree/element to be added as context
      */
     public void pushContextElement(IXMLElement elem) {
-        this.ctxElems.push(new XQueryListValue(elem));
+        this.ctxElems.push(new XQueryList(elem));
     }
 
-    public void pushContextElement(XQueryListValue elem) {
+    public void pushContextElement(XQueryList elem) {
         ctxElems.push(elem);
     }
 
-    public XQueryListValue getVar(String varName) {
+    public XQueryList getVar(String varName) {
         if (varEnv.size() == 0)
             return null;
         return varEnv.peek().getVar(varName);
     }
 
-    public XQueryListValue putVar(String varName, XQueryListValue varValue) {
+    public XQueryList putVar(String varName, XQueryList varValue) {
         return varEnv.peek().putVar(varName, varValue);
     }
 

@@ -4,7 +4,7 @@ import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
-import dk.martinbmadsen.xquery.value.XQueryListValue;
+import dk.martinbmadsen.xquery.value.XQueryList;
 import org.antlr.v4.runtime.misc.NotNull;
 
 public class CondEvaluator extends XQueryEvaluator {
@@ -12,28 +12,28 @@ public class CondEvaluator extends XQueryEvaluator {
         super(visitor, qc);
     }
 
-    public XQueryListValue evalIdEqual(@NotNull CondIdEqualContext ctx){
+    public XQueryList evalIdEqual(@NotNull CondIdEqualContext ctx){
         return null;
     }
-    public XQueryListValue evalValEqual(@NotNull CondValEqualContext ctx){
+    public XQueryList evalValEqual(@NotNull CondValEqualContext ctx){
         return null;
     }
-    public XQueryListValue evalEmpty(@NotNull CondEmptyContext ctx){
+    public XQueryList evalEmpty(@NotNull CondEmptyContext ctx){
         return null;
     }
-    public XQueryListValue evalSomeSatis(@NotNull CondSomeSatisContext ctx){
+    public XQueryList evalSomeSatis(@NotNull CondSomeSatisContext ctx){
         return null;
     }
-    public XQueryListValue evalParen(@NotNull CondParenExprContext ctx){
+    public XQueryList evalParen(@NotNull CondParenExprContext ctx){
         return null;
     }
-    public XQueryListValue evalAnd(@NotNull CondAndContext ctx){
+    public XQueryList evalAnd(@NotNull CondAndContext ctx){
         return null;
     }
-    public XQueryListValue evalOr(@NotNull CondOrContext ctx){
+    public XQueryList evalOr(@NotNull CondOrContext ctx){
         return null;
     }
-    public XQueryListValue evalNot(@NotNull CondNotContext ctx){
+    public XQueryList evalNot(@NotNull CondNotContext ctx){
         return null;
     }
 
