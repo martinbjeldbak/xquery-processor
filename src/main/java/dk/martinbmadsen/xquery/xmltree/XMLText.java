@@ -12,7 +12,7 @@ public class XMLText implements IXMLElement {
     Element parent;
 
     public XMLText(String val){
-        if(val.charAt(0) == '\"' && val.charAt(val.length()-1) == '\"')
+        if(val.charAt(0) == '"' && val.charAt(val.length()-1) == '"')
             this.value = val.substring(1, val.length() - 1);
         else
             this.value = val;
@@ -86,6 +86,6 @@ public class XMLText implements IXMLElement {
 
     @Override
     public String toString() {
-        return ">" + value + "<";
+        return value;
     }
 }
