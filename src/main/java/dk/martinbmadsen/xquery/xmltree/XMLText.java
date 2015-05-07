@@ -1,9 +1,8 @@
 package dk.martinbmadsen.xquery.xmltree;
 
+import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.value.XQueryListValue;
 import org.jdom2.Element;
-import org.jdom2.output.Format;
-import org.jdom2.output.XMLOutputter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +21,7 @@ public class XMLText implements IXMLElement {
     }
 
     @Override
-    public IXMLElement parent() {
+    public XMLElement parent() {
         return new XMLElement(parent);
     }
 
@@ -32,12 +31,14 @@ public class XMLText implements IXMLElement {
     }
 
     @Override
-    public IXMLElement txt() {
+    public XMLText txt() {
+        Debugger.error("Called txt() on a text element.");
         return null;
     }
 
     @Override
     public IXMLElement attrib(String attName) {
+        Debugger.error("Called attrib() on a text element, which cannot have attributes.");
         return null;
     }
 
@@ -48,6 +49,7 @@ public class XMLText implements IXMLElement {
 
     @Override
     public String tag() {
+        Debugger.error("Called attrib() on a text element, which doesn't have a tag.");
         return null;
     }
 

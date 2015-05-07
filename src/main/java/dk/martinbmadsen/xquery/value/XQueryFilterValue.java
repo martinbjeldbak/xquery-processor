@@ -1,7 +1,9 @@
 package dk.martinbmadsen.xquery.value;
 
 /**
- * Created by martin on 23/04/15.
+ * This class is simply a wrapper of boolean values returned by filters in
+ * our XPath/XQuery implementation. It supports simple binary operations and
+ * comparisons.
  */
 public class XQueryFilterValue implements IXQueryValue {
     private static XQueryFilterValue trueVal = new XQueryFilterValue();

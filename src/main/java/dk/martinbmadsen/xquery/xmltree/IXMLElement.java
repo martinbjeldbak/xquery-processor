@@ -23,7 +23,7 @@ public interface IXMLElement {
      * @return the parent element, (also an {@link IXMLElement}). Empty list otherwise.
      * TODO: Should return singleton {@link XQueryListValue} with parent, empty otherwise, as pr documentation
      */
-    IXMLElement parent();
+    XMLElement parent();
 
     /**
      * Gets a list of all of this element's children. Returns
@@ -37,7 +37,7 @@ public interface IXMLElement {
      * Gets text element associated to this element
      * @return the text element associated to this element
      */
-    IXMLElement txt();
+    XMLText txt();
 
     /**
      * Returns the attribute value associated with the attribute key given

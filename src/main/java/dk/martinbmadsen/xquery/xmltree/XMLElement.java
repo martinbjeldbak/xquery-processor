@@ -10,7 +10,6 @@ import org.jdom2.output.XMLOutputter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class XMLElement implements IXMLElement {
     private Element elem;
@@ -20,15 +19,13 @@ public class XMLElement implements IXMLElement {
     }
 
     public XMLElement(String tagName, XQueryListValue content) {
-        // TODO: Create XML element from tagName and Content
         elem = new Element(tagName);
         for (IXMLElement x : content)
             elem.addContent(x.toString());
     }
 
     @Override
-    public IXMLElement parent() {
-        // TODO: Should probably return something like below:
+    public XMLElement parent() {
         Element parentEl = elem.getParentElement();
         if(parentEl == null)
             return null;
@@ -51,10 +48,7 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public IXMLElement txt() {
-        // TODO: This should not return an {@link IXMLElement}, but probably an {@link IXQueryValue} of type Text, or something
-//        Element textEl = new Element("text");
-//        textEl.addContent(new Text(elem.getText()));
+    public XMLText txt() {
         return new XMLText(elem);
     }
 
