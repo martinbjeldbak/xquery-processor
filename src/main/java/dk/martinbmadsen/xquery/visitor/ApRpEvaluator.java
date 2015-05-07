@@ -133,7 +133,8 @@ public class ApRpEvaluator extends XQueryEvaluator {
         XQueryList descendants = new XQueryList();
 
         for(IXMLElement x : l) {
-            descendants.add(x);
+            // TODO: Don't know if below uncommented line should be used or not...
+            //descendants.add(x);
             descendants.addAll(x.descendants());
         }
 

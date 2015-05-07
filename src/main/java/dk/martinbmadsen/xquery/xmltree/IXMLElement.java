@@ -1,7 +1,6 @@
 package dk.martinbmadsen.xquery.xmltree;
 
 import dk.martinbmadsen.xquery.value.XQueryList;
-import org.jdom2.Element;
 
 import java.util.List;
 
@@ -57,15 +56,6 @@ public interface IXMLElement {
      * @return the XML tag of this element
      */
     String tag();
-
-    /**
-     * @deprecated Because this method is an extension of {@link Element}, which only returns text() parts of
-     * this {@link IXMLElement} and all its descendants, ignoring attributes.
-     * Replaced by {@link #equals(Object)} or {@link #toString()}.
-     * @return A string of this element's text along with all its descendents text nodes concatenated into one string
-     */
-    @Deprecated
-    String getValue();
 
     List<String> getAttribNames();
 

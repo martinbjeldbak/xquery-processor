@@ -57,11 +57,6 @@ public class XMLText implements IXMLElement {
     }
 
     @Override
-    public String getValue() {
-        return value;
-    }
-
-    @Override
     public List<String> getAttribNames() {
         return new ArrayList<>();
     }
@@ -79,7 +74,7 @@ public class XMLText implements IXMLElement {
     public boolean equals(Object o) {
         if(o instanceof XMLText) {
             XMLText e = (XMLText)o;
-            return value.equals(e.getValue());
+            return value.equals(e.value);
         }
         return false;
     }

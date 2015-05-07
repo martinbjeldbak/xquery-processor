@@ -75,11 +75,6 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public String getValue(){
-        return this.elem.getValue();
-    }
-
-    @Override
     public boolean equalsRef(IXMLElement o) {
         if(o instanceof XMLElement) {
             XMLElement e = (XMLElement)o;
