@@ -24,8 +24,8 @@ public class XMLText implements IXMLElement {
     }
 
     @Override
-    public XMLElement parent() {
-        return new XMLElement(parent);
+    public XQueryList parent() {
+        return new XQueryList(new XMLElement(parent));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class XMLText implements IXMLElement {
 
     @Override
     public XQueryList descendants() {
-        return new XQueryList();
+        return new XQueryList(0);
     }
 
     @Override

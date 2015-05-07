@@ -25,12 +25,14 @@ public class XMLElement implements IXMLElement {
     }
 
     @Override
-    public XMLElement parent() {
+    public XQueryList parent() {
+        XQueryList res = new XQueryList(1);
+
         Element parentEl = elem.getParentElement();
-        if(parentEl == null)
-            return null;
-        else
-            return new XMLElement(parentEl);
+
+        if(parentEl != null)
+            res.add(new XMLElement(parentEl));
+        return res;
     }
 
     @Override
@@ -98,8 +100,6 @@ public class XMLElement implements IXMLElement {
     public XQueryList descendants() {
         Iterable<Content> descendants = elem.getDescendants();
         XQueryList res = new XQueryList();
-
-        res.add(new XMLElement(elem));
 
         for(Content c : descendants) {
             if(c instanceof Element) {

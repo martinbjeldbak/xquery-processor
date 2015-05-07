@@ -62,9 +62,10 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalDotDot() {
-        XQueryList res = qc.peekContextElement().stream().map(
-                IXMLElement::parent
-        ).collect(Collectors.toCollection(XQueryList::new));
+        XQueryList res = new XQueryList();
+        for(IXMLElement e : qc.peekContextElement()) {
+            res.add(e.parent().get(0));
+        }
         return res.unique();
     }
 
@@ -131,8 +132,10 @@ public class ApRpEvaluator extends XQueryEvaluator {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList descendants = new XQueryList();
 
-        for(IXMLElement x : l)
+        for(IXMLElement x : l) {
+            descendants.add(x);
             descendants.addAll(x.descendants());
+        }
 
         qc.pushContextElement(descendants);
 

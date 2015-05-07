@@ -20,10 +20,10 @@ public interface IXMLElement {
     /**
      * Gets the parent of this element in a singleton list.
      * If there is no parent, then an empty list is returned.
-     * @return the parent element, (also an {@link IXMLElement}). Empty list otherwise.
-     * TODO: Should return singleton {@link XQueryList} with parent, empty otherwise, as pr documentation
+     * @return the parent element (of type {@link XMLElement} in a singleton {@link XQueryList}.
+     * An empty list if this element is the root.
      */
-    XMLElement parent();
+    XQueryList parent();
 
     /**
      * Gets a list of all of this element's children. Returns
@@ -46,6 +46,10 @@ public interface IXMLElement {
      */
     IXMLElement attrib(String attName);
 
+    /**
+     * Gets a list of all the descendants of this element, not including the element itself
+     * @return all of this element's descendants
+     */
     XQueryList descendants();
 
     /**
