@@ -3,6 +3,7 @@ grammar XQuery;
 @header {
 package dk.martinbmadsen.xquery.parser;
 }
+
 // XQuery
 xq
   : Var                                                       #xqVar
@@ -21,7 +22,7 @@ forClause
   : 'for' Var 'in' xq (',' Var 'in' xq)*
   ;
 
-// Let Clause: let $var1 := "superman")
+// Let Clause: let $var1 := "superman", $var2 := "batman", ...
 letClause
   : 'let' Var ':=' xq (',' Var ':=' xq)*
   ;
@@ -122,6 +123,7 @@ StringCharacter
 	 ;
 
 WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+
 Var
   : '$' Identifier
   ;

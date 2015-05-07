@@ -6,8 +6,8 @@ import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
 import dk.martinbmadsen.xquery.value.VarEnvironment;
 import dk.martinbmadsen.xquery.value.XQueryListValue;
-import dk.martinbmadsen.xquery.value.XQueryTextValue;
 import dk.martinbmadsen.xquery.xmltree.XMLElement;
+import dk.martinbmadsen.xquery.xmltree.XMLText;
 import org.antlr.v4.runtime.misc.NotNull;
 
 public class XqEvaluator extends XQueryEvaluator {
@@ -15,12 +15,11 @@ public class XqEvaluator extends XQueryEvaluator {
         super(visitor, qc);
     }
 
-    public XQueryListValue evalStringConstant (@NotNull XqStringConstantContext ctx){
-        //TODO: return new XML Text element
-        return null; //new XQueryTextValue(ctx.getText());
+    public XQueryListValue evalStringConstant(@NotNull XqStringConstantContext ctx){
+        return new XQueryListValue(new XMLText(ctx.StringLiteral().getText()));
     }
 
-    public XQueryListValue evalAp (@NotNull XqApContext ctx) {
+    public XQueryListValue evalAp(@NotNull XqApContext ctx) {
         return (XQueryListValue)visitor.visitAp(ctx.ap());
     }
 
