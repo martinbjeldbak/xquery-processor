@@ -4,7 +4,6 @@ import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
-import dk.martinbmadsen.xquery.value.VarEnvironment;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.XMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLText;
@@ -55,9 +54,12 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalLet(@NotNull XqLetContext ctx) {
+        /*
         qc.pushVarEnv((VarEnvironment) visitor.visitLetClause(ctx.letClause()));
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
         qc.popVarEnv();
         return xq;
+        */
+        return new XQueryList();
     }
 }

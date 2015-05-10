@@ -1,65 +1,45 @@
 package dk.martinbmadsen.xquery.context;
 
-import dk.martinbmadsen.xquery.value.VarEnvironment;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
-import java.util.Stack;
 
 /**
- * This class keeps a context of node elements while visiting the XML tree and
- * evaluating different operators and queries.
+ * Encapsulates everything that has to do with the context of a query: from
+ * handling where the engine is in the XML tree, to what XQuery variables are in scope.
  */
 public class QueryContext {
-    private Stack<XQueryList> ctxElems = new Stack<>();
-    private Stack<VarEnvironment> varEnv = new Stack<>();
+    private SymbolTable st = new SymbolTable();
+    private NodeContext nc = new NodeContext();
 
     public QueryContext() {
     }
 
     public XQueryList peekContextElement() {
-        XQueryList res = new XQueryList(this.ctxElems.peek().size());
-        for (IXMLElement x : this.ctxElems.peek())
-            if (x != null)
-                res.add(x);
-        return res;
+        return nc.peekContextElement();
     }
 
-    /**
-     * Gets the current context element (WARNING: this pops it from the stack)
-     * @return the {@link IXMLElement} we are currently exploring
-     */
     public XQueryList popContextElement() {
-        return this.ctxElems.pop();
+        return nc.popContextElement();
     }
 
-    /**
-     * Pushes an element/tree onto the context stack.
-     * @param elem the tree/element to be added as context
-     */
     public void pushContextElement(IXMLElement elem) {
-        this.ctxElems.push(new XQueryList(elem));
+        nc.pushContextElement(elem);
     }
 
     public void pushContextElement(XQueryList elem) {
-        ctxElems.push(elem);
+        nc.pushContextElement(elem);
     }
 
-    public XQueryList getVar(String varName) {
-        if (varEnv.size() == 0)
-            return null;
-        return varEnv.peek().getVar(varName);
+    public XQueryList getVar(String var) {
+        return st.getVar(var);
     }
 
-    public XQueryList putVar(String varName, XQueryList varValue) {
-        return varEnv.peek().putVar(varName, varValue);
+    public VarEnvironment openScope() {
+        return st.openScope();
     }
 
-    public void popVarEnv(){
-        varEnv.pop();
-    }
-
-    public void pushVarEnv(VarEnvironment ve){
-        varEnv.push(ve);
+    public VarEnvironment closeScope() {
+        return st.closeScope();
     }
 }

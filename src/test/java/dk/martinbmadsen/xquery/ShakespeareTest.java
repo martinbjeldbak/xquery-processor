@@ -45,18 +45,12 @@ public class ShakespeareTest extends XQueryTest {
     }
 
     @Test
-    public void slashSlash1() {
+    public void ApSlashSlash1() {
         assertXPathEquals("//PERSONA");
     }
 
     @Test
-    public void textGetsTitle() {
-        List<IXMLElement> res = exR("/TITLE/text()");
-        assertEquals("The Tragedy of Julius Caesar", res.get(0).toString());
-    }
-
-    @Test
-    public void textGetCharacters() {
+    public void ApSlashSlashTextGetCharacters() {
         List<IXMLElement> res = exR("//PERSONA");
 
         //XQueryExecutor.printResults(res);
@@ -68,6 +62,13 @@ public class ShakespeareTest extends XQueryTest {
         assertEquals(36, res.size());
         assertEquals(runCorrectImplementation("//PERSONA").size(), res.size());
     }
+
+    @Test
+    public void textGetsTitle() {
+        List<IXMLElement> res = exR("/TITLE/text()");
+        assertEquals("The Tragedy of Julius Caesar", res.get(0).toString());
+    }
+
 
     @Test
     public void loads9Personae() {

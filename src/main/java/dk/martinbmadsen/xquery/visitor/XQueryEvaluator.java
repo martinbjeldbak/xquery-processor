@@ -1,7 +1,7 @@
 package dk.martinbmadsen.xquery.visitor;
 
 import dk.martinbmadsen.xquery.context.QueryContext;
-import dk.martinbmadsen.xquery.value.VarEnvironment;
+import dk.martinbmadsen.xquery.context.VarEnvironment;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
 
