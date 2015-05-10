@@ -111,6 +111,53 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
         return fEval.evalNot(ctx);
     }
 
+    /** XQ **/
+
+    @Override
+    public IXQueryValue visitXqVar(@NotNull XqVarContext ctx) {
+        return xqEval.evalVar(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqStringConstant(@NotNull XqStringConstantContext ctx) {
+        return xqEval.evalStringConstant(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqAp(@NotNull XqApContext ctx) {
+        return xqEval.evalAp(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqParenExpr(@NotNull XqParenExprContext ctx) {
+        return xqEval.evalParen(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqConcat(@NotNull XqConcatContext ctx) {
+        return xqEval.evalConcat(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqSlash(@NotNull XqSlashContext ctx) {
+        return xqEval.evalSlash(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqTagName(@NotNull XqTagNameContext ctx) {
+        return xqEval.evalTagname(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqFLWR(@NotNull XqFLWRContext ctx) {
+        return super.visitXqFLWR(ctx);
+    }
+
+    @Override
+    public IXQueryValue visitXqLet(@NotNull XqLetContext ctx) {
+        return super.visitXqLet(ctx);
+    }
+
     /** FLOWR CLAUSES **/
 
     @Override
@@ -141,6 +188,11 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     }
 
     @Override
+    public IXQueryValue visitCondIdEqual(@NotNull CondIdEqualContext ctx) {
+        return super.visitCondIdEqual(ctx);
+    }
+
+    @Override
     public IXQueryValue visitCondEmpty(@NotNull CondEmptyContext ctx) {
         return super.visitCondEmpty(ctx);
     }
@@ -148,11 +200,6 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     @Override
     public IXQueryValue visitCondSomeSatis(@NotNull CondSomeSatisContext ctx) {
         return super.visitCondSomeSatis(ctx);
-    }
-
-    @Override
-    public IXQueryValue visitCondIdEqual(@NotNull CondIdEqualContext ctx) {
-        return super.visitCondIdEqual(ctx);
     }
 
     @Override
@@ -166,59 +213,12 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     }
 
     @Override
-    public IXQueryValue visitCondNot(@NotNull CondNotContext ctx) {
-        return super.visitCondNot(ctx);
-    }
-
-    @Override
     public IXQueryValue visitCondOr(@NotNull CondOrContext ctx) {
         return super.visitCondOr(ctx);
     }
 
-    /** XQ **/
-
     @Override
-    public IXQueryValue visitXqParenExpr(@NotNull XqParenExprContext ctx) {
-        return xqEval.evalParen(ctx);
-    }
-
-    @Override
-    public IXQueryValue visitXqFLWR(@NotNull XqFLWRContext ctx) {
-        return super.visitXqFLWR(ctx);
-    }
-
-    @Override
-    public IXQueryValue visitXqTagName(@NotNull XqTagNameContext ctx) {
-        return xqEval.evalTagname(ctx);
-    }
-
-    @Override
-    public IXQueryValue visitXqVar(@NotNull XqVarContext ctx) {
-        return xqEval.evalVar(ctx);
-    }
-
-    @Override
-    public IXQueryValue visitXqSlash(@NotNull XqSlashContext ctx) {
-        return xqEval.evalSlash(ctx);
-    }
-
-    @Override
-    public IXQueryValue visitXqLet(@NotNull XqLetContext ctx) {
-        return super.visitXqLet(ctx);
-    }
-
-    @Override
-    public IXQueryValue visitXqStringConstant(@NotNull XqStringConstantContext ctx) {
-        return xqEval.evalStringConstant(ctx);
-    }
-
-    @Override
-    public IXQueryValue visitXqAp(@NotNull XqApContext ctx) {
-        return xqEval.evalAp(ctx);
-    }
-
-    @Override
-    public IXQueryValue visitXqConcat(@NotNull XqConcatContext ctx) {
-        return xqEval.evalConcat(ctx);
+    public IXQueryValue visitCondNot(@NotNull CondNotContext ctx) {
+        return super.visitCondNot(ctx);
     }
 }

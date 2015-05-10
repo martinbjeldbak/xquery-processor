@@ -23,11 +23,11 @@ public class XqEvaluator extends XQueryEvaluator {
         return (XQueryList)visitor.visit(ctx.ap());
     }
 
-    public XQueryList evalParen(@NotNull XqParenExprContext ctx){
-        return (XQueryList) visitor.visit(ctx.xq());
+    public XQueryList evalParen(@NotNull XqParenExprContext ctx) {
+        return (XQueryList)visitor.visit(ctx.xq());
     }
 
-    public XQueryList evalVar(@NotNull XqVarContext ctx){
+    public XQueryList evalVar(@NotNull XqVarContext ctx) {
         return qc.getVar(ctx.getText());
     }
 
