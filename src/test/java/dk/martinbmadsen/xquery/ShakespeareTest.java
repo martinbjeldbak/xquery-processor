@@ -1,27 +1,29 @@
 package dk.martinbmadsen.xquery;
 
+import com.pholser.junit.quickcheck.ForAll;
 import com.pholser.junit.quickcheck.From;
 import dk.martinbmadsen.utils.debug.QueryGenerator;
 import dk.martinbmadsen.xquery.executor.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.jdom2.JDOMException;
 import org.junit.Test;
+import org.junit.contrib.theories.Theories;
+import org.junit.contrib.theories.Theory;
+import org.junit.runner.RunWith;
 
 import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import com.pholser.junit.quickcheck.ForAll;
-import org.junit.contrib.theories.Theories;
-import org.junit.contrib.theories.Theory;
-import org.junit.runner.RunWith;
 
 @RunWith(Theories.class)
 public class ShakespeareTest extends XQueryTest {
-    private String r = "doc(\"samples/xml/j_caesar.xml\")"; // root query
 
     @Test
     public void playground() throws JDOMException, IOException {
+        List<IXMLElement> res = exR("/TITLE/text()");
+
+        XQueryExecutor.printResults(res);
     }
 
     @Theory
@@ -31,6 +33,7 @@ public class ShakespeareTest extends XQueryTest {
         List<IXMLElement> res2 = runCorrectImplementation(query);
         assertEquals(res1, res2);
     }
+
     @Test
     public void getsARootElement() {
         List<IXMLElement> res1 = exR("/TITLE");
@@ -39,6 +42,31 @@ public class ShakespeareTest extends XQueryTest {
         assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res1, 0);
         assertEquals(res1, res2);
         assertXPathEquals("/TITLE");
+    }
+
+    @Test
+    public void slashSlash1() {
+        assertXPathEquals("//PERSONA");
+    }
+
+    @Test
+    public void textGetsTitle() {
+        List<IXMLElement> res = exR("/TITLE/text()");
+        assertEquals("The Tragedy of Julius Caesar", res.get(0).toString());
+    }
+
+    @Test
+    public void textGetCharacters() {
+        List<IXMLElement> res = exR("//PERSONA");
+
+        //XQueryExecutor.printResults(res);
+        XQueryExecutor.printResults(runCorrectImplementation("//PERSONA"));
+
+        // There are 36 characters... I hand counted them in the XML file
+        assertEquals("JULIUS CAESAR", res.get(0).toString());
+        //assertEquals("Senators, Citizens, Guards, Attendants, &c.", res.get(35).toString());
+        assertEquals(36, res.size());
+        assertEquals(runCorrectImplementation("//PERSONA").size(), res.size());
     }
 
     @Test
@@ -125,6 +153,7 @@ public class ShakespeareTest extends XQueryTest {
     }
 
     private List<IXMLElement> exR(String q) {
+        String r = "doc(\"samples/xml/j_caesar.xml\")";
         return super.ex(r + q);
     }
 

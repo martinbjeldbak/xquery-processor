@@ -22,8 +22,8 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
     public XQueryList evalAp(@NotNull ApContext ctx) {
         XMLDocument document = new XMLDocument(ctx.fileName.getText());
-        qc.pushContextElement(document.root());
         XQueryList results = new XQueryList();
+        qc.pushContextElement(document.root());
 
         switch(ctx.slash.getType()) {
             case XQueryParser.SLASH:
@@ -31,7 +31,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
                 break;
             case XQueryParser.SSLASH:
                 qc.pushContextElement(document.root().descendants());
-                results.addAll(((XQueryList)visitor.visit(ctx.rp())).unique());
+                results.addAll( (XQueryList)visitor.visit(ctx.rp()) );
                 break;
             default:
                 Debugger.error("Oops, shouldn't be here");
@@ -115,12 +115,11 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return results;
     }
 
-    public XQueryList evalRpSlash(@NotNull RpSlashContext ctx) {
+    private XQueryList evalRpSlash(@NotNull RpSlashContext ctx) {
         XQueryList y = new XQueryList();
         XQueryList x = (XQueryList)visitor.visit(ctx.left);
 
         qc.pushContextElement(x);
-
         XQueryList context = (XQueryList)visitor.visit(ctx.right);
         y.addAll(context);
 
@@ -128,7 +127,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         return y.unique();
     }
 
-    public XQueryList evalRpSlashSlash(@NotNull RpSlashContext ctx) {
+    private XQueryList evalRpSlashSlash(@NotNull RpSlashContext ctx) {
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
         XQueryList descendants = new XQueryList();
 
