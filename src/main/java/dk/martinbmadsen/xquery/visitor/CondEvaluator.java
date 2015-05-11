@@ -4,6 +4,7 @@ import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
+import dk.martinbmadsen.xquery.value.XQueryFilter;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -12,28 +13,33 @@ public class CondEvaluator extends XQueryEvaluator {
         super(visitor, qc);
     }
 
-    public XQueryList evalIdEqual(@NotNull CondIdEqualContext ctx){
+    public XQueryFilter evalIdEqual(@NotNull CondIdEqualContext ctx){
+        XQueryList l = (XQueryList)visitor.visit(ctx.left);
+        XQueryList r = (XQueryList)visitor.visit(ctx.left);
+        return l.equalsId(r);
+    }
+    public XQueryFilter evalValEqual(@NotNull CondValEqualContext ctx){
+        XQueryList l = (XQueryList)visitor.visit(ctx.left);
+        XQueryList r = (XQueryList)visitor.visit(ctx.left);
+        return l.equalsVal(r);
+    }
+
+    public XQueryFilter evalEmpty(@NotNull CondEmptyContext ctx){
         return null;
     }
-    public XQueryList evalValEqual(@NotNull CondValEqualContext ctx){
+    public XQueryFilter evalSomeSatis(@NotNull CondSomeSatisContext ctx){
         return null;
     }
-    public XQueryList evalEmpty(@NotNull CondEmptyContext ctx){
+    public XQueryFilter evalParen(@NotNull CondParenExprContext ctx){
         return null;
     }
-    public XQueryList evalSomeSatis(@NotNull CondSomeSatisContext ctx){
+    public XQueryFilter evalAnd(@NotNull CondAndContext ctx){
         return null;
     }
-    public XQueryList evalParen(@NotNull CondParenExprContext ctx){
+    public XQueryFilter evalOr(@NotNull CondOrContext ctx){
         return null;
     }
-    public XQueryList evalAnd(@NotNull CondAndContext ctx){
-        return null;
-    }
-    public XQueryList evalOr(@NotNull CondOrContext ctx){
-        return null;
-    }
-    public XQueryList evalNot(@NotNull CondNotContext ctx){
+    public XQueryFilter evalNot(@NotNull CondNotContext ctx){
         return null;
     }
 

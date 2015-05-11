@@ -1,5 +1,6 @@
 package dk.martinbmadsen.xquery.visitor;
 
+import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
@@ -15,6 +16,7 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalStringConstant(@NotNull XqStringConstantContext ctx){
+        // Not sure if we should just return the raw XMLText...
         return new XQueryList(new XMLText(ctx.StringLiteral().getText()));
     }
 
@@ -31,22 +33,33 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalConcat(@NotNull XqConcatContext ctx){
+        //qc.openScope();
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
+        //qc.closeScope();
+
+        //qc.openScope();
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
+        //qc.closeScope();
 
         l.addAll(r);
         return l;
     }
     public XQueryList evalSlash(@NotNull XqSlashContext ctx){
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
+
         qc.pushContextElement(xq);
         XQueryList rp = (XQueryList)visitor.visit(ctx.rp());
         qc.popContextElement();
+
         return rp.unique();
     }
     public XQueryList evalTagname(@NotNull XqTagNameContext ctx) {
+        if(!ctx.tagName1.getText().equals(ctx.tagName2.getText()))
+            Debugger.error(ctx.tagName1.getText() + "is not closed properly ");
+
+
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
-        return new XQueryList(new XMLElement(ctx.tagName.getText(), xq));
+        return new XQueryList(new XMLElement(ctx.tagName1.getText(), xq));
     }
 
     public XQueryList evalFLWR(@NotNull XqFLWRContext ctx) {

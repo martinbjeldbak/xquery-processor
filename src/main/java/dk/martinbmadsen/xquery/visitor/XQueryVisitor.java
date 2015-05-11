@@ -14,6 +14,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     private FEvaluator fEval = new FEvaluator(this, qc);
     private XqEvaluator xqEval = new XqEvaluator(this, qc);
     private FLWREvaluator FLWREval = new FLWREvaluator(this, qc);
+    private CondEvaluator CondEval = new CondEvaluator(this, qc);
 
     /** APS **/
 
@@ -184,7 +185,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
 
     @Override
     public IXQueryValue visitCondValEqual(@NotNull CondValEqualContext ctx) {
-        return super.visitCondValEqual(ctx);
+        return CondEval.evalValEqual(ctx);
     }
 
     @Override

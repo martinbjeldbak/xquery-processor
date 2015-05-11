@@ -12,7 +12,7 @@ xq
   | '(' xq ')'                                                #xqParenExpr
   | left=xq ',' right=xq                                      #xqConcat
   | xq '/' rp                                                 #xqSlash
-  | '<' tagName=Identifier '>' '{' xq '}' '</' Identifier '>' #xqTagName
+  | '<' tagName1=Identifier '>' '{' xq '}' '</' tagName2=Identifier '>' #xqTagName
   | forClause letClause? whereClause? returnClause            #xqFLWR
   | letClause xq                                              #xqLet
   ;
@@ -39,13 +39,13 @@ returnClause
 
 // Condition
 cond
-  : xq ('='|'eq') xq                                       #condValEqual
-  | xq ('=='|'is') xq                                      #condIdEqual
+  : left=xq ('='|'eq') right=xq                            #condValEqual
+  | left=xq ('=='|'is') right=xq                           #condIdEqual
   | 'empty(' xq ')'                                        #condEmpty
   | 'some' Var 'in' xq (',' Var 'in' xq)* 'satisfies' cond #condSomeSatis
   | '(' cond ')'                                           #condParenExpr
-  | cond 'and' cond                                        #condAnd
-  | cond 'or' cond                                         #condOr
+  | left=cond 'and' right=cond                             #condAnd
+  | left=cond 'or' right=cond                              #condOr
   | 'not' cond                                             #condNot
   ;
 

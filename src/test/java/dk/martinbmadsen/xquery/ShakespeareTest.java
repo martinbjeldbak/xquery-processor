@@ -35,6 +35,13 @@ public class ShakespeareTest extends XQueryTest {
     }
 
     @Test
+    public void xqTagName1() {
+        List<IXMLElement> res = ex("<hej>{doc(\"samples/xml/j_caesar.xml\")/TITLE/text()}</hej>");
+
+        assertXMLEquals("<hej>The Tragedy of Julius Caesar</hej>", res, 0);
+    }
+
+    @Test
     public void getsARootElement() {
         List<IXMLElement> res1 = exR("/TITLE");
         List<IXMLElement> res2 = runCorrectImplementation("/TITLE");

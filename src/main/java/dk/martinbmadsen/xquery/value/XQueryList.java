@@ -48,14 +48,30 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
         return false;
     }
 
+    public XQueryFilter equalsId(XQueryList o) {
+        for(IXMLElement x : this)
+            for(IXMLElement y : o)
+                if(x.equalsRef(y))
+                    return XQueryFilter.trueValue();
+        return XQueryFilter.falseValue();
+    }
+
+    public XQueryFilter equalsVal(XQueryList o) {
+        for(IXMLElement x : this)
+            for(IXMLElement y : o)
+                if(x.equals(y))
+                    return XQueryFilter.trueValue();
+        return XQueryFilter.falseValue();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof XQueryList) {
-            XQueryList l = ((XQueryList) obj);
-            return values.equals(l.values);
+            XQueryList o = ((XQueryList) obj);
+            return equalsVal(o) == XQueryFilter.trueValue();
         }
 
-        return super.equals(obj);
+        return false;
     }
 
     @Override
