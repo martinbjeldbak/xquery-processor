@@ -169,7 +169,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     @Override
     public IXQueryValue visitLetClause(@NotNull LetClauseContext ctx) {
         FLWREval.evalLet(ctx);
-        return super.visitLetClause(ctx);
+        return null;
     }
 
     @Override

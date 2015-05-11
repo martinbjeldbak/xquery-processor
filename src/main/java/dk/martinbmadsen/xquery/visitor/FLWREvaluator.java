@@ -25,7 +25,6 @@ public class FLWREvaluator extends XQueryEvaluator {
      */
     public void evalLet(@NotNull LetClauseContext ctx){
         for(int i = 0; i < ctx.xq().size(); i++) {
-            //qc.openScope();
             XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
             qc.putVar(ctx.Var(i).getText(), res);
         }
