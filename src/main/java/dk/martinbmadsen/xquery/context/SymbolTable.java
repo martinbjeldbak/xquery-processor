@@ -40,4 +40,11 @@ public class SymbolTable {
     public VarEnvironment closeScope() {
         return varEnv.pop();
     }
+
+    public VarEnvironment closeScope(int levels) {
+        VarEnvironment last = null;
+        for(int i = 0; i < levels; i++)
+            last = varEnv.pop();
+        return last;
+    }
 }

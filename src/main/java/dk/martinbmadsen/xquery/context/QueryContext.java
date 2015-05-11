@@ -35,11 +35,19 @@ public class QueryContext {
         return st.getVar(var);
     }
 
+    public XQueryList putVar(String varName, XQueryList val) {
+        return st.putVar(varName, val);
+    }
+
     public VarEnvironment openScope() {
         return st.openScope();
     }
 
     public VarEnvironment closeScope() {
         return st.closeScope();
+    }
+
+    public VarEnvironment closeScope(int i) {
+        return st.closeScope(i);
     }
 }

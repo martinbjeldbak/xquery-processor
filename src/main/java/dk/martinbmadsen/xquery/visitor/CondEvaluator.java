@@ -30,19 +30,40 @@ public class CondEvaluator extends XQueryEvaluator {
     }
 
     public XQueryFilter evalSomeSatis(@NotNull CondSomeSatisContext ctx){
-        return null;
+        int i;
+        for(i = 0; i < ctx.xq().size(); i++) {
+            qc.openScope();
+            XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
+            qc.putVar(ctx.Var(i).getText(), res);
+        }
+
+        XQueryFilter cond = (XQueryFilter)visitor.visit(ctx.cond());
+
+        // Close all our opened scopes to evaluate this condition
+        qc.closeScope(i);
+
+        return cond;
     }
+
     public XQueryFilter evalParen(@NotNull CondParenExprContext ctx){
-        return null;
+        return (XQueryFilter)visitor.visit(ctx.cond());
     }
+
     public XQueryFilter evalAnd(@NotNull CondAndContext ctx){
-        return null;
+        XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
+        XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
+        return l.and(r);
     }
+
     public XQueryFilter evalOr(@NotNull CondOrContext ctx){
-        return null;
+        XQueryFilter l = (XQueryFilter)visitor.visit(ctx.left);
+        XQueryFilter r = (XQueryFilter)visitor.visit(ctx.right);
+        return l.or(r);
     }
+
     public XQueryFilter evalNot(@NotNull CondNotContext ctx){
-        return null;
+        XQueryFilter res = (XQueryFilter)visitor.visit(ctx.cond());
+        return res.not();
     }
 
 }
