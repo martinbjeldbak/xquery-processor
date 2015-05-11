@@ -58,7 +58,7 @@ clean.delete genSrcPath // Remove any auto-generated source files (Java classes/
 
 allprojects {
     tasks.withType(JavaCompile) {
-        options.compilerArgs << "-Xlint:deprecation"
+        //options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
     }
 }
 
