@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+
+\usepackage[en-US]{datetime2}
+\usepackage{minted}
+
+\title{Milestone 1 Evaluation\\
+{\small CSE 232B, UC San Diego, Spring Q 2015}}
+\author{J. E. Gydesen \and
+        M. B. Madsen}
+\date{\DTMdisplaydate{2015}{5}{13}{3}, \DTMdisplaytime{11}{10}{00}}
+
+\begin{document}
+\maketitle
+
+\section{Query 1}
+Finds act, scene and speaker of famous line \emph{Et tu, Brute! Then fall, Caesar}. Should return 
+
+\begin{minted}{xml}
+<result>
+   <who>CAESAR</who>
+   <when><act>ACT III</act>
+         <scene>SCENE I.  Rome. Before the Capitol; the Senate sitting above.
+         </scene>
+   </when>
+</result>
+\end{minted}
+
+\subsection{Query}
+\begin{minted}{xquery}
+  <result>{
+    for $a in document("j_caesar.xml")//ACT,
+    $sc in $a//SCENE,
+    $sp in $sc/SPEECH
+    where $sp/LINE/text() = "Et tu, Brute! Then fall, Caesar."
+    return <who>{$sp/SPEAKER/text()}</who>,
+    <when>{<act>{$a/title/text()\}</act>,
+    <scene>{$sc/title/text()}</scene>}
+    </when>
+  }</result>
+\end{minted}
+
+\subsection{Parse Tree}
+\subsection{Output}
+
+\section{Query 2}
+Groups all acts by speaker, that is, return a list of elements of type element  \texttt{speaks \{ element who \{String\}, (element when \{String\})+ \}}, where the String contents of the <who> element is a speaker name, and the contents of the <when> elements are act names.
+
+\subsection{Query}
+\begin{minted}{xquery}
+  for $s in document("j_caesar.xml")//SPEAKER
+return <speaks>{<who>{$s/text()}</who>,
+                for $a in document("j_caesar.xml")//ACT
+                where some $s1 in $a//SPEAKER satisfies $s1 eq $s
+                return <when>{$a/title/text()}</when>}
+       </speaks>
+\end{minted}
+
+\subsection{Parse Tree}
+\subsection{Output}
+
+\end{document}
