@@ -57,20 +57,30 @@ public class XqEvaluator extends XQueryEvaluator {
             Debugger.error(ctx.open.getText() + "is not closed properly. You closed it with " + ctx.close.getText());
 
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
+
         return new XQueryList(new XMLElement(ctx.open.getText(), xq));
     }
 
     public XQueryList evalFLWR(@NotNull XqFLWRContext ctx) {
+        qc.openScope();
+
+        //XQueryList visitor.visit(ctx.forClause());
+
+        qc.closeScope();
+
         return null;
     }
 
     public XQueryList evalLet(@NotNull XqLetContext ctx) {
-        /*
-        qc.pushVarEnv((VarEnvironment) visitor.visitLetClause(ctx.letClause()));
-        XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
-        qc.popVarEnv();
-        return xq;
-        */
-        return new XQueryList();
+        qc.openScope();
+
+        // Changes a bunch of stuff within the global scope
+        visitor.visit(ctx.letClause());
+
+        XQueryList res = (XQueryList)visitor.visit(ctx.xq());
+
+        qc.closeScope();
+
+        return res;
     }
 }

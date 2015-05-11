@@ -15,19 +15,27 @@ public class FLWREvaluator extends XQueryEvaluator {
         super(visitor, qc);
     }
 
-    public XQueryList evalFor (@NotNull ForClauseContext ctx){
+    public XQueryList evalFor(@NotNull ForClauseContext ctx){
         return null;
     }
 
-    public XQueryList evalLet (@NotNull LetClauseContext ctx){
+    /**
+     * Evaluates a let expression, thus updating the global scope
+     * @param ctx list of xquery and variable expression
+     */
+    public void evalLet(@NotNull LetClauseContext ctx){
+        for(int i = 0; i < ctx.xq().size(); i++) {
+            //qc.openScope();
+            XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
+            qc.putVar(ctx.Var(i).getText(), res);
+        }
+    }
+
+    public XQueryList evalWhere(@NotNull WhereClauseContext ctx){
         return null;
     }
 
-    public XQueryList evalWhere (@NotNull WhereClauseContext ctx){
-        return null;
-    }
-
-    public XQueryList evalReturn (@NotNull ReturnClauseContext ctx){
+    public XQueryList evalReturn(@NotNull ReturnClauseContext ctx){
         return null;
     }
 }

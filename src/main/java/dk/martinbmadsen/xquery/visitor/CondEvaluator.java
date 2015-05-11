@@ -30,17 +30,12 @@ public class CondEvaluator extends XQueryEvaluator {
     }
 
     public XQueryFilter evalSomeSatis(@NotNull CondSomeSatisContext ctx){
-        int i;
-        for(i = 0; i < ctx.xq().size(); i++) {
-            qc.openScope();
+        for(int i = 0; i < ctx.xq().size(); i++) {
             XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
             qc.putVar(ctx.Var(i).getText(), res);
         }
 
         XQueryFilter cond = (XQueryFilter)visitor.visit(ctx.cond());
-
-        // Close all our opened scopes to evaluate this condition
-        qc.closeScope(i);
 
         return cond;
     }

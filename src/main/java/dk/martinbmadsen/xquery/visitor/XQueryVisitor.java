@@ -14,7 +14,7 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     private FEvaluator fEval = new FEvaluator(this, qc);
     private XqEvaluator xqEval = new XqEvaluator(this, qc);
     private FLWREvaluator FLWREval = new FLWREvaluator(this, qc);
-    private CondEvaluator CondEval = new CondEvaluator(this, qc);
+    private CondEvaluator condEval = new CondEvaluator(this, qc);
 
     /** APS **/
 
@@ -151,75 +151,76 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
 
     @Override
     public IXQueryValue visitXqFLWR(@NotNull XqFLWRContext ctx) {
-        return super.visitXqFLWR(ctx);
+        return xqEval.evalFLWR(ctx);
     }
 
     @Override
     public IXQueryValue visitXqLet(@NotNull XqLetContext ctx) {
-        return super.visitXqLet(ctx);
+        return xqEval.evalLet(ctx);
     }
 
     /** FLOWR CLAUSES **/
 
     @Override
     public IXQueryValue visitForClause(@NotNull ForClauseContext ctx) {
-        return super.visitForClause(ctx);
+        return FLWREval.evalFor(ctx);
     }
 
     @Override
     public IXQueryValue visitLetClause(@NotNull LetClauseContext ctx) {
+        FLWREval.evalLet(ctx);
         return super.visitLetClause(ctx);
     }
 
     @Override
     public IXQueryValue visitWhereClause(@NotNull WhereClauseContext ctx) {
-        return super.visitWhereClause(ctx);
+        return FLWREval.evalWhere(ctx);
     }
 
     @Override
     public IXQueryValue visitReturnClause(@NotNull ReturnClauseContext ctx) {
-        return super.visitReturnClause(ctx);
+        return FLWREval.evalReturn(ctx);
     }
 
     /** CONDITION CLAUSES **/
 
     @Override
     public IXQueryValue visitCondValEqual(@NotNull CondValEqualContext ctx) {
-        return CondEval.evalValEqual(ctx);
+        return condEval.evalValEqual(ctx);
     }
 
     @Override
     public IXQueryValue visitCondIdEqual(@NotNull CondIdEqualContext ctx) {
-        return CondEval.evalIdEqual(ctx);
+        return condEval.evalIdEqual(ctx);
     }
 
     @Override
     public IXQueryValue visitCondEmpty(@NotNull CondEmptyContext ctx) {
-        return CondEval.evalEmpty(ctx);
+        return condEval.evalEmpty(ctx);
     }
 
     @Override
     public IXQueryValue visitCondSomeSatis(@NotNull CondSomeSatisContext ctx) {
-        return CondEval.evalSomeSatis(ctx);
+        return condEval.evalSomeSatis(ctx);
     }
 
     @Override
     public IXQueryValue visitCondParenExpr(@NotNull CondParenExprContext ctx) {
-        return CondEval.evalParen(ctx);
+        return condEval.evalParen(ctx);
     }
 
     @Override
     public IXQueryValue visitCondAnd(@NotNull CondAndContext ctx) {
-        return CondEval.evalAnd(ctx);
+        return condEval.evalAnd(ctx);
     }
 
     @Override
     public IXQueryValue visitCondOr(@NotNull CondOrContext ctx) {
-        return CondEval.evalOr(ctx);
+        return condEval.evalOr(ctx);
     }
 
     @Override
     public IXQueryValue visitCondNot(@NotNull CondNotContext ctx) {
-        return CondEval.evalNot(ctx);
+        return condEval.evalNot(ctx);
     }
 }

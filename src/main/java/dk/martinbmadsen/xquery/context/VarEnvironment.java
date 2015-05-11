@@ -1,12 +1,11 @@
 package dk.martinbmadsen.xquery.context;
 
-import dk.martinbmadsen.xquery.value.IXQueryValue;
 import dk.martinbmadsen.xquery.value.XQueryList;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class VarEnvironment implements IXQueryValue {
+public class VarEnvironment {
     public Map<String, XQueryList> varEnvs = new HashMap<>();
     private VarEnvironment parent;
 
