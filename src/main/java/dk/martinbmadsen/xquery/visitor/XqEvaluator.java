@@ -16,7 +16,6 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalStringConstant(@NotNull XqStringConstantContext ctx){
-        // Not sure if we should just return the raw XMLText...
         return new XQueryList(new XMLText(ctx.StringLiteral().getText()));
     }
 
@@ -54,12 +53,11 @@ public class XqEvaluator extends XQueryEvaluator {
         return rp.unique();
     }
     public XQueryList evalTagname(@NotNull XqTagNameContext ctx) {
-        if(!ctx.tagName1.getText().equals(ctx.tagName2.getText()))
-            Debugger.error(ctx.tagName1.getText() + "is not closed properly ");
-
+        if(!ctx.open.getText().equals(ctx.close.getText()))
+            Debugger.error(ctx.open.getText() + "is not closed properly. You closed it with " + ctx.close.getText());
 
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
-        return new XQueryList(new XMLElement(ctx.tagName1.getText(), xq));
+        return new XQueryList(new XMLElement(ctx.open.getText(), xq));
     }
 
     public XQueryList evalFLWR(@NotNull XqFLWRContext ctx) {

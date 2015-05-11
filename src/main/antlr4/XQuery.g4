@@ -6,15 +6,15 @@ package dk.martinbmadsen.xquery.parser;
 
 // XQuery
 xq
-  : Var                                                       #xqVar
-  | StringLiteral                                             #xqStringConstant
-  | ap                                                        #xqAp
-  | '(' xq ')'                                                #xqParenExpr
-  | left=xq ',' right=xq                                      #xqConcat
-  | xq '/' rp                                                 #xqSlash
-  | '<' tagName1=Identifier '>' '{' xq '}' '</' tagName2=Identifier '>' #xqTagName
-  | forClause letClause? whereClause? returnClause            #xqFLWR
-  | letClause xq                                              #xqLet
+  : Var                                                          #xqVar
+  | StringLiteral                                                #xqStringConstant
+  | ap                                                           #xqAp
+  | '(' xq ')'                                                   #xqParenExpr
+  | left=xq ',' right=xq                                         #xqConcat
+  | xq '/' rp                                                    #xqSlash
+  | '<' open=Identifier '>' '{' xq '}' '</' close=Identifier '>' #xqTagName
+  | forClause letClause? whereClause? returnClause               #xqFLWR
+  | letClause xq                                                 #xqLet
   ;
 
 // For Clause: for $var1 in $someList, $var2 in $var1)
@@ -39,13 +39,13 @@ returnClause
 
 // Condition
 cond
-  : left=xq ('='|'eq') right=xq                            #condValEqual
+  : left=xq ('='|'eq')  right=xq                           #condValEqual
   | left=xq ('=='|'is') right=xq                           #condIdEqual
   | 'empty(' xq ')'                                        #condEmpty
   | 'some' Var 'in' xq (',' Var 'in' xq)* 'satisfies' cond #condSomeSatis
   | '(' cond ')'                                           #condParenExpr
   | left=cond 'and' right=cond                             #condAnd
-  | left=cond 'or' right=cond                              #condOr
+  | left=cond 'or'  right=cond                             #condOr
   | 'not' cond                                             #condNot
   ;
 

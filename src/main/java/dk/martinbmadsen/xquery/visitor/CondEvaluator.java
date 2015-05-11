@@ -25,8 +25,10 @@ public class CondEvaluator extends XQueryEvaluator {
     }
 
     public XQueryFilter evalEmpty(@NotNull CondEmptyContext ctx){
-        return null;
+        XQueryList res = (XQueryList)visitor.visit(ctx.xq());
+        return res.empty();
     }
+
     public XQueryFilter evalSomeSatis(@NotNull CondSomeSatisContext ctx){
         return null;
     }

@@ -190,36 +190,36 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
 
     @Override
     public IXQueryValue visitCondIdEqual(@NotNull CondIdEqualContext ctx) {
-        return super.visitCondIdEqual(ctx);
+        return CondEval.evalIdEqual(ctx);
     }
 
     @Override
     public IXQueryValue visitCondEmpty(@NotNull CondEmptyContext ctx) {
-        return super.visitCondEmpty(ctx);
+        return CondEval.evalEmpty(ctx);
     }
 
     @Override
     public IXQueryValue visitCondSomeSatis(@NotNull CondSomeSatisContext ctx) {
-        return super.visitCondSomeSatis(ctx);
+        return CondEval.evalSomeSatis(ctx);
     }
 
     @Override
     public IXQueryValue visitCondParenExpr(@NotNull CondParenExprContext ctx) {
-        return super.visitCondParenExpr(ctx);
+        return CondEval.evalParen(ctx);
     }
 
     @Override
     public IXQueryValue visitCondAnd(@NotNull CondAndContext ctx) {
-        return super.visitCondAnd(ctx);
+        return CondEval.evalAnd(ctx);
     }
 
     @Override
     public IXQueryValue visitCondOr(@NotNull CondOrContext ctx) {
-        return super.visitCondOr(ctx);
+        return CondEval.evalOr(ctx);
     }
 
     @Override
     public IXQueryValue visitCondNot(@NotNull CondNotContext ctx) {
-        return super.visitCondNot(ctx);
+        return CondEval.evalNot(ctx);
     }
 }

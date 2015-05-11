@@ -64,6 +64,12 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
         return XQueryFilter.falseValue();
     }
 
+    public XQueryFilter empty() {
+        if(this.size() == 0)
+            return XQueryFilter.trueValue();
+        return XQueryFilter.falseValue();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof XQueryList) {
