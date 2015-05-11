@@ -56,6 +56,12 @@ dependencies {
 
 clean.delete genSrcPath // Remove any auto-generated source files (Java classes/interfaces/etc)
 
+allprojects {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:deprecation"
+    }
+}
+
 // Intellij IDEA config
 idea.module.sourceDirs += file(antlrGenPath) // Add folder with generated source files to src
 idea.module.generatedSourceDirs += file(antlrGenPath) // Set same folder as a 'generated source' code folder
