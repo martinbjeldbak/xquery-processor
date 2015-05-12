@@ -35,11 +35,10 @@ Finds act, scene and speaker of famous line \emph{Et tu, Brute! Then fall, Caesa
 \end{minted}
 
 \subsection{Query}
-We renamed \texttt{\$a//SCENE} to \texttt{\$a/SCENE}, since the first is not a  valid expression in our language implementation.
 \begin{minted}{xquery}
 <result>{
 for $a in doc("j_caesar.xml")//ACT,
-    $sc in $a/SCENE,
+    $sc in $a//SCENE,
     $sp in $sc/SPEECH
 where $sp/LINE/text() = "Et tu, Brute! Then fall, Caesar."
 return <who>{$sp/SPEAKER/text()}</who>,
@@ -63,12 +62,11 @@ See \cref{fig:parseTree1}.
 Groups all acts by speaker, that is, return a list of elements of type element  \texttt{speaks \{ element who \{String\}, (element when \{String\})+ \}}, where the String contents of the \texttt{<who>} element is a speaker name, and the contents of the \texttt{<when>} elements are act names.
 
 \subsection{Query}
-Again, we renamed \texttt{\$a//SPEAKER} to \texttt{\$a/SPEAKER}, since the first is not a  valid expression in our language implementation.
 \begin{minted}{xquery}
 for $s in doc("j_caesar.xml")//SPEAKER
 return <speaks>{<who>{$s/text()}</who>,
                 for $a in doc("j_caesar.xml")//ACT
-                where some $s1 in $a/SPEAKER satisfies $s1 eq $s
+                where some $s1 in $a//SPEAKER satisfies $s1 eq $s
                 return <when>{$a/title/text()}</when>}
        </speaks>
 \end{minted}
