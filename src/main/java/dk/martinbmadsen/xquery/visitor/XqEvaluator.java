@@ -3,6 +3,7 @@ package dk.martinbmadsen.xquery.visitor;
 import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
+import dk.martinbmadsen.xquery.parser.XQueryParser;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
 import dk.martinbmadsen.xquery.value.XQueryList;
@@ -43,7 +44,8 @@ public class XqEvaluator extends XQueryEvaluator {
         l.addAll(r);
         return l;
     }
-    public XQueryList evalSlash(@NotNull XqSlashContext ctx){
+
+    private XQueryList evalXqSlash(@NotNull XqSlashContext ctx) {
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
 
         qc.pushContextElement(xq);
@@ -52,6 +54,29 @@ public class XqEvaluator extends XQueryEvaluator {
 
         return rp.unique();
     }
+
+    private XQueryList evalXqSlashSlash(@NotNull XqSlashContext ctx) {
+        // TODO: Implement
+        Debugger.error("XQ // has not been implemented yet");
+        return null;
+    }
+
+    public XQueryList evalSlashes(@NotNull XqSlashContext ctx) {
+        XQueryList results = new XQueryList();
+        switch(ctx.slash.getType()) {
+            case XQueryParser.SLASH:
+                results = evalXqSlash(ctx);
+                break;
+            case XQueryParser.SSLASH:
+                results = evalXqSlashSlash(ctx);
+                break;
+            default:
+                Debugger.error("Oops, shouldn't be here");
+                break;
+        }
+        return results;
+    }
+
     public XQueryList evalTagname(@NotNull XqTagNameContext ctx) {
         if(!ctx.open.getText().equals(ctx.close.getText()))
             Debugger.error(ctx.open.getText() + "is not closed properly. You closed it with " + ctx.close.getText());

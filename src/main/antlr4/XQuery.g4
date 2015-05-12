@@ -11,7 +11,7 @@ xq
   | ap                                                           #xqAp
   | '(' xq ')'                                                   #xqParenExpr
   | left=xq ',' right=xq                                         #xqConcat
-  | xq '/' rp                                                    #xqSlash
+  | xq slash=('/'|'//') rp                                       #xqSlash
   | '<' open=Identifier '>' '{' xq '}' '</' close=Identifier '>' #xqTagName
   | forClause letClause? whereClause? returnClause               #xqFLWR
   | letClause xq                                                 #xqLet
