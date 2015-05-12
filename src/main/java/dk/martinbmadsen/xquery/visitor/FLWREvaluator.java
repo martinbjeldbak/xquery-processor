@@ -8,7 +8,9 @@ import dk.martinbmadsen.xquery.parser.XQueryParser.ReturnClauseContext;
 import dk.martinbmadsen.xquery.parser.XQueryParser.WhereClauseContext;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
 import dk.martinbmadsen.xquery.value.VarEnvironment;
+import dk.martinbmadsen.xquery.value.XQueryFilter;
 import dk.martinbmadsen.xquery.value.XQueryList;
+import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.antlr.v4.runtime.misc.NotNull;
 
 public class FLWREvaluator extends XQueryEvaluator {
@@ -40,10 +42,23 @@ public class FLWREvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalWhere(@NotNull WhereClauseContext ctx){
-        return null;
+        XQueryList res = new XQueryList();
+        XQueryList xs = qc.peekContextElement();
+
+        for(IXMLElement x : xs) {
+            qc.pushContextElement(x);
+
+            XQueryFilter y = (XQueryFilter)visitor.visit(ctx.cond());
+
+            qc.popContextElement();
+
+            if(y == XQueryFilter.trueValue())
+                res.add(x);
+        }
+        return res;
     }
 
-    public XQueryList evalReturn(@NotNull ReturnClauseContext ctx){
-        return null;
+    public XQueryList evalReturn(@NotNull ReturnClauseContext ctx) {
+        return (XQueryList)visitor.visit(ctx.xq());
     }
 }

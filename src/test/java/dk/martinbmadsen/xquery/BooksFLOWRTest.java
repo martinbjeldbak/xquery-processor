@@ -6,18 +6,54 @@ import org.junit.Test;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+
 public class BooksFLOWRTest extends XQueryTest {
     // books.xml from http://www.w3schools.com/xquery/xquery_flwor.asp
 
     @Test
     public void playground() {
+        String q = "for $x in (doc(\"samples/xml/books.xml\")//author)\n" +
+                "where $x/text() = \"J K. Rowling\"\n" +
+                " return $x/text()";
+
+        List<IXMLElement> res = ex(q);
+
+        XQueryExecutor.printResults(res);
+        /*
         String query = "<ul>\n" +
                 "{\n" +
                 "for $x in doc(\"books.xml\")/bookstore/book/title\n" +
-                "order by $x\n" +
                 "return <li>{$x}</li>\n" +
                 "}\n" +
                 "</ul>";
+                */
+    }
+
+    @Test
+    public void authorTest1() {
+        String q = "for $x in doc(\"samples/xml/books.xml\")//author" +
+                "  return $x/text()";
+
+        List<IXMLElement> res = ex(q);
+
+        assertEquals(8, res.size());
+        assertXMLEquals("Giada De Laurentiis", res, 0);
+        assertXMLEquals("Erik T. Ray", res, 7);
+    }
+
+    @Test
+    public void authorWhereTest1() {
+        String q = "for $x in doc(\"samples/xml/books.xml\")//author\n" +
+                "\twhere $x/text() = \"J K. Rowling\"\n" +
+                " return $x/year/text()";
+
+        List<IXMLElement> res = ex(q);
+
+        XQueryExecutor.printResults(res);
+
+        assertEquals(1, res.size());
+        assertXMLEquals("2005", res, 0);
     }
 
     @Test

@@ -13,6 +13,8 @@ import dk.martinbmadsen.xquery.xmltree.XMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLText;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.Map;
+
 public class XqEvaluator extends XQueryEvaluator {
     public XqEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
         super(visitor, qc);
@@ -58,9 +60,20 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     private XQueryList evalXqSlashSlash(@NotNull XqSlashContext ctx) {
-        // TODO: Implement
-        Debugger.error("XQ // has not been implemented yet");
-        return null;
+        XQueryList l = (XQueryList)visitor.visit(ctx.xq());
+        XQueryList descendants = new XQueryList();
+
+        for(IXMLElement x : l) {
+            descendants.addAll(x.descendants());
+        }
+
+        qc.pushContextElement(descendants);
+
+        XQueryList r = (XQueryList)visitor.visit(ctx.rp());
+
+        qc.popContextElement();
+
+        return r;
     }
 
     public XQueryList evalSlashes(@NotNull XqSlashContext ctx) {
@@ -99,13 +112,37 @@ public class XqEvaluator extends XQueryEvaluator {
 
     public XQueryList evalFLWR(@NotNull XqFLWRContext ctx) {
         VarEnvironment veFor = (VarEnvironment)visitor.visit(ctx.forClause());
-        VarEnvironment veLet = (VarEnvironment)visitor.visit(ctx.letClause());
+        //VarEnvironment veLet = (VarEnvironment)visitor.visit(ctx.letClause());
+
+        XQueryList res = new XQueryList();
+
+        VarEnvironment ve = qc.cloneVarEnv();
+
+        for(Map.Entry<String, XQueryList> kv : veFor.entrySet()) {
+            for(IXMLElement e : kv.getValue()) {
+                ve.put(kv.getKey(), new XQueryList(e));
+                qc.pushVarEnv(ve);
+
+                qc.pushContextElement((XQueryList)visitor.visit(ctx.whereClause()));
+
+                res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+
+                qc.popContextElement();
+
+                qc.popVarEnv();
+            }
 
 
-        visitor.visit(ctx.whereClause());
-        visitor.visit(ctx.returnClause());
 
-        return null;
+
+            //res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+        }
+
+
+        //visitor.visit(ctx.whereClause());
+        //visitor.visit(ctx.returnClause());
+
+        return res;
     }
 
     public XQueryList evalLet(@NotNull XqLetContext ctx) {

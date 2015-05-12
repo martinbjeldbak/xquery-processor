@@ -16,12 +16,12 @@ public class CondEvaluator extends XQueryEvaluator {
 
     public XQueryFilter evalIdEqual(@NotNull CondIdEqualContext ctx){
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
-        XQueryList r = (XQueryList)visitor.visit(ctx.left);
+        XQueryList r = (XQueryList)visitor.visit(ctx.right);
         return l.equalsId(r);
     }
     public XQueryFilter evalValEqual(@NotNull CondValEqualContext ctx){
         XQueryList l = (XQueryList)visitor.visit(ctx.left);
-        XQueryList r = (XQueryList)visitor.visit(ctx.left);
+        XQueryList r = (XQueryList)visitor.visit(ctx.right);
         return l.equalsVal(r);
     }
 

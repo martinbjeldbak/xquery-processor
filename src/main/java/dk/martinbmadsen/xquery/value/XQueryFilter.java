@@ -37,4 +37,12 @@ public class XQueryFilter implements IXQueryValue {
             return trueVal;
         return falseVal;
     }
+
+    @Override
+    public String toString() {
+        if(this == trueVal)
+            return "XQueryFilter True";
+        else
+            return "XQueryFilter False";
+    }
 }
