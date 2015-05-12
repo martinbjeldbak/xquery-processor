@@ -165,7 +165,10 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
 
     @Override
     public IXMLElement get(int index) {
-        return values.get(index);
+        if (values.size() > 0)
+            return values.get(index);
+        else
+            return null;
     }
 
     @Override

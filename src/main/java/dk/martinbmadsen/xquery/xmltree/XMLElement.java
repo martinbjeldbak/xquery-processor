@@ -97,6 +97,13 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public XQueryList descendants() {
+        XQueryList res = new XQueryList();
+
+        for (IXMLElement e : children()){
+            res.add(e);
+            res.addAll(e.descendants());
+        }
+        /*
         Iterable<Content> descendants = elem.getDescendants();
         XQueryList res = new XQueryList();
 
@@ -106,7 +113,7 @@ public class XMLElement implements IXMLElement {
 
                 res.add(new XMLElement(e));
             }
-        }
+        }*/
         return res;
     }
 
