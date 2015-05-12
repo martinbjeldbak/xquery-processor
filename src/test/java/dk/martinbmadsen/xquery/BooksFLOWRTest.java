@@ -13,9 +13,9 @@ public class BooksFLOWRTest extends XQueryTest {
 
     @Test
     public void playground() {
-        String q = "for $x in (doc(\"samples/xml/books.xml\")//author)\n" +
-                "where $x/text() = \"J K. Rowling\"\n" +
-                " return $x/text()";
+        String q = "for $x in doc(\"samples/xml/books.xml\")/book\n" +
+                "where $x/author/text() = \"J K. Rowling\"\n" +
+                " return $x/price/text()";
 
         List<IXMLElement> res = ex(q);
 

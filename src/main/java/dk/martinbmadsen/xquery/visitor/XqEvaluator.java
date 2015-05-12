@@ -7,6 +7,7 @@ import dk.martinbmadsen.xquery.parser.XQueryParser;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
 import dk.martinbmadsen.xquery.value.VarEnvironment;
+import dk.martinbmadsen.xquery.value.XQueryFilter;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLElement;
@@ -115,33 +116,23 @@ public class XqEvaluator extends XQueryEvaluator {
         //VarEnvironment veLet = (VarEnvironment)visitor.visit(ctx.letClause());
 
         XQueryList res = new XQueryList();
-
         VarEnvironment ve = qc.cloneVarEnv();
 
         for(Map.Entry<String, XQueryList> kv : veFor.entrySet()) {
+            qc.pushContextElement(kv.getValue());
+
             for(IXMLElement e : kv.getValue()) {
                 ve.put(kv.getKey(), new XQueryList(e));
                 qc.pushVarEnv(ve);
 
-                qc.pushContextElement((XQueryList)visitor.visit(ctx.whereClause()));
-
-                res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
-
-                qc.popContextElement();
+                if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
+                    res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                }
 
                 qc.popVarEnv();
             }
-
-
-
-
-            //res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+            qc.popContextElement();
         }
-
-
-        //visitor.visit(ctx.whereClause());
-        //visitor.visit(ctx.returnClause());
-
         return res;
     }
 
