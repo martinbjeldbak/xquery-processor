@@ -4,6 +4,7 @@ import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
+import dk.martinbmadsen.xquery.value.VarEnvironment;
 import dk.martinbmadsen.xquery.value.XQueryFilter;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import org.antlr.v4.runtime.misc.NotNull;
@@ -30,12 +31,20 @@ public class CondEvaluator extends XQueryEvaluator {
     }
 
     public XQueryFilter evalSomeSatis(@NotNull CondSomeSatisContext ctx){
+        VarEnvironment ve = new VarEnvironment();
+
         for(int i = 0; i < ctx.xq().size(); i++) {
             XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
-            qc.putVar(ctx.Var(i).getText(), res);
+            ve.putVar(ctx.Var(i).getText(), res);
         }
 
-        return (XQueryFilter)visitor.visit(ctx.cond());
+        qc.pushVarEnv(ve);
+
+        XQueryFilter res = (XQueryFilter)visitor.visit(ctx.cond());
+
+        qc.popVarEnv();
+
+        return res;
     }
 
     public XQueryFilter evalParen(@NotNull CondParenExprContext ctx){

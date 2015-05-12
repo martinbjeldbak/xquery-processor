@@ -7,6 +7,7 @@ import dk.martinbmadsen.xquery.parser.XQueryParser.LetClauseContext;
 import dk.martinbmadsen.xquery.parser.XQueryParser.ReturnClauseContext;
 import dk.martinbmadsen.xquery.parser.XQueryParser.WhereClauseContext;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
+import dk.martinbmadsen.xquery.value.VarEnvironment;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -15,24 +16,27 @@ public class FLWREvaluator extends XQueryEvaluator {
         super(visitor, qc);
     }
 
-    public XQueryList evalFor(@NotNull ForClauseContext ctx){
-        XQueryList res = new XQueryList();
+    public VarEnvironment evalFor(@NotNull ForClauseContext ctx){
+        VarEnvironment ve = new VarEnvironment();
         for(int i = 0; i < ctx.xq().size(); i++) {
-            res = (XQueryList)visitor.visit(ctx.xq(i));
-            qc.putVar(ctx.Var(i).getText(), res);
+            XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
+            ve.putVar(ctx.Var(i).getText(), res);
         }
-        return res;
+        return ve;
     }
 
     /**
      * Evaluates a let expression, thus updating the global scope
      * @param ctx list of xquery and variable expression
      */
-    public void evalLet(@NotNull LetClauseContext ctx){
+    public VarEnvironment evalLet(@NotNull LetClauseContext ctx){
+        VarEnvironment ve = qc.cloneVarEnv();
+
         for(int i = 0; i < ctx.xq().size(); i++) {
             XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
-            qc.putVar(ctx.Var(i).getText(), res);
+            ve.putVar(ctx.Var(i).getText(), res);
         }
+        return ve;
     }
 
     public XQueryList evalWhere(@NotNull WhereClauseContext ctx){

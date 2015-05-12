@@ -101,7 +101,7 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
     }
 
     @Override
-    public Iterator iterator() {
+    public Iterator<IXMLElement> iterator() {
         return values.iterator();
     }
 

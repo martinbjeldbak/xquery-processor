@@ -2,18 +2,16 @@ package dk.martinbmadsen.xquery.visitor;
 
 import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.context.QueryContext;
-import dk.martinbmadsen.xquery.context.VarEnvironment;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
+import dk.martinbmadsen.xquery.value.VarEnvironment;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLText;
 import org.antlr.v4.runtime.misc.NotNull;
-
-import java.util.Map;
 
 public class XqEvaluator extends XQueryEvaluator {
     public XqEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
@@ -85,8 +83,8 @@ public class XqEvaluator extends XQueryEvaluator {
         if(!ctx.open.getText().equals(ctx.close.getText()))
             Debugger.error(ctx.open.getText() + "is not closed properly. You closed it with " + ctx.close.getText());
 
+        XQueryList res = new XQueryList();
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
-        XQueryList res = new XQueryList(xq.size());
 
         // Figure out whether to add result as text or child element
         for(IXMLElement v : xq) {
@@ -100,26 +98,25 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalFLWR(@NotNull XqFLWRContext ctx) {
-        VarEnvironment ve = (VarEnvironment)visitor.visit(ctx.forClause());
+        VarEnvironment veFor = (VarEnvironment)visitor.visit(ctx.forClause());
+        VarEnvironment veLet = (VarEnvironment)visitor.visit(ctx.letClause());
 
-        for(Map.Entry<String, XQueryList> e : ve.varEnvs.entrySet()) {
 
-        }
-
-        visitor.visit(ctx.letClause());
         visitor.visit(ctx.whereClause());
         visitor.visit(ctx.returnClause());
-
-        qc.closeScope();
 
         return null;
     }
 
     public XQueryList evalLet(@NotNull XqLetContext ctx) {
         // Changes a bunch of stuff within the global scope
-        visitor.visit(ctx.letClause());
+        VarEnvironment ve = (VarEnvironment)visitor.visit(ctx.letClause());
+
+        qc.pushVarEnv(ve);
 
         XQueryList res = (XQueryList)visitor.visit(ctx.xq());
+
+        qc.popVarEnv();
 
         return res;
     }

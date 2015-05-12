@@ -1,5 +1,6 @@
 package dk.martinbmadsen.xquery.context;
 
+import dk.martinbmadsen.xquery.value.VarEnvironment;
 import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
@@ -35,19 +36,15 @@ public class QueryContext {
         return st.getVar(var);
     }
 
-    public XQueryList putVar(String varName, XQueryList val) {
-        return st.putVar(varName, val);
+    public VarEnvironment pushVarEnv(VarEnvironment ve) {
+        return st.pushVarEnv(ve);
     }
 
-    public VarEnvironment openScope() {
-        return st.openScope();
+    public VarEnvironment popVarEnv() {
+        return st.popVarEnv();
     }
 
-    public VarEnvironment closeScope() {
-        return st.closeScope();
-    }
-
-    public VarEnvironment closeScope(int i) {
-        return st.closeScope(i);
+    public VarEnvironment cloneVarEnv() {
+        return st.cloneVarEnv();
     }
 }
