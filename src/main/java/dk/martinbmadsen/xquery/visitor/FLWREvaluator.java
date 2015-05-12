@@ -20,7 +20,7 @@ public class FLWREvaluator extends XQueryEvaluator {
         VarEnvironment ve = new VarEnvironment();
         for(int i = 0; i < ctx.xq().size(); i++) {
             XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
-            ve.putVar(ctx.Var(i).getText(), res);
+            ve.put(ctx.Var(i).getText(), res);
         }
         return ve;
     }
@@ -34,7 +34,7 @@ public class FLWREvaluator extends XQueryEvaluator {
 
         for(int i = 0; i < ctx.xq().size(); i++) {
             XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
-            ve.putVar(ctx.Var(i).getText(), res);
+            ve.put(ctx.Var(i).getText(), res);
         }
         return ve;
     }
