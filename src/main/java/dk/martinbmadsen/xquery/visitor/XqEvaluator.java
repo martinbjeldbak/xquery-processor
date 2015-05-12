@@ -64,7 +64,11 @@ public class XqEvaluator extends XQueryEvaluator {
     public XQueryList evalFLWR(@NotNull XqFLWRContext ctx) {
         qc.openScope();
 
-        //XQueryList visitor.visit(ctx.forClause());
+        visitor.visit(ctx.forClause());
+
+        visitor.visit(ctx.letClause());
+        visitor.visit(ctx.whereClause());
+        visitor.visit(ctx.returnClause());
 
         qc.closeScope();
 

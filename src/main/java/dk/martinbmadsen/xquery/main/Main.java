@@ -1,7 +1,7 @@
 package dk.martinbmadsen.xquery.main;
 
 import dk.martinbmadsen.utils.debug.Debugger;
-import dk.martinbmadsen.xquery.executor.XQueryExecutor;
+import dk.martinbmadsen.utils.debug.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
 import java.io.IOException;

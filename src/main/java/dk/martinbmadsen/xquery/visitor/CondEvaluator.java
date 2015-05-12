@@ -35,9 +35,7 @@ public class CondEvaluator extends XQueryEvaluator {
             qc.putVar(ctx.Var(i).getText(), res);
         }
 
-        XQueryFilter cond = (XQueryFilter)visitor.visit(ctx.cond());
-
-        return cond;
+        return (XQueryFilter)visitor.visit(ctx.cond());
     }
 
     public XQueryFilter evalParen(@NotNull CondParenExprContext ctx){

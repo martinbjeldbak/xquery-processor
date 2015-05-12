@@ -16,7 +16,12 @@ public class FLWREvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalFor(@NotNull ForClauseContext ctx){
-        return null;
+        XQueryList res = new XQueryList();
+        for(int i = 0; i < ctx.xq().size(); i++) {
+            res = (XQueryList)visitor.visit(ctx.xq(i));
+            qc.putVar(ctx.Var(i).getText(), res);
+        }
+        return res;
     }
 
     /**

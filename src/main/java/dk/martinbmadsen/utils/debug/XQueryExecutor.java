@@ -1,6 +1,5 @@
-package dk.martinbmadsen.xquery.executor;
+package dk.martinbmadsen.utils.debug;
 
-import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.parser.XQueryLexer;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
 import dk.martinbmadsen.xquery.value.XQueryList;
