@@ -27,12 +27,8 @@ public class GeneralTest extends XQueryTest {
     public void letTest2() {
         List<IXMLElement> res = ex("let $v := \"h\", $v2 := \"ello\" <a>{$v, <b>{$v2}</b>}</a>");
 
-        // TODO: Run this test and note that we don't properly nest XML elements. I haven't been able to
-        // figure out how yet. XqEvaluator.evalTagname() makes new XMLElements, we could loop through the
-        // result list from xq and make each a child element of the first element of the list, or just a long
-        // list of child elements, where each item in the list is a child of the previous item. Will need to
-        // play around with this.
-        assertXMLEquals("<a>h&lt;b&gt;ello&lt;/b&gt;</a>", res, 0);
+        assertXMLEquals("<a>h</a>", res, 0);
+        assertXMLEquals("<a><b>ello</b></a>", res, 1);
     }
 
     @Test

@@ -18,10 +18,14 @@ public class XMLElement implements IXMLElement {
         elem = element;
     }
 
-    public XMLElement(String tagName, XQueryList content) {
+    public XMLElement(String tagName, XMLText text) {
         elem = new Element(tagName);
-        for (IXMLElement x : content)
-            elem.addContent(x.toString());
+        elem.addContent(text.toString());
+    }
+
+    public XMLElement(String tagName, XMLElement child) {
+        elem = new Element(tagName);
+        elem.addContent(child.elem);
     }
 
     @Override

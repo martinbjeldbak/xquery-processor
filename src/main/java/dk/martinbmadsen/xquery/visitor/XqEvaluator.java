@@ -2,14 +2,18 @@ package dk.martinbmadsen.xquery.visitor;
 
 import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.xquery.context.QueryContext;
+import dk.martinbmadsen.xquery.context.VarEnvironment;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
 import dk.martinbmadsen.xquery.value.IXQueryValue;
 import dk.martinbmadsen.xquery.value.XQueryList;
+import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLText;
 import org.antlr.v4.runtime.misc.NotNull;
+
+import java.util.Map;
 
 public class XqEvaluator extends XQueryEvaluator {
     public XqEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
@@ -82,14 +86,25 @@ public class XqEvaluator extends XQueryEvaluator {
             Debugger.error(ctx.open.getText() + "is not closed properly. You closed it with " + ctx.close.getText());
 
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
+        XQueryList res = new XQueryList(xq.size());
 
-        return new XQueryList(new XMLElement(ctx.open.getText(), xq));
+        // Figure out whether to add result as text or child element
+        for(IXMLElement v : xq) {
+            if(v instanceof XMLText)
+                res.add(new XMLElement(ctx.open.getText(), (XMLText)v));
+            else if(v instanceof XMLElement)
+                res.add(new XMLElement(ctx.open.getText(), (XMLElement)v));
+        }
+
+        return res;
     }
 
     public XQueryList evalFLWR(@NotNull XqFLWRContext ctx) {
-        qc.openScope();
+        VarEnvironment ve = (VarEnvironment)visitor.visit(ctx.forClause());
 
-        visitor.visit(ctx.forClause());
+        for(Map.Entry<String, XQueryList> e : ve.varEnvs.entrySet()) {
+
+        }
 
         visitor.visit(ctx.letClause());
         visitor.visit(ctx.whereClause());
@@ -101,14 +116,10 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalLet(@NotNull XqLetContext ctx) {
-        qc.openScope();
-
         // Changes a bunch of stuff within the global scope
         visitor.visit(ctx.letClause());
 
         XQueryList res = (XQueryList)visitor.visit(ctx.xq());
-
-        qc.closeScope();
 
         return res;
     }
