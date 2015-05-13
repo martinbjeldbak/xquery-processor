@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class XMLText implements IXMLElement {
-    String value;
-    Element parent;
+    private String value;
+    private Element parent;
 
     public XMLText(String val){
         if(val.charAt(0) == '"' && val.charAt(val.length()-1) == '"')
@@ -82,5 +82,10 @@ public class XMLText implements IXMLElement {
     @Override
     public String toString() {
         return value;
+    }
+
+    @Override
+    public String toCompactString() {
+        return toString();
     }
 }

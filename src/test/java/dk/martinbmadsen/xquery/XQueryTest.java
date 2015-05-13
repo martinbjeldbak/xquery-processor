@@ -49,7 +49,7 @@ public abstract class XQueryTest {
     }
 
     protected void assertXMLEquals(String expected, List<IXMLElement> actual, int actualIndex) {
-        assertEquals(expected, actual.get(actualIndex).toString());
+        assertEquals(expected, actual.get(actualIndex).toCompactString());
     }
 
     protected void print(List<IXMLElement> res) {

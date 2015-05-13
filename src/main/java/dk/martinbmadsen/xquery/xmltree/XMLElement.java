@@ -122,5 +122,11 @@ public class XMLElement implements IXMLElement {
         }
         return false;
     }
+
+    @Override
+    public String toCompactString() {
+        XMLOutputter xout = new XMLOutputter(Format.getCompactFormat());
+        return xout.outputString(elem);
+    }
 }
 

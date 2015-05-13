@@ -4,7 +4,6 @@ import com.pholser.junit.quickcheck.ForAll;
 import com.pholser.junit.quickcheck.From;
 import dk.martinbmadsen.utils.debug.QueryGenerator;
 import dk.martinbmadsen.utils.debug.XQueryExecutor;
-import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.jdom2.JDOMException;
 import org.junit.Test;
@@ -117,7 +116,7 @@ public class ShakespeareTest extends XQueryTest {
 
         assertEquals(2, res.size());
         assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res, 0);
-        assertXMLEquals("<SCNDESCR>SCENE  Rome: the neighbourhood of Sardis: the neighbourhood of Philippi.</SCNDESCR>", res, 1);
+        assertXMLEquals("<SCNDESCR>SCENE Rome: the neighbourhood of Sardis: the neighbourhood of Philippi.</SCNDESCR>", res, 1);
     }
 
     @Test

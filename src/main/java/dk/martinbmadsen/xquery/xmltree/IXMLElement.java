@@ -72,4 +72,11 @@ public interface IXMLElement {
      * @return true if they have the same content
      */
     boolean equals(Object o);
+
+    /**
+     * Converts this object to a one line string with as many
+     * spaces as possible removed
+     * @return a compact String representation of this object
+     */
+    String toCompactString();
 }
