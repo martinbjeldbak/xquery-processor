@@ -1,10 +1,12 @@
 package dk.martinbmadsen.xquery;
 
-import dk.martinbmadsen.utils.debug.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
+
+import static org.junit.Assert.assertEquals;
 
 public class Milestone1Test extends XQueryTest {
     @Test
@@ -24,40 +26,38 @@ public class Milestone1Test extends XQueryTest {
 
         List<IXMLElement> res = ex(q);
 
-        XQueryExecutor.printPrettyResults(res);
-
+        assertEquals(1, res.size());
         assertXMLEquals("<result><who>CAESAR</who><when><act>ACT III</act><scene>SCENE I. Rome. " +
                 "Before the Capitol; the Senate sitting above.</scene></when></result>", res, 0);
 
     }
 
+    @Ignore
     @Test
     public void query2() {
         String q;
 
-        q = "<root>{" +
+        q = "" +
                 "for $s in doc(\"samples/xml/j_caesar.xml\")//SPEAKER\n" +
                 "return <speaks>{<who>{$s/text()}</who>,\n" +
                 "                for $a in doc(\"samples/xml/j_caesar.xml\")//ACT\n" +
                 "                where some $s1 in $a//SPEAKER satisfies $s1 eq $s\n" +
                 "                return <when>{$a/TITLE/text()}</when>}\n" +
                 "</speaks>" +
-            "}</root>";
+            "";
 
         List<IXMLElement> res = ex(q);
 
-        XQueryExecutor.printResultsToFile(res, "samples/output/query2.xml");
-
-        //assertEquals(798, res.size());
-        //assertXMLEquals("<speaks><who>FLAVIUS</who><when>ACT I</when></speaks>", res, 0);
-        //assertXMLEquals("<speaks><who>OCTAVIUS</who><when>ACT IV</when><when>ACT V</when></speaks>", res, 797);
+        assertEquals(798, res.size());
+        assertXMLEquals("<speaks><who>FLAVIUS</who><when>ACT I</when></speaks>", res, 0);
+        assertXMLEquals("<speaks><who>OCTAVIUS</who><when>ACT IV</when><when>ACT V</when></speaks>", res, 797);
     }
 
     @Test
     public void query3() {
         String q;
 
-        q = "<root>{  for $s in doc(\"samples/xml/j_caesar.xml\")//SCENE\n" +
+        q = "for $s in doc(\"samples/xml/j_caesar.xml\")//SCENE\n" +
                 "return\n" +
                 "<scenes>{\n" +
                 "<scene>{$s/TITLE/text()}</scene>,\n" +
@@ -65,12 +65,14 @@ public class Milestone1Test extends XQueryTest {
                 "where some $s1 in $a//SCENE satisfies $s1 eq $s and $a/TITLE/text() = \"ACT II\"\n" +
                 "return <act>{$a/TITLE/text()}</act>\n" +
                 "}\n" +
-                "</scenes>}</root>";
+                "</scenes>";
         List<IXMLElement> res = ex(q);
 
-        XQueryExecutor.printPrettyResults(res);
-        XQueryExecutor.printResultsToFile(res, "samples/output/query3.xml");
-
+        assertEquals(18, res.size());
+        assertXMLEquals("<scenes><scene>SCENE I. Rome. A street.</scene></scenes>", res, 0);
+        assertXMLEquals("<scenes><scene>SCENE I. Rome. Before the Capitol; the Senate sitting above.</scene></scenes>", res, 7);
+        assertXMLEquals("<scenes><scene>SCENE IV. Another part of the field.</scene></scenes>", res, 16);
+        assertXMLEquals("<scenes><scene>SCENE V. Another part of the field.</scene></scenes>", res, 17);
     }
 
     @Test
@@ -89,6 +91,6 @@ public class Milestone1Test extends XQueryTest {
 
         List<IXMLElement> res = ex(q);
 
-        XQueryExecutor.printPrettyResults(res);
+        assertXMLEquals("<acts><act>ACT IV</act><act>ACT V</act></acts>", res, 0);
     }
 }
