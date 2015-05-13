@@ -120,50 +120,32 @@ public class XqEvaluator extends XQueryEvaluator {
         XQueryList res = new XQueryList();
         VarEnvironment ve = qc.cloneVarEnv();
 
-        //String array of var names for lookup in the matrix
-        String[] vars = veFor.keySet().toArray(new String[0]);
+        for(Map.Entry<String, XQueryList> kv : veFor.entrySet()) {
+            qc.pushContextElement(kv.getValue());
 
-        int solutions = 1; // Number of rows
-        for (XQueryList xql : veFor.values())
-            solutions *= xql.size();
 
-        // Cartesian product of the XQ lists of the variables
-        List<XQueryList> product = new ArrayList<>(solutions);
-        for (int i = 0; i < solutions; i++){
-            XQueryList row = new XQueryList();
-            int j = 1;
-            for (XQueryList xql : veFor.values()){
-                row.add(xql.get((i/j) % xql.size()));
-                j *= xql.size();
-            }
-            product.add(row);
-        }
+            for(IXMLElement e : kv.getValue()) {
+                ve.put(kv.getKey(), new XQueryList(e));
+                qc.pushVarEnv(ve);
 
-        for(XQueryList row : product) {
-            qc.pushContextElement(row);
-
-            //Put each variable for this row in the VarEnv
-            for(IXMLElement e : row)
-                ve.put(vars[row.indexOf(e)], new XQueryList(e));
-            qc.pushVarEnv(ve);
-
-            if(ctx.letClause() != null) {
-                VarEnvironment letEnv = (VarEnvironment)visitor.visit(ctx.letClause());
-                qc.pushVarEnv(letEnv);
-            }
-
-            if(ctx.whereClause() != null) {
-                if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
-                    res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+                if(ctx.letClause() != null) {
+                    VarEnvironment letEnv = (VarEnvironment)visitor.visit(ctx.letClause());
+                    qc.pushVarEnv(letEnv);
                 }
-            }
-            else
-                res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
 
-            qc.popVarEnv();
+                if(ctx.whereClause() != null) {
+                    if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
+                        res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+                    }
+                }
+                else
+                    res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
 
-            if(ctx.letClause() != null)
                 qc.popVarEnv();
+
+                if(ctx.letClause() != null)
+                    qc.popVarEnv();
+            }
             qc.popContextElement();
         }
         return res;
