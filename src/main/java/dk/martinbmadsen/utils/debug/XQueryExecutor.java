@@ -49,6 +49,19 @@ public class XQueryExecutor {
         }
     }
 
+    public static void printCompactResults(List<IXMLElement> result) {
+        if (result == null){
+            System.out.println("Result is null");
+            return;
+        }
+        System.out.println(result.size() + " results below:");
+        Integer i = 0;
+        for(IXMLElement c : result) {
+            Debugger.result("#" + i++);
+            System.out.println(c.toCompactString());
+        }
+    }
+
     private static XQueryList parse(XQueryLexer lexer) {
         XQueryParser parser = new XQueryParser(new CommonTokenStream(lexer));
         XQueryParser.XqContext context = parser.xq(); // set entry point
