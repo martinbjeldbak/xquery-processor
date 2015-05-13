@@ -115,7 +115,7 @@ public class XqEvaluator extends XQueryEvaluator {
         VarEnvironmentList veFor = (VarEnvironmentList)visitor.visit(ctx.forClause());
 
         XQueryList res = new XQueryList();
-        for (VarEnvironment ve : veFor.varEnvs){
+        for (VarEnvironment ve : veFor){
             qc.pushVarEnv(ve);
             if(ctx.letClause() != null) {
                 VarEnvironment letEnv = (VarEnvironment)visitor.visit(ctx.letClause());
