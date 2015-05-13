@@ -120,7 +120,7 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public String toCompactString() {
-        return  new XMLOutputter(Format.getCompactFormat()).outputString(elem);
+        return new XMLOutputter(Format.getCompactFormat()).outputString(elem);
     }
 }
 

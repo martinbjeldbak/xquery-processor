@@ -8,8 +8,15 @@ import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.antlr.v4.runtime.ANTLRFileStream;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CommonTokenStream;
+import org.jdom2.Document;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.List;
 
 /**
@@ -36,7 +43,26 @@ public class XQueryExecutor {
         return parse(new XQueryLexer(new ANTLRInputStream(query)));
     }
 
-    public static void printResults(List<IXMLElement> result) {
+    public static void printResultsToFile(List<IXMLElement> res, String path) {
+        SAXBuilder sb = new SAXBuilder();
+        XMLOutputter xout = new XMLOutputter(Format.getPrettyFormat());
+        String xml = "";
+
+        for(IXMLElement e : res) {
+            xml += e.toCompactString();
+        }
+
+        try {
+            Document doc = sb.build(new StringReader(xml));
+
+            xout.output(doc, new FileWriter(path));
+
+        } catch (JDOMException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void printPrettyResults(List<IXMLElement> result) {
         if (result == null){
             System.out.println("Result is null");
             return;
@@ -44,7 +70,7 @@ public class XQueryExecutor {
         System.out.println(result.size() + " results below:");
         Integer i = 0;
         for(IXMLElement c : result) {
-            Debugger.result("#" + i++);
+            //Debugger.result("#" + i++);
             System.out.println(c.toString());
         }
     }

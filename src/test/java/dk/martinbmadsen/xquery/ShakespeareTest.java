@@ -33,7 +33,7 @@ public class ShakespeareTest extends XQueryTest {
                 "}</result>";
 
         List<IXMLElement> res = ex(q);
-        XQueryExecutor.printResults(res);
+        XQueryExecutor.printPrettyResults(res);
     }
 
     @Theory
@@ -55,7 +55,7 @@ public class ShakespeareTest extends XQueryTest {
 
         List<IXMLElement> res = ex(q);
 
-        //XQueryExecutor.printResults(res);
+        //XQueryExecutor.printPrettyResults(res);
     }
 
     @Test
@@ -84,8 +84,8 @@ public class ShakespeareTest extends XQueryTest {
     public void ApSlashSlashTextGetCharacters() {
         List<IXMLElement> res = exR("//PERSONA");
 
-        //XQueryExecutor.printResults(res);
-        //XQueryExecutor.printResults(runCorrectImplementation("//PERSONA"));
+        //XQueryExecutor.printPrettyResults(res);
+        //XQueryExecutor.printPrettyResults(runCorrectImplementation("//PERSONA"));
 
         // There are 36 results... I hand counted them in the XML file
         assertEquals("JULIUS CAESAR", res.get(0).txt().toString());

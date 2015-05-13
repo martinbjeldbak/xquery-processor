@@ -13,7 +13,7 @@ public class BooksFLOWRTest extends XQueryTest {
 
     @Test
     public void playground() {
-        //XQueryExecutor.printResults(res);
+        //XQueryExecutor.printPrettyResults(res);
     }
 
     @Test
@@ -70,7 +70,7 @@ public class BooksFLOWRTest extends XQueryTest {
 
         List<IXMLElement> res = ex(query);
 
-        XQueryExecutor.printResults(res);
+        XQueryExecutor.printPrettyResults(res);
 
         //assertXMLEquals("<title lang=\"en\">Harry Potter</title>", res, 0);
         //assertXMLEquals("<title lang=\"en\">XQuery Kick Start</title>", res, 1);

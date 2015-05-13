@@ -53,6 +53,6 @@ public abstract class XQueryTest {
     }
 
     protected void print(List<IXMLElement> res) {
-        XQueryExecutor.printResults(res);
+        XQueryExecutor.printPrettyResults(res);
     }
 }

@@ -13,7 +13,7 @@ public class GeneralTest extends XQueryTest {
         List<IXMLElement> res = ex("for $a in doc(\"samples/xml/j_caesar.xml\")//ACT\n" +
                 "  return for $b in doc(\"samples/xml/j_caesar.xml\")/*\n" +
                 "  return <h>{$b}</h>");
-        XQueryExecutor.printResults(res);
+        XQueryExecutor.printPrettyResults(res);
     }
 
     @Test
