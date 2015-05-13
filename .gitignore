@@ -3,6 +3,7 @@
 .DS_Store
 /build
 /target/generated-sources
+/samples/output
 
 # Java class files
 *.class
