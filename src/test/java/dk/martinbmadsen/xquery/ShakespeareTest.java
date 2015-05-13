@@ -4,6 +4,7 @@ import com.pholser.junit.quickcheck.ForAll;
 import com.pholser.junit.quickcheck.From;
 import dk.martinbmadsen.utils.debug.QueryGenerator;
 import dk.martinbmadsen.utils.debug.XQueryExecutor;
+import dk.martinbmadsen.xquery.value.XQueryList;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.jdom2.JDOMException;
 import org.junit.Test;
@@ -21,14 +22,11 @@ public class ShakespeareTest extends XQueryTest {
 
     @Test
     public void playground() throws JDOMException, IOException {
-        String q = "for $s in doc(\"samples/xml/j_caesar.xml\")//SPEAKER\n" +
-                "return <speaks>{<who>{$s/text()}</who>,\n" +
-                "                for $a in doc(\"samples/xml/j_caesar.xml\")//ACT\n" +
-                "                where some $s1 in $a//SPEAKER satisfies $s1 eq $s\n" +
-                "                return <when>{$a/TITLE/text()}</when>}\n" +
-                "</speaks>";
+        String q = "for $s in doc(\"samples/xml/j_caesar.xml\")//PGROUP, $q in doc(\"samples/xml/j_caesar.xml\")/PERSONAE " +
+                "return <a>{$s, $q}</a>";
 
         List<IXMLElement> res = ex(q);
+        XQueryExecutor.printResults(res);
     }
 
     @Theory
