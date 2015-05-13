@@ -21,7 +21,14 @@ public class ShakespeareTest extends XQueryTest {
 
     @Test
     public void playground() throws JDOMException, IOException {
-        List<IXMLElement> res = exR("/TITLE/text()");
+        String q = "for $s in doc(\"samples/xml/j_caesar.xml\")//SPEAKER\n" +
+                "return <speaks>{<who>{$s/text()}</who>,\n" +
+                "                for $a in doc(\"samples/xml/j_caesar.xml\")//ACT\n" +
+                "                where some $s1 in $a//SPEAKER satisfies $s1 eq $s\n" +
+                "                return <when>{$a/title/text()}</when>}\n" +
+                "</speaks>";
+
+        List<IXMLElement> res = ex(q);
 
         XQueryExecutor.printResults(res);
     }

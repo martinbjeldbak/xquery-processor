@@ -2,7 +2,6 @@ package dk.martinbmadsen.xquery.xmltree;
 
 import dk.martinbmadsen.xquery.value.XQueryList;
 import org.jdom2.Attribute;
-import org.jdom2.Content;
 import org.jdom2.Element;
 import org.jdom2.Text;
 import org.jdom2.output.Format;
@@ -18,14 +17,16 @@ public class XMLElement implements IXMLElement {
         elem = element;
     }
 
-    public XMLElement(String tagName, XMLText text) {
+    public XMLElement(String tagName) {
         elem = new Element(tagName);
-        elem.addContent(text.toString());
     }
 
-    public XMLElement(String tagName, XMLElement child) {
-        elem = new Element(tagName);
-        elem.addContent(child.elem);
+    public void add(XMLElement child) {
+        elem.addContent(child.elem.clone());
+    }
+
+    public void add(XMLText txt) {
+        elem.addContent(txt.toString());
     }
 
     @Override
@@ -74,7 +75,7 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public String toString() {
-        XMLOutputter xout = new XMLOutputter(Format.getCompactFormat());
+        XMLOutputter xout = new XMLOutputter(Format.getPrettyFormat());
         return xout.outputString(elem);
     }
 
@@ -103,17 +104,6 @@ public class XMLElement implements IXMLElement {
             res.add(e);
             res.addAll(e.descendants());
         }
-        /*
-        Iterable<Content> descendants = elem.getDescendants();
-        XQueryList res = new XQueryList();
-
-        for(Content c : descendants) {
-            if(c instanceof Element) {
-                Element e = (Element)c;
-
-                res.add(new XMLElement(e));
-            }
-        }*/
         return res;
     }
 

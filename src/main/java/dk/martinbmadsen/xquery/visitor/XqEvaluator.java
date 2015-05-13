@@ -97,18 +97,18 @@ public class XqEvaluator extends XQueryEvaluator {
         if(!ctx.open.getText().equals(ctx.close.getText()))
             Debugger.error(ctx.open.getText() + "is not closed properly. You closed it with " + ctx.close.getText());
 
-        XQueryList res = new XQueryList();
         XQueryList xq = (XQueryList)visitor.visit(ctx.xq());
+        XMLElement res = new XMLElement(ctx.open.getText());
 
         // Figure out whether to add result as text or child element
         for(IXMLElement v : xq) {
             if(v instanceof XMLText)
-                res.add(new XMLElement(ctx.open.getText(), (XMLText)v));
+                res.add((XMLText)v);
             else if(v instanceof XMLElement)
-                res.add(new XMLElement(ctx.open.getText(), (XMLElement)v));
+                res.add((XMLElement)v);
         }
 
-        return res;
+        return new XQueryList(res);
     }
 
     public XQueryList evalFLWR(@NotNull XqFLWRContext ctx) {
@@ -121,15 +121,28 @@ public class XqEvaluator extends XQueryEvaluator {
         for(Map.Entry<String, XQueryList> kv : veFor.entrySet()) {
             qc.pushContextElement(kv.getValue());
 
+
             for(IXMLElement e : kv.getValue()) {
                 ve.put(kv.getKey(), new XQueryList(e));
                 qc.pushVarEnv(ve);
 
-                if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
-                    res.addAll((XQueryList) visitor.visit(ctx.returnClause()));
+                if(ctx.letClause() != null) {
+                    VarEnvironment letEnv = (VarEnvironment)visitor.visit(ctx.letClause());
+                    qc.pushVarEnv(letEnv);
                 }
 
+                if(ctx.whereClause() != null) {
+                    if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
+                        res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+                    }
+                }
+                else
+                    res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+
                 qc.popVarEnv();
+
+                if(ctx.letClause() != null)
+                    qc.popVarEnv();
             }
             qc.popContextElement();
         }

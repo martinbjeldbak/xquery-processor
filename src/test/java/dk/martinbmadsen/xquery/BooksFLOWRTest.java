@@ -13,21 +13,31 @@ public class BooksFLOWRTest extends XQueryTest {
 
     @Test
     public void playground() {
-        String q = "for $x in doc(\"samples/xml/books.xml\")/book\n" +
-                "where $x/author/text() = \"J K. Rowling\"\n" +
+        //XQueryExecutor.printResults(res);
+    }
+
+    @Test
+    public void exampleJKTests() {
+        String q1 = "for $x in doc(\"samples/xml/books.xml\")/book\n" +
+                "\tlet $y := $x/author, $year := \"2005\", $jk := \"J K. Rowling\"\n" +
+                " where $y/text() = $jk and $x/year/text() = $year\n" +
                 " return $x/price/text()";
 
-        List<IXMLElement> res = ex(q);
 
-        XQueryExecutor.printResults(res);
-        /*
-        String query = "<ul>\n" +
-                "{\n" +
-                "for $x in doc(\"books.xml\")/bookstore/book/title\n" +
-                "return <li>{$x}</li>\n" +
-                "}\n" +
-                "</ul>";
-                */
+        String q2 = "for $x in doc(\"samples/xml/books.xml\")/book\n" +
+                "\tlet $y := \"J K. Rowling\", $year := \"2005\"\n" +
+                " where $x/author/text() = $y and $x/year/text() = $year\n" +
+                " return $x/price/text()";
+
+
+
+        String q3 = "for $x in doc(\"samples/xml/books.xml\")/book\n" +
+                "\tlet $y := \"J K. Rowling\"\n" +
+                " where $x/author/text() = $y\n" +
+                " return $x/price/text()";
+
+        assertEquals(ex(q1), ex(q2));
+        assertEquals(ex(q2), ex(q3));
     }
 
     @Test
@@ -44,13 +54,11 @@ public class BooksFLOWRTest extends XQueryTest {
 
     @Test
     public void authorWhereTest1() {
-        String q = "for $x in doc(\"samples/xml/books.xml\")//author\n" +
-                "\twhere $x/text() = \"J K. Rowling\"\n" +
+        String q = "for $x in doc(\"samples/xml/books.xml\")/book\n" +
+                "where $x/author/text() = \"J K. Rowling\"\n" +
                 " return $x/year/text()";
 
         List<IXMLElement> res = ex(q);
-
-        XQueryExecutor.printResults(res);
 
         assertEquals(1, res.size());
         assertXMLEquals("2005", res, 0);
@@ -69,5 +77,18 @@ public class BooksFLOWRTest extends XQueryTest {
 
         //assertXMLEquals("<title lang=\"en\">Harry Potter</title>", res, 0);
         //assertXMLEquals("<title lang=\"en\">XQuery Kick Start</title>", res, 1);
+    }
+
+    @Test
+    public void listCreationTest() {
+        String query = "<ul>\n" +
+                "{\n" +
+                "for $x in doc(\"samples/xml/books.xml\")/book/title\n" +
+                "return <li>{$x}</li>\n" +
+                "}\n" +
+                "</ul>";
+        List<IXMLElement> res = ex(query);
+
+        assertEquals(1, res.size());
     }
 }
