@@ -25,7 +25,7 @@ public class XMLDocument implements IXMLDocument {
     }
 
     @Override
-    public IXMLElement root() {
+    public XMLElement root() {
         return new XMLElement(doc.getRootElement());
     }
 

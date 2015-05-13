@@ -23,6 +23,16 @@ public class ApRpEvaluator extends XQueryEvaluator {
     public XQueryList evalAp(@NotNull ApContext ctx) {
         XMLDocument document = new XMLDocument(ctx.fileName.getText());
         XQueryList results = new XQueryList();
+
+        /* Replace the below code with this commented out code
+         * in case documents roots have to excplictly be referenced
+         * e.g. doc("j_caesar.xml")/PLAY/TITLE/text() instead of
+         *      doc("j_caesar.xml")/TITLE/text() which is the current setting
+        XMLElement root = new XMLElement("root");
+        root.add(document.root());
+        qc.pushContextElement(root);
+        */
+
         qc.pushContextElement(document.root());
 
         switch(ctx.slash.getType()) {
@@ -42,11 +52,10 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
     public XQueryList evalTagName(@NotNull RpTagNameContext ctx) {
         String tagName = ctx.getText();
-        XQueryList res = evalWildCard().stream().filter(
+
+        return evalWildCard().stream().filter(
                 e -> e.tag().equals(tagName)
         ).collect(Collectors.toCollection(XQueryList::new));
-
-        return res;
     }
 
     public XQueryList evalWildCard() {
@@ -62,21 +71,28 @@ public class ApRpEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalDotDot() {
+        return qc.peekContextElement().stream().map(
+                e -> e.parent().get(0)
+        ).collect(Collectors.toCollection(XQueryList::new)).unique();
+        /* ^^^ is equal to vvv
         XQueryList res = new XQueryList();
         for(IXMLElement e : qc.peekContextElement()) {
             res.add(e.parent().get(0));
         }
         return res.unique();
+        */
     }
 
     public XQueryList evalText() {
+        return qc.peekContextElement().stream().map(
+                IXMLElement::txt).collect(Collectors.toCollection(XQueryList::new));
+        /* ^^^is equal to vvv
         XQueryList res = new XQueryList();
-
         for(IXMLElement x : qc.peekContextElement()) {
             res.add(x.txt());
         }
-
         return res;
+         */
     }
 
     public XQueryList evalAttr(RpAttrContext ctx) {
@@ -136,9 +152,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
         }
 
         qc.pushContextElement(descendants);
-
         XQueryList r = (XQueryList)visitor.visit(ctx.right);
-
         qc.popContextElement();
 
         return r.unique();
@@ -152,9 +166,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
         for(IXMLElement x : xs) {
             qc.pushContextElement(x);
-
             XQueryFilter y = (XQueryFilter)visitor.visit(ctx.f());
-
             qc.popContextElement();
 
             if(y == XQueryFilter.trueValue())

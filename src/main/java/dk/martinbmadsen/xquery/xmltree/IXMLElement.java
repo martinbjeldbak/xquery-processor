@@ -1,6 +1,9 @@
 package dk.martinbmadsen.xquery.xmltree;
 
+import dk.martinbmadsen.utils.debug.QueryGenerator;
 import dk.martinbmadsen.xquery.value.XQueryList;
+import org.jdom2.Attribute;
+import org.jdom2.output.Format;
 
 import java.util.List;
 
@@ -57,6 +60,10 @@ public interface IXMLElement {
      */
     String tag();
 
+    /**
+     * Used by {@link QueryGenerator#QueryGenerator()} to create elements
+     * @return a list of each attribute, see {@link Attribute#getName()} for what this string is.
+     */
     List<String> getAttribNames();
 
     /**
@@ -74,9 +81,14 @@ public interface IXMLElement {
     boolean equals(Object o);
 
     /**
-     * Converts this object to a one line string with as many
-     * spaces as possible removed
-     * @return a compact String representation of this object
+     * Converts this element to a one line string, including all attribs, text, and sub-elements.
+     * @return a compact String representation of this element, see {@link Format#getCompactFormat()}
      */
     String toCompactString();
+
+    /**
+     * Converts this element to a pretty-printed string, including all attributes, text, and sub-elements.
+     * @return a pretty-printed String representation of this element, see {@link Format#getPrettyFormat()}}
+     */
+    String toString();
 }

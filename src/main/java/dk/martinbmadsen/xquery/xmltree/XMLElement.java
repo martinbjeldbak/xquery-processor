@@ -7,8 +7,8 @@ import org.jdom2.Text;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class XMLElement implements IXMLElement {
     private Element elem;
@@ -42,11 +42,8 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public XQueryList children() {
-        XQueryList children = new XQueryList();
-        for (Element elem : this.elem.getChildren())
-            children.add(new XMLElement(elem));
-
-        return children;
+        return this.elem.getChildren().stream().map(
+                XMLElement::new).collect(Collectors.toCollection(XQueryList::new));
     }
 
     @Override
@@ -90,16 +87,13 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public List<String> getAttribNames(){
-        List<String> attribNames = new ArrayList<>();
-        for (Attribute x : this.elem.getAttributes())
-            attribNames.add(x.getName());
-        return attribNames;
+        return this.elem.getAttributes().stream().map(
+                Attribute::getName).collect(Collectors.toList());
     }
 
     @Override
     public XQueryList descendants() {
         XQueryList res = new XQueryList();
-        res.add(this);
 
         for (IXMLElement e : children()){
             res.add(e);
@@ -125,8 +119,7 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public String toCompactString() {
-        XMLOutputter xout = new XMLOutputter(Format.getCompactFormat());
-        return xout.outputString(elem);
+        return  new XMLOutputter(Format.getCompactFormat()).outputString(elem);
     }
 }
 
