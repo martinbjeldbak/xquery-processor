@@ -45,24 +45,7 @@ public class FLWREvaluator extends XQueryEvaluator {
     }
 
     public XQueryFilter evalWhere(@NotNull WhereClauseContext ctx){
-        //XQueryList res = new XQueryList();
-        //XQueryList xs = qc.peekContextElement();
-
         return (XQueryFilter)visitor.visit(ctx.cond());
-
-        /*
-        for(IXMLElement x : xs) {
-            qc.pushContextElement(x);
-
-            XQueryFilter y = (XQueryFilter)visitor.visit(ctx.cond());
-
-            qc.popContextElement();
-
-            if(y == XQueryFilter.trueValue())
-                res.add(x);
-        }
-        return res;
-        */
     }
 
     public XQueryList evalReturn(@NotNull ReturnClauseContext ctx) {

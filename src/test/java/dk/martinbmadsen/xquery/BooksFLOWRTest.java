@@ -23,13 +23,10 @@ public class BooksFLOWRTest extends XQueryTest {
                 " where $y/text() = $jk and $x/year/text() = $year\n" +
                 " return $x/price/text()";
 
-
         String q2 = "for $x in doc(\"samples/xml/books.xml\")/book\n" +
                 "\tlet $y := \"J K. Rowling\", $year := \"2005\"\n" +
                 " where $x/author/text() = $y and $x/year/text() = $year\n" +
                 " return $x/price/text()";
-
-
 
         String q3 = "for $x in doc(\"samples/xml/books.xml\")/book\n" +
                 "\tlet $y := \"J K. Rowling\"\n" +
