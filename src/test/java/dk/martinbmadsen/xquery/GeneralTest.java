@@ -24,9 +24,7 @@ public class GeneralTest extends XQueryTest {
     @Test
     public void letTest2() {
         List<IXMLElement> res = ex("let $v := \"h\", $v2 := \"ello\" <a>{$v, <b>{$v2}</b>}</a>");
-
-        assertXMLEquals("<a>h</a>", res, 0);
-        assertXMLEquals("<a><b>ello</b></a>", res, 1);
+        assertXMLEquals("<a>h<b>ello</b></a>", res, 0);
     }
 
     @Test

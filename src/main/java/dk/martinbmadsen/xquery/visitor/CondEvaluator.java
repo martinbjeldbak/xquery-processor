@@ -31,7 +31,7 @@ public class CondEvaluator extends XQueryEvaluator {
     }
 
     public XQueryFilter evalSomeSatis(@NotNull CondSomeSatisContext ctx){
-        VarEnvironment ve = new VarEnvironment();
+        VarEnvironment ve = qc.cloneVarEnv();
 
         for(int i = 0; i < ctx.xq().size(); i++) {
             XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));

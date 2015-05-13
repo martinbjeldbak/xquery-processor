@@ -25,12 +25,10 @@ public class ShakespeareTest extends XQueryTest {
                 "return <speaks>{<who>{$s/text()}</who>,\n" +
                 "                for $a in doc(\"samples/xml/j_caesar.xml\")//ACT\n" +
                 "                where some $s1 in $a//SPEAKER satisfies $s1 eq $s\n" +
-                "                return <when>{$a/title/text()}</when>}\n" +
+                "                return <when>{$a/TITLE/text()}</when>}\n" +
                 "</speaks>";
 
         List<IXMLElement> res = ex(q);
-
-        XQueryExecutor.printResults(res);
     }
 
     @Theory
@@ -99,7 +97,7 @@ public class ShakespeareTest extends XQueryTest {
 
         assertEquals(2, res.size());
         assertXMLEquals("<TITLE>The Tragedy of Julius Caesar</TITLE>", res, 0);
-        assertXMLEquals("<SCNDESCR>SCENE Rome: the neighbourhood of Sardis: the neighbourhood of Philippi.</SCNDESCR>", res, 1);
+        assertXMLEquals("<SCNDESCR>SCENE  Rome: the neighbourhood of Sardis: the neighbourhood of Philippi.</SCNDESCR>", res, 1);
     }
 
     @Test

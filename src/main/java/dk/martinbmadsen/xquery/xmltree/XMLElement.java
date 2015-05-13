@@ -75,7 +75,7 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public String toString() {
-        XMLOutputter xout = new XMLOutputter(Format.getPrettyFormat());
+        XMLOutputter xout = new XMLOutputter();
         return xout.outputString(elem);
     }
 
@@ -99,6 +99,7 @@ public class XMLElement implements IXMLElement {
     @Override
     public XQueryList descendants() {
         XQueryList res = new XQueryList();
+        res.add(this);
 
         for (IXMLElement e : children()){
             res.add(e);

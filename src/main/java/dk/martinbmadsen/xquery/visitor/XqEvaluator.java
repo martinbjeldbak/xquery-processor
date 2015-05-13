@@ -74,7 +74,7 @@ public class XqEvaluator extends XQueryEvaluator {
 
         qc.popContextElement();
 
-        return r;
+        return r.unique();
     }
 
     public XQueryList evalSlashes(@NotNull XqSlashContext ctx) {

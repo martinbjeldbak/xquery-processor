@@ -37,7 +37,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
                 Debugger.error("Oops, shouldn't be here");
                 break;
         }
-        return results;
+        return results.unique();
     }
 
     public XQueryList evalTagName(@NotNull RpTagNameContext ctx) {
@@ -141,7 +141,7 @@ public class ApRpEvaluator extends XQueryEvaluator {
 
         qc.popContextElement();
 
-        return r;
+        return r.unique();
     }
 
     public XQueryList evalFilter(@NotNull RpFilterContext ctx) {
