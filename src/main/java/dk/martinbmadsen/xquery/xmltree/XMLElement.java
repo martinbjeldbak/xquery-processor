@@ -75,7 +75,7 @@ public class XMLElement implements IXMLElement {
 
     @Override
     public String toString() {
-        XMLOutputter xout = new XMLOutputter();
+        XMLOutputter xout = new XMLOutputter(Format.getPrettyFormat());
         return xout.outputString(elem);
     }
 

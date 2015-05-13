@@ -6,28 +6,47 @@ import dk.martinbmadsen.xquery.parser.XQueryParser.ForClauseContext;
 import dk.martinbmadsen.xquery.parser.XQueryParser.LetClauseContext;
 import dk.martinbmadsen.xquery.parser.XQueryParser.ReturnClauseContext;
 import dk.martinbmadsen.xquery.parser.XQueryParser.WhereClauseContext;
-import dk.martinbmadsen.xquery.value.IXQueryValue;
-import dk.martinbmadsen.xquery.value.VarEnvironment;
-import dk.martinbmadsen.xquery.value.XQueryFilter;
-import dk.martinbmadsen.xquery.value.XQueryList;
+import dk.martinbmadsen.xquery.value.*;
+import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.antlr.v4.runtime.misc.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FLWREvaluator extends XQueryEvaluator {
     public FLWREvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
         super(visitor, qc);
     }
 
-    public VarEnvironment evalFor(@NotNull ForClauseContext ctx){
-        VarEnvironment ve = new VarEnvironment();
-        for(int i = 0; i < ctx.xq().size(); i++) {
-            XQueryList res = (XQueryList)visitor.visit(ctx.xq(i));
-            ve.put(ctx.Var(i).getText(), res);
-            qc.pushVarEnv(ve);
-        }
-        ve = qc.cloneVarEnv();
-        for(int i = 0; i < ctx.xq().size(); i++)
-            qc.popVarEnv();
+    public VarEnvironmentList evalFor(@NotNull ForClauseContext ctx){
+        VarEnvironmentList ve = new VarEnvironmentList();
+        ve.varEnvs.addAll(getVarEnvs(0, ctx, new VarEnvironment()));
         return ve;
+    }
+
+    private List<VarEnvironment> getVarEnvs (int var, @NotNull ForClauseContext ctx, VarEnvironment vv){
+        List<VarEnvironment> varEnvs = new ArrayList<>();
+        XQueryList res = (XQueryList)visitor.visit(ctx.xq(var));
+        if(var == ctx.xq().size() - 1){
+            for(IXMLElement elem : res){
+                VarEnvironment ve = qc.cloneVarEnv();
+                ve.putAll(vv);
+                ve.put(ctx.Var(var).getText(), new XQueryList(elem));
+                varEnvs.add(ve);
+            }
+            return varEnvs;
+
+        }
+        for (IXMLElement elem : res){
+            qc.pushContextElement(elem);
+            VarEnvironment v = vv.copy();
+            v.put(ctx.Var(var).getText(), new XQueryList(elem));
+            qc.pushVarEnv(v);
+            varEnvs.addAll(getVarEnvs(var + 1, ctx, v));
+            qc.popVarEnv();
+            qc.popContextElement();
+        }
+        return varEnvs;
     }
 
     /**

@@ -5,10 +5,7 @@ import dk.martinbmadsen.xquery.context.QueryContext;
 import dk.martinbmadsen.xquery.parser.XQueryBaseVisitor;
 import dk.martinbmadsen.xquery.parser.XQueryParser;
 import dk.martinbmadsen.xquery.parser.XQueryParser.*;
-import dk.martinbmadsen.xquery.value.IXQueryValue;
-import dk.martinbmadsen.xquery.value.VarEnvironment;
-import dk.martinbmadsen.xquery.value.XQueryFilter;
-import dk.martinbmadsen.xquery.value.XQueryList;
+import dk.martinbmadsen.xquery.value.*;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLText;
@@ -17,6 +14,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class XqEvaluator extends XQueryEvaluator {
     public XqEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
@@ -114,39 +112,29 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public XQueryList evalFLWR(@NotNull XqFLWRContext ctx) {
-        VarEnvironment veFor = (VarEnvironment)visitor.visit(ctx.forClause());
-        //VarEnvironment veLet = (VarEnvironment)visitor.visit(ctx.letClause());
+        VarEnvironmentList veFor = (VarEnvironmentList)visitor.visit(ctx.forClause());
 
         XQueryList res = new XQueryList();
-        VarEnvironment ve = qc.cloneVarEnv();
+        for (VarEnvironment ve : veFor.varEnvs){
+            qc.pushVarEnv(ve);
+            if(ctx.letClause() != null) {
+                VarEnvironment letEnv = (VarEnvironment)visitor.visit(ctx.letClause());
+                qc.pushVarEnv(letEnv);
+            }
 
-        for(Map.Entry<String, XQueryList> kv : veFor.entrySet()) {
-            qc.pushContextElement(kv.getValue());
-
-
-            for(IXMLElement e : kv.getValue()) {
-                ve.put(kv.getKey(), new XQueryList(e));
-                qc.pushVarEnv(ve);
-
-                if(ctx.letClause() != null) {
-                    VarEnvironment letEnv = (VarEnvironment)visitor.visit(ctx.letClause());
-                    qc.pushVarEnv(letEnv);
-                }
-
-                if(ctx.whereClause() != null) {
-                    if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
-                        res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
-                    }
-                }
-                else
+            if(ctx.whereClause() != null) {
+                if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
                     res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
+                }
+            }
+            else
+                res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
 
+            qc.popVarEnv();
+
+            if(ctx.letClause() != null)
                 qc.popVarEnv();
 
-                if(ctx.letClause() != null)
-                    qc.popVarEnv();
-            }
-            qc.popContextElement();
         }
         return res;
     }
