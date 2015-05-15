@@ -45,8 +45,11 @@ public class ShakespeareTest extends XQueryTest {
 
     @Theory
     public void XQqueryTester(@ForAll @From(XQQueryGenerator.class) String query) {
-        //System.out.println(query);
+//        System.out.println(query);
         List<IXMLElement> res1 = ex(query);
+        if (res1.size() > 0){
+            System.out.println(query);
+        }
     }
 
     @Test

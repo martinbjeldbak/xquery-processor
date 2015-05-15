@@ -62,7 +62,7 @@ public class XQQueryGenerator extends Generator<String> {
         else if (ranNum < (chance += 5))
             return "\"" + stringContants.get(random.nextInt(stringContants.size())) + "\"";
         else if (ranNum < (chance += 20))
-            return "doc(\"samples/xml/j_caesar.xml\")/" + generateRP(random);
+            return "doc(\"samples/xml/j_caesar.xml\")" + seperators.get(random.nextInt(seperators.size())) + generateRP(random);
         else if (ranNum < (chance += 5))
             return '(' + generateXQ(random) + ')';
         else if (ranNum < (chance += 20))
@@ -77,7 +77,7 @@ public class XQQueryGenerator extends Generator<String> {
         }
         else if (ranNum < (chance += 15))
             return generateFor(random) + generateLet(random) + generateWhere(random) + generateReturn(random);
-        else return generateLet(random) + generateXQ(random);
+        else return generateLet(random) + " " + generateXQ(random);
     }
 
     private String generateFor(SourceOfRandomness random){
