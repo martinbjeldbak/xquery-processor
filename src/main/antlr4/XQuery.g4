@@ -46,7 +46,7 @@ cond
   | '(' cond ')'                                           #condParenExpr
   | left=cond 'and' right=cond                             #condAnd
   | left=cond 'or'  right=cond                             #condOr
-  | 'not' cond                                             #condNot
+  | 'not ' cond                                             #condNot
   ;
 
 

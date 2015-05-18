@@ -3,6 +3,7 @@ package dk.martinbmadsen.xquery;
 import com.pholser.junit.quickcheck.ForAll;
 import com.pholser.junit.quickcheck.From;
 import dk.martinbmadsen.utils.debug.QueryGenerator;
+import dk.martinbmadsen.utils.debug.XQQueryGenerator;
 import dk.martinbmadsen.utils.debug.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 import org.jdom2.JDOMException;
@@ -37,11 +38,18 @@ public class ShakespeareTest extends XQueryTest {
     }
 
     @Theory
-    public void queryTester(@ForAll @From(QueryGenerator.class) String query) {
-        System.out.println(query);
+    public void RPqueryTester(@ForAll @From(QueryGenerator.class) String query) {
+        //System.out.println(query);
         List<IXMLElement> res1 = exR(query);
-//        List<IXMLElement> res2 = runCorrectImplementation(query);
-//        assertEquals(res1, res2);
+    }
+
+    @Theory
+    public void XQqueryTester(@ForAll @From(XQQueryGenerator.class) String query) {
+//        System.out.println(query);
+        List<IXMLElement> res1 = ex(query);
+        if (res1.size() > 0){
+            System.out.println(query);
+        }
     }
 
     @Test
