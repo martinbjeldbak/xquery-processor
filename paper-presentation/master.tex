@@ -1,0 +1,105 @@
+\documentclass[mathserif,serif]{beamer}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage[protrusion=true,factor=2000,verbose=silent]{microtype}
+\usepackage{fixltx2e}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{xspace}
+\usepackage[group-separator={,}]{siunitx}
+\sisetup{sepfour=true}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+%------------
+%TIKZ
+\usepackage{fancybox}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{tikz}
+\usetikzlibrary{shapes}
+\usepackage{tikzscale}
+\usepackage{pgfplots}
+
+
+%---------------------------
+
+\usetheme{m}
+\parskip=5pt plus 2pt minus 1pt
+\parindent=0pt
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
+\makeatother
+
+%\AtBeginSection{
+%  \frame{\sectionpage}
+%}
+
+%Large is to have title on one line
+\title{\large Stream Processing of XPath Queries with Predicates}
+\author{Jens Emil Gydesen and Martin Bjeldbak Madsen}
+
+\date{May 19 2015}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+  \frametitle{Table of Contents}
+  \tableofcontents[hideallsubsections]
+\end{frame}
+
+
+\section{Introduction}
+\begin{frame}{Introduction}
+  The paper deal with the problem with evaluating large numbers of XPath filters with many predicates on a stream of XML documents
+\end{frame}
+
+\begin{frame}{The XML Filtering Problem}
+  \begin{itemize}
+    \item Definition:
+    \begin{itemize}
+      \item Given a set of XPath filters and a stream of XML documents, compute for each document $D$, the set of filters that match $D$.
+    \end{itemize}
+    \item The number of filters and predicates can be large (hundreds of thousands)
+    \item Evaluating these take a long time
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Approach}
+  \begin{itemize}
+    \item Reduce the number of predicate evaluations by
+    \begin{itemize}
+      \item Grouping common predicates 
+      \item Evaluating (groups of) predicates once and reuse results
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{Method}
+\begin{frame}{Method}
+  what
+\end{frame}
+
+\section{Optimizations}
+\begin{frame}{Shoop da whoop}
+  what
+\end{frame}
+
+\section{Evaluation}
+\begin{frame}{Shoop da whoop}
+  what
+\end{frame}
+
+\section{Limitations}
+\begin{frame}{Shoop da whoop}
+  what
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Shoop da whoop}
+  what
+\end{frame}
+
+\end{document}
