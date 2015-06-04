@@ -28,7 +28,6 @@
 \begin{frame}{Introduction}
   The paper deal with the problem with evaluating large numbers of XPath filters with many predicates on a stream of XML documents
 \end{frame}
-
 \begin{frame}{The XML Filtering Problem}
   \begin{itemize}
     \item Definition:
@@ -71,14 +70,18 @@
 \end{frame}
 
 \begin{frame}{AFA}
-  \begin{itemize}
-    \item P1=//a[b/text()=1 and .//a[@c>2]]
-    \item P2=//a[@c>2 and b/text()=1]
-  \end{itemize}
+  \begin{minipage}{0.63\textwidth}
+    \begin{itemize}
+      \item P1=//a[b/text()=1 and .//a[@c>2]]
+      \item P2=//a[@c>2 and b/text()=1]
+    \end{itemize}
+  \end{minipage}
+  \begin{minipage}{0.35\textwidth}
   \begin{figure}
     \centering
-    \includegraphics[width=0.6\textwidth]{AFA.png}
+    \includegraphics[width=\textwidth]{AFA.png}
   \end{figure}
+\end{minipage}
 \end{frame}
 
 \begin{frame}{Constructing the XPush Machine}
@@ -104,10 +107,16 @@
 
 \begin{frame}{Top-down Pruning}
   \begin{itemize}
-    \item For queries of the form e[c/text()=``c'']
-    \item After reading the XML fragment: \texttt{<e> \dots <c> ``c'' </c> \dots <c> ``c'' </c> \dots </e>}
-    \item XPush states containing AFA states will be created from all the filters that look for a \texttt{c} element with the text value ``c'' 
-    \item Predicates that do not occur under an \texttt{e} element will be false leads and will not be considered
+    \item Removes false positives
+    \item For queries of the form e[c/text()=``c''], remove all predicates that does not appear under an \texttt{e} element\\ 
+    \texttt{<e> \\
+            \quad <c> ``c'' </c> \\
+            \quad \dots \\
+            \quad <c> ``c'' </c>\\ 
+            </e>\\
+            <a> \\
+            \quad <c> ``c'' </c> \\
+            </a>}
     \item Expensive to perform, but reduces number of states (reducing memory needed)
   \end{itemize}
 \end{frame}
@@ -115,24 +124,36 @@
 \begin{frame}{Order Optimization}
   \begin{itemize}
     \item If there is a order of elements defined in the DTD, we can faster find false filters
-    \item If we have a query: \texttt{/person[name/text()="Smith" and age/text()="33" and phone/text()="5551234"]}
-    \item And XML data: \texttt{<person><name>John</name><age>33</age> \dots}
+    \item If we have a query: \\\texttt{/person[name/text()="Smith" and age/text()="33" and phone/text()="5551234"]}
+    \item And XML data: \\\texttt{<person><name>John</name><age>33</age> \dots}
     \item Then we can stop after the name predicate and not ``activate'' the age predicate
     \item Reduces average length of states and thus run time 
   \end{itemize}
 \end{frame}
 
 \begin{frame}{Early Notification Optimization}
+  \begin{minipage}{0.63\textwidth}
   \begin{itemize}
     \item In early notification, the evaluation of a AFA in the XPush machine is stopped early once the first branching state has matched some node in the XML document
+    \item Requires top-down pruning to ensure correctness
     \item Generated more states but reduces average length of states
   \end{itemize}
+  \end{minipage}\quad
+  \begin{minipage}{0.3\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=\textwidth]{AFA.png}
+    \end{figure}
+  \end{minipage}
+
 \end{frame}
 
 \begin{frame}{Training in the XPush Machine}
   \begin{itemize}
     \item Generate training data from workload queries
-    \item If we have \texttt{*} or \texttt{//} we can use the DTD
+    \begin{itemize}
+      \item If we have \texttt{*} or \texttt{//} we can use the DTD
+    \end{itemize}
     \item The DTD is also used to generate elements in the right order
     \item Precompute states based on the training data
     \item Can do lookup instead of runtime evaluation 
@@ -173,7 +194,7 @@
   \begin{itemize}
     \item XPush machine is a modified PDA that processes each SAX event in O(1) time independent of the query workload
     \item The XPush machine needs to be lazily computed in most applications
-    \item With their setup it ran almost twice as fast as the Apache parser
+    \item With their setup it ran almost twice as fast as the Apache parser (in 2003)
   \end{itemize}
 \end{frame}
 \end{document}
