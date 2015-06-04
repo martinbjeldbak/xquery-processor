@@ -1,7 +1,14 @@
 \documentclass[mathserif,serif]{beamer}
-
-
 \usetheme{m}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=us]{english}
+
+\usepackage{minted}
+\usepackage[useregional]{datetime2}
+
+
 \parskip=5pt plus 2pt minus 1pt
 \parindent=0pt
 
@@ -9,10 +16,11 @@
 \patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip0.5em}{}{}
 \makeatother
 
-\title{\large Stream Processing of XPath Queries with Predicates}
-\author{Jens Emil Gydesen and Martin Bjeldbak Madsen}
+\title{\large Stream Processing of XPath Queries with Predicates (2003)}
+\author{Presenters: Jens Emil Gydesen and Martin Bjeldbak Madsen \\
+        Paper authors: Gupta, A.\ and Suciu, D.}
 
-\date{May 19 2015}
+\date{\DTMdisplaydate{2015}{6}{4}{3}}
 
 \begin{document}
 
@@ -26,17 +34,43 @@
 
 \section{Introduction}
 \begin{frame}{Introduction}
-  The paper deal with the problem with evaluating large numbers of XPath filters with many predicates on a stream of XML documents
+  Scenario
+  \begin{enumerate}
+    \item Incoming stream of XML (SAX events)
+      \begin{enumerate}
+        \item How to evaluate \textbf{many} XPath filters on this stream?
+      \end{enumerate}
+  \end{enumerate}
+  Defined as the \textit{XML stream processing problem.}
+
+  \begin{figure}[<+htpb+>]
+    \centering
+    \includegraphics[width=\linewidth]{processing-problem.png}
+    %\caption{<+caption text+>}
+    %\label{fig:<+label+>}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{SAX}
+  SAX is a type of parser implementing the following 5 methods
+  \begin{itemize}
+    \item[] \texttt{startDocument()}
+    \item[] \quad\texttt{startElement(a)}
+    \item[] \quad\quad\texttt{text(``3'')}
+    \item[] \quad\texttt{endElement(a)}
+    \item[] \texttt{endDocument()}
+  \end{itemize}
+  \dots simply translates to \mintinline{xml}{<a>c</a>}.
 \end{frame}
 
 \begin{frame}{The XML Filtering Problem}
   \begin{itemize}
     \item Definition:
-    \begin{itemize}
-      \item Given a set of XPath filters and a stream of XML documents, compute for each document $D$, the set of filters that match $D$.
-    \end{itemize}
+      \begin{itemize}
+        \item Given a set of XPath filters and a stream of XML documents, compute for each document $D$, the set of filters that match $D$.
+      \end{itemize}
     \item The number of filters and predicates can be large (hundreds of thousands)
-    \item Evaluating these take a long time
+    \item Parallel / sequential query evaluation not scalable
   \end{itemize}
 \end{frame}
 
@@ -59,16 +93,6 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{SAX}
-  SAX is a parser with the following 5 methods:
-  \begin{itemize}
-    \item \texttt{startDocument()}
-    \item \texttt{startElement(a)}
-    \item \texttt{\@c}
-    \item \texttt{text(``3'')}
-    \item \texttt{endElement(\@c)}
-  \end{itemize}
-\end{frame}
 
 \begin{frame}{AFA}
   \begin{itemize}
@@ -171,7 +195,7 @@
 \section{Conclusion}
 \begin{frame}{Conclusion}
   \begin{itemize}
-    \item XPush machine is a modified PDA that processes each SAX event in O(1) time independent of the query workload
+    \item XPush machine is a modified PDA that processes each SAX event in $\mathcal{O}(1)$ time independent of the query workload
     \item The XPush machine needs to be lazily computed in most applications
     \item With their setup it ran almost twice as fast as the Apache parser
   \end{itemize}
