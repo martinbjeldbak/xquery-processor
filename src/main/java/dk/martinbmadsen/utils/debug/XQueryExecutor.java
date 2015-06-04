@@ -31,7 +31,7 @@ public class XQueryExecutor {
      * @throws IOException if the file cannot be found
      */
     public static List<IXMLElement> executeFromFile(String queryFilePath) throws IOException {
-         return parse(new XQueryLexer(new ANTLRFileStream(queryFilePath)));
+         return parse(new ANTLRFileStream(queryFilePath));
     }
 
     /**
@@ -40,7 +40,7 @@ public class XQueryExecutor {
      * @return a {@link List<IXMLElement>} containing the result XML elements found as a result of executing the query
      */
     public static List<IXMLElement> executeFromString(String query) {
-        return parse(new XQueryLexer(new ANTLRInputStream(query)));
+        return parse(new ANTLRInputStream(query));
     }
 
     public static void printResultsToFile(List<IXMLElement> res, String path) {
@@ -88,7 +88,8 @@ public class XQueryExecutor {
         }
     }
 
-    private static XQueryList parse(XQueryLexer lexer) {
+    private static XQueryList parse(ANTLRInputStream input) {
+        XQueryLexer lexer = new XQueryLexer(input);
         XQueryParser parser = new XQueryParser(new CommonTokenStream(lexer));
         XQueryParser.XqContext context = parser.xq(); // set entry point
         XQueryVisitor visitor = new XQueryVisitor();
