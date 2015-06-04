@@ -23,7 +23,6 @@ import java.util.List;
  * A static class to makes executing a query using XQuery from a query in a string or file much easier.
  */
 public class XQueryExecutor {
-
     /**
      * Executes a query from the contents of a file.
      * @param queryFilePath the path to the XQuery file (absolute or relativ)
@@ -31,7 +30,7 @@ public class XQueryExecutor {
      * @throws IOException if the file cannot be found
      */
     public static List<IXMLElement> executeFromFile(String queryFilePath) throws IOException {
-         return parse(new ANTLRFileStream(queryFilePath));
+         return execute(new ANTLRFileStream(queryFilePath));
     }
 
     /**
@@ -40,7 +39,7 @@ public class XQueryExecutor {
      * @return a {@link List<IXMLElement>} containing the result XML elements found as a result of executing the query
      */
     public static List<IXMLElement> executeFromString(String query) {
-        return parse(new ANTLRInputStream(query));
+        return execute(new ANTLRInputStream(query));
     }
 
     public static void printResultsToFile(List<IXMLElement> res, String path) {
@@ -88,11 +87,13 @@ public class XQueryExecutor {
         }
     }
 
-    private static XQueryList parse(ANTLRInputStream input) {
-        XQueryLexer lexer = new XQueryLexer(input);
-        XQueryParser parser = new XQueryParser(new CommonTokenStream(lexer));
-        XQueryParser.XqContext context = parser.xq(); // set entry point
+    private static XQueryList execute(ANTLRInputStream input) {
+        XQueryLexer   lexer   = new XQueryLexer(input);
+        XQueryParser  parser  = new XQueryParser(new CommonTokenStream(lexer));
         XQueryVisitor visitor = new XQueryVisitor();
+
+        // set entry point to 'xq' non-terminal in grammar
+        XQueryParser.XqContext context = parser.xq();
 
         return (XQueryList)visitor.visit(context);
     }
