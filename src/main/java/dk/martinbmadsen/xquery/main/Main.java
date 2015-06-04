@@ -4,16 +4,16 @@ import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.utils.debug.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
+        if(args.length != 1) {
+            System.out.println("You must run this program with 1 parameter, being the file name");
+            System.exit(-1);
+        }
 
         List<IXMLElement> result = new ArrayList<>();
         try {
