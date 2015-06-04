@@ -222,4 +222,14 @@ public class XQueryVisitor extends XQueryBaseVisitor<IXQueryValue> {
     public IXQueryValue visitCondNot(@NotNull CondNotContext ctx) {
         return condEval.evalNot(ctx);
     }
+
+    @Override
+    public IXQueryValue visitXqJoin(@NotNull XqJoinContext ctx) {
+        return visit(ctx.joinClause());
+    }
+
+    @Override
+    public IXQueryValue visitJoinClause(@NotNull JoinClauseContext ctx) {
+        return xqEval.evalJoin(ctx);
+    }
 }

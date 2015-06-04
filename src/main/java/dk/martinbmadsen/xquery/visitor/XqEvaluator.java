@@ -11,11 +11,6 @@ import dk.martinbmadsen.xquery.xmltree.XMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLText;
 import org.antlr.v4.runtime.misc.NotNull;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 public class XqEvaluator extends XQueryEvaluator {
     public XqEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
         super(visitor, qc);
@@ -150,5 +145,9 @@ public class XqEvaluator extends XQueryEvaluator {
         qc.popVarEnv();
 
         return res;
+    }
+
+    public IXQueryValue evalJoin(JoinClauseContext ctx) {
+        return null;
     }
 }

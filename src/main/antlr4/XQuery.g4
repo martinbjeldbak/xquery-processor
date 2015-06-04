@@ -15,6 +15,15 @@ xq
   | '<' open=Identifier '>' '{' xq '}' '</' close=Identifier '>' #xqTagName
   | forClause letClause? whereClause? returnClause               #xqFLWR
   | letClause xq                                                 #xqLet
+  | joinClause                                                   #xqJoin
+  ;
+
+joinClause
+  : 'join' '(' xq1=xq ','
+               xq2=xq ','
+               '[' Identifier ',' (',' Identifier)* ']' ','
+               '[' Identifier ',' (',' Identifier)* ']'
+           ')'
   ;
 
 // For Clause: for $var1 in $someList, $var2 in $var1)
