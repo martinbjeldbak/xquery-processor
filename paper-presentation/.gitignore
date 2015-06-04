@@ -5,3 +5,4 @@
 *.snm
 *.toc
 *.out
+_minted-*/
