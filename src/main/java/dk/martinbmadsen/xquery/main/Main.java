@@ -4,7 +4,11 @@ import dk.martinbmadsen.utils.debug.Debugger;
 import dk.martinbmadsen.utils.debug.XQueryExecutor;
 import dk.martinbmadsen.xquery.xmltree.IXMLElement;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +17,7 @@ public class Main {
 
         List<IXMLElement> result = new ArrayList<>();
         try {
-            result = XQueryExecutor.executeFromFile("samples/xquery/test.xq");
+            result = XQueryExecutor.executeFromFile(args[0]);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -25,11 +29,5 @@ public class Main {
                 System.out.println(c.toString());
             }
     }
-
-    public int giveTwo() {
-        return 2;
-    }
-
-
 
 }
