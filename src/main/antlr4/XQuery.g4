@@ -21,8 +21,8 @@ xq
 joinClause
   : 'join' '(' xq1=xq ','
                xq2=xq ','
-               '[' Identifier ',' (',' Identifier)* ']' ','
-               '[' Identifier ',' (',' Identifier)* ']'
+               '[' Identifier (',' Identifier)* ']' ','
+               '[' Identifier (',' Identifier)* ']'
            ')'
   ;
 
