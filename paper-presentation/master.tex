@@ -33,25 +33,29 @@
 
 
 \section{Introduction}
-\begin{frame}{Introduction}
-  Scenario
-  \begin{enumerate}
+\begin{frame}{Introduction: Scenario \& Motivation}
+  \begin{itemize}
     \item Incoming stream of XML (SAX events)
-      \begin{enumerate}
+      \begin{itemize}
         \item How to evaluate \textbf{many} XPath filters on this stream?
-      \end{enumerate}
-  \end{enumerate}
+      \end{itemize}
+  \end{itemize}
+
   Defined as the \textit{XML stream processing problem.}
 
-  \begin{figure}[<+htpb+>]
-    \centering
-    \includegraphics[width=\linewidth]{processing-problem.png}
-    %\caption{<+caption text+>}
-    %\label{fig:<+label+>}
-  \end{figure}
+  \uncover<2->{%
+  Occurs in many situations
+  \begin{itemize}
+    \item XML packet routing
+    \item Selective dissemination of information
+    \item Notification systems
+    \item \dots
+  \end{itemize}
+}
+
 \end{frame}
 
-\begin{frame}{SAX}
+\begin{frame}{What is SAX?}
   SAX is a type of parser implementing the following 5 methods
   \begin{itemize}
     \item[] \texttt{startDocument()}
@@ -60,24 +64,33 @@
     \item[] \quad\texttt{endElement(a)}
     \item[] \texttt{endDocument()}
   \end{itemize}
-  \dots simply translates to \mintinline{xml}{<a>c</a>}.
+  \dots simply translates to XML document \mintinline{xml}{<a>3</a>}
 \end{frame}
+
 \begin{frame}{The XML Filtering Problem}
   \begin{itemize}
     \item Definition:
       \begin{itemize}
-        \item Given a set of XPath filters and a stream of XML documents, compute for each document $D$, the set of filters that match $D$.
+        \item Given a set of XPath filters and a stream of XML documents, compute for each document $D$, the set of filters that match $D$
       \end{itemize}
     \item The number of filters and predicates can be large (hundreds of thousands)
     \item Parallel / sequential query evaluation not scalable
   \end{itemize}
+  \begin{figure}[b]
+    \centering
+    \includegraphics[width=\linewidth]{processing-problem.png}
+  \end{figure}
 \end{frame}
 
 \begin{frame}{Approach}
   \begin{itemize}
     \item Reduce the number of XPath predicate evaluations by
     \begin{itemize}
-      \item Grouping common predicates 
+      \item Grouping of common predicates
+        \begin{itemize}
+          \item[] \mintinline{xquery}{//a[b/text()=1 and .//a[@c>2]]}
+          \item[] \mintinline{xquery}{//a[@c>2 and b/text()=1]}
+        \end{itemize}
       \item Evaluating (groups of) predicates once and reuse results
     \end{itemize}
   \end{itemize}
@@ -86,18 +99,19 @@
 \section{Method}
 \begin{frame}{The XPush Machine}
   \begin{itemize}
-    \item A modified \emph{deterministic\footnote{Lookup in O(1) time} pushdown automaton} (PDA)
-    \item The PDA is constructed by alternating non-deterministic automatons (AFA)
+    \item A modified \emph{deterministic\footnote{Lookup in O(1) time on complete version} pushdown automaton} (PDA)
+    \item The PDA is constructed by composing alternating finite automata (AFA)
     \item Each AFA is constructed by each XPath filter
   \end{itemize}
 \end{frame}
 
 
-\begin{frame}{AFA}
+\begin{frame}{What is an AFA?}
   \begin{minipage}{0.63\textwidth}
+    XPath filters are translated to AFAs
     \begin{itemize}
-      \item P1=//a[b/text()=1 and .//a[@c>2]]
-      \item P2=//a[@c>2 and b/text()=1]
+      \item[$A_1$] \mintinline[fontsize=\footnotesize]{xquery}{//a[b/text()=1 and .//a[@c>2]]}
+      \item[$A_2$] \mintinline[fontsize=\footnotesize]{xquery}{//a[@c>2 and b/text()=1]}
     \end{itemize}
   \end{minipage}
   \begin{minipage}{0.35\textwidth}
@@ -110,115 +124,126 @@
 
 \begin{frame}{Constructing the XPush Machine}
   \begin{itemize}
-    \item The XPush machine is computed lazily at runtime
-    \begin{itemize}
-      \item Computing all the states results in an exponential number of states
-      \item Compute only those that are met at runtime
+    \item<1-> Built by implementing SAX events
+      \only<1-1>{%
+        \begin{figure}[<+htpb+>]
+          \centering
+          \includegraphics[width=0.3\linewidth]{xpush-sax-implementation.png}
+        \end{figure}}
+      \item<2-> The XPush machine computed lazily at runtime
+        \begin{itemize}
+          \item Computing all the states eagerly results in an exponential number of states
+          \item Compute only those that are met at runtime
+        \end{itemize}
+      \item<2-> Each state in the XPush machine is a set of states in the AFA
+      \only<3-3>{%
+        \begin{figure}[<+htpb+>]
+          \centering
+          \includegraphics[width=0.45\linewidth]{afa-pda-states.png}
+        \end{figure}}
     \end{itemize}
-    \item Each state in the XPush machine is a set of states in the AFAs and corresponds to a set of predicates in the XPath queries 
-  \end{itemize}
-\end{frame}
+  \end{frame}
 
-\section{Optimizations}
-\begin{frame}{Methods of Optimization}
-  \begin{itemize}
-    \item Top-down pruning
-    \item Order optimization
-    \item Early notification optimization
-    \item Training in the XPush machine
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Top-down Pruning}
-  \begin{itemize}
-    \item Removes false positives
-    \item For queries of the form e[c/text()=``c''], remove all predicates that does not appear under an \texttt{e} element\\ 
-    \texttt{<e> \\
-            \quad <c> ``c'' </c> \\
-            \quad \dots \\
-            \quad <c> ``c'' </c>\\ 
-            </e>\\
-            <a> \\
-            \quad <c> ``c'' </c> \\
-            </a>}
-    \item Expensive to perform, but reduces number of states (reducing memory needed)
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Order Optimization}
-  \begin{itemize}
-    \item If there is a order of elements defined in the DTD, we can faster find false filters
-    \item If we have a query: \\\texttt{/person[name/text()="Smith" and age/text()="33" and phone/text()="5551234"]}
-    \item And XML data: \\\texttt{<person><name>John</name><age>33</age> \dots}
-    \item Then we can stop after the name predicate and not ``activate'' the age predicate
-    \item Reduces average length of states and thus run time 
-  \end{itemize}
-\end{frame}
-
-\begin{frame}{Early Notification Optimization}
-  \begin{minipage}{0.63\textwidth}
-  \begin{itemize}
-    \item In early notification, the evaluation of a AFA in the XPush machine is stopped early once the first branching state has matched some node in the XML document
-    \item Requires top-down pruning to ensure correctness
-    \item Generated more states but reduces average length of states
-  \end{itemize}
-  \end{minipage}\quad
-  \begin{minipage}{0.3\textwidth}
-    \begin{figure}
-      \centering
-      \includegraphics[width=\textwidth]{AFA.png}
-    \end{figure}
-  \end{minipage}
-
-\end{frame}
-
-\begin{frame}{Training in the XPush Machine}
-  \begin{itemize}
-    \item Generate training data from workload queries
+  \section{Optimizations}
+  \begin{frame}{Methods of Optimization}
     \begin{itemize}
-      \item If we have \texttt{*} or \texttt{//} we can use the DTD
+      \item Top-down pruning
+      \item Order optimization
+      \item Early notification optimization
+      \item Training in the XPush machine
     \end{itemize}
-    \item The DTD is also used to generate elements in the right order
-    \item Precompute states based on the training data
-    \item Can do lookup instead of runtime evaluation 
-    \item Increases number of states but reduces average length of states
-  \end{itemize}
-\end{frame}
+  \end{frame}
 
-\section{Evaluation}
-\begin{frame}{Number of States}
-  \includegraphics[width=\textwidth]{states}
-\end{frame}
-
-\begin{frame}{Average Length of States}
-  \includegraphics[width=\textwidth]{avglen}
-\end{frame}
-
-\begin{frame}{Filter Evaluation Time}
-  \includegraphics[width=\textwidth]{filtertime}
-\end{frame}
-
-\section{Limitations}
-\begin{frame}{Limitations}
-  \begin{itemize}
-    \item Supports only a subset of XPath (e.g. no equal on ID)
-    \item Can only stream a single document at a time
-    \item Creation of states and AFAs is expensive
+  \begin{frame}{Top-down Pruning}
     \begin{itemize}
-      \item If all the predicate are unique, falls back to normal execution + creating of AFAs
-      \item Results in slow execution than not using this approach
+      \item Removes false positives
+      \item For queries of the form e[c/text()=``c''], remove all predicates that does not appear under an \texttt{e} element\\ 
+        \texttt{<e> \\
+          \quad <c> ``c'' </c> \\
+          \quad \dots \\
+          \quad <c> ``c'' </c>\\ 
+          </e>\\
+          <a> \\
+          \quad <c> ``c'' </c> \\
+        </a>}
+      \item Expensive to perform, but reduces number of states (reducing memory needed)
     \end{itemize}
-    \item The queries cannot be evaluated in parallel
-    \item Updates to the XPath queries requires recomputing the XPush Machine from scratch
-  \end{itemize}
-\end{frame}
+  \end{frame}
 
-\section{Conclusion}
-\begin{frame}{Conclusion}
-  \begin{itemize}
-    \item XPush machine is a modified PDA that processes each SAX event in $\mathcal{O}(1)$ time independent of the query workload
-    \item The XPush machine needs to be lazily computed in most applications
-    \item With their setup it ran almost twice as fast as the Apache parser (in 2003)
-  \end{itemize}
-\end{frame}
-\end{document}
+  \begin{frame}{Order Optimization}
+    \begin{itemize}
+      \item If there is a order of elements defined in the DTD, we can faster find false filters
+      \item If we have a query:\\ \mintinline[fontsize=\scriptsize,breaklines]{xquery}{/person[name/text()="Smith" and age/text()="33" and phone/text()="5551234"]}
+      \item And XML data: \\ \mintinline[fontsize=\scriptsize,breaklines]{xml}{<person><name>John</name><age>33</age>}\dots
+      \item Then we can stop after the name predicate and not ``activate'' the age predicate
+      \item Reduces average length of states and thus run time 
+    \end{itemize}
+  \end{frame}
+
+  \begin{frame}{Early Notification Optimization}
+    \begin{minipage}{0.63\textwidth}
+      \begin{itemize}
+        \item In early notification, the evaluation of a AFA in the XPush machine is stopped early once the first branching state has matched some node in the XML document
+        \item Requires top-down pruning to ensure correctness
+        \item Generated more states but reduces average length of states
+      \end{itemize}
+    \end{minipage}\quad
+    \begin{minipage}{0.3\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{AFA.png}
+      \end{figure}
+    \end{minipage}
+
+  \end{frame}
+
+  \begin{frame}{Training in the XPush Machine}
+    \begin{itemize}
+      \item Generate training data from workload queries
+        \begin{itemize}
+          \item If we have \mintinline{xquery}{*} or \mintinline{xquery}{//} we can use the DTD
+        \end{itemize}
+      \item The DTD is also used to generate elements in the right order
+      \item Precompute states based on the training data
+      \item Can do lookup instead of runtime evaluation 
+      \item Increases number of states but reduces average length of states
+    \end{itemize}
+  \end{frame}
+
+  \section{Evaluation}
+  \begin{frame}{Number of States}
+    \includegraphics[width=\textwidth]{states}
+  \end{frame}
+
+  \begin{frame}{Average Length of States}
+    \includegraphics[width=\textwidth]{avglen}
+  \end{frame}
+
+  \begin{frame}{Filter Evaluation Time}
+    \includegraphics[width=\textwidth]{filtertime}
+  \end{frame}
+
+  \section{Limitations}
+  \begin{frame}{Limitations}
+    \begin{itemize}
+      \item Supports only a subset of XPath (e.g. no equal on ID)
+      \item Can only stream a single document at a time
+      \item Creation of states and AFAs is expensive
+        \begin{itemize}
+          \item If all the predicate are unique, falls back to normal execution + creating of AFAs
+          \item Results in slow execution than not using this approach
+        \end{itemize}
+      \item The queries cannot be evaluated in parallel
+      \item Updates to the XPath queries requires recomputing the XPush Machine from scratch
+    \end{itemize}
+  \end{frame}
+
+  \section{Conclusion}
+  \begin{frame}{Conclusion}
+    \begin{itemize}
+      \item XPush machine is a modified PDA that processes each SAX event in $\mathcal{O}(1)$ time independent of the query workload
+      \item The XPush machine needs to be lazily computed in most applications
+      \item With their setup it ran almost twice as fast as the Apache parser (in 2003)
+    \end{itemize}
+  \end{frame}
+  \end{document}
