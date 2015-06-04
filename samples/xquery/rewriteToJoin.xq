@@ -1,5 +1,5 @@
-for $b in doc("input")/book,
-    $a in doc("input")/entry,
+for $b  in doc("input")/book,
+    $a  in doc("input")/entry,
     $tb in $b/title,
     $ta in $a/title
 where $tb eq $ta

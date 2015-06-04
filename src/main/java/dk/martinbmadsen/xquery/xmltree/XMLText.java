@@ -35,7 +35,7 @@ public class XMLText implements IXMLElement {
 
     @Override
     public XMLText txt() {
-        Debugger.error("Called txt() on a text element.");
+        Debugger.error("Called txt() on a text element, which has no children.");
         return null;
     }
 
@@ -52,12 +52,13 @@ public class XMLText implements IXMLElement {
 
     @Override
     public String tag() {
-        Debugger.error("Called attrib() on a text element, which doesn't have a tag.");
+        Debugger.error("Called tag() on a text element, which doesn't have a tag.");
         return null;
     }
 
     @Override
     public List<String> getAttribNames() {
+        Debugger.error("Called getAttribNames() on a text element, which doesn't have attributes.");
         return new ArrayList<>();
     }
 

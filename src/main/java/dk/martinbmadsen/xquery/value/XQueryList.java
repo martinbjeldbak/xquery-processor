@@ -10,12 +10,12 @@ import java.util.stream.Stream;
 public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collection<IXMLElement>, List<IXMLElement> {
     private List<IXMLElement> values;
 
-    public XQueryList() {
-        this(10);
-    }
-
     public XQueryList(int size) {
         this.values = new ArrayList<>(size);
+    }
+
+    public XQueryList() {
+        this(10);
     }
 
     public XQueryList(IXMLElement e) {
@@ -56,14 +56,6 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
         return XQueryFilter.falseValue();
     }
 
-    public XQueryFilter equalsVal(XQueryList o) {
-        for(IXMLElement x : this)
-            for(IXMLElement y : o)
-                if(x.equals(y))
-                    return XQueryFilter.trueValue();
-        return XQueryFilter.falseValue();
-    }
-
     public XQueryFilter empty() {
         if(this.size() == 0)
             return XQueryFilter.trueValue();
@@ -78,6 +70,14 @@ public class XQueryList implements IXQueryValue, Iterable<IXMLElement>, Collecti
         }
 
         return false;
+    }
+
+    public XQueryFilter equalsVal(XQueryList o) {
+        for(IXMLElement x : this)
+            for(IXMLElement y : o)
+                if(x.equals(y))
+                    return XQueryFilter.trueValue();
+        return XQueryFilter.falseValue();
     }
 
     @Override

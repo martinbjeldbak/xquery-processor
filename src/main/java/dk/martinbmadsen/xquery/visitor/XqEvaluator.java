@@ -118,9 +118,8 @@ public class XqEvaluator extends XQueryEvaluator {
             }
 
             if(ctx.whereClause() != null) {
-                if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue()) {
+                if(visitor.visit(ctx.whereClause()) == XQueryFilter.trueValue())
                     res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
-                }
             }
             else
                 res.addAll((XQueryList)visitor.visit(ctx.returnClause()));
