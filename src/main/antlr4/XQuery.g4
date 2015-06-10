@@ -62,6 +62,7 @@ cond
 // Absolute path
 ap
   : 'doc(' fileName=StringLiteral ')' slash=('/'|'//') rp
+  | 'document(' fileName=StringLiteral ')' slash=('/'|'//') rp
   ;
 
 // Relative path

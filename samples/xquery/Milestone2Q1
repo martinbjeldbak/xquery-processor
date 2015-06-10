@@ -1,0 +1,6 @@
+<acts>{
+for $s in document("samples/xml/j_caesar.xml")//SPEAKER, $a in document("samples/xml/j_caesar.xml")//ACT, $sp in $a//SPEAKER,
+$stxt in $s/text()
+where $sp eq $s and $stxt = "CASCA"
+return <act>{ $a/TITLE/text()} </act>
+}</acts>
