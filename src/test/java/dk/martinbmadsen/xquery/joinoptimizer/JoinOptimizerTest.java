@@ -4,7 +4,9 @@ import dk.martinbmadsen.utils.debug.SampleReader;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
@@ -32,6 +34,33 @@ public class JoinOptimizerTest {
     }
 
     @Test
+    public void joinNotesEx72EqMapping() throws IOException {
+        String query = SampleReader.openQueryFileAsString("joinNotesEx72.xq");
+        JoinOptimizer jo = new JoinOptimizer(query, "joinNotesEx72");
+
+        Map<String, List<List<String>>> expected = new HashMap<>();
+        List<List<String>> comparisons = new ArrayList<>(1);
+        List<String> comparison1       = new ArrayList<>(2);
+        comparison1.add("$tb");
+        comparison1.add("$ta");
+
+        comparisons.add(comparison1);
+
+        expected.put("eq", comparisons);
+
+        assertEquals(expected, jo.getComparisonMap());
+    }
+
+    /*
+    @Test
+    public void joinNotesEx73ForMapping() throws IOException {
+        String query = SampleReader.openQueryFileAsString("joinNotesEx73.xq");
+        JoinOptimizer jo = new JoinOptimizer(query, "joinNotesEx73");
+        jo.graphToPNG();
+    }
+    */
+
+    @Test
     public void milestone2Q1ForMapping() throws IOException {
         String query = SampleReader.openQueryFileAsString("Milestone2Q1");
         JoinOptimizer jo = new JoinOptimizer(query, "Milestone2Q1");
@@ -43,6 +72,28 @@ public class JoinOptimizerTest {
         expected.put("$stxt", "$s/text()");
 
         assertEquals(expected, jo.getForVarMap());
+    }
+
+    @Test
+    public void milestone2Q1EqMapping() throws IOException {
+        String query = SampleReader.openQueryFileAsString("Milestone2Q1");
+        JoinOptimizer jo = new JoinOptimizer(query, "Milestone2Q1");
+
+        Map<String, List<List<String>>> expected = new HashMap<>();
+        List<List<String>> comparisons = new ArrayList<>(2);
+        List<String> comparison1       = new ArrayList<>(2);
+        List<String> comparison2       = new ArrayList<>(2);
+        comparison1.add("$sp");
+        comparison1.add("$s");
+        comparison2.add("$stxt");
+        comparison2.add("CASCA");
+
+        comparisons.add(comparison1);
+        comparisons.add(comparison2);
+
+        expected.put("eq", comparisons);
+
+        assertEquals(expected, jo.getComparisonMap());
     }
 
     @Test

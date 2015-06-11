@@ -1,15 +1,22 @@
 package dk.martinbmadsen.xquery.joinoptimizer;
 
+import dk.martinbmadsen.utils.debug.Debugger;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class JoinOptimizer {
+    public Map<String, List<List<String>>> getComparisonMap() {
+        return comparisonMap;
+    }
+
     public static class PathEdge<V> extends DefaultEdge {
         private V v1;
         private V v2;
@@ -36,14 +43,16 @@ public class JoinOptimizer {
 
     private String fileName;
     private Map<String, String> forVarMap;
+    private Map<String, List<List<String>>> comparisonMap;
     private DirectedGraph dependencyGraph;
 
     // TODO: Need to figure out where the for loop(s) are. For now I just assume we are given a "for" that possibly needs to be optimized
     // TODO: So far, this does not support complicated assignments, only $b in doc("input")/book since we are splitting on whitespace
     public JoinOptimizer(String query, String fileName) {
         this.fileName = fileName;
-        forVarMap = getForAssignment(query);
+        forVarMap = createForAssignmentMap(query);
         dependencyGraph = createDependencyGraph(forVarMap);
+        comparisonMap = createComparisonMap(query);
     }
 
     private DirectedGraph createDependencyGraph(Map<String, String> forVarMap) {
@@ -88,9 +97,73 @@ public class JoinOptimizer {
         GraphPrinter.printGraph(dependencyGraph, "samples/xquery/dependencies", fileName);
     }
 
-    private HashMap<String, String> getForAssignment(String query) {
+    private Map<String, List<List<String>>> createComparisonMap(String query) {
         String[] words = query.replace(',', ' ').split("\\s+");
-        HashMap<String, String> nodes = new HashMap<>();
+        Map<String, List<List<String>>> comparitorMap = new HashMap<>();
+
+        int i;
+        boolean inWhere = false;
+
+        for(i = 0; i < words.length; i++) {
+            String word = words[i];
+
+            if(word.equals("where")) {
+                inWhere = true;
+                continue;
+            }
+
+            if(word.equals("return"))
+                break;
+
+            if(inWhere) { // Swallow comparison: v1 eq v2
+                String l = word;
+                String comparitor = comparitorConversion(words[++i]);
+                String r = words[++i].replaceAll("\"", "");
+                String extension = "";
+
+                if(words[i+1].equals("and")) { // only 'and' is supported for now
+                    extension = words[++i];
+                }
+
+                List<String> pair = new ArrayList<>(2);
+                pair.add(l);
+                pair.add(r);
+
+                if(comparitorMap.get(comparitor) == null)
+                    comparitorMap.put(comparitor, new ArrayList<>());
+
+                comparitorMap.get(comparitor).add(pair);
+
+                //System.out.println(String.format("%s %s %s %s", l, comparitor, r, extension));
+            }
+        }
+
+        /*
+        for(List<String> l : comparitorMap.get("eq")) {
+            System.out.println(l.toString());
+        }
+        */
+        return comparitorMap;
+    }
+
+    private String comparitorConversion(String comparitor) {
+        String ret = "";
+        switch (comparitor) {
+            case "eq":
+            case "=":
+                ret = "eq";
+                break;
+            default:
+                Debugger.error(String.format("Could not convert comparitor %s", comparitor));
+                break;
+
+        }
+        return ret;
+    }
+
+    private Map<String, String> createForAssignmentMap(String query) {
+        String[] words = query.replace(',', ' ').split("\\s+");
+        Map<String, String> nodes = new HashMap<>();
         // loop through for part
         int i;
         boolean inFor = false;
