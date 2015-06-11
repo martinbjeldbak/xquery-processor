@@ -38,7 +38,7 @@ public class JoinOptimizer {
         }
 
         public String toString() {
-            return String.format("%s -> %s, label: %s", v1, v2, label);
+            return String.format("%s -> %s (label: %s)", v1, v2, label);
         }
     }
 
