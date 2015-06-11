@@ -1,16 +1,95 @@
 package dk.martinbmadsen.xquery.joinoptimizer;
 
+import org.jgrapht.DirectedGraph;
+import org.jgrapht.ext.DOTExporter;
+import org.jgrapht.graph.DefaultDirectedGraph;
+import org.jgrapht.graph.DefaultEdge;
+
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class JoinOptimizer {
+    public static class PathEdge<V> extends DefaultEdge {
+        private V v1;
+        private V v2;
+        private String label;
+
+        public PathEdge(V v1, V v2, String label) {
+            this.v1 = v1;
+            this.v2 = v2;
+            this.label = label;
+        }
+
+        public V getV1() {
+            return v1;
+        }
+
+        public V getV2() {
+            return v2;
+        }
+
+        public String toString() {
+            return label;
+        }
+    }
+
     private Map<String, String> forVarMap;
 
     // TODO: Need to figure out where the for loop(s) are. For now I just assume we are given a "for" that possibly needs to be optimized
     // TODO: So far, this does not support complicated assignments, only $b in doc("input")/book since we are splitting on whitespace
     public JoinOptimizer(String query) {
         forVarMap = getForAssignment(query);
+        Pattern pattern = Pattern.compile("(((\\$\\w+)|(.+))/)?(.+)"); // match an optional variable ($words) followed by some text
+        // Pattern is grouped into the following 5 groups:
+        // 0: Entire string
+        // 1: Root part of path, either variable or string
+        // 2: Group 1 with '/' char chopped off
+        //     3: Variable match
+        //     4: Root (not variable match)
+        // 5: Path
 
+        DirectedGraph<String, PathEdge> graph = new DefaultDirectedGraph<>(PathEdge.class);
+
+        for(Map.Entry<String, String> entry : forVarMap.entrySet()) {
+            String key = entry.getKey();
+            graph.addVertex(key);
+
+            Matcher matcher = pattern.matcher(entry.getValue());
+
+
+            if(matcher.find()) {
+                String root = matcher.group(2);
+                String path = matcher.group(5);
+
+                graph.addVertex(root);
+                graph.addEdge(key, root, new PathEdge<>(key, root, path));
+            }
+
+            /*
+            System.out.println("Splitting " + entry.getValue());
+            if(matcher.find()) {
+                for(int i = 0; i <= matcher.groupCount(); i++) {
+                    System.out.println("  group " + i + ": " + matcher.group(i));
+                }
+            }
+            */
+        }
+
+
+
+        DOTExporter<String, PathEdge> exporter = new DOTExporter<>();
+        String targetDirectory = "";
+        new File(targetDirectory).mkdirs();
+        try {
+            exporter.export(new FileWriter(targetDirectory + "dependencies.dot"), graph);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private HashMap<String, String> getForAssignment(String query) {
