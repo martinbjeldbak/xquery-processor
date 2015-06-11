@@ -1,0 +1,5070 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <speaks>
+    <who>FLAVIUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>First Commoner</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>MARULLUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>Second Commoner</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>MARULLUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>Second Commoner</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>MARULLUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>Second Commoner</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>MARULLUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>Second Commoner</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>FLAVIUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>Second Commoner</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>FLAVIUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>Second Commoner</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>MARULLUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>FLAVIUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>MARULLUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>FLAVIUS</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CALPURNIA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Soothsayer</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Soothsayer</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Soothsayer</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CICERO</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CICERO</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CICERO</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CICERO</who>
+    <when>ACT I</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>METELLUS CIMBER</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TREBONIUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TREBONIUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>METELLUS CIMBER</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LIGARIUS</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LIGARIUS</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LIGARIUS</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LIGARIUS</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LIGARIUS</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CALPURNIA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CALPURNIA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CALPURNIA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CALPURNIA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CALPURNIA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>PUBLIUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>TREBONIUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ARTEMIDORUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>Soothsayer</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>Soothsayer</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>Soothsayer</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>Soothsayer</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>Soothsayer</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>PORTIA</who>
+    <when>ACT II</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Soothsayer</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ARTEMIDORUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ARTEMIDORUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ARTEMIDORUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>PUBLIUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>POPILIUS</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>POPILIUS</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>METELLUS CIMBER</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>METELLUS CIMBER</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CAESAR</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASCA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CINNA</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>METELLUS CIMBER</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TREBONIUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>DECIUS BRUTUS</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Citizens</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>All</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>All</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Citizens</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>All</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>All</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Several Citizens</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Several Citizens</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>All</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>All</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>All</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>All</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>All</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Servant</who>
+    <when>ACT II</when>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CINNA THE POET</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CINNA THE POET</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CINNA THE POET</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CINNA THE POET</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Second Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CINNA THE POET</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CINNA THE POET</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>First Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CINNA THE POET</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>CINNA THE POET</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Fourth Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>Third Citizen</who>
+    <when>ACT III</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LEPIDUS</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LEPIDUS</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LEPIDUS</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCILIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCILIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PINDARUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCILIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCILIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>First Soldier</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Second Soldier</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Third Soldier</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Poet</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>LUCILIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Poet</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Poet</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TITINIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>VARRO</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>VARRO</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>GHOST</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>GHOST</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>GHOST</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCIUS</who>
+    <when>ACT II</when>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>VARRO</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>CLAUDIUS</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>VARRO</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>CLAUDIUS</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>VARRO</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>CLAUDIUS</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>VARRO</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>CLAUDIUS</who>
+    <when>ACT IV</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Messenger</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCILIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TITINIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PINDARUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TITINIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TITINIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PINDARUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PINDARUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CASSIUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>PINDARUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TITINIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TITINIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TITINIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TITINIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TITINIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>TITINIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CATO</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CATO</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CATO</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCILIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>First Soldier</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCILIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>First Soldier</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>Second Soldier</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>First Soldier</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCILIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CLITUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CLITUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CLITUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>DARDANIUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CLITUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>DARDANIUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CLITUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>DARDANIUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CLITUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>VOLUMNIUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>VOLUMNIUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>VOLUMNIUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CLITUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>CLITUS</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>STRATO</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>BRUTUS</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>STRATO</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>LUCILIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>STRATO</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>STRATO</who>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>MESSALA</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>ANTONY</who>
+    <when>ACT I</when>
+    <when>ACT II</when>
+    <when>ACT III</when>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+  <speaks>
+    <who>OCTAVIUS</who>
+    <when>ACT IV</when>
+    <when>ACT V</when>
+  </speaks>
+</root>
