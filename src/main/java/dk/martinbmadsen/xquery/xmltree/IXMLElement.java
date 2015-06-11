@@ -36,6 +36,14 @@ public interface IXMLElement {
     XQueryList children();
 
     /**
+     * Gets a list of all of this element's children with a specific tag.
+     * Returns an empty list if the element has no children with that tagname.
+     * @param tagName the tagname to find children of
+     * @return the element's children with that tagName, a list of {@link IXMLElement}s
+     */
+    XQueryList getChildByTag(String tagName);
+
+    /**
      * Gets text element associated to this element
      * @return the text element associated to this element
      */
@@ -79,6 +87,13 @@ public interface IXMLElement {
      * @return true if they have the same content
      */
     boolean equals(Object o);
+
+    /**
+     * Compares objects by children's values.
+     * @param o the other object to compare
+     * @return true if their children have the same content
+     */
+    boolean childrenEquals(Object o);
 
     /**
      * Converts this element to a one line string, including all attribs, text, and sub-elements.

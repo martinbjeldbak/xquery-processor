@@ -24,8 +24,19 @@ public class XMLText implements IXMLElement {
     }
 
     @Override
+    public XQueryList getChildByTag(String tagName) {
+        Debugger.error("Called getChildByTag() on a text element, which has no children.");
+        return null;
+    }
+
+    @Override
     public XQueryList parent() {
         return new XQueryList(new XMLElement(parent));
+    }
+
+    @Override
+    public boolean childrenEquals(Object o) {
+        return true;
     }
 
     @Override

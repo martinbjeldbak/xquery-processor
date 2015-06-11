@@ -33,4 +33,10 @@
   <price>39.95</price>
 </book>
 
+  <book category="WEB">
+    <title>Data on the Web</title>
+    <author>Erik T. Ray</author>
+    <year>2003</year>
+    <price>34.95</price>
+  </book>
 </bookstore>

@@ -24,6 +24,10 @@ public class XMLElement implements IXMLElement {
     public void add(XMLElement child) {
         elem.addContent(child.elem.clone());
     }
+    public void addAll(XQueryList list) {
+        for (IXMLElement e : list)
+            elem.addContent(((XMLElement)e).elem.clone());
+    }
 
     public void add(XMLText txt) {
         elem.addContent(txt.toString());
@@ -44,6 +48,15 @@ public class XMLElement implements IXMLElement {
     public XQueryList children() {
         return this.elem.getChildren().stream().map(
                 XMLElement::new).collect(Collectors.toCollection(XQueryList::new));
+    }
+
+    @Override
+    public XQueryList getChildByTag(String tagName) {
+        XQueryList res = new XQueryList();
+        for(IXMLElement e : this.children())
+            if (e.tag().equals(tagName))
+                res.add(e);
+        return res;
     }
 
     @Override
@@ -114,6 +127,20 @@ public class XMLElement implements IXMLElement {
             String otherString = xout.outputString(e.elem);
 
             return elemString.equals(otherString);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean childrenEquals(Object o) {
+        if(o instanceof XMLElement) {
+            XMLElement e = (XMLElement)o;
+
+            for(IXMLElement e1 : this.children())
+                for (IXMLElement e2 : e.children())
+                    if (!e1.equals(e2))
+                        return false;
+            return true;
         }
         return false;
     }

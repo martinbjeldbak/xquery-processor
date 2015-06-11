@@ -11,6 +11,9 @@ import dk.martinbmadsen.xquery.xmltree.XMLElement;
 import dk.martinbmadsen.xquery.xmltree.XMLText;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class XqEvaluator extends XQueryEvaluator {
     public XqEvaluator(XQueryBaseVisitor<IXQueryValue> visitor, QueryContext qc) {
         super(visitor, qc);
@@ -147,6 +150,34 @@ public class XqEvaluator extends XQueryEvaluator {
     }
 
     public IXQueryValue evalJoin(JoinClauseContext ctx) {
-        return null;
+        // Get results of inner for loops
+        XQueryList list1 = (XQueryList)visitor.visit(ctx.xq1);
+        XQueryList list2 = (XQueryList)visitor.visit(ctx.xq2);
+        XQueryList res = new XQueryList();
+
+        // Get join attributes
+        String idl1 = ctx.IdentifierList(0).getText();
+        String idl2 = ctx.IdentifierList(1).getText();
+        List<String> joinVars1 = Arrays.asList(idl1.substring(1, idl1.length() - 1).split(","));
+        List<String> joinVars2 = Arrays.asList(idl2.substring(1, idl2.length() - 1).split(","));
+
+        for(IXMLElement elem1 : list1)
+            for(IXMLElement elem2 : list2)
+                for(int i = 0; i < joinVars1.size(); i++){
+                    // Get elements to join on
+                    XQueryList list1Elems = elem1.getChildByTag(joinVars1.get(i));
+                    XQueryList list2Elems = elem2.getChildByTag(joinVars2.get(i));
+                    for (IXMLElement listElem1 : list1Elems)
+                        for(IXMLElement listElem2 : list2Elems){
+                            if(listElem1.childrenEquals(listElem2)) {
+                                // Create new dummy element "Tuple" and add to result
+                                XMLElement tuple = new XMLElement("tuple");
+                                tuple.addAll(elem1.children());
+                                tuple.addAll(elem2.children());
+                                res.add(tuple);
+                            }
+                        }
+                }
+        return res;
     }
 }
