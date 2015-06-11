@@ -19,7 +19,9 @@ public class GraphPrinter {
                     .replaceAll("\"", "")
                     .replaceAll("\\(", "_")
                     .replaceAll("\\)", "_")
-                    .replaceAll("/", "SLASH");
+                    .replaceAll("/", "SLASH")
+                    .replaceAll("\\.", "DOT")
+                    .replaceAll("\\s", "_");
         }
     }
 

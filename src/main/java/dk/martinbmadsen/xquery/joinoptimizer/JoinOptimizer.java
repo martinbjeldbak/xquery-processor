@@ -2,6 +2,7 @@ package dk.martinbmadsen.xquery.joinoptimizer;
 
 import dk.martinbmadsen.utils.debug.Debugger;
 import org.jgrapht.DirectedGraph;
+import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 
@@ -37,7 +38,7 @@ public class JoinOptimizer {
         }
 
         public String toString() {
-            return label;
+            return String.format("%s -> %s, label: %s", v1, v2, label);
         }
     }
 
@@ -56,6 +57,29 @@ public class JoinOptimizer {
 
         comparisonMap = createComparisonMap(query);
         updateDependencyGraphWithComparitors(dependencyGraph, comparisonMap);
+
+        String root = findRootInDirGraph(dependencyGraph);
+
+        System.out.println(root);
+        System.out.println(dependencyGraph.incomingEdgesOf(root));
+    }
+
+    private List<Graph<String, PathEdge>> getSubGraphs(DirectedGraph<String, PathEdge> graph, String rootV) {
+        for(PathEdge<String> edge : graph.outgoingEdgesOf(rootV)) {
+
+        }
+
+
+        return null;
+    }
+
+    private String findRootInDirGraph(DirectedGraph<String, PathEdge> graph) {
+        String currentV = graph.vertexSet().iterator().next(); // pick random edge
+        while(graph.outDegreeOf(currentV) > 0) {
+            PathEdge<String> vOutgoing = graph.outgoingEdgesOf(currentV).iterator().next();
+            currentV = vOutgoing.getV2();
+        }
+        return currentV;
     }
 
     private DirectedGraph<String, PathEdge> createDependencyGraph(Map<String, String> forVarMap) {
@@ -69,6 +93,7 @@ public class JoinOptimizer {
         // 5: Path
 
         DirectedGraph<String, PathEdge> graph = new DefaultDirectedGraph<>(PathEdge.class);
+        //UndirectedGraph<String, PathEdge> graph = new SimpleGraph<>(PathEdge.class);
 
         for(Map.Entry<String, String> entry : forVarMap.entrySet()) {
             String key = entry.getKey();
@@ -96,7 +121,7 @@ public class JoinOptimizer {
         return graph;
     }
 
-    private void updateDependencyGraphWithComparitors(DirectedGraph<String, PathEdge> graph, Map<String, List<List<String>>> comparitorMap) {
+    private void updateDependencyGraphWithComparitors(Graph<String, PathEdge> graph, Map<String, List<List<String>>> comparitorMap) {
         // Loop through all pairs to be compared using eq
         for(List<String> eqPair : comparitorMap.get("eq")) {
             String l = eqPair.get(0);

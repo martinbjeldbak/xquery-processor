@@ -29,7 +29,6 @@ public class JoinOptimizerTest {
         expected.put("$a",  "doc(\"input\")/entry");
         expected.put("$tb", "$b/title");
         expected.put("$ta", "$a/title");
-
         assertEquals(expected, jo.getForVarMap());
     }
 
@@ -118,7 +117,7 @@ public class JoinOptimizerTest {
     }
 
     @Test
-    public void milestone2QEqMapping() throws IOException {
+    public void milestone2Q3EqMapping() throws IOException {
         String query = SampleReader.openQueryFileAsString("Milestone2Q3");
         JoinOptimizer jo = new JoinOptimizer(query, "Milestone2Q3");
 
