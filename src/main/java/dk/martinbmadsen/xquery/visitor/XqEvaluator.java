@@ -162,22 +162,27 @@ public class XqEvaluator extends XQueryEvaluator {
         List<String> joinVars2 = Arrays.asList(idl2.substring(1, idl2.length() - 1).split(","));
 
         for(IXMLElement elem1 : list1)
-            for(IXMLElement elem2 : list2)
-                for(int i = 0; i < joinVars1.size(); i++){
+            for(IXMLElement elem2 : list2) {
+                boolean join = true;
+                for (int i = 0; i < joinVars1.size(); i++) {
                     // Get elements to join on
                     XQueryList list1Elems = elem1.getChildByTag(joinVars1.get(i));
                     XQueryList list2Elems = elem2.getChildByTag(joinVars2.get(i));
                     for (IXMLElement listElem1 : list1Elems)
-                        for(IXMLElement listElem2 : list2Elems){
-                            if(listElem1.childrenEquals(listElem2)) {
-                                // Create new dummy element "Tuple" and add to result
-                                XMLElement tuple = new XMLElement("tuple");
-                                tuple.addAll(elem1.children());
-                                tuple.addAll(elem2.children());
-                                res.add(tuple);
+                        for (IXMLElement listElem2 : list2Elems) {
+                            if (!listElem1.childrenEquals(listElem2)) {
+                                join = false;
                             }
                         }
                 }
+                if(join){
+                    // Create new dummy element "Tuple" and add to result
+                    XMLElement tuple = new XMLElement("tuple");
+                    tuple.addAll(elem1.children());
+                    tuple.addAll(elem2.children());
+                    res.add(tuple);
+                }
+            }
         return res;
     }
 }
