@@ -1,13 +1,9 @@
 package dk.martinbmadsen.xquery.joinoptimizer;
 
 import org.jgrapht.DirectedGraph;
-import org.jgrapht.ext.*;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -39,13 +35,14 @@ public class JoinOptimizer {
     }
 
     private String fileName;
+    private Map<String, String> forVarMap;
     private DirectedGraph dependencyGraph;
 
     // TODO: Need to figure out where the for loop(s) are. For now I just assume we are given a "for" that possibly needs to be optimized
     // TODO: So far, this does not support complicated assignments, only $b in doc("input")/book since we are splitting on whitespace
     public JoinOptimizer(String query, String fileName) {
         this.fileName = fileName;
-        Map<String, String> forVarMap = getForAssignment(query);
+        forVarMap = getForAssignment(query);
         dependencyGraph = createDependencyGraph(forVarMap);
     }
 
@@ -117,5 +114,9 @@ public class JoinOptimizer {
             }
         }
         return nodes;
+    }
+
+    public Map<String, String> getForVarMap() {
+        return forVarMap;
     }
 }
