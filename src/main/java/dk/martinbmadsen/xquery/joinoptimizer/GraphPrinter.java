@@ -14,7 +14,12 @@ public class GraphPrinter {
     public static class XQueryVertexNameProvider<T> implements VertexNameProvider<T> {
         @Override
         public String getVertexName(T vertex) {
-            return vertex.toString().replace("$", "").replaceAll("\"", "").replaceAll("\\(", "_").replaceAll("\\)", "_");
+            return vertex.toString()
+                    .replace("$", "")
+                    .replaceAll("\"", "")
+                    .replaceAll("\\(", "_")
+                    .replaceAll("\\)", "_")
+                    .replaceAll("/", "SLASH");
         }
     }
 
@@ -38,9 +43,10 @@ public class GraphPrinter {
 
         Runtime r = Runtime.getRuntime();
         try {
-            r.exec(String.format("/usr/local/bin/dot -Tpng %s -o %s", fullPathDot, fullPathPng));
+            Process p = r.exec(String.format("/usr/local/bin/dot -Tpng %s -o %s", fullPathDot, fullPathPng));
+            p.waitFor();
             r.exec(String.format("rm %s", fullPathDot));
-        } catch (IOException e) {
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

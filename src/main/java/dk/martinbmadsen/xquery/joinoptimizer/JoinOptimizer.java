@@ -44,7 +44,7 @@ public class JoinOptimizer {
     private String fileName;
     private Map<String, String> forVarMap;
     private Map<String, List<List<String>>> comparisonMap;
-    private DirectedGraph dependencyGraph;
+    private DirectedGraph<String, PathEdge> dependencyGraph;
 
     // TODO: Need to figure out where the for loop(s) are. For now I just assume we are given a "for" that possibly needs to be optimized
     // TODO: So far, this does not support complicated assignments, only $b in doc("input")/book since we are splitting on whitespace
@@ -52,10 +52,13 @@ public class JoinOptimizer {
         this.fileName = fileName;
         forVarMap = createForAssignmentMap(query);
         dependencyGraph = createDependencyGraph(forVarMap);
+
+
         comparisonMap = createComparisonMap(query);
+        updateDependencyGraphWithComparitors(dependencyGraph, comparisonMap);
     }
 
-    private DirectedGraph createDependencyGraph(Map<String, String> forVarMap) {
+    private DirectedGraph<String, PathEdge> createDependencyGraph(Map<String, String> forVarMap) {
         Pattern pattern = Pattern.compile("(((\\$\\w+)|(.+))/)?(.+)"); // match an optional variable ($words) followed by some text
         // Pattern is grouped into the following 5 groups:
         // 0: Entire string
@@ -93,6 +96,26 @@ public class JoinOptimizer {
         return graph;
     }
 
+    private void updateDependencyGraphWithComparitors(DirectedGraph<String, PathEdge> graph, Map<String, List<List<String>>> comparitorMap) {
+        // Loop through all pairs to be compared using eq
+        for(List<String> eqPair : comparitorMap.get("eq")) {
+            String l = eqPair.get(0);
+            String r = eqPair.get(1);
+
+            /*
+            if(l.contains("/text()"))
+                graph.addVertex(l.replace("/text()", ""));
+            if(r.contains("/text()"))
+                graph.addVertex(r.replace("/text()", ""));
+            */
+
+            graph.addVertex(l);
+            graph.addVertex(r);
+            graph.addEdge(l, r, new PathEdge<>(l, r, "eq"));
+            // System.out.println(String.format("Adding edge between nodes %s and %s", l, r));
+        }
+    }
+
     public void graphToPNG() {
         GraphPrinter.printGraph(dependencyGraph, "samples/xquery/dependencies", fileName);
     }
@@ -107,6 +130,11 @@ public class JoinOptimizer {
         return list.toArray(new String[list.size()]);
     }
 
+    /**
+     * Returns a mapping from comparitor (only 'eq' for now) to a list of tuples that are to be compared on
+     * @param query the query string with a 'where' clause
+     * @return a mapping like described above
+     */
     private Map<String, List<List<String>>> createComparisonMap(String query) {
         String[] words =  querySplitter(query);
         Map<String, List<List<String>>> comparitorMap = new HashMap<>();

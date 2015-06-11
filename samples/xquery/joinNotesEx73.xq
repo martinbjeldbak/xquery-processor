@@ -14,7 +14,7 @@ for $b1   in doc("input")/book,
     $a3   in $b3/author,
     $af3  in $a3/first,
     $al3  in $a3/last
-where $aj/text() eq "John" and
+where $aj eq "John" and
       $af1       eq $af21  and
       $al1       eq $al21  and
       $af22      eq $af3   and
