@@ -52,6 +52,7 @@ dependencies {
     compile 'jaxen:jaxen:1.1.6'
     compile 'com.pholser:junit-quickcheck-core:0.5-alpha-1'
     compile 'com.pholser:junit-quickcheck-generators:0.2'
+    compile 'org.jgrapht:jgrapht-dist:0.9.1'
 }
 
 clean.delete genSrcPath // Remove any auto-generated source files (Java classes/interfaces/etc)
