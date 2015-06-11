@@ -6,7 +6,9 @@ import org.jgrapht.ext.EdgeNameProvider;
 import org.jgrapht.ext.StringEdgeNameProvider;
 import org.jgrapht.ext.VertexNameProvider;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class GraphPrinter {
     public static class XQueryVertexNameProvider<T> implements VertexNameProvider<T> {
@@ -25,16 +27,19 @@ public class GraphPrinter {
         new File(targetDirectory).mkdirs();
 
         String fullPath = targetDirectory + "/" + fileName;
+        String fullPathDot = fullPath + ".dot";
+        String fullPathPng = fullPath + ".png";
 
         try {
-            exporter.export(new FileWriter(fullPath + ".dot"), graph);
+            exporter.export(new FileWriter(fullPathDot), graph);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         Runtime r = Runtime.getRuntime();
         try {
-            Process p = r.exec(String.format("/usr/local/bin/dot -Tpng %s -o %s", fullPath + ".dot", fullPath + ".png"));
+            r.exec(String.format("/usr/local/bin/dot -Tpng %s -o %s", fullPathDot, fullPathPng));
+            r.exec(String.format("rm %s", fullPathDot));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,18 +1,20 @@
 package dk.martinbmadsen.xquery.joinoptimizer;
 
+import dk.martinbmadsen.utils.debug.SampleReader;
+import org.junit.Test;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import dk.martinbmadsen.utils.debug.SampleReader;
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class JoinOptimizerTest {
     @Test
     public void playground() throws IOException {
-        String query = SampleReader.openQueryFileAsString("joinNotesEx72.xq");
-        JoinOptimizer jo = new JoinOptimizer(query, "joinNotesEx72");
+        String query = SampleReader.openQueryFileAsString("joinNotesEx73.xq");
+        JoinOptimizer jo = new JoinOptimizer(query, "joinNotesEx73");
+        jo.graphToPNG();
     }
 
     @Test
