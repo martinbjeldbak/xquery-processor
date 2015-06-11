@@ -15,7 +15,7 @@ public class GraphPrinter {
         @Override
         public String getVertexName(T vertex) {
             return vertex.toString()
-                    .replace("$", "")
+                    .replace("$", "v")
                     .replaceAll("\"", "")
                     .replaceAll("\\(", "_")
                     .replaceAll("\\)", "_")
