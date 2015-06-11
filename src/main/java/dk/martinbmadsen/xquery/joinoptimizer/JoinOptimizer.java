@@ -1,7 +1,7 @@
 package dk.martinbmadsen.xquery.joinoptimizer;
 
 import org.jgrapht.DirectedGraph;
-import org.jgrapht.ext.DOTExporter;
+import org.jgrapht.ext.*;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 
@@ -38,19 +38,25 @@ public class JoinOptimizer {
         }
     }
 
-    private Map<String, String> forVarMap;
+    private String fileName;
+    private DirectedGraph dependencyGraph;
 
     // TODO: Need to figure out where the for loop(s) are. For now I just assume we are given a "for" that possibly needs to be optimized
     // TODO: So far, this does not support complicated assignments, only $b in doc("input")/book since we are splitting on whitespace
-    public JoinOptimizer(String query) {
-        forVarMap = getForAssignment(query);
+    public JoinOptimizer(String query, String fileName) {
+        this.fileName = fileName;
+        Map<String, String> forVarMap = getForAssignment(query);
+        dependencyGraph = createDependencyGraph(forVarMap);
+    }
+
+    private DirectedGraph createDependencyGraph(Map<String, String> forVarMap) {
         Pattern pattern = Pattern.compile("(((\\$\\w+)|(.+))/)?(.+)"); // match an optional variable ($words) followed by some text
         // Pattern is grouped into the following 5 groups:
         // 0: Entire string
         // 1: Root part of path, either variable or string
-        // 2: Group 1 with '/' char chopped off
-        //     3: Variable match
-        //     4: Root (not variable match)
+        //   2: Group 1 with '/' char chopped off
+        //       3: Variable match
+        //       4: Root (not variable match)
         // 5: Path
 
         DirectedGraph<String, PathEdge> graph = new DefaultDirectedGraph<>(PathEdge.class);
@@ -60,7 +66,6 @@ public class JoinOptimizer {
             graph.addVertex(key);
 
             Matcher matcher = pattern.matcher(entry.getValue());
-
 
             if(matcher.find()) {
                 String root = matcher.group(2);
@@ -79,17 +84,11 @@ public class JoinOptimizer {
             }
             */
         }
+        return graph;
+    }
 
-
-
-        DOTExporter<String, PathEdge> exporter = new DOTExporter<>();
-        String targetDirectory = "";
-        new File(targetDirectory).mkdirs();
-        try {
-            exporter.export(new FileWriter(targetDirectory + "dependencies.dot"), graph);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void graphToPNG() {
+        GraphPrinter.printGraph(dependencyGraph, "samples/xquery/dependencies", fileName);
     }
 
     private HashMap<String, String> getForAssignment(String query) {
@@ -118,9 +117,5 @@ public class JoinOptimizer {
             }
         }
         return nodes;
-    }
-
-    public Map<String, String> getForVarMap() {
-        return forVarMap;
     }
 }

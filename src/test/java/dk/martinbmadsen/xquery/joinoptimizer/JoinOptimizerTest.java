@@ -12,13 +12,13 @@ public class JoinOptimizerTest {
     @Test
     public void playground() throws IOException {
         String query = SampleReader.openQueryFileAsString("joinNotesEx72.xq");
-        JoinOptimizer jo = new JoinOptimizer(query);
+        JoinOptimizer jo = new JoinOptimizer(query, "joinNotesEx72");
     }
 
     @Test
     public void joinNotesEx72ForMapping() throws IOException {
         String query = SampleReader.openQueryFileAsString("joinNotesEx72.xq");
-        JoinOptimizer jo = new JoinOptimizer(query);
+        JoinOptimizer jo = new JoinOptimizer(query, "joinNotesEx72");
 
         Map<String, String> expected = new HashMap<>(4);
         expected.put("$b",  "doc(\"input\")/book");
@@ -32,7 +32,7 @@ public class JoinOptimizerTest {
     @Test
     public void milestone2Q1ForMapping() throws IOException {
         String query = SampleReader.openQueryFileAsString("Milestone2Q1");
-        JoinOptimizer jo = new JoinOptimizer(query);
+        JoinOptimizer jo = new JoinOptimizer(query, "Milestone2Q1");
 
         Map<String, String> expected = new HashMap<>(4);
         expected.put("$s",  "document(\"samples/xml/j_caesar.xml\")//SPEAKER");
@@ -46,7 +46,7 @@ public class JoinOptimizerTest {
     @Test
     public void milestone2Q3ForMapping() throws IOException {
         String query = SampleReader.openQueryFileAsString("Milestone2Q3");
-        JoinOptimizer jo = new JoinOptimizer(query);
+        JoinOptimizer jo = new JoinOptimizer(query, "Milestone2Q3" );
 
         Map<String, String> expected = new HashMap<>(10);
         expected.put("$a", "document(\"samples/xml/j_caesar.xml\")//ACT");
