@@ -21,8 +21,8 @@ xq
 joinClause
   : 'join' '(' xq1=xq ','
                xq2=xq ','
-               '[' Identifier (',' Identifier)* ']' ','
-               '[' Identifier (',' Identifier)* ']'
+               idl1=IdentifierList ','
+               idl2=IdentifierList
            ')'
   ;
 
@@ -55,7 +55,7 @@ cond
   | '(' cond ')'                                           #condParenExpr
   | left=cond 'and' right=cond                             #condAnd
   | left=cond 'or'  right=cond                             #condOr
-  | 'not ' cond                                             #condNot
+  | 'not ' cond                                            #condNot
   ;
 
 
@@ -132,14 +132,16 @@ StringCharacter
   : ~[\"\\@] // technically, could match \, but might implement escape sequences (see antlr/grammars-v4/java/java.g4 @ GH)
 	 ;
 
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
-
 Var
   : '$' Identifier
   ;
 
 Identifier
   : Letter LetterOrDigit*
+  ;
+
+IdentifierList
+  : '[' Identifier (',' Identifier)* ']'
   ;
 
 fragment
@@ -151,3 +153,5 @@ fragment
 LetterOrDigit
   : [a-zA-Z0-9_-]
   ;
+
+WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
