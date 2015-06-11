@@ -112,6 +112,7 @@ public class JoinOptimizer {
             graph.addVertex(l);
             graph.addVertex(r);
             graph.addEdge(l, r, new PathEdge<>(l, r, "eq"));
+            graph.addEdge(r, l, new PathEdge<>(l, r, "eq"));
             // System.out.println(String.format("Adding edge between nodes %s and %s", l, r));
         }
     }
