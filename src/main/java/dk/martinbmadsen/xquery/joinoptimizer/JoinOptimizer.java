@@ -97,8 +97,18 @@ public class JoinOptimizer {
         GraphPrinter.printGraph(dependencyGraph, "samples/xquery/dependencies", fileName);
     }
 
+    private String[] querySplitter(String query) {
+        List<String> list = new ArrayList<>();
+        Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(query);
+
+        while(m.find())
+            list.add(m.group(1).replaceAll(",", ""));
+
+        return list.toArray(new String[list.size()]);
+    }
+
     private Map<String, List<List<String>>> createComparisonMap(String query) {
-        String[] words = query.replace(',', ' ').split("\\s+");
+        String[] words =  querySplitter(query);
         Map<String, List<List<String>>> comparitorMap = new HashMap<>();
 
         int i;
@@ -162,7 +172,7 @@ public class JoinOptimizer {
     }
 
     private Map<String, String> createForAssignmentMap(String query) {
-        String[] words = query.replace(',', ' ').split("\\s+");
+        String[] words = querySplitter(query);
         Map<String, String> nodes = new HashMap<>();
         // loop through for part
         int i;

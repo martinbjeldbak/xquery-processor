@@ -11,8 +11,14 @@ $sp2 in $sc2/..//SPEAKER,
 $sp3 in $sc3/..//SPEAKER,
 $sp4 in $sc4/..//SPEAKER
 
-where $at eq "ACT I"
-           and $sp1 eq $sp2 and $sp2 eq $sp3 and $sp3 eq $sp4 and $sc1 eq $sc2 and $sc2 eq $sc3 and $sc3 eq $sc4
+where
+$at eq "ACT I" and
+$sp1 eq $sp2 and
+$sp2 eq $sp3 and
+$sp3 eq $sp4 and
+$sc1 eq $sc2 and
+$sc2 eq $sc3 and
+$sc3 eq $sc4
 return <result>{
 <speaker>{$sp1/text()}</speaker>,
 <scene>{$sc1/TITLE/text()}</scene>,
