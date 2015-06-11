@@ -44,12 +44,4 @@ public class JoinOptimizer {
     public Map<String, String> getForVarMap() {
         return forVarMap;
     }
-
-    private void printMap(Map<String, String> mapping) {
-        for (String name: mapping.keySet()){
-            String key = name;
-            String value = mapping.get(name);
-            System.out.println(key + ": " + value);
-        }
-    }
 }

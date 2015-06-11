@@ -13,7 +13,6 @@ public class JoinOptimizerTest {
     public void playground() throws IOException {
         String query = SampleReader.openQueryFileAsString("joinNotesEx72.xq");
         JoinOptimizer jo = new JoinOptimizer(query);
-
     }
 
     @Test
