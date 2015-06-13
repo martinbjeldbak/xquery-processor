@@ -53,19 +53,16 @@ public class JoinOptimizer {
         this.fileName = fileName;
         forVarMap = createForAssignmentMap(query);
         dependencyGraph = createDependencyGraph(forVarMap);
-
-
         comparisonMap = createComparisonMap(query);
         updateDependencyGraphWithComparitors(dependencyGraph, comparisonMap);
 
         String root = findRootInDirGraph(dependencyGraph);
-
         System.out.println(root);
         System.out.println(dependencyGraph.incomingEdgesOf(root));
     }
 
     private List<Graph<String, PathEdge>> getSubGraphs(DirectedGraph<String, PathEdge> graph, String rootV) {
-        for(PathEdge<String> edge : graph.outgoingEdgesOf(rootV)) {
+        for(PathEdge edge : graph.outgoingEdgesOf(rootV)) {
 
         }
 

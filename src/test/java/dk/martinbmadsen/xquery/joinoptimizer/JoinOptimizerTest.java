@@ -14,8 +14,22 @@ import static org.junit.Assert.assertEquals;
 public class JoinOptimizerTest {
     @Test
     public void playground() throws IOException {
+        /*
         String query = SampleReader.openQueryFileAsString("joinNotesEx73.xq");
         JoinOptimizer jo = new JoinOptimizer(query, "joinNotesEx73");
+        jo.graphToPNG();
+        */
+
+        String query = SampleReader.openQueryFileAsString("Milestone2Q1");
+        JoinOptimizer jo = new JoinOptimizer(query, "Milestone2Q1");
+        jo.graphToPNG();
+
+        query = SampleReader.openQueryFileAsString("Milestone2Q2");
+        jo = new JoinOptimizer(query, "Milestone2Q2");
+        jo.graphToPNG();
+
+        query = SampleReader.openQueryFileAsString("Milestone2Q3");
+        jo = new JoinOptimizer(query, "Milestone2Q3");
         jo.graphToPNG();
     }
 
@@ -63,6 +77,7 @@ public class JoinOptimizerTest {
     public void milestone2Q1ForMapping() throws IOException {
         String query = SampleReader.openQueryFileAsString("Milestone2Q1");
         JoinOptimizer jo = new JoinOptimizer(query, "Milestone2Q1");
+        jo.graphToPNG();
 
         Map<String, String> expected = new HashMap<>(4);
         expected.put("$s",  "document(\"samples/xml/j_caesar.xml\")//SPEAKER");
